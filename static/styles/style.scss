@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+:root {
+    --color-black: rgb(14, 13, 13);
+    --color-white: whitesmoke;
+    --site-max-width: 1300px;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        color: var(--color-white);
+        background-color: var(--color-black);
+    }
+
+    button {
+        color: var(--color-white);
+        background-color: var(--color-black);
+        &:hover {
+            color: var(--color-black);
+            background-color: var(--color-white);
+            border-color: lightgray;
+        }
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    html {
+        color: var(--color-black);
+        background-color: var(--color-white);
+    }
+    button {
+        color: var(--color-black);
+        background-color: var(--color-white);
+        &:hover {
+            color: var(--color-white);
+            background-color: var(--color-black);
+            border-color: lightgray;
+        }
+    }
+}
