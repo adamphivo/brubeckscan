@@ -1,14 +1,24 @@
 import { session } from "$app/stores";
 
+/**
+ * Object d'interaction avec l'api interne
+ */
 const api = () => { };
 
+// Ne devrait pas faire 2 choses : chercher les data et update la session
 api.syncUser = async (address: string, update: object = {}) => {
     const init = {
-        method: "GET",
+        method: "PATCH",
         headers: {
             internal_token: `${import.meta.env.VITE_AUTH_TOKEN}`,
         },
+        body: JSON.stringify(update)
     };
+
+    
+    if (Object.entries(update).length > 0) {
+        init.headers['content-type'] = "application/json";
+    }
 
     const response = await fetch(
         `/api/user/${address}.json`,
@@ -20,7 +30,6 @@ api.syncUser = async (address: string, update: object = {}) => {
     const user = json.data.user;
 
     session.update((session) => {
-        session = session;
         session.user = user;
         return session;
     })
@@ -45,7 +54,10 @@ api.getBrubeckDataForNode = async (address: string) => {
     );
 
     if (data) {
-        return data;
+        return {
+            nodeData: data,
+            nodeAddress: address
+        };
     }
 }
 

@@ -1,21 +1,29 @@
-import prisma from "$lib/prisma";
+import prisma from "$lib/clients/prisma";
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
     for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+        color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
 }
 
-function generateRandomGradient(){
+function generateRandomGradient() {
     const backgroundColor = `linear-gradient(90deg, ${getRandomColor()} 0%, ${getRandomColor()} 50%, ${getRandomColor()} 100%)`;
     return backgroundColor;
 }
 
-export async function get({ params }) {
+export async function patch({ params, request }) {
     const gradient = generateRandomGradient();
+    let update = null;
+
+    if (request.body) {
+        const data = await request.json();
+        if (data) {
+            update = data;
+        }
+    }
 
     if (params.id) {
         try {
@@ -23,7 +31,7 @@ export async function get({ params }) {
                 where: {
                     address: params.id
                 },
-                update: {},
+                update: update || {},
                 create: {
                     address: params.id,
                     profile: {
@@ -33,7 +41,12 @@ export async function get({ params }) {
                     }
                 },
                 include: {
-                    profile: true
+                    profile: true,
+                    nodelists: {
+                        include: {
+                            nodes: true
+                        }
+                    }
                 }
             })
 

@@ -11,14 +11,39 @@ datasource db {
 }
 
 model User {
-  address   String   @id @unique
-  createdAt DateTime @default(now())
-  profile   Profile  @relation(fields: [profileId], references: [id])
-  profileId String   @unique
+  address   String     @id @unique
+  createdAt DateTime   @default(now())
+  profile   Profile    @relation(fields: [profileId], references: [id])
+  profileId String     @unique
+  nodelists NodeList[]
 }
 
 model Profile {
-  id       String @id @default(uuid())
-  gradient String
-  user     User?
+  id        String   @id @default(uuid())
+  gradient  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
+  user      User?
+}
+
+model Node {
+  id         Int       @id @default(autoincrement())
+  address    String
+  name       String?
+  color      String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt @default(now())
+  NodeList   NodeList? @relation(fields: [nodeListId], references: [id])
+  nodeListId Int?
+}
+
+model NodeList {
+  id          Int      @id @default(autoincrement())
+  name        String?
+  color       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt @default(now())
+  nodes       Node[]
+  User        User?    @relation(fields: [userAddress], references: [address])
+  userAddress String?
 }

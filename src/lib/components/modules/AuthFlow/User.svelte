@@ -5,10 +5,13 @@
 
 {#if mode === "dock"}
     <div class="dock">
-        <div
-            style:background={$session.user.profile.gradient}
-            class="gradient"
-        />
+        <div class="connected">connected</div>
+        <a href="/">
+            <div
+                style:background={$session.user.profile.gradient}
+                class="gradient"
+            />
+        </a>
     </div>
 {/if}
 
@@ -43,6 +46,14 @@
     }
     .module {
         width: 100%;
+    }
+
+    .connected {
+        border: 1px solid lightgreen;
+        color: lightgreen;
+        padding: 5px;
+        font-size: 12px;
+        margin-right: 5px;
     }
 
     .inactive {

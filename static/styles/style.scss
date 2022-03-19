@@ -66,6 +66,32 @@ input {
     border-radius: 5px;
 }
 
+table {
+    width: 100%;
+    thead {
+        // background: red;
+        border: 1px solid lightgray;
+        tr {
+            padding: 10px;
+            th {
+                border: 1px solid lightgrey;
+                padding: 10px;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid rgb(196, 196, 204);
+            td {
+                padding: 20px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+
 @media (prefers-color-scheme: dark) {
     html {
         color: var(--color-white);

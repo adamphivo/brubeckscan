@@ -1,9 +1,28 @@
+<script context="module">
+    export async function load({ fetch, session }) {
+        const response = await fetch("http://localhost:3000/api", {
+            method: "GET",
+            headers: { internal_token: `${import.meta.env.VITE_AUTH_TOKEN}` },
+        });
+
+        const data = await response.json();
+
+        if (data) {
+            session.prices = data.prices;
+            session.brubeck = data.brubeck;
+        }
+
+        return {};
+    }
+</script>
+
 <script lang="ts">
     import api from "$lib/api";
-    import Dock from "$lib/components/layout/Dock.svelte";
+    import Dock from "$lib/components/layout/Dock/Dock.svelte";
     import { browser } from "$app/env";
-    import { session } from "$app/stores";
     import { onMount } from "svelte";
+    import { session } from "$app/stores";
+    import { goto } from "$app/navigation";
     import "../../static/styles/reset.scss";
     import "../../static/styles/style.scss";
 
@@ -18,24 +37,16 @@
             }
 
             window.ethereum.on("disconnect", function (error) {
-                $session.selectedAddress = null;
                 $session.user = null;
-                $session.currentNodeData = null;
-                console.log(error);
+                goto("/");
             });
 
             window.ethereum.on("accountsChanged", async function (accounts) {
                 if (accounts.length > 0) {
-                    $session.selectedAddress = accounts[0];
                     const sync = await api.syncUser(accounts[0]);
-                    const nodeData = await api.getBrubeckDataForNode(
-                        accounts[0]
-                    );
-                    $session.currentNodeData = nodeData;
                 } else {
-                    $session.selectedAddress = null;
                     $session.user = null;
-                    $session.currentNodeData = null;
+                    goto("/");
                 }
             });
         }
@@ -50,14 +61,14 @@
 </main>
 
 <style>
+    :global(*) {
+        font-family: "Space Mono", monospace;
+    }
     main {
         min-height: 120vh;
         display: flex;
         flex-direction: column;
         position: relative;
-    }
-    :global(*) {
-        font-family: "Space Mono", monospace;
     }
 
     .page {

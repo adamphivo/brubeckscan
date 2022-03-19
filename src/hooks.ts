@@ -16,23 +16,5 @@ export async function handle({ event, resolve }) {
 }
 
 export async function getSession() {
-    try {
-        const response = await fetch("http://localhost:3000/api", {
-            method: "GET",
-            headers: { internal_token: `${import.meta.env.VITE_AUTH_TOKEN}` },
-        });
-
-        const data = await response.json();
-
-        if (data) {
-            return {
-                prices: data.prices,
-                brubeck: data.brubeck
-            }
-        }
-    } catch (e) {
-        return {};
-    }
-
     return {};
 }

@@ -1,15 +1,16 @@
 <script lang="ts">
     import { session } from "$app/stores";
-    import Connect from "$lib/components/modules/Connect.svelte";
-    import User from "$lib/components/modules/User.svelte";
+    import Connect from "$lib/components/modules/AuthFlow/Connect.svelte";
+    import User from "$lib/components/modules/AuthFlow/User.svelte";
     import MdHome from 'svelte-icons/md/MdHome.svelte'
     import MdPoll from 'svelte-icons/md/MdPoll.svelte'
+    import MdList from 'svelte-icons/md/MdList.svelte'
 </script>
 
 <div class="container">
     <div class="firstRow row">
         <div>
-            <h1>BrubeckScan</h1>
+            <h1>BrubeckScan<span class="beta">beta</span></h1>
         </div>
         <div>
             {#if !$session.user}
@@ -21,16 +22,23 @@
     </div>
     <div class="secondRow row">
         <div class="navigationIcons">
-            <a href="/">
+            <a href="/" title="home">
                 <div class="icon">
                     <MdHome />
                 </div>
             </a>
-            <a href="/network">
+            <a href="/network" title="network">
                 <div class="icon">
                     <MdPoll />
                 </div>
             </a>
+            {#if $session.user}
+                <a sveltekit:prefetch href="/lists" title="lists">
+                    <div class="icon">
+                        <MdList />
+                    </div>
+                </a>
+            {/if}
         </div>
     </div>
 </div>
@@ -47,6 +55,13 @@
         &:hover {
             color: white;
         }
+    }
+
+    .beta {
+        border: 1px solid white;
+        margin-left: 10px;
+        padding: 5px;
+        font-size: 12px;
     }
     .container {
         position: sticky;

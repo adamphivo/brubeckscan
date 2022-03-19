@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { session } from "$app/stores";
     import api from "$lib/api";
 
     async function connect() {
@@ -7,14 +6,11 @@
             const accounts = await window.ethereum.request({
                 method: "eth_requestAccounts",
             });
-    
-            $session.selectedAddress = accounts[0];
-    
-            const sync = await api.syncUser($session.selectedAddress);
-        } catch(e) {
+
+            const sync = await api.syncUser(accounts[0]);
+        } catch (e) {
             console.log(e);
         }
-
     }
 </script>
 
