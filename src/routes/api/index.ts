@@ -11,7 +11,13 @@ async function getPrices() {
 
     const responses = await Promise.all(requests);
 
-    const prices = await Promise.all(responses.map((res) => res.json()));
+    const data = await Promise.all(responses.map((res) => res.json()));
+
+    let prices: any = {}
+
+    data.forEach(price => {
+        prices[price.symbol] = price.price
+    })
 
     return prices;
 }

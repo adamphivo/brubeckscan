@@ -1,4 +1,27 @@
-export async function get({ params, request }) {
+type Node = {
+    address: string;
+    rewardsInData: number;
+    claimCount: number;
+    claimedRewardCodes: RewardCode[]
+};
+
+type RewardCode = {
+    id: string;
+    claimTime: string;
+}
+
+const formatNodeData = (data: any, address: string) => {
+    let node: Node = {
+        address: address,
+        rewardsInData: data[0].DATA,
+        claimCount: data[1].claimCount,
+        claimedRewardCodes: data[1].claimedRewardCodes
+    };
+
+    return node;
+}
+
+export async function get({ params }) {
     if (params.address) {
         const urls = [
             "https://brubeck1.streamr.network:3013/datarewards/",
@@ -15,11 +38,11 @@ export async function get({ params, request }) {
             responses.map((response) => response.json())
         );
 
-        console.log(data);
+        const node = formatNodeData(data, params.address);
 
         return {
             status: 200,
-            body: data
+            body: node
         }
     }
 }

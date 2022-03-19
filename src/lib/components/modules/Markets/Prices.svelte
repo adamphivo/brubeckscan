@@ -4,10 +4,10 @@
 
 {#if $session.prices}
     <div class="module">
-        {#each $session.prices as price}
+        {#each Object.entries($session.prices) as [symbol, price]}
             <div class="price">
-                <div class="symbol">{price.symbol}</div>
-                <div class="value">{price.price}</div>
+                <div class="symbol">{symbol}</div>
+                <div class="value">{price}</div>
             </div>
         {/each}
     </div>
@@ -19,7 +19,6 @@
         gap: 30px;
         justify-content: space-between;
     }
-
     .module {
         flex-grow: 1;
     }

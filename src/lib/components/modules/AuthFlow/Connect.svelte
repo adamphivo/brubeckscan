@@ -6,8 +6,9 @@
             const accounts = await window.ethereum.request({
                 method: "eth_requestAccounts",
             });
-
-            const sync = await api.syncUser(accounts[0]);
+            if (accounts.length > 0) {
+                const sync = await api.syncUser(accounts[0]);
+            }
         } catch (e) {
             console.log(e);
         }
