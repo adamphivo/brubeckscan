@@ -7,7 +7,7 @@
         if ($session.currentNodeData) return;
 
         const nodeData = await api.getBrubeckDataForNode(
-            $session.user.id || window.ethereum.selectedAddress
+            $session?.user?.id || window.ethereum.selectedAddress || ""
         );
 
         if (nodeData) {
