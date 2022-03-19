@@ -10,6 +10,8 @@ declare namespace App {
 		selectedAddress: null | string;
 		user: any;
 		prices: any;
+		brubeck: any;
+		currentNodeData: any;
 	}
 	interface Stuff { }
 }
