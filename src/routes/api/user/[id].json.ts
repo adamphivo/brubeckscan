@@ -38,6 +38,18 @@ export async function patch({ params, request }) {
                         create: {
                             gradient: gradient
                         }
+                    },
+                    nodelists: {
+                        create: {
+                            name: `${params.id} List`,
+                            color: gradient,
+                            nodes: {
+                                create: {
+                                    name: `${params.id} Name`,
+                                    address: params.id
+                                }
+                            }
+                        }
                     }
                 },
                 include: {

@@ -19,14 +19,14 @@
 
 <tr>
     <td>
-        <div 
-            class="pastille"
-            style:background={list.color}>
-        </div>
+        <div class="pastille" style:background={list.color} />
     </td>
     <td>{list.name}</td>
     <td>{list.nodes.length}</td>
     <td>
+        <a href="/lists/{list.id}">
+            <button>See</button>
+        </a>
         <button on:click={deleteList}>Delete</button>
     </td>
 </tr>

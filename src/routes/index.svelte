@@ -1,3 +1,6 @@
+<script lang="ts" context="module">
+</script>
+
 <script lang="ts">
     import { session } from "$app/stores";
     import ApyApr from "$lib/components/modules/Brubeck/ApyApr.svelte";
@@ -11,7 +14,7 @@
     <Prices />
     {#if $session.user}
         <User mode="module" />
-        <Node address={$session.user.address}/>
+        <Node address={$session.user.address} />
     {:else}
         <User mode="noUser" />
     {/if}

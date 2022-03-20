@@ -1,34 +1,59 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    import { fade } from "svelte/transition";
     import { session } from "$app/stores";
+    import Bookmark from "./_Bookmark.svelte";
 
-    export let address = "";
-    let nodeData = null;
+    export let address;
 
-    onMount(async () => {
-        const response = await fetch(`api/node/${address}.json`, {
+    export let mode = "module";
+
+    async function getNodeData() {
+        const response = await fetch(`/api/node/${address}.json`, {
             method: "GET",
-            headers: { internal_token: `${import.meta.env.VITE_AUTH_TOKEN}` },
+            headers: {
+                internal_token: `${import.meta.env.VITE_AUTH_TOKEN}`,
+            },
         });
 
         const data = await response.json();
 
-        if (data) {
-            nodeData = data;
-        }
-    });
+        return data;
+    }
+
+    const promise = getNodeData();
 </script>
 
-{#if nodeData}
-    <div class="module" in:fade>
-        <div>
-            <div>{nodeData.address}</div>
-            <div>{nodeData.rewardsInData}DATA</div>
-            <div>{nodeData.rewardsInData * $session.prices.DATAUSDT}USDT</div>
-            <div>{nodeData.claimCount}</div>
-        </div>
+{#if mode === "module"}
+    <div class="module">
+        {#await promise}
+            <div>loading</div>
+        {:then data}
+            <div>
+                <div>{data.address}</div>
+                <div>{data.rewardsInData}DATA</div>
+                <div>{data.rewardsInData * $session.prices.DATAUSDT}USDT</div>
+                <div>{data.claimCount}</div>
+                {#if $session.user}
+                    <Bookmark {address} />
+                {/if}
+            </div>
+        {/await}
     </div>
+{/if}
+
+{#if mode === "table"}
+    <tr>
+        {#await promise}
+            <td>0xd9925689cb36bfc3e2f82ddacda21c231e126ee8</td>
+            <td>0</td>
+            <td>0USDT</td>
+            <td>0</td>
+        {:then data}
+            <td>{data.address}</td>
+            <td>{data.rewardsInData}DATA</td>
+            <td>{data.rewardsInData * $session.prices.DATAUSDT}USDT</td>
+            <td>{data.claimCount}</td>
+        {/await}
+    </tr>
 {/if}
 
 <style lang="scss">
