@@ -1,7 +1,7 @@
 <script lang="ts">
     import { session } from "$app/stores";
     import { goto } from "$app/navigation";
-    import api from "$lib/api";
+    import api from "$lib/helpers/api";
 
     let name = "";
     let color = "#3465a4";

@@ -4,7 +4,6 @@
     import MeanPropagationDelays from "$lib/components/modules/Brubeck/_MeanPropagationDelays.svelte";
 </script>
 
-<!-- Pages are actually more like modules pool -->
 <section class="modulePool">
     <Topology />
     <MissedClaims />

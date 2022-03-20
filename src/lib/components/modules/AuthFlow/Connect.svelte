@@ -1,5 +1,5 @@
 <script lang="ts">
-    import api from "$lib/api";
+    import api from "$lib/helpers/api";
 
     async function connect() {
         try {

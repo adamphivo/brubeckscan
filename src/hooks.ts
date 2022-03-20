@@ -1,4 +1,4 @@
-import { Auth } from "$lib/auth";
+import { Auth } from "$lib/helpers/auth";
 
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ event, resolve }) {

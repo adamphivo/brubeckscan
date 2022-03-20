@@ -1,6 +1,6 @@
 <script lang="ts">
     import { session } from "$app/stores";
-    import api from "$lib/api";
+    import api from "$lib/helpers/api";
 
     export let list;
 
@@ -24,7 +24,7 @@
     <td>{list.name}</td>
     <td>{list.nodes.length}</td>
     <td>
-        <a href="/lists/{list.id}">
+        <a sveltekit:prefetch href="/lists/{list.id}">
             <button>See</button>
         </a>
         <button on:click={deleteList}>Delete</button>

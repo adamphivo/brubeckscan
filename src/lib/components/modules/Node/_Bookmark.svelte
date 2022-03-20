@@ -1,6 +1,6 @@
 <script lang="ts">
     import { session } from "$app/stores";
-    import api from "$lib/api";
+    import api from "$lib/helpers/api";
 
     export let address;
     let listId;

@@ -17,7 +17,7 @@
 </script>
 
 <script lang="ts">
-    import api from "$lib/api";
+    import api from "$lib/helpers/api";
     import Dock from "$lib/components/layout/Dock/Dock.svelte";
     import { browser } from "$app/env";
     import { onMount } from "svelte";
