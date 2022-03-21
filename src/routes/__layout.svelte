@@ -14,6 +14,7 @@
             const marketPrices = await send("GET", "market/prices.json").then(
                 (r) => r.json()
             );
+
             const brubeckStats = await send("GET", "brubeck/stats.json").then(
                 (r) => r.json()
             );
@@ -55,7 +56,9 @@
 <main>
     {#await promise}
         <div class="loading page">
-            <div class="module">LOADING</div>
+            <div class="module">
+                <h2>Loading</h2>
+            </div>
         </div>
     {:then}
     <Dock />

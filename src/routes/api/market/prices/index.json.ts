@@ -2,7 +2,7 @@ export async function get() {
     const BINANCE_BASE =
         "https://api.binance.com/api/v3/ticker/price?symbol=";
 
-    const symbols = ["DATAUSDT", "BTCUSDT", "ETHUSDT"];
+    const symbols = ["DATAUSDT", "BTCUSDT"];
 
     const requests = symbols.map(async (symbol) => {
         const request = await fetch(`${BINANCE_BASE}${symbol}`)
