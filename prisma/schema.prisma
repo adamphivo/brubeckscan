@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,39 +8,26 @@ datasource db {
 }
 
 model User {
-  address   String     @id @unique
-  createdAt DateTime   @default(now())
-  profile   Profile    @relation(fields: [profileId], references: [id])
-  profileId String     @unique
-  nodelists NodeList[]
+  address   String   @id @unique
+  createdAt DateTime @default(now())
+  profile   Profile  @relation(fields: [profileId], references: [id])
+  profileId String   @unique
+  nodes     Node[]
 }
 
 model Profile {
   id        String   @id @default(uuid())
   gradient  String
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
   user      User?
 }
 
 model Node {
-  id         Int       @id @default(autoincrement())
-  address    String
-  name       String?
-  color      String?
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt @default(now())
-  NodeList   NodeList? @relation(fields: [nodeListId], references: [id])
-  nodeListId Int?
-}
-
-model NodeList {
-  id          Int      @id @default(autoincrement())
-  name        String?
-  color       String?
+  id          String   @id @default(uuid())
+  address     String
   createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt @default(now())
-  nodes       Node[]
+  updatedAt   DateTime @default(now()) @updatedAt
   User        User?    @relation(fields: [userAddress], references: [address])
   userAddress String?
 }

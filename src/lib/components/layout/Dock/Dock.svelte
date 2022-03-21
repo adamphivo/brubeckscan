@@ -1,10 +1,9 @@
 <script lang="ts">
-    import { session } from "$app/stores";
-    import Connect from "$lib/components/modules/AuthFlow/Connect.svelte";
-    import User from "$lib/components/modules/AuthFlow/User.svelte";
-    import MdHome from 'svelte-icons/md/MdHome.svelte'
-    import MdPoll from 'svelte-icons/md/MdPoll.svelte'
-    import MdList from 'svelte-icons/md/MdList.svelte'
+    import { session, page } from "$app/stores";
+    import Connect from "$lib/components/layout/Dock/_Connect.svelte";
+    import DockUser from "./_DockUser.svelte";
+    import MdHome from "svelte-icons/md/MdHome.svelte";
+    import MdPoll from "svelte-icons/md/MdPoll.svelte";
 </script>
 
 <div class="container">
@@ -16,29 +15,25 @@
             {#if !$session.user}
                 <Connect />
             {:else}
-                <User mode="dock" />
+                <DockUser />
             {/if}
         </div>
     </div>
     <div class="secondRow row">
         <div class="navigationIcons">
             <a href="/" title="home">
-                <div class="icon">
+                <div class="icon" class:active={$page.url.pathname === "/"}>
                     <MdHome />
                 </div>
             </a>
             <a href="/network" title="network">
-                <div class="icon">
+                <div
+                    class="icon"
+                    class:active={$page.url.pathname === "/network"}
+                >
                     <MdPoll />
                 </div>
             </a>
-            {#if $session.user}
-                <a sveltekit:prefetch href="/lists" title="lists">
-                    <div class="icon">
-                        <MdList />
-                    </div>
-                </a>
-            {/if}
         </div>
     </div>
 </div>
@@ -49,7 +44,12 @@
         gap: 10px;
     }
     .icon {
-        width: 30px;
+        padding: 5px;
+        &.active {
+            color: whitesmoke;
+            border-bottom: 1px solid white;
+        }
+        width: 40px;
         transition-duration: 0.2s;
         color: gray;
         &:hover {
@@ -78,7 +78,8 @@
         width: 100%;
         max-width: var(--site-max-width);
         justify-content: space-between;
-        padding: 30px 0px;
+        align-items: center;
+        padding: 10px 0px;
     }
     .secondRow {
         background-color: var(--color-black-transparent);
@@ -86,6 +87,6 @@
 
     .firstRow {
         background-color: var(--color-black);
-        padding: 30px 0px;
+        padding: 20px 0px;
     }
 </style>

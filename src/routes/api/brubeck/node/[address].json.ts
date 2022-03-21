@@ -10,17 +10,6 @@ type RewardCode = {
     claimTime: string;
 }
 
-const formatNodeData = (data: any, address: string) => {
-    let node: Node = {
-        address: address,
-        rewardsInData: data[0].DATA || 0,
-        claimCount: data[1].claimCount,
-        claimedRewardCodes: data[1].claimedRewardCodes
-    };
-
-    return node;
-}
-
 export async function get({ params }) {
     if (params.address) {
         const urls = [
@@ -45,4 +34,15 @@ export async function get({ params }) {
             body: node
         }
     }
+}
+
+const formatNodeData = (data: any, address: string) => {
+    let node: Node = {
+        address: address,
+        rewardsInData: data[0].DATA || 0,
+        claimCount: data[1].claimCount,
+        claimedRewardCodes: data[1].claimedRewardCodes
+    };
+
+    return node;
 }

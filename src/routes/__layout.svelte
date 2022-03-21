@@ -1,38 +1,34 @@
-<script context="module">
-    export async function load({ fetch, session }) {
-        const response = await fetch("http://localhost:3000/api", {
-            method: "GET",
-            headers: { internal_token: `${import.meta.env.VITE_AUTH_TOKEN}` },
-        });
-
-        const data = await response.json();
-
-        if (data) {
-            session.prices = data.prices;
-            session.brubeck = data.brubeck;
-        }
-
-        return {};
-    }
-</script>
-
 <script lang="ts">
-    import api from "$lib/helpers/api";
+    import UserService from "$lib/services/user";
+    import { send } from "$lib/helpers/send";
     import Dock from "$lib/components/layout/Dock/Dock.svelte";
     import { browser } from "$app/env";
-    import { onMount } from "svelte";
     import { session } from "$app/stores";
+    import { brubeckData } from "$lib/stores/brubeckData";
     import { goto } from "$app/navigation";
     import "../../static/styles/reset.scss";
     import "../../static/styles/style.scss";
 
-    onMount(async () => {
+    async function bundle() {
         if (browser) {
+            const marketPrices = await send("GET", "market/prices.json").then(
+                (r) => r.json()
+            );
+            const brubeckStats = await send("GET", "brubeck/stats.json").then(
+                (r) => r.json()
+            );
+
+            $brubeckData = brubeckStats;
+
+            $session.prices = marketPrices;
+
             if (window.ethereum) {
                 if (window.ethereum.selectedAddress) {
-                    const sync = await api.syncUser(
+                    const user = await UserService.upsert(
                         window.ethereum.selectedAddress
                     );
+
+                    $session.user = user;
                 }
             }
 
@@ -43,21 +39,30 @@
 
             window.ethereum.on("accountsChanged", async function (accounts) {
                 if (accounts.length > 0) {
-                    const sync = await api.syncUser(accounts[0]);
+                    const user = await UserService.upsert(accounts[0]);
+                    $session.user = user;
                 } else {
                     $session.user = null;
                     goto("/");
                 }
             });
         }
-    });
+    }
+
+    const promise = bundle();
 </script>
 
 <main>
+    {#await promise}
+        <div class="loading page">
+            <div class="module">LOADING</div>
+        </div>
+    {:then}
     <Dock />
-    <div class="page">
-        <slot />
-    </div>
+        <div class="page">
+            <slot />
+        </div>
+    {/await}
 </main>
 
 <style>
@@ -65,7 +70,7 @@
         font-family: "Space Mono", monospace;
     }
     main {
-        min-height: 120vh;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -78,5 +83,19 @@
         flex-grow: 1;
         width: 100%;
         padding: 30px 0;
+        min-height: 120vh;
+    }
+
+    .loading {
+        width: 100%;
+    }
+
+    .page.loading {
+        min-height: 100vh;
+    }
+
+    .page.loading {
+        justify-content: center;
+        align-items: center;
     }
 </style>

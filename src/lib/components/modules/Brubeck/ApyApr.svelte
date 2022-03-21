@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { session } from "$app/stores";
+    import { brubeckData } from "$lib/stores/brubeckData";
 </script>
 
-{#if $session.brubeck.apy}
+{#if $brubeckData.apy}
     <div class="module">
-        {#each Object.entries($session.brubeck.apy) as entry}
+        {#each Object.entries($brubeckData.apy) as entry}
             <div class="data">
                 <span class="key">
                     {entry[0]}

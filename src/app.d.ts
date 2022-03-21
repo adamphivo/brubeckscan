@@ -9,6 +9,7 @@ declare namespace App {
 		user: any;
 		prices: any;
 		brubeck: any;
+		currentList: any;
 	}
 	// interface Stuff { }
 }

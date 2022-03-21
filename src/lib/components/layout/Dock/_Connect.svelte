@@ -1,5 +1,6 @@
 <script lang="ts">
-    import api from "$lib/helpers/api";
+    import { session } from "$app/stores";
+    import UserService from "$lib/services/user";
 
     async function connect() {
         try {
@@ -7,7 +8,8 @@
                 method: "eth_requestAccounts",
             });
             if (accounts.length > 0) {
-                const sync = await api.syncUser(accounts[0]);
+                const user = await UserService.upsert(accounts[0]);
+                $session.user = user;
             }
         } catch (e) {
             console.log(e);
@@ -18,6 +20,3 @@
 <button on:click|preventDefault={connect}>
     <p>Connect</p>
 </button>
-
-<style lang="scss">
-</style>

@@ -1,25 +1,21 @@
 <script lang="ts">
-    import { session } from "$app/stores";
     import { browser } from "$app/env";
     import { onMount } from "svelte";
+    import { brubeckDataDerived } from "$lib/stores/brubeckData";
     import Chart from "chart.js/auto/auto.js";
 
     const GRAPH_ID = "meanPropagationDelaysChart";
 
     function generateGraphConfig() {
         const data = {
-            labels: $session.brubeck.lastRewards.map(
-                (reward, index) => 100 - index
-            ),
+            labels: $brubeckDataDerived.codes,
             datasets: [
                 {
                     label: "meanPropagationDelay",
                     backgroundColor: "black",
                     borderColor: "lightblue",
                     borderWidth: 1,
-                    data: $session.brubeck.lastRewards.map(
-                        (reward) => reward.meanPropagationDelay
-                    ),
+                    data: $brubeckDataDerived.meanPropagationDelays,
                 },
             ],
         };
@@ -27,7 +23,15 @@
         const config: any = {
             type: "line",
             data: data,
-            options: {},
+            options: {
+                scales: {
+                    x: {
+                        ticks: {
+                            display: false
+                        }
+                    }
+                }
+            },
         };
 
         return config;
@@ -42,7 +46,7 @@
     });
 </script>
 
-{#if $session.brubeck.lastRewards}
+{#if $brubeckDataDerived}
     <div class="module graph">
         <canvas id={GRAPH_ID} />
     </div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { session } from "$app/stores";
+    import { brubeckDataDerived } from "$lib/stores/brubeckData";
     import { browser } from "$app/env";
     import { onMount } from "svelte";
     import Chart from "chart.js/auto/auto.js";
@@ -8,25 +8,21 @@
 
     function generateGraphConfig() {
         const data = {
-            labels: $session.brubeck.lastRewards.map((reward, index) => 100 - index),
+            labels: $brubeckDataDerived.codes,
             datasets: [
                 {
                     label: "topologySize",
                     backgroundColor: "black",
                     borderColor: "lightgrey",
                     borderWidth: 1,
-                    data: $session.brubeck.lastRewards.map(
-                        (reward) => reward.topologySize
-                    ),
+                    data: $brubeckDataDerived.topologySizes,
                 },
                 {
                     label: "receivedClaims",
                     backgroundColor: "black",
                     borderColor: "lightgreen",
                     borderWidth: 1,
-                    data: $session.brubeck.lastRewards.map(
-                        (reward) => reward.receivedClaims
-                    ),
+                    data: $brubeckDataDerived.receivedClaims,
                 },
             ],
         };
@@ -34,7 +30,15 @@
         const config: any = {
             type: "line",
             data: data,
-            options: {},
+            options: {
+                scales: {
+                    x: {
+                        ticks: {
+                            display: false
+                        }
+                    }
+                }
+            },
         };
 
         return config;
@@ -49,7 +53,7 @@
     });
 </script>
 
-{#if $session.brubeck.lastRewards}
+{#if $brubeckDataDerived}
     <div class="module graph">
         <canvas id={GRAPH_ID} />
     </div>
