@@ -1,5 +1,6 @@
 <script lang="ts">
     import UserService from "$lib/services/user";
+    import { fade } from "svelte/transition";
     import { send } from "$lib/helpers/send";
     import Dock from "$lib/modules/Layout/Dock/Dock.svelte";
     import { browser } from "$app/env";
@@ -62,6 +63,7 @@
                 $session.user = null;
                 $userData = null;
                 $userDataComputed = null;
+                $scannedNodeData = null;
                 goto("/");
             });
 
@@ -82,6 +84,7 @@
                     $session.user = null;
                     $userData = null;
                     $userDataComputed = null;
+                    $scannedNodeData = null;
                     goto("/");
                 }
             });
@@ -93,14 +96,16 @@
 
 <main>
     {#await promise}
-        <div class="loading page">
+        <div class="loading">
             <div class="module">
                 <h2>Loading</h2>
             </div>
         </div>
     {:then}
-        <Dock />
-        <div class="page">
+        <div in:fade>
+            <Dock />
+        </div>
+        <div class="page" in:fade>
             <slot />
         </div>
     {/await}
@@ -129,9 +134,8 @@
 
     .loading {
         width: 100%;
-    }
-
-    .page.loading {
+        height: 100vh;
+        display: flex;
         justify-content: center;
         align-items: center;
     }
