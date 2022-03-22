@@ -1,6 +1,6 @@
 <script lang="ts">
     import { session } from "$app/stores";
-    import { userData } from "$lib/stores/user";
+    import { userData } from "$lib/stores/userData";
     import UserService from "$lib/services/user";
 
     async function connect() {

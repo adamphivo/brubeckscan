@@ -18,7 +18,7 @@ export const brubeckDataDerived = derived(brubeckData, (brubeckData) => {
         receivedClaims.push(reward.receivedClaims);
         topologySizes.push(reward.topologySize);
         meanPropagationDelays.push(reward.meanPropagationDelay);
-        missedClaims.push(reward.topologySize - reward.meanPropagationDelay)
+        missedClaims.push(reward.topologySize - reward.receivedClaims)
     })
 
     return {

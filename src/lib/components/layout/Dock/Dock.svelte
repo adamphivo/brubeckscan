@@ -4,6 +4,7 @@
     import DockUser from "./_DockUser.svelte";
     import MdHome from "svelte-icons/md/MdHome.svelte";
     import MdPoll from "svelte-icons/md/MdPoll.svelte";
+    import MdBookmark from "svelte-icons/md/MdBookmark.svelte";
 </script>
 
 <div class="container">
@@ -21,12 +22,12 @@
     </div>
     <div class="secondRow row">
         <div class="navigationIcons">
-            <a href="/" title="home">
+            <a href="/" title="Home">
                 <div class="icon" class:active={$page.url.pathname === "/"}>
                     <MdHome />
                 </div>
             </a>
-            <a href="/network" title="network">
+            <a href="/network" title="Network">
                 <div
                     class="icon"
                     class:active={$page.url.pathname === "/network"}
@@ -34,6 +35,16 @@
                     <MdPoll />
                 </div>
             </a>
+            {#if $session.user}
+                <a href="/watchlist" title="Watchlist">
+                    <div
+                        class="icon"
+                        class:active={$page.url.pathname === "/watchlist"}
+                    >
+                        <MdBookmark />
+                    </div>
+                </a>
+            {/if}
         </div>
     </div>
 </div>

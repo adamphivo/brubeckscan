@@ -19,6 +19,19 @@
     transition-duration: 0.3s;
 }
 
+input {
+    border: none;
+    outline: none;
+    color: whitesmoke;
+    background-color: transparent;
+    border: thin solid rgb(100, 98, 98);
+    padding: 10px;
+    border-radius: 5px;
+    &::placeholder {
+        color: whitesmoke;
+    }
+}
+
 .modulePool {
     width: 100%;
     max-width: var(--site-max-width);
@@ -60,10 +73,6 @@ button {
     &:hover {
         cursor: pointer;
     }
-}
-
-input {
-    border-radius: 5px;
 }
 
 // Themes
