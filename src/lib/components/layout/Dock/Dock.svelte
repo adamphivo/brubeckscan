@@ -47,7 +47,7 @@
         padding: 5px;
         &.active {
             color: whitesmoke;
-            border-bottom: 1px solid white;
+            border-bottom: thin solid white;
         }
         width: 40px;
         transition-duration: 0.2s;
@@ -58,7 +58,7 @@
     }
 
     .beta {
-        border: 1px solid white;
+        border: thin solid white;
         margin-left: 10px;
         padding: 5px;
         font-size: 12px;

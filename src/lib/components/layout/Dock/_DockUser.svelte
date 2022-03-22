@@ -25,7 +25,7 @@
         border-radius: 50%;
     }
     .connected {
-        border: 1px solid lightgreen;
+        border: thin solid lightgreen;
         color: lightgreen;
         padding: 5px;
         font-size: 12px;

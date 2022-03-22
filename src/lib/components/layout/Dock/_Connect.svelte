@@ -1,5 +1,6 @@
 <script lang="ts">
     import { session } from "$app/stores";
+    import { userData } from "$lib/stores/user";
     import UserService from "$lib/services/user";
 
     async function connect() {
@@ -10,6 +11,7 @@
             if (accounts.length > 0) {
                 const user = await UserService.upsert(accounts[0]);
                 $session.user = user;
+                $userData = user;
             }
         } catch (e) {
             console.log(e);

@@ -5,6 +5,7 @@
     import { browser } from "$app/env";
     import { session } from "$app/stores";
     import { brubeckData } from "$lib/stores/brubeckData";
+    import { userData } from "$lib/stores/userData";
     import { goto } from "$app/navigation";
     import "../../static/styles/reset.scss";
     import "../../static/styles/style.scss";
@@ -30,11 +31,13 @@
                     );
 
                     $session.user = user;
+                    $userData = user;
                 }
             }
 
             window.ethereum.on("disconnect", function (error) {
                 $session.user = null;
+                $userData = null;
                 goto("/");
             });
 
@@ -42,8 +45,10 @@
                 if (accounts.length > 0) {
                     const user = await UserService.upsert(accounts[0]);
                     $session.user = user;
+                    $userData = user;
                 } else {
                     $session.user = null;
+                    $userData = null
                     goto("/");
                 }
             });
@@ -61,7 +66,7 @@
             </div>
         </div>
     {:then}
-    <Dock />
+        <Dock />
         <div class="page">
             <slot />
         </div>
@@ -91,10 +96,6 @@
 
     .loading {
         width: 100%;
-    }
-
-    .page.loading {
-        min-height: 100vh;
     }
 
     .page.loading {

@@ -14,7 +14,8 @@ export async function get() {
         status: 200,
         body: {
             apy,
-            lastRewards: lastRewards.lastRewards
+            lastRewards: lastRewards.lastRewards.reverse(),
+            lastCode: lastRewards.lastRewards.at(-1).code
         }
     }
 }
