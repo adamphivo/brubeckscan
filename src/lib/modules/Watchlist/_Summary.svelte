@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { session } from "$app/stores";
+    import { marketPrices } from "$lib/stores/marketPrices";
     import { watchListSummary } from "$lib/stores/userData";
 </script>
 
@@ -39,7 +39,7 @@
             <div class="value">
                 <p>
                     {$watchListSummary.totalRewardsInData *
-                        $session.prices.DATAUSDT}
+                        $marketPrices.DATAUSDT}
                 </p>
             </div>
         </div>
@@ -59,7 +59,7 @@
             <div class="value">
                 <p>
                     {$watchListSummary.totalDataStaked *
-                        $session.prices.DATAUSDT}
+                        $marketPrices.DATAUSDT}
                 </p>
             </div>
         </div>

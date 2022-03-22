@@ -1,26 +1,39 @@
+import { appCache } from "$lib/helpers/cache";
+
 export async function get() {
-    const BINANCE_BASE =
-        "https://api.binance.com/api/v3/ticker/price?symbol=";
+    const cached = appCache.get("marketPrices");
 
-    const symbols = ["BTCUSDT", "DATAUSDT"];
+    if (cached) {
+        return {
+            status: 304,
+            body: cached
+        }
+    } else {
+        const BINANCE_BASE =
+            "https://api.binance.com/api/v3/ticker/price?symbol=";
 
-    const requests = symbols.map(async (symbol) => {
-        const request = await fetch(`${BINANCE_BASE}${symbol}`)
-        return request;
-    });
+        const symbols = ["BTCUSDT", "DATAUSDT"];
 
-    const responses = await Promise.all(requests);
+        const requests = symbols.map(async (symbol) => {
+            const request = await fetch(`${BINANCE_BASE}${symbol}`)
+            return request;
+        });
 
-    const data = await Promise.all(responses.map((res) => res.json()));
+        const responses = await Promise.all(requests);
 
-    let prices: any = {}
+        const data = await Promise.all(responses.map((res) => res.json()));
 
-    data.forEach(price => {
-        prices[price.symbol] = price.price
-    })
+        let prices: any = {}
 
-    return {
-        status: 200,
-        body: prices
-    };
+        data.forEach(price => {
+            prices[price.symbol] = price.price
+        })
+
+        appCache.set('marketPrices', prices, 60);
+
+        return {
+            status: 200,
+            body: prices,
+        };
+    }
 }

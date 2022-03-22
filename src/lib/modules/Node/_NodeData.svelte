@@ -1,6 +1,7 @@
 <script lang="ts">
     import { session } from "$app/stores";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
+    import { marketPrices } from "$lib/stores/marketPrices";
     import Bookmark from "./_Bookmark.svelte";
     import Usdt from "$lib/modules/Components/Logos/_Tether.svelte";
     import Data from "$lib/modules/Components/Logos/_Data.svelte";
@@ -47,7 +48,7 @@
             </div>
             <div class="value">
                 <p>
-                    {$scannedNodeData.rewardsInData * $session.prices.DATAUSDT}
+                    {$scannedNodeData.rewardsInData * $marketPrices.DATAUSDT}
                 </p>
                 <p>USDT</p>
                 <Usdt />
@@ -69,7 +70,7 @@
             </div>
             <div class="value">
                 <p>
-                    {$scannedNodeData.dataStaked * $session.prices.DATAUSDT}
+                    {$scannedNodeData.dataStaked * $marketPrices.DATAUSDT}
                 </p>
                 <p>USDT</p>
                 <Usdt />

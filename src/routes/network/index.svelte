@@ -1,4 +1,7 @@
-<script>
+<script lang="ts" context="module">
+</script>
+
+<script lang="ts">
     import Topology from "$lib/modules/Brubeck/graphs/_Topology.svelte";
     import MissedClaims from "$lib/modules/Brubeck/graphs/_MissedClaims.svelte";
     import MeanPropagationDelays from "$lib/modules/Brubeck/graphs/_MeanPropagationDelays.svelte";

@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { session } from "$app/stores";
     import { brubeckData } from "$lib/stores/brubeckData";
+    import { marketPrices } from "$lib/stores/marketPrices";
     import Usdt from "$lib/modules/Components/Logos/_Tether.svelte";
     import Data from "$lib/modules/Components/Logos/_Data.svelte";
 </script>
@@ -67,7 +67,7 @@
                 <p>24h-data-staked USDT</p>
             </div>
             <div class="value">
-                {$brubeckData.apy["24h-data-staked"] * $session.prices.DATAUSDT}
+                {$brubeckData.apy["24h-data-staked"] * $marketPrices.DATAUSDT}
                 <p>USDT</p>
                 <Usdt />
             </div>
@@ -89,7 +89,7 @@
             <div class="value">
                 <p>
                     {$brubeckData.apy["spot-data-staked"] *
-                        $session.prices.DATAUSDT}
+                        $marketPrices.DATAUSDT}
                 </p>
                 <p>USDT</p>
                 <Usdt/>

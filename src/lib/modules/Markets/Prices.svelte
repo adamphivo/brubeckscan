@@ -1,16 +1,16 @@
 <script lang="ts">
-    import { session } from "$app/stores";
+    import { marketPrices } from "$lib/stores/marketPrices";
     import Usdt from "$lib/modules/Components/Logos/_Tether.svelte";
     import Data from "$lib/modules/Components/Logos/_Data.svelte";
     import Btc from "$lib/modules/Components/Logos/_Bitcoin.svelte";
 </script>
 
-{#if $session.prices}
+{#if $marketPrices}
     <div class="module moduleTitle">
         <h3>Markets</h3>
     </div>
     <div class="module">
-        {#each Object.entries($session.prices) as [symbol, price]}
+        {#each Object.entries($marketPrices) as [symbol, price]}
             <div class="data">
                 {#if symbol === "BTCUSDT"}
                     <div class="label"><Btc />{symbol.replace('USDT', '')}</div>

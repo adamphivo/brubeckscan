@@ -1,3 +1,12 @@
+<script lang="ts" context="module">
+    import StateService from "$lib/services/state";
+
+    export async function load() {
+        await StateService.updateMarketPrices();
+        return {};
+    }
+</script>
+
 <script lang="ts">
     import Scan from "$lib/modules/Node/Scan.svelte";
     import PageTitle from "$lib/modules/Layout/Page/PageTitle.svelte";

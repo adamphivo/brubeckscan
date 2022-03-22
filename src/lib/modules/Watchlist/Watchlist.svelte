@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { session } from "$app/stores";
     import { userDataComputed } from "$lib/stores/userData";
+    import { marketPrices } from "$lib/stores/marketPrices";
 </script>
 
 {#if $userDataComputed}
@@ -15,14 +15,14 @@
                     <div>DataStaked{node.dataStaked}</div>
                     <div>
                         DataStakedInUSDT{node.dataStaked *
-                            $session.prices.DATAUSDT}
+                            $marketPrices.DATAUSDT}
                     </div>
                     <div>
                         RewardsInData{node.rewardsInData}
                     </div>
                     <div>
                         RewardsInUSDT{node.rewardsInData *
-                            $session.prices.DATAUSDT}
+                            $marketPrices.DATAUSDT}
                     </div>
                     <div>ClaimCount{node.claimCount}</div>
                 </div>
