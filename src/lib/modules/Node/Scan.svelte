@@ -3,6 +3,9 @@
     import NodeDataForm from "./_NodeDataForm.svelte";
 </script>
 
+<div class="module moduleTitle">
+    <h3>Scan a node ETH public address</h3>
+</div>
 <div class="module">
     <NodeDataForm />
     <NodeData />

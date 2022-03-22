@@ -5,6 +5,7 @@
     import MdHome from "svelte-icons/md/MdHome.svelte";
     import MdPoll from "svelte-icons/md/MdPoll.svelte";
     import MdBookmark from "svelte-icons/md/MdBookmark.svelte";
+    import MdSearch from 'svelte-icons/md/MdSearch.svelte'
 </script>
 
 <div class="container">
@@ -33,6 +34,14 @@
                     class:active={$page.url.pathname === "/network"}
                 >
                     <MdPoll />
+                </div>
+            </a>
+            <a  sveltekit:prefetch href="/scan" title="Network">
+                <div
+                    class="icon"
+                    class:active={$page.url.pathname === "/scan"}
+                >
+                    <MdSearch />
                 </div>
             </a>
             {#if $session.user}
@@ -94,6 +103,7 @@
     }
     .secondRow {
         background-color: var(--color-black-transparent);
+        height: 70px;
     }
 
     .firstRow {

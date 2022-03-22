@@ -3,6 +3,9 @@
 </script>
 
 <div class="module">
+    <div class="module moduleTitle">
+
+    </div>
     <div class="label">Latest reward code</div>
     <div class="value">{$brubeckData.lastCode}</div>
 </div>

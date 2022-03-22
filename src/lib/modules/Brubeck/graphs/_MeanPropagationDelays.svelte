@@ -47,6 +47,9 @@
 </script>
 
 {#if $brubeckDataDerived}
+    <div class="module moduleTitle">
+        <h3>Mean propagation delays</h3>
+    </div>
     <div class="module graph">
         <canvas id={GRAPH_ID} />
     </div>

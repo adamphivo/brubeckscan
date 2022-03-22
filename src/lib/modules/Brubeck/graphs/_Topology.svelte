@@ -34,10 +34,10 @@
                 scales: {
                     x: {
                         ticks: {
-                            display: false
-                        }
-                    }
-                }
+                            display: false,
+                        },
+                    },
+                },
             },
         };
 
@@ -54,6 +54,9 @@
 </script>
 
 {#if $brubeckDataDerived}
+    <div class="module moduleTitle">
+        <h3>Topology</h3>
+    </div>
     <div class="module graph">
         <canvas id={GRAPH_ID} />
     </div>

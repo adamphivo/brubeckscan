@@ -53,7 +53,7 @@
                         const data = await getNodesData(user.nodes);
                         if (data) {
                             $userDataComputed = data;
-                            $scannedNodeData = data[0];
+                            $scannedNodeData = data.find(node => node.address === user.address);
                         }
                     }
                 }
@@ -77,7 +77,7 @@
                         const data = await getNodesData(user.nodes);
                         if (data) {
                             $userDataComputed = data;
-                            $scannedNodeData = data[0];
+                            $scannedNodeData = data.find(node => node.address === user.address);
                         }
                     }
                 } else {
@@ -102,7 +102,7 @@
             </div>
         </div>
     {:then}
-        <div in:fade>
+        <div in:fade class="sticky">
             <Dock />
         </div>
         <div class="page" in:fade>
@@ -129,7 +129,14 @@
         flex-grow: 1;
         width: 100%;
         padding: 30px 0;
-        min-height: 120vh;
+        min-height: 100vh;
+    }
+
+    .sticky {
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 5;
     }
 
     .loading {

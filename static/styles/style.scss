@@ -8,15 +8,38 @@
     --font-text: "Comfortaa", cursive;
 }
 
-.label, .label p {
+.label,
+.label p {
     font-family: var(--font-text);
+}
+
+.moduleTitle {
+    border: none !important;
+    display: flex;
+    justify-content: center;
+    padding: 10px 30px !important;
+    // background-color: rgb(0, 0, 0) !important;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    width: max-content;
+    h3 {
+        font-size: 20px;
+        // font-style: italic;
+        margin: 0;
+    }
+}
+
+h3 {
+    // font-family: var(--font-text);
+    font-size: 18px;
+    margin: 20px 0;
 }
 
 .module {
     display: flex;
     flex-direction: column;
     position: relative;
-    border: thin solid rgb(100, 98, 98);
+    // border: thin solid rgb(100, 98, 98);
     background-color: rgba(0, 0, 0, 0.322);
     border-radius: 5px;
     padding: 30px;

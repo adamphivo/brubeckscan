@@ -1,13 +1,13 @@
 <script lang="ts">
+    import PageTitle from "$lib/modules/Layout/Page/PageTitle.svelte";
     import ApyApr from "$lib/modules/Brubeck/ApyApr.svelte";
     import Prices from "$lib/modules/Markets/Prices.svelte";
-    import LatestRewardCode from "$lib/modules/Brubeck/LatestRewardCode.svelte";
-    import Scan from "$lib/modules/Node/Scan.svelte";
+
+    const TITLE = "Home";
 </script>
 
 <section class="modulePool">
-    <ApyApr />
+    <PageTitle title={TITLE}/>
     <Prices />
-    <LatestRewardCode />
-    <Scan />
+    <ApyApr />
 </section>

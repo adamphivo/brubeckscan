@@ -1,12 +1,17 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import { session } from "$app/stores";
     import Button from "$lib/modules/Components/Button.svelte";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import { userData } from "$lib/stores/userData";
     import { send } from "$lib/helpers/send";
     import { validate } from "$lib/helpers/validate";
 
-    let address = $userData?.address || "";
+    let address = "";
+
+    if ($session.user) {
+        address = $session.user.address
+    }
 
     async function scan() {
         if (address) {
@@ -27,12 +32,6 @@
             throw new Error();
         }
     }
-
-    onMount(async () => {
-        if ($userData) {
-            address = $userData.address;
-        }
-    });
 </script>
 
 <div class="module">

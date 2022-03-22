@@ -4,25 +4,35 @@
 </script>
 
 {#if $userDataComputed}
-    <div class="module">
-        {#if $userDataComputed.length}
-            <div>Address{$userDataComputed[0].address}</div>
-            <div>DataStaked{$userDataComputed[0].dataStaked}</div>
-            <div>
-                DataStakedInUSDT{$userDataComputed[0].dataStaked *
-                    $session.prices.DATAUSDT}
-            </div>
-            <div>
-                RewardsInData{$userDataComputed[0].rewardsInData}
-            </div>
-            <div>
-                RewardsInUSDT{$userDataComputed[0].rewardsInData *
-                    $session.prices.DATAUSDT}
-            </div>
-            <div>ClaimCount{$userDataComputed[0].claimCount}</div>
-        {/if}
-    </div>
+    {#if $userDataComputed.length}
+        <div class="module moduleTitle">
+            <h3>Watchlist</h3>
+        </div>
+        <div class="module">
+            {#each $userDataComputed as node}
+                <div class="module">
+                    <div>Address{node.address}</div>
+                    <div>DataStaked{node.dataStaked}</div>
+                    <div>
+                        DataStakedInUSDT{node.dataStaked *
+                            $session.prices.DATAUSDT}
+                    </div>
+                    <div>
+                        RewardsInData{node.rewardsInData}
+                    </div>
+                    <div>
+                        RewardsInUSDT{node.rewardsInData *
+                            $session.prices.DATAUSDT}
+                    </div>
+                    <div>ClaimCount{node.claimCount}</div>
+                </div>
+            {/each}
+        </div>
+    {/if}
 {/if}
 
 <style lang="scss">
+    .module {
+        width: 100%;
+    }
 </style>
