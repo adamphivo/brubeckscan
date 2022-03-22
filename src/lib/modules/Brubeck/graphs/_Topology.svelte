@@ -65,6 +65,5 @@
 <style>
     .module {
         width: 100%;
-        border: none;
     }
 </style>

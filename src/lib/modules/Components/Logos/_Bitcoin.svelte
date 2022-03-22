@@ -1,4 +1,4 @@
-<div>
+<div class="tokenIcon">
     <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100%" height="100%" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
     viewBox="0 0 4091.27 4091.73"
      xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -11,12 +11,3 @@
      </g>
     </svg>
 </div>
-
-<style lang="scss">
-    div {
-        width: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-</style>

@@ -1,6 +1,5 @@
 <script lang="ts">
     import { session } from "$app/stores";
-
     import { watchListSummary } from "$lib/stores/userData";
 </script>
 
@@ -69,17 +68,6 @@
 
 <style lang="scss">
     .module {
-        width: 50%;
-        gap: 10px;
-    }
-    .data {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .label,
-    .data {
-        font-size: 18px;
+        width: 100%;
     }
 </style>

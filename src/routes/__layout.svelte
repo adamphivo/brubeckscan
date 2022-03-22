@@ -1,30 +1,16 @@
 <script lang="ts">
-    import UserService from "$lib/services/user";
     import { fade } from "svelte/transition";
+    import { goto } from "$app/navigation";
     import { send } from "$lib/helpers/send";
-    import Dock from "$lib/modules/Layout/Dock/Dock.svelte";
     import { browser } from "$app/env";
     import { session } from "$app/stores";
+    import UserService from "$lib/services/user";
     import { brubeckData } from "$lib/stores/brubeckData";
     import { userData, userDataComputed } from "$lib/stores/userData";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
-    import { goto } from "$app/navigation";
     import "../../static/styles/reset.scss";
     import "../../static/styles/style.scss";
-
-    async function getNodesData(nodes: any) {
-        const requests = nodes.map((node) => {
-            return send("GET", `brubeck/node/${node.address}.json`);
-        });
-
-        const responses = await Promise.all(requests);
-
-        const data = await Promise.all(
-            responses.map((response) => response.json())
-        );
-
-        return data;
-    }
+    import Dock from "$lib/modules/Layout/Dock/Dock.svelte";
 
     async function bundle() {
         if (browser) {
@@ -50,7 +36,7 @@
 
                     // Get nodes infos in bundling step for a smoother experience
                     if (user) {
-                        const data = await getNodesData(user.nodes);
+                        const data = await UserService.getNodesData(user.nodes);
                         if (data) {
                             $userDataComputed = data;
                             $scannedNodeData = data.find(node => node.address === user.address);
@@ -74,7 +60,7 @@
                     $userData = user;
                     // Get nodes infos in bundling step for a smoother experience
                     if (user) {
-                        const data = await getNodesData(user.nodes);
+                        const data = await UserService.getNodesData(user.nodes);
                         if (data) {
                             $userDataComputed = data;
                             $scannedNodeData = data.find(node => node.address === user.address);
@@ -114,36 +100,5 @@
 <style>
     :global(*) {
         font-family: "Space Mono", monospace;
-    }
-    main {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-    }
-
-    .page {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex-grow: 1;
-        width: 100%;
-        padding: 30px 0;
-        min-height: 100vh;
-    }
-
-    .sticky {
-        position: sticky;
-        top: 0;
-        left: 0;
-        z-index: 5;
-    }
-
-    .loading {
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 </style>

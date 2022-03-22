@@ -57,8 +57,6 @@
 
 <style>
     .module {
-        /* width: calc(50% - 15px); */
         width: 100%;
-        border: none;
     }
 </style>

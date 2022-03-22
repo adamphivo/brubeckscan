@@ -95,22 +95,6 @@
         border: thin solid transparent;
         border-radius: 0;
     }
-    .data {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .label {
-        font-size: 18px;
-    }
-
-    .value {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        font-weight: bold;
-    }
     .userGradient {
         width: 30px;
         height: 30px;

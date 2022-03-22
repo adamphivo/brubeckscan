@@ -103,22 +103,6 @@
         gap: 10px;
         width: 100%;
     }
-
-    .data {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 50px;
-        line-height: 25px;
-    }
-
-    .value {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        font-weight: bold;
-    }
-
     span {
         color: rgb(59, 212, 59);
     }
