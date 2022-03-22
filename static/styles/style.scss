@@ -1,10 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
     --color-black: rgb(14, 13, 13);
     --color-black-transparent: rgb(14, 13, 13, 0.9);
     --color-white: whitesmoke;
     --site-max-width: 1300px;
+    --font-text: "Comfortaa", cursive;
+}
+
+.label, .label p {
+    font-family: var(--font-text);
 }
 
 .module {

@@ -3,8 +3,8 @@
 </script>
 
 <div class="module">
-    <div>Latest reward code</div>
-    <div>{$brubeckData.lastCode}</div>
+    <div class="label">Latest reward code</div>
+    <div class="value">{$brubeckData.lastCode}</div>
 </div>
 
 <style lang="scss">

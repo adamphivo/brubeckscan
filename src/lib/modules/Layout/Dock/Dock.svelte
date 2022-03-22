@@ -1,6 +1,6 @@
 <script lang="ts">
     import { session, page } from "$app/stores";
-    import Connect from "$lib/components/layout/Dock/_Connect.svelte";
+    import Connect from "./_Connect.svelte";
     import DockUser from "./_DockUser.svelte";
     import MdHome from "svelte-icons/md/MdHome.svelte";
     import MdPoll from "svelte-icons/md/MdPoll.svelte";
@@ -22,12 +22,12 @@
     </div>
     <div class="secondRow row">
         <div class="navigationIcons">
-            <a href="/" title="Home">
+            <a sveltekit:prefetch href="/" title="Home">
                 <div class="icon" class:active={$page.url.pathname === "/"}>
                     <MdHome />
                 </div>
             </a>
-            <a href="/network" title="Network">
+            <a  sveltekit:prefetch href="/network" title="Network">
                 <div
                     class="icon"
                     class:active={$page.url.pathname === "/network"}
@@ -36,7 +36,7 @@
                 </div>
             </a>
             {#if $session.user}
-                <a href="/watchlist" title="Watchlist">
+                <a sveltekit:prefetch href="/watchlist" title="Watchlist">
                     <div
                         class="icon"
                         class:active={$page.url.pathname === "/watchlist"}

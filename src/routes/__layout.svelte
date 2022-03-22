@@ -1,14 +1,29 @@
 <script lang="ts">
     import UserService from "$lib/services/user";
     import { send } from "$lib/helpers/send";
-    import Dock from "$lib/components/layout/Dock/Dock.svelte";
+    import Dock from "$lib/modules/Layout/Dock/Dock.svelte";
     import { browser } from "$app/env";
     import { session } from "$app/stores";
     import { brubeckData } from "$lib/stores/brubeckData";
-    import { userData } from "$lib/stores/userData";
+    import { userData, userDataComputed } from "$lib/stores/userData";
+    import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import { goto } from "$app/navigation";
     import "../../static/styles/reset.scss";
     import "../../static/styles/style.scss";
+
+    async function getNodesData(nodes: any) {
+        const requests = nodes.map((node) => {
+            return send("GET", `brubeck/node/${node.address}.json`);
+        });
+
+        const responses = await Promise.all(requests);
+
+        const data = await Promise.all(
+            responses.map((response) => response.json())
+        );
+
+        return data;
+    }
 
     async function bundle() {
         if (browser) {
@@ -21,7 +36,6 @@
             );
 
             $brubeckData = brubeckStats;
-
             $session.prices = marketPrices;
 
             if (window.ethereum) {
@@ -32,12 +46,22 @@
 
                     $session.user = user;
                     $userData = user;
+
+                    // Get nodes infos in bundling step for a smoother experience
+                    if (user) {
+                        const data = await getNodesData(user.nodes);
+                        if (data) {
+                            $userDataComputed = data;
+                            $scannedNodeData = data[0];
+                        }
+                    }
                 }
             }
 
             window.ethereum.on("disconnect", function (error) {
                 $session.user = null;
                 $userData = null;
+                $userDataComputed = null;
                 goto("/");
             });
 
@@ -46,9 +70,18 @@
                     const user = await UserService.upsert(accounts[0]);
                     $session.user = user;
                     $userData = user;
+                    // Get nodes infos in bundling step for a smoother experience
+                    if (user) {
+                        const data = await getNodesData(user.nodes);
+                        if (data) {
+                            $userDataComputed = data;
+                            $scannedNodeData = data[0];
+                        }
+                    }
                 } else {
                     $session.user = null;
-                    $userData = null
+                    $userData = null;
+                    $userDataComputed = null;
                     goto("/");
                 }
             });

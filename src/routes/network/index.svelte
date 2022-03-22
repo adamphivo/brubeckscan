@@ -1,7 +1,7 @@
 <script>
-    import Topology from "$lib/components/modules/Brubeck/_Topology.svelte";
-    import MissedClaims from "$lib/components/modules/Brubeck/_MissedClaims.svelte";
-    import MeanPropagationDelays from "$lib/components/modules/Brubeck/_MeanPropagationDelays.svelte";
+    import Topology from "$lib/modules/Brubeck/graphs/_Topology.svelte";
+    import MissedClaims from "$lib/modules/Brubeck/graphs/_MissedClaims.svelte";
+    import MeanPropagationDelays from "$lib/modules/Brubeck/graphs/_MeanPropagationDelays.svelte";
 </script>
 
 <section class="modulePool">

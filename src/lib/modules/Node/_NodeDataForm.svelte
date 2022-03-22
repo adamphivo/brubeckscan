@@ -1,10 +1,12 @@
 <script lang="ts">
-    import Button from "$lib/components/modules/Elements/Button.svelte";
+    import { onMount } from "svelte";
+    import Button from "$lib/modules/Components/Button.svelte";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
+    import { userData } from "$lib/stores/userData";
     import { send } from "$lib/helpers/send";
     import { validate } from "$lib/helpers/validate";
 
-    let address = $scannedNodeData?.address || "";
+    let address = $userData?.address || "";
 
     async function scan() {
         if (address) {
@@ -25,11 +27,17 @@
             throw new Error();
         }
     }
+
+    onMount(async () => {
+        if ($userData) {
+            address = $userData.address;
+        }
+    });
 </script>
 
 <div class="module">
     <div class="scanner">
-        <input bind:value={address} placeholder="ETH Public Key" />
+        <input bind:value={address} placeholder="Node ETH Public Key" />
         <Button action={scan} text="Scan" />
     </div>
 </div>
@@ -42,5 +50,10 @@
         input {
             flex-grow: 1;
         }
+    }
+
+    .module {
+        border: 0;
+        width: 100%;
     }
 </style>
