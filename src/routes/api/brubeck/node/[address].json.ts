@@ -1,3 +1,5 @@
+import { appCache } from "$lib/helpers/cache";
+
 type Node = {
     address: string;
     rewardsInData: number;
@@ -28,28 +30,38 @@ async function getDataStaked(address: string) {
 
 export async function get({ params }) {
     if (params.address) {
-        const urls = [
-            "https://brubeck1.streamr.network:3013/datarewards/",
-            "https://brubeck1.streamr.network:3013/stats/",
-        ];
+        const cached = appCache.get(`nodeAggregatedData_${params.address}`);
 
-        const requests = urls.map(async (url) => {
-            return await fetch(`${url}${params.address}`);
-        });
+        if (cached) {
+            return {
+                body: cached
+            }
+        } else {
+            const urls = [
+                "https://brubeck1.streamr.network:3013/datarewards/",
+                "https://brubeck1.streamr.network:3013/stats/",
+            ];
 
-        requests.push(getDataStaked(params.address));
+            const requests = urls.map(async (url) => {
+                return await fetch(`${url}${params.address}`);
+            });
 
-        const responses = await Promise.all(requests);
+            requests.push(getDataStaked(params.address));
 
-        const data = await Promise.all(
-            responses.map((response) => response.json())
-        );
+            const responses = await Promise.all(requests);
 
-        const node = formatNodeData(data, params.address);
+            const data = await Promise.all(
+                responses.map((response) => response.json())
+            );
 
-        return {
-            status: 200,
-            body: node
+            const node = formatNodeData(data, params.address);
+
+            const save = appCache.set(`nodeAggregatedData_${params.address}`, node, 60);
+
+            return {
+                status: 200,
+                body: node
+            }
         }
     }
 }
