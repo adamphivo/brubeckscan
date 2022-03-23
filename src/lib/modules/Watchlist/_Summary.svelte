@@ -1,6 +1,9 @@
 <script lang="ts">
+    import Format from "$lib/helpers/format";
     import { marketPrices } from "$lib/stores/marketPrices";
     import { watchListSummary } from "$lib/stores/userData";
+    import Usdt from "$lib/modules/Components/Logos/_Tether.svelte";
+    import Data from "$lib/modules/Components/Logos/_Data.svelte";
 </script>
 
 {#if $watchListSummary}
@@ -10,57 +13,65 @@
     <div class="module">
         <div class="data">
             <div class="label">
-                <p>nodes count</p>
+                <p>Total accumulated claim count</p>
             </div>
             <div class="value">
-                <p>{$watchListSummary.count}</p>
+                <p>
+                    {$watchListSummary.totalClaimCount} reward code{$watchListSummary.totalClaimCount >
+                    1
+                        ? "s"
+                        : ""}
+                </p>
             </div>
         </div>
         <div class="data">
             <div class="label">
-                <p>totalClaimCount</p>
-            </div>
-            <div class="value">
-                <p>{$watchListSummary.totalClaimCount}</p>
-            </div>
-        </div>
-        <div class="data">
-            <div class="label">
-                <p>totalRewardsInData</p>
+                <p>Total accumulated rewards in DATA</p>
             </div>
             <div class="value">
                 <p>{$watchListSummary.totalRewardsInData}</p>
+                <p>DATA</p>
+                <Data />
             </div>
         </div>
         <div class="data">
             <div class="label">
-                <p>totalRewardsInUSDT</p>
+                <p>Total accumulated rewards in USDT</p>
             </div>
             <div class="value">
                 <p>
-                    {$watchListSummary.totalRewardsInData *
-                        $marketPrices.DATAUSDT}
+                    {Format.tokenValue(
+                        $watchListSummary.totalRewardsInData *
+                            $marketPrices.DATAUSDT
+                    )}
                 </p>
+                <p>USDT</p>
+                <Usdt />
             </div>
         </div>
-        <div />
         <div class="data">
             <div class="label">
-                <p>totalDataStaked</p>
+                <p>Total DATA staked</p>
             </div>
             <div class="value">
-                <p>{$watchListSummary.totalDataStaked}</p>
+                <p>{Format.tokenValue($watchListSummary.totalDataStaked)}</p>
+                <p>DATA</p>
+                <Data />
             </div>
         </div>
         <div class="data">
             <div class="label">
-                <p>totalDataStakedInUSDT</p>
+                <p>Total staked value in USDT</p>
             </div>
             <div class="value">
                 <p>
-                    {$watchListSummary.totalDataStaked *
-                        $marketPrices.DATAUSDT}
+                    {Format.tokenValue(
+                        $watchListSummary.totalDataStaked *
+                            $marketPrices.DATAUSDT
+                    )}
                 </p>
+                <p>USDT</p>
+                <Usdt />
             </div>
         </div>
     </div>
@@ -68,6 +79,7 @@
 
 <style lang="scss">
     .module {
-        width: 100%;
+        width: 50%;
+        gap: 15px;
     }
 </style>

@@ -2,15 +2,7 @@
     import StateService from "$lib/services/state";
 
     export async function load() {
-        if (!StateService.isUserConnected()) {
-            return {
-                status: 300,
-                redirect: "/",
-            };
-        }
-
         await StateService.updateMarketPrices();
-
         return {};
     }
 </script>
@@ -25,8 +17,12 @@
 <div class="modulePool">
     <PageTitle title={TITLE} />
     <Summary />
+    <div class="module"></div>
     <Watchlist />
 </div>
 
 <style lang="scss">
+    .module {
+        flex-grow: 1;
+    }
 </style>

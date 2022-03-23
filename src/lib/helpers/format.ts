@@ -19,5 +19,13 @@ Format.tokenValue = (value: any) => {
     return value;
 }
 
+Format.shortenNodeAddress = (address: string) => {
+    let formatedString = "";
+    const start = address.slice(0,5);
+    const end = address.slice(-5);
+    const separator = " ... ";
+    return `${start}${separator}${end}`
+}
+
 
 export default Format;

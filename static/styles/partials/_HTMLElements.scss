@@ -27,3 +27,31 @@ button {
         cursor: pointer;
     }
 }
+
+table {
+    border-collapse: collapse;
+    thead tr {
+        background-color: whitesmoke;
+        color: var(--color-black);
+        th {
+        }
+        p {
+            padding: 20px 10px;
+            font-family: var(--font-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    tbody {
+        tr {
+            p {
+                padding: 20px 10px;
+                text-align: center;
+            }
+        }
+        tr:nth-of-type(2n){
+            background-color: rgb(0, 0, 0);
+        }
+    }
+}

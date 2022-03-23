@@ -10,7 +10,7 @@
     let address = "";
 
     if ($userData) {
-        address = $userData.address
+        address = $scannedNodeData.address || $userData.address
     }
 
     async function scan() {
