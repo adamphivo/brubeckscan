@@ -1,22 +1,22 @@
 <script lang="ts">
-    import { session } from "$app/stores";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import { marketPrices } from "$lib/stores/marketPrices";
+    import { userData } from "$lib/stores/userData";
     import Bookmark from "./_Bookmark.svelte";
     import Usdt from "$lib/modules/Components/Logos/_Tether.svelte";
     import Data from "$lib/modules/Components/Logos/_Data.svelte";
 
-    $: isUserOwner = $session?.user?.address === $scannedNodeData?.address;
+    $: isUserOwner = $userData?.address === $scannedNodeData?.address;
 </script>
 
 {#if $scannedNodeData}
     <div class="module {isUserOwner ? 'owner' : ''}">
-        {#if $session.user}
+        {#if $userData}
             <div class="data">
                 {#if isUserOwner}
                     <div
                         title="Owner"
-                        style:background={$session.user.profile.gradient}
+                        style:background={$userData.profile.gradient}
                         class="userGradient"
                     />
                 {/if}

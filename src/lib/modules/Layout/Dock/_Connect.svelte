@@ -13,12 +13,10 @@
             if (accounts.length > 0) {
                 const user = await UserService.upsert(accounts[0]);
 
-                $session.user = user;
                 $userData = user;
 
                 if (user) {
-                    const data = await UserService.getNodesData(user.nodes);
-                    
+                    const data = await UserService.getNodesData(user.nodes);            
                     if (data) {
                         $userDataComputed = data;
                     }

@@ -25,43 +25,47 @@
                         window.ethereum.selectedAddress
                     );
 
-                    $session.user = user;
                     $userData = user;
 
                     if (user) {
                         const data = await UserService.getNodesData(user.nodes);
                         if (data) {
                             $userDataComputed = data;
-                            $scannedNodeData = data.find(node => node.address === user.address);
+                            $scannedNodeData = data.find(
+                                (node) => node.address === user.address
+                            );
                         }
                     }
                 }
-            }
-
-            window.ethereum.on("disconnect", function (error) {
-                $session.user = null;
-                StateService.clearAuthSession();
-                goto("/");
-            });
-
-            window.ethereum.on("accountsChanged", async function (accounts) {
-                if (accounts.length > 0) {
-                    const user = await UserService.upsert(accounts[0]);
-                    $session.user = user;
-                    $userData = user;
-                    if (user) {
-                        const data = await UserService.getNodesData(user.nodes);
-                        if (data) {
-                            $userDataComputed = data;
-                            $scannedNodeData = data.find(node => node.address === user.address);
-                        }
-                    }
-                } else {
-                    $session.user = null;
+                window.ethereum.on("disconnect", function (error) {
                     StateService.clearAuthSession();
                     goto("/");
-                }
-            });
+                });
+
+                window.ethereum.on(
+                    "accountsChanged",
+                    async function (accounts) {
+                        if (accounts.length > 0) {
+                            const user = await UserService.upsert(accounts[0]);;
+                            $userData = user;
+                            if (user) {
+                                const data = await UserService.getNodesData(
+                                    user.nodes
+                                );
+                                if (data) {
+                                    $userDataComputed = data;
+                                    $scannedNodeData = data.find(
+                                        (node) => node.address === user.address
+                                    );
+                                }
+                            }
+                        } else {
+                            StateService.clearAuthSession();
+                            goto("/");
+                        }
+                    }
+                );
+            }
         }
     }
 

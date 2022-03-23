@@ -9,8 +9,8 @@
 
     let address = "";
 
-    if ($session.user) {
-        address = $session.user.address
+    if ($userData) {
+        address = $userData.address
     }
 
     async function scan() {

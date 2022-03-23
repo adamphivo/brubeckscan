@@ -1,11 +1,12 @@
 <script lang="ts">
-    import { session, page } from "$app/stores";
+    import { page } from "$app/stores";
     import Connect from "./_Connect.svelte";
     import DockUser from "./_DockUser.svelte";
     import MdHome from "svelte-icons/md/MdHome.svelte";
     import MdPoll from "svelte-icons/md/MdPoll.svelte";
     import MdBookmark from "svelte-icons/md/MdBookmark.svelte";
     import MdSearch from 'svelte-icons/md/MdSearch.svelte'
+    import { userData } from "$lib/stores/userData";
 </script>
 
 <div class="container">
@@ -14,7 +15,7 @@
             <h1>BrubeckScan<span class="beta">beta</span></h1>
         </div>
         <div>
-            {#if !$session.user}
+            {#if !$userData}
                 <Connect />
             {:else}
                 <DockUser />
@@ -44,7 +45,7 @@
                     <MdSearch />
                 </div>
             </a>
-            {#if $session.user}
+            {#if $userData}
                 <a sveltekit:prefetch href="/watchlist" title="Watchlist">
                     <div
                         class="icon"

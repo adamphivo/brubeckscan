@@ -1,12 +1,12 @@
 <script lang="ts">
-    import { session } from "$app/stores";
+    import { userData } from "$lib/stores/userData";
 </script>
 
 <div class="user">
     <div class="connected">connected</div>
     <a href="/">
         <div
-            style:background={$session.user.profile.gradient}
+            style:background={$userData.profile.gradient}
             class="userGradient"
         />
     </a>
