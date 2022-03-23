@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Format from "$lib/helpers/format";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import { marketPrices } from "$lib/stores/marketPrices";
     import { userData } from "$lib/stores/userData";
@@ -37,7 +38,7 @@
                 <p>Node Rewards in DATA</p>
             </div>
             <div class="value">
-                <p>{$scannedNodeData.rewardsInData}</p>
+                <p>{Format.tokenValue($scannedNodeData.rewardsInData)}</p>
                 <p>DATA</p>
                 <Data />
             </div>
@@ -48,7 +49,9 @@
             </div>
             <div class="value">
                 <p>
-                    {$scannedNodeData.rewardsInData * $marketPrices.DATAUSDT}
+                    {Format.tokenValue(
+                        $scannedNodeData.rewardsInData * $marketPrices.DATAUSDT
+                    )}
                 </p>
                 <p>USDT</p>
                 <Usdt />
@@ -59,7 +62,7 @@
                 <p>Staked DATA</p>
             </div>
             <div class="value">
-                <p>{$scannedNodeData.dataStaked}</p>
+                <p>{Format.tokenValue($scannedNodeData.dataStaked)}</p>
                 <p>DATA</p>
                 <Data />
             </div>
@@ -70,7 +73,7 @@
             </div>
             <div class="value">
                 <p>
-                    {$scannedNodeData.dataStaked * $marketPrices.DATAUSDT}
+                    {Format.tokenValue($scannedNodeData.dataStaked * $marketPrices.DATAUSDT)}
                 </p>
                 <p>USDT</p>
                 <Usdt />

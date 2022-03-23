@@ -3,6 +3,7 @@
     import { marketPrices } from "$lib/stores/marketPrices";
     import Usdt from "$lib/modules/Components/Logos/_Tether.svelte";
     import Data from "$lib/modules/Components/Logos/_Data.svelte";
+    import Format from "$lib/helpers/format";
 </script>
 
 {#if $brubeckData.apy}
@@ -57,7 +58,7 @@
                 <p>24h-data-staked</p>
             </div>
             <div class="value">
-                <p>{$brubeckData.apy["24h-data-staked"]}</p>
+                <p>{Format.tokenValue($brubeckData.apy["24h-data-staked"])}</p>
                 <p>DATA</p>
                 <Data />
             </div>
@@ -67,7 +68,9 @@
                 <p>24h-data-staked USDT</p>
             </div>
             <div class="value">
-                {$brubeckData.apy["24h-data-staked"] * $marketPrices.DATAUSDT}
+                {Format.tokenValue(
+                    $brubeckData.apy["24h-data-staked"] * $marketPrices.DATAUSDT
+                )}
                 <p>USDT</p>
                 <Usdt />
             </div>
@@ -77,7 +80,7 @@
                 <p>spot-data-staked</p>
             </div>
             <div class="value">
-                <p>{$brubeckData.apy["spot-data-staked"]}</p>
+                <p>{Format.tokenValue($brubeckData.apy["spot-data-staked"])}</p>
                 <p>DATA</p>
                 <Data />
             </div>
@@ -88,11 +91,13 @@
             </div>
             <div class="value">
                 <p>
-                    {$brubeckData.apy["spot-data-staked"] *
-                        $marketPrices.DATAUSDT}
+                    {Format.tokenValue(
+                        $brubeckData.apy["spot-data-staked"] *
+                            $marketPrices.DATAUSDT
+                    )}
                 </p>
                 <p>USDT</p>
-                <Usdt/>
+                <Usdt />
             </div>
         </div>
     </div>

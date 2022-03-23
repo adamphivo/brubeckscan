@@ -1,5 +1,6 @@
 <script lang="ts">
     import { marketPrices } from "$lib/stores/marketPrices";
+    import Format from "$lib/helpers/format";
     import Usdt from "$lib/modules/Components/Logos/_Tether.svelte";
     import Data from "$lib/modules/Components/Logos/_Data.svelte";
     import Btc from "$lib/modules/Components/Logos/_Bitcoin.svelte";
@@ -14,7 +15,7 @@
             <div class="data">
                 {#if symbol === "BTCUSDT"}
                     <div class="label"><Btc />{symbol.replace('USDT', '')}</div>
-                    <div class="value">{price} USDT<Usdt /></div>
+                    <div class="value">{Format.tokenValue(price)} USDT<Usdt /></div>
                 {/if}
                 {#if symbol === "DATAUSDT"}
                     <div class="label"><Data />{symbol.replace('USDT', '')}</div>
