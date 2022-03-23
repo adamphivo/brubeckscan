@@ -24,7 +24,7 @@ export async function get() {
             prices[price.symbol] = price.price
         })
 
-        const save = appCache.set(Consts.cache.MARKET_PRICES, prices, Consts.cache.TTL);
+        const save = appCache.set(Consts.cache.MARKET_PRICES, prices, Consts.cache.GLOBAL_TTL);
 
         return {
             status: 200,

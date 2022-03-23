@@ -42,7 +42,7 @@ export async function get({ params }) {
 
             const node = formatNodeData(data, params.address);
 
-            const save = appCache.set(`${Consts.cache.NODE_AGGREGATED_DATA_BASE}${params.address}`, node, Consts.cache.TTL);
+            const save = appCache.set(`${Consts.cache.NODE_AGGREGATED_DATA_BASE}${params.address}`, node, Consts.cache.GLOBAL_TTL);
 
             return {
                 status: 200,

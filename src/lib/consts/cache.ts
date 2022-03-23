@@ -1,6 +1,6 @@
 export const cache = {
-    TTL: 60,
+    GLOBAL_TTL: 120,
     BRUBECK_STATS: "brubeckStats",
+    MARKET_PRICES: "marketPrices",
     NODE_AGGREGATED_DATA_BASE: "nodeAggregatedData_",
-    MARKET_PRICES: "marketPrices"
 }
