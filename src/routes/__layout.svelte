@@ -1,18 +1,13 @@
-<script lang="ts" context="module">
-    import "../../static/styles/reset.scss";
-    import "../../static/styles/style.scss";
-</script>
-
 <script lang="ts">
     import { fade } from "svelte/transition";
     import { goto } from "$app/navigation";
     import { browser } from "$app/env";
-    import { session } from "$app/stores";
     import UserService from "$lib/services/user";
     import StateService from "$lib/services/state";
     import { userData, watchListData } from "$lib/stores/userData";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import Dock from "$lib/modules/Layout/Dock/Dock.svelte";
+    import "../../static/styles/style.scss";
 
     async function bundle() {
         if (browser) {
@@ -37,6 +32,7 @@
                         }
                     }
                 }
+
                 window.ethereum.on("disconnect", function (error) {
                     StateService.clearAuthSession();
                     goto("/");

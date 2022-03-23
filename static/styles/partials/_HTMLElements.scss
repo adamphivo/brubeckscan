@@ -1,0 +1,29 @@
+input {
+    border: none;
+    outline: none;
+    color: whitesmoke;
+    background-color: transparent;
+    border: thin solid rgb(100, 98, 98);
+    padding: 10px;
+    border-radius: 5px;
+    &::placeholder {
+        color: whitesmoke;
+    }
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+button {
+    border: thin solid gray;
+    padding: 4px 10px;
+    border-radius: 5px;
+    transition-duration: 0.2s;
+    &:hover {
+        cursor: pointer;
+    }
+}

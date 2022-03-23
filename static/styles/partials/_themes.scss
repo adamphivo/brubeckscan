@@ -1,0 +1,33 @@
+// Themes
+@media (prefers-color-scheme: dark) {
+    html {
+        color: var(--color-white);
+        background-color: var(--color-black);
+    }
+
+    button {
+        color: var(--color-white);
+        background-color: var(--color-black);
+        &:hover {
+            color: var(--color-black);
+            background-color: var(--color-white);
+            border-color: lightgray;
+        }
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    html {
+        color: var(--color-black);
+        background-color: var(--color-white);
+    }
+    button {
+        color: var(--color-black);
+        background-color: var(--color-white);
+        &:hover {
+            color: var(--color-white);
+            background-color: var(--color-black);
+            border-color: lightgray;
+        }
+    }
+}
