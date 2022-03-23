@@ -4,6 +4,7 @@
     import { marketPrices } from "$lib/stores/marketPrices";
     import Button from "../Components/Button.svelte";
     import { send } from "$lib/helpers/send";
+    import { brubeckData } from "$lib/stores/brubeckData";
 
     async function unwatch(address: string) {
         const response = await send("PATCH", "watchlist.json", {
@@ -39,7 +40,8 @@
                         <th><p>Staked DATA</p></th>
                         <th><p>Staked DATA in USDT</p></th>
                         <th><p>Claim count</p></th>
-                        <th><p></p></th>
+                        <th><p>Status</p></th>
+                        <th><p /></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,6 +76,16 @@
                                 </p></td
                             >
                             <td><p>{node.claimCount}</p></td>
+
+                            <!-- Status -->
+                            <td>
+                                {#if node?.claimedRewardCodes[0]?.id === $brubeckData?.lastCode}
+                                    <p class="ok" title="Claimed the latest reward code">OK</p>
+                                {:else}
+                                    <p class="ko" title="Did not claim the latest reward code">KO</p>
+                                {/if}
+                            </td>
+
                             <!-- Actions -->
                             <td>
                                 <div class="buttonContainer">
@@ -82,6 +94,8 @@
                                             text="Unwatch"
                                             action={() => unwatch(node.address)}
                                         />
+                                    {:else}
+                                        <div class="owner">Owner</div>
                                     {/if}
                                 </div>
                             </td>
@@ -112,5 +126,19 @@
         &:hover {
             cursor: pointer;
         }
+    }
+
+    .owner {
+        color: rgb(67, 233, 205);
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .ko {
+        color: rgb(226, 88, 88);
+    }
+
+    .ok {
+        color: lightgreen;
     }
 </style>

@@ -1,8 +1,6 @@
 import prisma from "$lib/clients/prisma";
 
-const WatchlistService = () => { };
-
-WatchlistService.updateWatchlist = async function (userAddress: string, nodeAddress: string, action: string) {
+export async function updateWatchlist (userAddress: string, nodeAddress: string, action: string){
     if(action === "watch"){
         const updatedUser = await prisma.user.update({
             where: {
@@ -43,5 +41,3 @@ WatchlistService.updateWatchlist = async function (userAddress: string, nodeAddr
         return updatedUser;
     }
 }
-
-export default WatchlistService;

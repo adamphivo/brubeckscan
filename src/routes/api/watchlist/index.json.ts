@@ -1,4 +1,4 @@
-import WatchlistService from "$lib/services/watchlist/index.json";
+import WatchlistService from "$lib/services/watchlist"
 
 export async function patch({ request, params }) {
     const input = await request.json();

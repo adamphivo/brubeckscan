@@ -8,11 +8,40 @@ datasource db {
 }
 
 model User {
-  address   String   @id @unique
-  createdAt DateTime @default(now())
-  profile   Profile  @relation(fields: [profileId], references: [id])
-  profileId String   @unique
-  nodes     Node[]
+  address        String          @id @unique
+  createdAt      DateTime        @default(now())
+  profile        Profile         @relation(fields: [profileId], references: [id])
+  profileId      String          @unique
+  nodes          Node[]
+  watchlistStats WatchlistStat[]
+}
+
+model WatchlistStat {
+  id                 Int      @id @default(autoincrement())
+  createdAt          DateTime @default(now())
+  User               User?    @relation(fields: [userAddress], references: [address])
+  userAddress        String?
+  totalNodes         Int
+  totalDataStaked    Float
+  totalRewardsInData Float
+  totalClaimCount    Int
+}
+
+model CronRun {
+  id               Int      @id @default(autoincrement())
+  createdAt        DateTime @default(now())
+  runTimeInSeconds Float
+  finalStatus      Int
+}
+
+model AppStat {
+  id                 Int      @id @default(autoincrement())
+  createdAt          DateTime @default(now())
+  totalUsers         Int
+  totalNodesWatched  Int
+  totalDataStaked    Float
+  totalRewardsInData Float
+  totalClaimCount    Int
 }
 
 model Profile {
@@ -30,4 +59,15 @@ model Node {
   updatedAt   DateTime @default(now()) @updatedAt
   User        User?    @relation(fields: [userAddress], references: [address])
   userAddress String?
+}
+
+model BrubeckStats {
+  id              Int      @id @default(autoincrement())
+  createdAt       DateTime @default(now())
+  dailyAPR        Float
+  dailyAPY        Float
+  spotAPR         Float
+  spotAPY         Float
+  dailyDataStaked Float
+  spotDataStaked  Float
 }
