@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { session } from "$app/stores";
-    import { userData, userDataComputed } from "$lib/stores/userData";
+    import { userData, watchListData } from "$lib/stores/userData";
     import UserService from "$lib/services/user";
     import Button from "$lib/modules/Components/Button.svelte"
 
@@ -16,9 +15,10 @@
                 $userData = user;
 
                 if (user) {
-                    const data = await UserService.getNodesData(user.nodes);            
+                    const data = await UserService.getNodesData(user.nodes);
+                                
                     if (data) {
-                        $userDataComputed = data;
+                        $watchListData = data;
                     }
                 }
             }

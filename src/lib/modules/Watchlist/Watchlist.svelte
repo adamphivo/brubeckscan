@@ -1,15 +1,15 @@
 <script lang="ts">
-    import { userDataComputed } from "$lib/stores/userData";
+    import { watchListData } from "$lib/stores/userData";
     import { marketPrices } from "$lib/stores/marketPrices";
 </script>
 
-{#if $userDataComputed}
-    {#if $userDataComputed.length}
+{#if $watchListData}
+    {#if $watchListData.length}
         <div class="module moduleTitle">
             <h3>Watchlist</h3>
         </div>
         <div class="module">
-            {#each $userDataComputed as node}
+            {#each $watchListData as node}
                 <div class="module">
                     <div>Address{node.address}</div>
                     <div>DataStaked{node.dataStaked}</div>

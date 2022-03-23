@@ -2,7 +2,15 @@
     import StateService from "$lib/services/state";
 
     export async function load() {
+        if (!StateService.isUserConnected()) {
+            return {
+                status: 300,
+                redirect: "/",
+            };
+        }
+
         await StateService.updateMarketPrices();
+
         return {};
     }
 </script>

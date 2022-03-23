@@ -1,20 +1,21 @@
 import { derived, writable } from "svelte/store";
 
 export const userData = writable(null as any);
-export const userDataComputed = writable(null as any);
 
-export const watchListSummary = derived(userDataComputed, (userDataComputed) => {
+export const watchListData = writable(null as any);
 
-    if (!userDataComputed) return null;
+export const watchListSummary = derived(watchListData, (watchListData) => {
 
-    if (userDataComputed.length === 0) return null;
+    if (!watchListData) return null;
 
-    let count = userDataComputed.length;
+    if (watchListData.length === 0) return null;
+
+    let count = watchListData.length;
     let totalDataStaked = 0;
     let totalRewardsInData = 0;
     let totalClaimCount = 0;
 
-    userDataComputed.forEach((node) => {
+    watchListData.forEach((node) => {
         totalDataStaked += parseInt(node.dataStaked);
         totalRewardsInData += node.rewardsInData;
         totalClaimCount += node.claimCount;

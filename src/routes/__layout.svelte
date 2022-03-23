@@ -10,7 +10,7 @@
     import { session } from "$app/stores";
     import UserService from "$lib/services/user";
     import StateService from "$lib/services/state";
-    import { userData, userDataComputed } from "$lib/stores/userData";
+    import { userData, watchListData } from "$lib/stores/userData";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import Dock from "$lib/modules/Layout/Dock/Dock.svelte";
 
@@ -30,7 +30,7 @@
                     if (user) {
                         const data = await UserService.getNodesData(user.nodes);
                         if (data) {
-                            $userDataComputed = data;
+                            $watchListData = data;
                             $scannedNodeData = data.find(
                                 (node) => node.address === user.address
                             );
@@ -53,7 +53,7 @@
                                     user.nodes
                                 );
                                 if (data) {
-                                    $userDataComputed = data;
+                                    $watchListData = data;
                                     $scannedNodeData = data.find(
                                         (node) => node.address === user.address
                                     );

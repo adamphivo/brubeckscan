@@ -3,6 +3,7 @@
     export let text = "Button";
 
     let status = "";
+    
     async function wrap() {
         if (!status) {
             status = "Pending";

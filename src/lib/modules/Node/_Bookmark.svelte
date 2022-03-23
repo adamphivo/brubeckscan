@@ -1,7 +1,7 @@
 <script lang="ts">
     import MdBookmarkBorder from "svelte-icons/md/MdBookmarkBorder.svelte";
     import MdBookmark from "svelte-icons/md/MdBookmark.svelte";
-    import { userData, userDataComputed } from "$lib/stores/userData";
+    import { userData, watchListData } from "$lib/stores/userData";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import { send } from "$lib/helpers/send";
 
@@ -22,7 +22,7 @@
             const user = await response.json();
     
             if (user) {
-                $userDataComputed = $userDataComputed.filter(
+                $watchListData = $watchListData.filter(
                     (node) => node.address !== $scannedNodeData.address
                 );
             }
@@ -43,7 +43,7 @@
         const user = await response.json();
 
         if (user) {
-            $userDataComputed = [...$userDataComputed, $scannedNodeData];
+            $watchListData = [...$watchListData, $scannedNodeData];
         }
 
         $userData = user;
