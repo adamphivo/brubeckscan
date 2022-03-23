@@ -1,4 +1,5 @@
 import { appCache } from "$lib/helpers/cache";
+import Consts from "$lib/consts";
 
 type Node = {
     address: string;
@@ -13,24 +14,9 @@ type RewardCode = {
     claimTime: string;
 }
 
-async function getDataStaked(address: string) {
-    return await fetch("https://api.thegraph.com/subgraphs/name/streamr-dev/data-on-polygon", {
-        "method": "POST",
-        "headers": {
-            "Accept-Encoding": "gzip, deflate, br",
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Connection": "keep-alive",
-            "DNT": "1",
-            "Origin": "file://"
-        },
-        "body": `{\"query\":\"{\\n  erc20Balances(where: {account: \\\"${address}\\\", contract:\\\"0x3a9a81d576d83ff21f26f325066054540720fc34\\\"}) {\\n    value \\n  }\\n}\"}`
-    })
-}
-
 export async function get({ params }) {
     if (params.address) {
-        const cached = appCache.get(`nodeAggregatedData_${params.address}`);
+        const cached = appCache.get(`${Consts.cache.NODE_AGGREGATED_DATA_BASE}${params.address}`);
 
         if (cached) {
             return {
@@ -38,8 +24,8 @@ export async function get({ params }) {
             }
         } else {
             const urls = [
-                "https://brubeck1.streamr.network:3013/datarewards/",
-                "https://brubeck1.streamr.network:3013/stats/",
+                Consts.urls.BRUBECK_NODE_REWARDS_BASE,
+                Consts.urls.BRUBECK_NODE_STATS_BASE,
             ];
 
             const requests = urls.map(async (url) => {
@@ -56,7 +42,7 @@ export async function get({ params }) {
 
             const node = formatNodeData(data, params.address);
 
-            const save = appCache.set(`nodeAggregatedData_${params.address}`, node, 60);
+            const save = appCache.set(`${Consts.cache.NODE_AGGREGATED_DATA_BASE}${params.address}`, node, Consts.cache.TTL);
 
             return {
                 status: 200,
@@ -76,4 +62,19 @@ const formatNodeData = (data: any, address: string) => {
     };
 
     return node;
+}
+
+async function getDataStaked(address: string) {
+    return await fetch("https://api.thegraph.com/subgraphs/name/streamr-dev/data-on-polygon", {
+        "method": "POST",
+        "headers": {
+            "Accept-Encoding": "gzip, deflate, br",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Connection": "keep-alive",
+            "DNT": "1",
+            "Origin": "file://"
+        },
+        "body": `{\"query\":\"{\\n  erc20Balances(where: {account: \\\"${address}\\\", contract:\\\"0x3a9a81d576d83ff21f26f325066054540720fc34\\\"}) {\\n    value \\n  }\\n}\"}`
+    })
 }
