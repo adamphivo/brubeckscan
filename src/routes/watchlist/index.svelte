@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
     import StateService from "$lib/services/state";
-    import Graph from "./_Graph.svelte";
+    import Graph from "$lib/components/Watchlist/_Graph.svelte";
 
     export async function load() {
         await StateService.updateMarketPrices();
