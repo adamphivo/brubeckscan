@@ -7,23 +7,7 @@
 </script>
 
 {#if $watchListSummary}
-    <div class="module moduleTitle">
-        <h3>Summary</h3>
-    </div>
     <div class="module">
-        <div class="data">
-            <div class="label">
-                <p>Total accumulated claim count</p>
-            </div>
-            <div class="value">
-                <p>
-                    {$watchListSummary.totalClaimCount} reward code{$watchListSummary.totalClaimCount >
-                    1
-                        ? "s"
-                        : ""}
-                </p>
-            </div>
-        </div>
         <div class="data">
             <div class="label">
                 <p>Total accumulated rewards in DATA</p>
@@ -74,12 +58,27 @@
                 <Usdt />
             </div>
         </div>
+        <div class="data">
+            <div class="label">
+                <p>Total accumulated claim count</p>
+            </div>
+            <div class="value">
+                <p>
+                    {$watchListSummary.totalClaimCount} reward code{$watchListSummary.totalClaimCount >
+                    1
+                        ? "s"
+                        : ""}
+                </p>
+            </div>
+        </div>
     </div>
 {/if}
 
 <style lang="scss">
     .module {
         width: 50%;
+        display: flex;
+        justify-content: space-evenly;
         gap: 15px;
     }
 </style>

@@ -46,9 +46,6 @@
     });
 </script>
 
-<div class="module moduleTitle">
-    <h3>24H APY History</h3>
-</div>
 <div class="module graph">
     <canvas id={GRAPH_ID} />
 </div>

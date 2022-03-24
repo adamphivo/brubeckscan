@@ -7,9 +7,6 @@
 </script>
 
 {#if $marketPrices}
-    <div class="module moduleTitle">
-        <h3>Markets</h3>
-    </div>
     <div class="module">
         {#each Object.entries($marketPrices) as [symbol, price]}
             <div class="data">

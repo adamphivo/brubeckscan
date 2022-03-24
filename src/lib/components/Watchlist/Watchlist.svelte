@@ -27,9 +27,6 @@
 
 {#if $watchListData}
     {#if $watchListData.length}
-        <div class="module moduleTitle">
-            <h3>Watchlist ({$watchListData.length})</h3>
-        </div>
         <div class="module">
             <table>
                 <thead>

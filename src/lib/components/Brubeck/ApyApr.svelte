@@ -7,9 +7,6 @@
 </script>
 
 {#if $brubeckData.apy}
-    <div class="module moduleTitle">
-        <h3>Brubeck status</h3>
-    </div>
     <div class="module">
         <div class="data">
             <div class="label">
@@ -105,8 +102,8 @@
 
 <style lang="scss">
     .module {
-        gap: 10px;
         width: 100%;
+        justify-content: space-between;
     }
     span {
         color: rgb(59, 212, 59);
