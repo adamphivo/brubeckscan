@@ -15,7 +15,7 @@
                 $userData = user;
 
                 if (user) {
-                    const data = await UserService.getNodesData(user.nodes);
+                    const data = await UserService.getWatchlist(user.nodes);
                                 
                     if (data) {
                         $watchListData = data;

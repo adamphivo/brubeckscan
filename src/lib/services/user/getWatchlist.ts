@@ -1,6 +1,6 @@
 import { send } from "$lib/helpers/send";
 
-export async function getNodesData(nodes: any) {
+export async function getWatchlist(nodes: any) {
     const requests = nodes.map((node) => {
         return send("GET", `brubeck/node/${node.address}.json`);
     });

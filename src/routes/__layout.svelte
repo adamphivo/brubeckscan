@@ -15,16 +15,16 @@
             await StateService.updateBrubeckStats();
             await StateService.setBrubeckHistory();
 
-            if (window.ethereum) {
-                if (window.ethereum.selectedAddress) {
+            if (window as any) {
+                if ((window as any).ethereum.selectedAddress) {
                     const user = await UserService.upsert(
-                        window.ethereum.selectedAddress
+                        (window as any).ethereum.selectedAddress
                     );
 
                     $userData = user;
 
                     if (user) {
-                        const data = await UserService.getNodesData(user.nodes);
+                        const data = await UserService.getWatchlist(user.nodes);
                         if (data) {
                             $watchListData = data;
                             $scannedNodeData = data.find(
@@ -34,19 +34,19 @@
                     }
                 }
 
-                window.ethereum.on("disconnect", function (error) {
+                (window as any).ethereum.on("disconnect", function (error) {
                     StateService.clearAuthSession();
                     goto("/");
                 });
 
-                window.ethereum.on(
+                (window as any).ethereum.on(
                     "accountsChanged",
                     async function (accounts) {
                         if (accounts.length > 0) {
-                            const user = await UserService.upsert(accounts[0]);;
+                            const user = await UserService.upsert(accounts[0]);
                             $userData = user;
                             if (user) {
-                                const data = await UserService.getNodesData(
+                                const data = await UserService.getWatchlist(
                                     user.nodes
                                 );
                                 if (data) {

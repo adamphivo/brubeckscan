@@ -1,9 +1,9 @@
 import { upsert } from "./upsert";
-import { getNodesData } from "./getNodesData";
+import { getWatchlist } from "./getWatchlist";
 
 const UserService = () => {};
 
 UserService.upsert = upsert;
-UserService.getNodesData = getNodesData;
+UserService.getWatchlist = getWatchlist;
 
 export default UserService;

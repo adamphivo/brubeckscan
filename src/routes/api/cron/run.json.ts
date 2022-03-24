@@ -8,7 +8,7 @@ export async function get() {
             status: 200,
             body: {
                 data: {
-                    message: run
+                    cronRun: run
                 }
             }
         };
