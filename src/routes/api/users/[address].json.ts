@@ -10,12 +10,10 @@ export async function patch({ params, request }) {
         }
     }
 
-    const user = await UserDAO.upsertByAddress(params.address, update)
+    const user = await UserDAO.upsertByAddress(params.address, update);
 
     return {
         status: 200,
-        body: {
-            ...user
-        }
-    }
+        body: user
+    };
 }

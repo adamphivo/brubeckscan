@@ -9,17 +9,17 @@ const TOKEN = import.meta.env.VITE_AUTH_TOKEN;
  * @returns 
  */
 export async function send(method: string, path: string, data: any = null) {
-    const url = `${BASE_URL}${path}`
+    const url = `${BASE_URL}${path}`;
 
     const init = {
         method: method,
         headers: {
             internal_token: `${TOKEN}`
         }
-    }
+    };
 
     if (method != "GET" && data) {
-        init['body'] = JSON.stringify(data);
+        init["body"] = JSON.stringify(data);
     }
 
     return await fetch(url, init);

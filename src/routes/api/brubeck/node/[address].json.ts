@@ -21,7 +21,7 @@ export async function get({ params }) {
         if (cached) {
             return {
                 body: cached
-            }
+            };
         } else {
             const urls = [
                 Consts.urls.BRUBECK_NODE_REWARDS_BASE,

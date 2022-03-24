@@ -1,6 +1,6 @@
 import CronService from "$lib/services/cron";
 
-export async function get({ request, params }) {
+export async function get() {
     try {
         const run = await CronService.run();
 
@@ -11,13 +11,13 @@ export async function get({ request, params }) {
                     message: run
                 }
             }
-        }
+        };
     } catch (e) {
         return {
             status: e.status || 500,
             body: {
                 cronRun: e.message
             }
-        }
+        };
     }
 }

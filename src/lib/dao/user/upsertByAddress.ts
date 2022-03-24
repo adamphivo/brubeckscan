@@ -25,11 +25,11 @@ export async function upsertByAddress(address, update = null) {
             nodes: true,
             watchlistStats: {
                 orderBy: {
-                    createdAt: 'asc'
+                    createdAt: "asc"
                 }
             }
         }
-    })
+    });
 
     return user;
 }

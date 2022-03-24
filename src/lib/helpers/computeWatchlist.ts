@@ -8,12 +8,12 @@ export function computeWatchList(watchlist: any) {
         totalDataStaked += parseInt(node.dataStaked);
         totalRewardsInData += node.rewardsInData;
         totalClaimCount += node.claimCount;
-    })
+    });
 
     return {
         count,
         totalDataStaked,
         totalRewardsInData,
         totalClaimCount
-    }
+    };
 }

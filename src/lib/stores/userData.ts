@@ -30,4 +30,4 @@ export const userDataSets = derived(userData, (userData) => {
         labels,
         rewardsInData
     };
-})
+});

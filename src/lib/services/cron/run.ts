@@ -7,11 +7,11 @@ import { computeWatchList } from "$lib/helpers/computeWatchlist";
 
 export async function run() {
     const start = Date.now();
-    console.log('CRON Run Start ', start);
+    console.log("CRON Run Start", start);
     try {
 
         // BRUBECK NETWORK
-        const getBrubeckData = await send('GET', 'brubeck/stats.json');
+        const getBrubeckData = await send("GET", "brubeck/stats.json");
         const brubeckStats = await getBrubeckData.json();
         const savedBrubeckStats = await BrubeckStatsDAO.save(brubeckStats);
 
@@ -24,7 +24,7 @@ export async function run() {
             totalDataStaked: 0,
             totalRewardsInData: 0,
             totalClaimCount: 0,
-        }
+        };
 
         for (const user of users) {
             const watchList = await UserService.getNodesData(user.nodes);
@@ -34,7 +34,7 @@ export async function run() {
                 totalDataStaked: computed.totalDataStaked,
                 totalRewardsInData: computed.totalRewardsInData,
                 totalClaimCount: computed.totalClaimCount
-            }
+            };
 
             const updatedUser = await prisma.user.update({
                 where: {
@@ -45,7 +45,7 @@ export async function run() {
                         create: formated
                     }
                 },
-            })
+            });
 
             appStat.totalUsers += 1;
             appStat.totalNodesWatched += computed.count;
@@ -56,10 +56,10 @@ export async function run() {
 
         const savedAppStat = await prisma.appStat.create({
             data: appStat
-        })
+        });
 
         const stop = Date.now()
-        console.log('CRON Run Stop', stop);
+        console.log("CRON Run Stop", stop);
 
         const runTimeInSeconds = (stop - start) / 1000;
 
@@ -68,7 +68,7 @@ export async function run() {
                 finalStatus: 1,
                 runTimeInSeconds: runTimeInSeconds
             }
-        })
+        });
 
         // RETURN
         return {
@@ -76,17 +76,17 @@ export async function run() {
             cronRunTimeInSeconds: runTimeInSeconds,
             savedBrubeckStats: savedBrubeckStats,
             appStat: savedAppStat
-        }
+        };
     } catch (e) {
         const stop = Date.now()
-        console.log('CRON Run Stop', stop);
+        console.log("CRON Run Stop", stop);
         const runTimeInSeconds = (stop - start) / 1000;
         const cronRun = await prisma.cronRun.create({
             data: {
                 finalStatus: 0,
                 runTimeInSeconds: runTimeInSeconds
             }
-        })
+        });
         throw e;
     }
 }

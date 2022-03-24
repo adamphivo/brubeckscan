@@ -17,7 +17,7 @@ export async function updateWatchlist (userAddress: string, nodeAddress: string,
                 nodes: true,
                 profile: true
             }
-        })
+        });
 
         return updatedUser;
     } else {

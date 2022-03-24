@@ -3,7 +3,7 @@ import { writable, derived } from "svelte/store";
 export const brubeckData = writable({
     lastRewards: [],
     apy: {},
-    lastCode: ''
+    lastCode: ""
 });
 
 export const brubeckDataHistory = writable(null as any);
@@ -21,22 +21,22 @@ export const brubeckDataHistorySets = derived(brubeckDataHistory, (brubeckDataHi
         labels,
         apys
     };
-})
+});
 
 export const brubeckDataDerived = derived(brubeckData, (brubeckData) => {
     let codes = [];
     let missedClaims = [];
     let topologySizes = [];
     let receivedClaims = [];
-    let meanPropagationDelays = []
+    let meanPropagationDelays = [];
 
     brubeckData.lastRewards.forEach((reward) => {
         codes.push(reward.code);
         receivedClaims.push(reward.receivedClaims);
         topologySizes.push(reward.topologySize);
         meanPropagationDelays.push(reward.meanPropagationDelay);
-        missedClaims.push(reward.topologySize - reward.receivedClaims)
-    })
+        missedClaims.push(reward.topologySize - reward.receivedClaims);
+    });
 
     return {
         codes,
@@ -44,5 +44,5 @@ export const brubeckDataDerived = derived(brubeckData, (brubeckData) => {
         topologySizes,
         receivedClaims,
         meanPropagationDelays
-    }
-})
+    };
+});

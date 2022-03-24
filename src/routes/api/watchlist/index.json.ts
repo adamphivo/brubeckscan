@@ -1,6 +1,6 @@
-import WatchlistService from "$lib/services/watchlist"
+import WatchlistService from "$lib/services/watchlist";
 
-export async function patch({ request, params }) {
+export async function patch({ request }) {
     const input = await request.json();
     
     const updatedUser = await WatchlistService.updateWatchlist(input.userAddress, input.nodeAddress, input.action);
@@ -8,5 +8,5 @@ export async function patch({ request, params }) {
     return {
         status: 200,
         body: updatedUser
-    }
+    };
 }

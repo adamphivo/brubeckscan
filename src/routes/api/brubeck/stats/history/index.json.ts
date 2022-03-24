@@ -1,6 +1,6 @@
 import BrubeckStatsDAO from "$lib/dao/brubeckStats";
 
-export async function get({ request, params }) {
+export async function get() {
     try {
         const brubeckStats = await BrubeckStatsDAO.getAll();
 
@@ -11,13 +11,13 @@ export async function get({ request, params }) {
                     brubeckStats
                 }
             }
-        }
+        };
     } catch (e) {
         return {
             status: e.status || 500,
             body: {
                 message: e.message
             }
-        }
+        };
     }
 }
