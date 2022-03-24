@@ -3,7 +3,6 @@
     import { onMount } from "svelte";
     import Chart from "chart.js/auto/auto.js";
     import { brubeckDataHistorySets } from "$lib/stores/brubeckData";
-    console.log($brubeckDataHistorySets);
 
     const GRAPH_ID = "apyHistory";
 
