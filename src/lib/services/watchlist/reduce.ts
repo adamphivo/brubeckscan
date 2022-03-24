@@ -1,5 +1,4 @@
-export function computeWatchList(watchlist: any) {
-    let count = watchlist.length;
+export function reduce(watchlist: any) {
     let totalDataStaked = 0;
     let totalRewardsInData = 0;
     let totalClaimCount = 0;
@@ -11,7 +10,7 @@ export function computeWatchList(watchlist: any) {
     });
 
     return {
-        count,
+        count: watchlist.length,
         totalDataStaked,
         totalRewardsInData,
         totalClaimCount

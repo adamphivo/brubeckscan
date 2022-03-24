@@ -1,5 +1,5 @@
 import { derived, writable } from "svelte/store";
-import { computeWatchList } from "$lib/helpers/computeWatchlist";
+import { reduce } from "$lib/services/watchlist/reduce";
 
 export const userData = writable(null as any);
 
@@ -11,7 +11,7 @@ export const watchListSummary = derived(watchListData, (watchListData) => {
 
     if (watchListData.length === 0) return null;
 
-    const computed = computeWatchList(watchListData);
+    const computed = reduce(watchListData);
 
     return computed;
 });

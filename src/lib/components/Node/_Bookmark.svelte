@@ -9,41 +9,27 @@
         return node.address == $scannedNodeData.address;
     });
 
-    $: isOwner = $scannedNodeData?.address === $userData?.address
+    $: isOwner = $scannedNodeData?.address === $userData?.address;
 
-    async function unwatch() {
-        if(!isOwner){
-            const response = await send("PATCH", "watchlist.json", {
-                userAddress: $userData.address,
-                nodeAddress: $scannedNodeData.address,
-                action: "unwatch",
-            });
-    
-            const user = await response.json();
-    
-            if (user) {
-                $watchListData = $watchListData.filter(
-                    (node) => node.address !== $scannedNodeData.address
-                );
-            }
-    
-            $userData = user;
-        } else {
-            return;
-        }
-    }
+    async function update(action: string) {
+        // A owner cannot delete his node from his watchlist
+        if(isOwner && action === "unwatch") return;
 
-    async function watch() {
         const response = await send("PATCH", "watchlist.json", {
             userAddress: $userData.address,
             nodeAddress: $scannedNodeData.address,
-            action: "watch",
+            action: action,
         });
 
         const user = await response.json();
 
-        if (user) {
-            $watchListData = [...$watchListData, $scannedNodeData];
+        if (action === "watch") {
+            $watchListData.push($scannedNodeData);
+        } else {
+            const index = $watchListData.findIndex(
+                (node) => node.address !== $scannedNodeData.address
+            );
+            $watchListData.splice(index, 1);
         }
 
         $userData = user;
@@ -52,11 +38,15 @@
 
 <div class="bookmark">
     {#if userHasNode}
-        <div class="icon {isOwner ? 'noDelete': ''}" title="Unwatch" on:click|preventDefault={unwatch}>
+        <div
+            class="icon {isOwner ? 'noDelete' : ''}"
+            title="Unwatch"
+            on:click|preventDefault={() => update('unwatch')}
+        >
             <MdBookmark />
         </div>
     {:else}
-        <div class="icon" title="Watch" on:click|preventDefault={watch}>
+        <div class="icon" title="Watch" on:click|preventDefault={() => update('watch')}>
             <MdBookmarkBorder />
         </div>
     {/if}

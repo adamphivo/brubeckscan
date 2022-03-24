@@ -1,7 +1,7 @@
-import { updateWatchlist } from "./updateWatchlist";
+import { reduce } from "./reduce";
 
 const WatchlistService = () => { };
 
-WatchlistService.updateWatchlist = updateWatchlist;
+WatchlistService.reduce = reduce;
 
 export default WatchlistService;

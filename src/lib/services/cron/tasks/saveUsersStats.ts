@@ -1,6 +1,6 @@
 import UserService from "$lib/services/user";
 import UserDAO from "$lib/dao/user";
-import { computeWatchList } from "$lib/helpers/computeWatchlist";
+import WatchlistService from "$lib/services/watchlist";
 import prisma from "$lib/clients/prisma";
 
 export async function saveUsersStats() {
@@ -16,7 +16,7 @@ export async function saveUsersStats() {
 
     for (const user of users) {
         const watchList = await UserService.getWatchlist(user.nodes);
-        const computed = computeWatchList(watchList);
+        const computed = WatchlistService.reduce(watchList);
         const formated = {
             totalNodes: computed.count,
             totalDataStaked: computed.totalDataStaked,
