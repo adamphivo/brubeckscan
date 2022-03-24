@@ -13,6 +13,7 @@
         if (browser) {
             await StateService.updateMarketPrices();
             await StateService.updateBrubeckStats();
+            await StateService.setBrubeckHistory();
 
             if (window.ethereum) {
                 if (window.ethereum.selectedAddress) {

@@ -1,7 +1,9 @@
 import { save } from "./save";
+import { getAll } from "./getAll";
 
-const BrubeckStatsDAO = () => {};
+const BrubeckStatsDAO = () => { };
 
 BrubeckStatsDAO.save = save;
+BrubeckStatsDAO.getAll = getAll;
 
 export default BrubeckStatsDAO;

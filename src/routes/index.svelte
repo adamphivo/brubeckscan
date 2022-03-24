@@ -11,12 +11,14 @@
     import PageTitle from "$lib/modules/Layout/Page/PageTitle.svelte";
     import ApyApr from "$lib/modules/Brubeck/ApyApr.svelte";
     import Prices from "$lib/modules/Markets/Prices.svelte";
+    import DailyApy from "$lib/modules/Brubeck/graphs/_DailyApy.svelte";
 
     const TITLE = "Home";
 </script>
 
 <section class="modulePool">
-    <PageTitle title={TITLE}/>
+    <PageTitle title={TITLE} />
     <Prices />
     <ApyApr />
+    <DailyApy />
 </section>

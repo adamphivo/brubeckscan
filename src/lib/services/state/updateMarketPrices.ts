@@ -6,5 +6,5 @@ export async function updateMarketPrices() {
         (r) => r.json()
     );
 
-    marketPrices.update(item => updatedMarketPrices);
+    marketPrices.set(updatedMarketPrices);
 }

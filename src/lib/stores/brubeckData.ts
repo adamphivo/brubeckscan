@@ -6,6 +6,23 @@ export const brubeckData = writable({
     lastCode: ''
 });
 
+export const brubeckDataHistory = writable(null as any);
+
+export const brubeckDataHistorySets = derived(brubeckDataHistory, (brubeckDataHistory) => {
+    let labels = [];
+    let apys = [];
+
+    for (const stat of brubeckDataHistory) {
+        labels.push(stat.createdAt);
+        apys.push(stat.dailyAPY);
+    }
+
+    return {
+        labels,
+        apys
+    };
+})
+
 export const brubeckDataDerived = derived(brubeckData, (brubeckData) => {
     let codes = [];
     let missedClaims = [];

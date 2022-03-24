@@ -6,5 +6,5 @@ export async function updateBrubeckStats() {
         (r) => r.json()
     );
 
-    brubeckData.update(previous => brubeckStats);
+    brubeckData.set(brubeckStats);
 }
