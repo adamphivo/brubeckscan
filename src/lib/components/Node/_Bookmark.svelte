@@ -1,6 +1,7 @@
 <script lang="ts">
     import MdBookmarkBorder from "svelte-icons/md/MdBookmarkBorder.svelte";
     import MdBookmark from "svelte-icons/md/MdBookmark.svelte";
+    import UserService from "$lib/services/user";
     import { userData, watchListData } from "$lib/stores/userData";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import { send } from "$lib/helpers/send";
@@ -13,7 +14,7 @@
 
     async function update(action: string) {
         // A owner cannot delete his node from his watchlist
-        if(isOwner && action === "unwatch") return;
+        if (isOwner && action === "unwatch") return;
 
         const response = await send("PATCH", "watchlist.json", {
             userAddress: $userData.address,
@@ -23,13 +24,10 @@
 
         const user = await response.json();
 
-        if (action === "watch") {
-            $watchListData.push($scannedNodeData);
-        } else {
-            const index = $watchListData.findIndex(
-                (node) => node.address !== $scannedNodeData.address
-            );
-            $watchListData.splice(index, 1);
+        const data = await UserService.getWatchlist(user.nodes);
+
+        if (data) {
+            $watchListData = data;
         }
 
         $userData = user;
@@ -41,12 +39,16 @@
         <div
             class="icon {isOwner ? 'noDelete' : ''}"
             title="Unwatch"
-            on:click|preventDefault={() => update('unwatch')}
+            on:click|preventDefault={() => update("unwatch")}
         >
             <MdBookmark />
         </div>
     {:else}
-        <div class="icon" title="Watch" on:click|preventDefault={() => update('watch')}>
+        <div
+            class="icon"
+            title="Watch"
+            on:click|preventDefault={() => update("watch")}
+        >
             <MdBookmarkBorder />
         </div>
     {/if}

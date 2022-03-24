@@ -20,10 +20,14 @@ Format.tokenValue = (value: any) => {
 };
 
 Format.shortenNodeAddress = (address: string) => {
-    const start = address.slice(0,5);
+    const start = address.slice(0, 5);
     const end = address.slice(-5);
     const separator = " ... ";
     return `${start}${separator}${end}`;
+};
+
+Format.twoDecimals = (value: any) => {
+    return Math.round((value + Number.EPSILON) * 100) / 100;
 };
 
 export default Format;

@@ -11,5 +11,11 @@ export async function getWatchlist(nodes: any) {
         responses.map((response) => response.json())
     );
 
-    return data;
+    const decoratedWatchlist = data.map(item => {
+        const dataDB = nodes.find((node) => node.address === item.address);
+        item.dataDB = dataDB;
+        return item;
+    });
+
+    return decoratedWatchlist;
 }
