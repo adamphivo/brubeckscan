@@ -1,13 +1,13 @@
 import cron from "node-cron";
 import fetch from "node-fetch";
 
-cron.schedule('*/30 * * * *', async () => {
+cron.schedule("*/10 * * * *", async () => {
     const init = {
-        method: 'GET',
+        method: "GET",
         headers: {
-            internal_token: 'poissonrouge'
+            internal_token: "poissonrouge"
         }
-    }
+    };
 
     const response = await fetch("http://localhost:3000/api/cron/run.json", init);
     const data = await response.json();
