@@ -95,13 +95,6 @@
             color: white;
         }
     }
-
-    .beta {
-        border: thin solid white;
-        margin-left: 10px;
-        padding: 5px;
-        font-size: 12px;
-    }
     .container {
         position: sticky;
         top: 0;
