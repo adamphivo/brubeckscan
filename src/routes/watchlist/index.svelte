@@ -25,4 +25,9 @@
     .module {
         flex-grow: 1;
     }
+
+    .modulePool {
+        width: 100%;
+        // max-width: unset;
+    }
 </style>

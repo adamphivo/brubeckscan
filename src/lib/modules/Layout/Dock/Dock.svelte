@@ -7,12 +7,15 @@
     import MdBookmark from "svelte-icons/md/MdBookmark.svelte";
     import MdSearch from 'svelte-icons/md/MdSearch.svelte'
     import { userData } from "$lib/stores/userData";
+    import { brubeckData } from "$lib/stores/brubeckData";
+    console.log($brubeckData);
 </script>
 
 <div class="container">
     <div class="firstRow row">
-        <div>
-            <h1>BrubeckScan<span class="beta">beta</span></h1>
+        <div class="logo">
+            <h1>BrubeckScan</h1>
+            <div class="apy">{$brubeckData.apy['24h-APY']}% APY</div>
         </div>
         <div>
             {#if !$userData}
@@ -60,6 +63,21 @@
 </div>
 
 <style lang="scss">
+    .firstRow {
+        display: flex;
+        align-items: center;
+    }
+    .apy {
+        padding: 5px;
+        border: 1px solid lightgray;
+        font-size: 12px;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
     .navigationIcons {
         display: flex;
         gap: 10px;

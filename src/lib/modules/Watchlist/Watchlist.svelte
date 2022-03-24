@@ -80,9 +80,19 @@
                             <!-- Status -->
                             <td>
                                 {#if node?.claimedRewardCodes[0]?.id === $brubeckData?.lastCode}
-                                    <p class="ok" title="Claimed the latest reward code">OK</p>
+                                    <p
+                                        class="ok"
+                                        title="Claimed the latest reward code"
+                                    >
+                                        OK
+                                    </p>
                                 {:else}
-                                    <p class="ko" title="Did not claim the latest reward code">KO</p>
+                                    <p
+                                        class="ko"
+                                        title="Did not claim the latest reward code"
+                                    >
+                                        KO
+                                    </p>
                                 {/if}
                             </td>
 
