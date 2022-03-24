@@ -4,14 +4,12 @@ import { formatNodeData } from "./_formatNodeData";
 import { requestDataStaked } from "./_getDataStaked";
 
 export async function get({ params }) {
-    if (params.address) {
-        const cached = appCache.get(`${Consts.cache.NODE_AGGREGATED_DATA_BASE}${params.address}`);
+    try {
+        if (params.address) {
+            const cached = appCache.get(`${Consts.cache.NODE_AGGREGATED_DATA_BASE}${params.address}`);
 
-        if (cached) {
-            return {
-                body: cached
-            };
-        } else {
+            if (cached) return { body: cached };
+
             const urls = [
                 Consts.urls.BRUBECK_NODE_REWARDS_BASE,
                 Consts.urls.BRUBECK_NODE_STATS_BASE,
@@ -38,5 +36,12 @@ export async function get({ params }) {
                 body: node
             };
         }
+    } catch (e) {
+        return {
+            status: e.status || 500,
+            body: {
+                message: e.message
+            }
+        };
     }
 }

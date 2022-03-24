@@ -15,7 +15,8 @@ export async function updateWatchlist (userAddress: string, nodeAddress: string,
             },
             include: {
                 nodes: true,
-                profile: true
+                profile: true,
+                watchlistStats: true,
             }
         });
 
@@ -34,7 +35,8 @@ export async function updateWatchlist (userAddress: string, nodeAddress: string,
             },
             include: {
                 nodes: true,
-                profile: true
+                profile: true,
+                watchlistStats: true
             }
         });
 
