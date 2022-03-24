@@ -8,8 +8,8 @@
 </script>
 
 <script lang="ts">
-    import Scan from "$lib/modules/Node/Scan.svelte";
-    import PageTitle from "$lib/modules/Layout/Page/PageTitle.svelte";
+    import Scan from "$lib/components/Node/Scan.svelte";
+    import PageTitle from "$lib/components/Layout/PageTitle.svelte";
     const TITLE = "Scan";
 </script>
 

@@ -4,8 +4,8 @@
     import { marketPrices } from "$lib/stores/marketPrices";
     import { userData } from "$lib/stores/userData";
     import Bookmark from "./_Bookmark.svelte";
-    import Usdt from "$lib/modules/Components/Logos/_Tether.svelte";
-    import Data from "$lib/modules/Components/Logos/_Data.svelte";
+    import Usdt from "$lib/components/HTMLElements/Logos/_Tether.svelte";
+    import Data from "$lib/components/HTMLElements/Logos/_Data.svelte";
 
     $: isUserOwner = $userData?.address === $scannedNodeData?.address;
 </script>

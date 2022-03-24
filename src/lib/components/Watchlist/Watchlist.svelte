@@ -2,7 +2,7 @@
     import Format from "$lib/helpers/format";
     import { userData, watchListData } from "$lib/stores/userData";
     import { marketPrices } from "$lib/stores/marketPrices";
-    import Button from "../Components/Button.svelte";
+    import Button from "$lib/components/HTMLElements/Button.svelte";
     import { send } from "$lib/helpers/send";
     import { brubeckData } from "$lib/stores/brubeckData";
 

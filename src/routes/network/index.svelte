@@ -2,10 +2,10 @@
 </script>
 
 <script lang="ts">
-    import Topology from "$lib/modules/Brubeck/graphs/_Topology.svelte";
-    import MissedClaims from "$lib/modules/Brubeck/graphs/_MissedClaims.svelte";
-    import MeanPropagationDelays from "$lib/modules/Brubeck/graphs/_MeanPropagationDelays.svelte";
-    import PageTitle from "$lib/modules/Layout/Page/PageTitle.svelte";
+    import Topology from "$lib/components/Brubeck/graphs/_Topology.svelte";
+    import MissedClaims from "$lib/components/Brubeck/graphs/_MissedClaims.svelte";
+    import MeanPropagationDelays from "$lib/components/Brubeck/graphs/_MeanPropagationDelays.svelte";
+    import PageTitle from "$lib/components/Layout/PageTitle.svelte";
 
     const TITLE = "Network";
 </script>

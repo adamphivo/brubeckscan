@@ -9,12 +9,16 @@
     "prepare": "svelte-kit sync",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-    "cron": "node cron/run.js"
+    "cron": "node cron/run.js",
+    "lint": "eslint . --ext .ts"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "eslint": "^8.11.0",
     "prisma": "^3.11.0",
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.6",

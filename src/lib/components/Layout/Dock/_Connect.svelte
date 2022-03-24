@@ -1,7 +1,7 @@
 <script lang="ts">
     import { userData, watchListData } from "$lib/stores/userData";
     import UserService from "$lib/services/user";
-    import Button from "$lib/modules/Components/Button.svelte"
+    import Button from "$lib/components/HTMLElements/Button.svelte"
 
     async function connect() {
         try {

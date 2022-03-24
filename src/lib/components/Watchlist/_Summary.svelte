@@ -2,8 +2,8 @@
     import Format from "$lib/helpers/format";
     import { marketPrices } from "$lib/stores/marketPrices";
     import { watchListSummary } from "$lib/stores/userData";
-    import Usdt from "$lib/modules/Components/Logos/_Tether.svelte";
-    import Data from "$lib/modules/Components/Logos/_Data.svelte";
+    import Usdt from "$lib/components/HTMLElements/Logos/_Tether.svelte";
+    import Data from "$lib/components/HTMLElements/Logos/_Data.svelte";
 </script>
 
 {#if $watchListSummary}

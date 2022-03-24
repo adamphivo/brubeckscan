@@ -9,9 +9,10 @@
 </script>
 
 <script lang="ts">
-    import Watchlist from "$lib/modules/Watchlist/Watchlist.svelte";
-    import PageTitle from "$lib/modules/Layout/Page/PageTitle.svelte";
-    import Summary from "$lib/modules/Watchlist/_Summary.svelte";
+    import Watchlist from "$lib/components/Watchlist/Watchlist.svelte";
+    import PageTitle from "$lib/components/Layout/PageTitle.svelte";
+    import Summary from "$lib/components/Watchlist/_Summary.svelte";
+    
     const TITLE = "Watchlist";
 </script>
 
@@ -25,6 +26,5 @@
 <style lang="scss">
     .modulePool {
         width: 100%;
-        // max-width: unset;
     }
 </style>

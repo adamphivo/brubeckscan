@@ -1,8 +1,8 @@
 <script lang="ts">
     import { brubeckData } from "$lib/stores/brubeckData";
     import { marketPrices } from "$lib/stores/marketPrices";
-    import Usdt from "$lib/modules/Components/Logos/_Tether.svelte";
-    import Data from "$lib/modules/Components/Logos/_Data.svelte";
+    import Usdt from "$lib/components/HTMLElements/Logos/_Tether.svelte";
+    import Data from "$lib/components/HTMLElements/Logos/_Data.svelte";
     import Format from "$lib/helpers/format";
 </script>
 

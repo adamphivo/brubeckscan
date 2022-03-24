@@ -6,7 +6,7 @@
     import StateService from "$lib/services/state";
     import { userData, watchListData } from "$lib/stores/userData";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
-    import Dock from "$lib/modules/Layout/Dock/Dock.svelte";
+    import Dock from "$lib/components/Layout/Dock/Dock.svelte";
     import "../../static/styles/style.scss";
 
     async function bundle() {

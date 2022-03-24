@@ -8,10 +8,10 @@
 </script>
 
 <script lang="ts">
-    import PageTitle from "$lib/modules/Layout/Page/PageTitle.svelte";
-    import ApyApr from "$lib/modules/Brubeck/ApyApr.svelte";
-    import Prices from "$lib/modules/Markets/Prices.svelte";
-    import DailyApy from "$lib/modules/Brubeck/graphs/_DailyApy.svelte";
+    import PageTitle from "$lib/components/Layout/PageTitle.svelte";
+    import ApyApr from "$lib/components/Brubeck/ApyApr.svelte";
+    import Prices from "$lib/components/Markets/Prices.svelte";
+    import DailyApy from "$lib/components/Brubeck/graphs/_DailyApy.svelte";
 
     const TITLE = "Home";
 </script>
