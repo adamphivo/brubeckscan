@@ -15,3 +15,19 @@ export const watchListSummary = derived(watchListData, (watchListData) => {
 
     return computed;
 });
+
+export const userDataSets = derived(userData, (userData) => {
+    let labels = [] as any;
+    let rewardsInData = [];
+    if (userData.watchlistStats) {
+        for (const stat of userData.watchlistStats) {
+            labels.push(stat.createdAt);
+            rewardsInData.push(stat.totalRewardsInData);
+        }
+    }
+
+    return {
+        labels,
+        rewardsInData
+    };
+})

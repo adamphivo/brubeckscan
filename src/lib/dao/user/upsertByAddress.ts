@@ -23,7 +23,11 @@ export async function upsertByAddress(address, update = null) {
         include: {
             profile: true,
             nodes: true,
-            watchlistStats: true
+            watchlistStats: {
+                orderBy: {
+                    createdAt: 'asc'
+                }
+            }
         }
     })
 

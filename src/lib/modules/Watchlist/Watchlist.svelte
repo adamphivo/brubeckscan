@@ -48,33 +48,37 @@
                     {#each $watchListData as node}
                         <tr>
                             <td
-                                style:background={node.address ===
-                                $userData.address
-                                    ? $userData.profile.gradient
-                                    : ""}
+                                style:background={node.address === $userData.address ? $userData.profile.gradient : ""}
                                 id={node.address}
                                 class="address"
-                                ><p>
+                            >
+                                <p>
                                     {Format.shortenNodeAddress(node.address)}
-                                </p></td
-                            >
-                            <td><p>{node.rewardsInData}</p></td>
-                            <td
-                                ><p>
-                                    {Format.tokenValue(
-                                        node.rewardsInData *
-                                            $marketPrices.DATAUSDT
-                                    )}
-                                </p></td
-                            >
-                            <td><p>{Format.tokenValue(node.dataStaked)}</p></td>
-                            <td
-                                ><p>
-                                    {Format.tokenValue(
-                                        node.dataStaked * $marketPrices.DATAUSDT
-                                    )}
-                                </p></td
-                            >
+                                </p>
+                            </td>
+                            <td>
+                                <p>{node.rewardsInData}</p>
+                            </td>
+                            <td>
+                                <p>
+                                    {node.rewardsInData * $marketPrices.DATAUSDT}
+                                </p>
+                            </td>
+                            <td>
+                                <p
+                                    class={node.dataStaked === 0 ||
+                                    node.dataStaked > 10000
+                                        ? "warning"
+                                        : ""}
+                                >
+                                    {Format.tokenValue(node.dataStaked)}
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    {node.dataStaked * $marketPrices.DATAUSDT}
+                                </p>
+                            </td>
                             <td><p>{node.claimCount}</p></td>
 
                             <!-- Status -->
@@ -150,5 +154,9 @@
 
     .ok {
         color: lightgreen;
+    }
+
+    p.warning {
+        color: rgb(226, 162, 88);
     }
 </style>

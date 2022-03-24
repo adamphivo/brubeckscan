@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
     import StateService from "$lib/services/state";
+    import Graph from "./_Graph.svelte";
 
     export async function load() {
         await StateService.updateMarketPrices();
@@ -17,15 +18,11 @@
 <div class="modulePool">
     <PageTitle title={TITLE} />
     <Summary />
-    <div class="module"></div>
+    <Graph />
     <Watchlist />
 </div>
 
 <style lang="scss">
-    .module {
-        flex-grow: 1;
-    }
-
     .modulePool {
         width: 100%;
         // max-width: unset;

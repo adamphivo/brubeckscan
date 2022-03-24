@@ -8,7 +8,6 @@
     import MdSearch from 'svelte-icons/md/MdSearch.svelte'
     import { userData } from "$lib/stores/userData";
     import { brubeckData } from "$lib/stores/brubeckData";
-    console.log($brubeckData);
 </script>
 
 <div class="container">
