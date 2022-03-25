@@ -6,6 +6,7 @@
     import MdPoll from "svelte-icons/md/MdPoll.svelte";
     import MdBookmark from "svelte-icons/md/MdBookmark.svelte";
     import MdSearch from 'svelte-icons/md/MdSearch.svelte'
+    import MdAllInclusive from 'svelte-icons/md/MdAllInclusive.svelte';
     import { userData } from "$lib/stores/userData";
     import { brubeckData } from "$lib/stores/brubeckData";
 </script>
@@ -45,6 +46,14 @@
                     class:active={$page.url.pathname === "/scan"}
                 >
                     <MdSearch />
+                </div>
+            </a>
+            <a  sveltekit:prefetch href="/feed" title="Feed">
+                <div
+                    class="icon"
+                    class:active={$page.url.pathname === "/feed"}
+                >
+                    <MdAllInclusive />
                 </div>
             </a>
             {#if $userData}
