@@ -24,11 +24,19 @@
 
         const user = await response.json();
 
-        const data = await UserService.getWatchlist(user.nodes);
-
-        if (data) {
-            $watchListData = data;
+        if (action === "watch") {
+            const dataDB = user.nodes.find(
+                (node) => node.address === $scannedNodeData.address
+            );
+            $scannedNodeData.dataDB = dataDB;
+            $watchListData.push($scannedNodeData);
         }
+
+        if (action === "unwatch") {
+            $watchListData = $watchListData.filter(node => node.address !== $scannedNodeData.address);
+        }
+
+        console.log($watchListData);
 
         $userData = user;
     }

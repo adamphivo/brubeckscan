@@ -138,8 +138,7 @@
             font-size: 16px;
             padding: 0 10px;
             input {
-                margin-left: 20px;
-                padding: 5px 20px;
+                padding: 5px 10px;
             }
         }
     }
