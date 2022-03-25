@@ -1,28 +1,22 @@
 <script lang="ts">
-    import { brubeckDataDerived } from "$lib/stores/brubeckData";
     import { browser } from "$app/env";
     import { onMount } from "svelte";
     import Chart from "chart.js/auto/auto.js";
+    import { brubeckDataHistorySets } from "$lib/stores/brubeckData";
+    import Data from "$lib/components/HTMLElements/Logos/_Data.svelte";
 
-    const GRAPH_ID = "topologyChart";
+    const GRAPH_ID = "totalDataStakedHistory";
 
     function generateGraphConfig() {
         const data = {
-            labels: $brubeckDataDerived.codes,
+            labels: $brubeckDataHistorySets.labels,
             datasets: [
                 {
-                    label: "topologySize",
+                    label: "Total DATA Staked",
                     backgroundColor: "black",
-                    borderColor: "lightgrey",
+                    borderColor: "lightblue",
                     borderWidth: 1,
-                    data: $brubeckDataDerived.topologySizes,
-                },
-                {
-                    label: "receivedClaims",
-                    backgroundColor: "black",
-                    borderColor: "lightgreen",
-                    borderWidth: 1,
-                    data: $brubeckDataDerived.receivedClaims,
+                    data: $brubeckDataHistorySets.totalDataStaked,
                 },
             ],
         };
@@ -53,15 +47,19 @@
     });
 </script>
 
-{#if $brubeckDataDerived}
-    <div class="module graph">
-        <h3>Network topology (over the last 100 reward codes)</h3>
-        <canvas id={GRAPH_ID} />
-    </div>
-{/if}
+<div class="module graph">
+    <h3>Total DATA <Data/> Staked</h3>
+    <canvas id={GRAPH_ID} />
+</div>
 
-<style>
+<style lang="scss">
     .module {
         width: 100%;
+    }
+
+    h3 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 </style>

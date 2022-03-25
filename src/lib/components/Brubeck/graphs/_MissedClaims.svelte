@@ -47,10 +47,8 @@
 </script>
 
 {#if $brubeckDataDerived}
-    <div class="module moduleTitle">
-        <h3>Difference between topology size & received claims</h3>
-    </div>
     <div class="module graph">
+        <h3>Difference between topology size & received claims (over the last 100 reward codes)</h3>
         <canvas id={GRAPH_ID} />
     </div>
 {/if}

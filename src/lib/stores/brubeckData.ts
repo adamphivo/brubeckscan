@@ -11,15 +11,17 @@ export const brubeckDataHistory = writable(null as any);
 export const brubeckDataHistorySets = derived(brubeckDataHistory, (brubeckDataHistory) => {
     let labels = [];
     let apys = [];
+    let totalDataStaked = [];
 
     for (const stat of brubeckDataHistory) {
         labels.push(stat.createdAt);
+        totalDataStaked.push(stat.dailyDataStaked);
         apys.push(stat.dailyAPY);
     }
-
     return {
         labels,
-        apys
+        apys,
+        totalDataStaked
     };
 });
 

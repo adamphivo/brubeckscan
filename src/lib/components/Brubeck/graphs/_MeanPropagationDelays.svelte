@@ -47,10 +47,8 @@
 </script>
 
 {#if $brubeckDataDerived}
-    <div class="module moduleTitle">
-        <h3>Mean propagation delays</h3>
-    </div>
     <div class="module graph">
+        <h3>Mean propagation delays (over the last 100 reward codes)</h3>
         <canvas id={GRAPH_ID} />
     </div>
 {/if}

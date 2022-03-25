@@ -1,7 +1,7 @@
 import cron from "node-cron";
 import fetch from "node-fetch";
 
-cron.schedule("*/10 * * * *", async () => {
+cron.schedule("*/30 * * * *", async () => {
     const init = {
         method: "GET",
         headers: {

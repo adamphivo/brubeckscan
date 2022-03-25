@@ -48,6 +48,7 @@
         gap: 10px;
         input {
             flex-grow: 1;
+            font-size: 16px;
         }
     }
 

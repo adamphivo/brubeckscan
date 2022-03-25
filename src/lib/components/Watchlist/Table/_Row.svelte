@@ -14,7 +14,7 @@
     async function updateNodeName() {
         const response = await send("PATCH", "users/nodes.json", {
             nodeId: node.dataDB.id,
-            newName: nodeName,
+            newName: nodeName.trim(),
         });
         if (response.ok) {
             const data = await response.json();
@@ -68,16 +68,18 @@
                     </div>
                 {:else}
                     <div class="valueContainer">
-                        <input bind:value={nodeName} />
-                        <button on:click={updateNodeName}> Save </button>
-                        <button
-                            on:click={() => {
-                                isEditing = false;
-                                nodeName = node.dataDB.name;
-                            }}
-                        >
-                            Quit
-                        </button>
+                        <input bind:value={nodeName} maxlength="20"/>
+                        <div>
+                            <button on:click={updateNodeName}> Save </button>
+                            <button
+                                on:click={() => {
+                                    isEditing = false;
+                                    nodeName = node.dataDB.name;
+                                }}
+                            >
+                                Quit
+                            </button>
+                        </div>
                     </div>
                 {/if}
             </div>
@@ -139,6 +141,11 @@
             padding: 0 10px;
             input {
                 padding: 5px 10px;
+                font-size: 16px;
+                border-left: 0;
+                border-top: 0;
+                border-right: 0;
+                border-radius: 0;
             }
         }
     }
