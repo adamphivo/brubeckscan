@@ -26,7 +26,7 @@
     {#if $watchListData.length}
         <div class="module">
             <table>
-                <col style="width:15%">
+                <col style="width:20%">
                 <col style="width:30%">
                 <col>
                 <col>

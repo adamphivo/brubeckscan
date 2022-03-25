@@ -10,6 +10,13 @@
     let isEditing = false;
 
     let nodeName = node.dataDB.name;
+    let copyText = "Copy";
+
+    function copyAddressToClipboard() {
+        navigator.clipboard.writeText(node.address);
+        copyText = "Copied";
+        setTimeout(() => (copyText = "Copy"), 2000);
+    }
 
     async function updateNodeName() {
         const response = await send("PATCH", "users/nodes.json", {
@@ -49,9 +56,11 @@
             : ""}
         id={node.address}
         class="address"
+        title="Copy address to clipboard"
     >
-        <p>
+        <p class="address">
             {Format.shortenNodeAddress(node.address)}
+            <button on:click={copyAddressToClipboard}>{copyText}</button>
         </p>
     </td>
 
@@ -68,7 +77,7 @@
                     </div>
                 {:else}
                     <div class="valueContainer">
-                        <input bind:value={nodeName} maxlength="20"/>
+                        <input bind:value={nodeName} maxlength="20" />
                         <div>
                             <button on:click={updateNodeName}> Save </button>
                             <button
@@ -131,6 +140,12 @@
 </tr>
 
 <style lang="scss">
+    .address {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
     .nameEditorContainer {
         .valueContainer {
             display: flex;

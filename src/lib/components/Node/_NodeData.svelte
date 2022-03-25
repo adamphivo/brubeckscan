@@ -8,6 +8,14 @@
     import Data from "$lib/components/HTMLElements/Logos/_Data.svelte";
 
     $: isUserOwner = $userData?.address === $scannedNodeData?.address;
+
+    let copyText = "Copy";
+
+    function copyAddressToClipboard() {
+        navigator.clipboard.writeText($scannedNodeData.address);
+        copyText = "Copied";
+        setTimeout(() => (copyText = "Copy"), 2000);
+    }
 </script>
 
 {#if $scannedNodeData}
@@ -30,7 +38,10 @@
                 <p>ETH Node Public Address</p>
             </div>
             <div class="value">
-                <p>{$scannedNodeData.address}</p>
+                <p>
+                    {$scannedNodeData.address}
+                </p>
+                <button on:click={copyAddressToClipboard}>{copyText}</button>
             </div>
         </div>
         <div class="data">
@@ -73,7 +84,9 @@
             </div>
             <div class="value">
                 <p>
-                    {Format.tokenValue($scannedNodeData.dataStaked * $marketPrices.DATAUSDT)}
+                    {Format.tokenValue(
+                        $scannedNodeData.dataStaked * $marketPrices.DATAUSDT
+                    )}
                 </p>
                 <p>USDT</p>
                 <Usdt />
