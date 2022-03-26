@@ -1,6 +1,8 @@
 import { derived, writable } from "svelte/store";
 import { reduce } from "$lib/services/watchlist/reduce";
 
+export const hasEthereum = writable(false as any);
+
 export const userData = writable(null as any);
 
 export const watchListData = writable(null as any);

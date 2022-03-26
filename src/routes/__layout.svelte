@@ -4,7 +4,7 @@
     import { browser } from "$app/env";
     import UserService from "$lib/services/user";
     import StateService from "$lib/services/state";
-    import { userData, watchListData } from "$lib/stores/userData";
+    import { hasEthereum, userData, watchListData } from "$lib/stores/userData";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import Dock from "$lib/components/Layout/Dock/Dock.svelte";
     import "../../static/styles/style.scss";
@@ -17,6 +17,9 @@
             await StateService.setBrubeckHistory();
 
             if (window as any) {
+                if (typeof (window as any).ethereum === "undefined")
+                    return ($hasEthereum = false);
+                $hasEthereum = true;
                 if ((window as any).ethereum.selectedAddress) {
                     const user = await UserService.upsert(
                         (window as any).ethereum.selectedAddress
