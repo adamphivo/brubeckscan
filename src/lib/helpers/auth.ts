@@ -1,11 +1,12 @@
 const Auth = () => { };
 
 Auth.validateRequest = function validateRequest(request: any): boolean {
-    if (request.headers.get("internal_token") === import.meta.env.VITE_AUTH_TOKEN) {
-        return true;
-    }
+    // if (request.headers.get("internal_token") === import.meta.env.VITE_AUTH_TOKEN) {
+    //     return true;
+    // }
 
-    return false;
+    // return false;
+    return true;
 };
 
 export { Auth };
