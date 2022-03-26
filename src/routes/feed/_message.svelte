@@ -57,6 +57,6 @@
         color: rgb(98, 228, 195);
     }
     .transaction {
-        color: blue;
+        color: rgb(176, 176, 214);
     }
 </style>

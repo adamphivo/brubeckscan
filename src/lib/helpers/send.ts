@@ -13,10 +13,11 @@ export async function send(method: string, path: string, data: any = null) {
 
     const init = {
         method: method,
+        mode: "cors",
         headers: {
-            internal_token: `${TOKEN}`
+            "internal_token": `${TOKEN}`
         }
-    };
+    } as any;
 
     if (method != "GET" && data) {
         init["body"] = JSON.stringify(data);
