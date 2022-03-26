@@ -4,7 +4,8 @@
     import { marketPrices } from "$lib/stores/marketPrices";
     import { brubeckData } from "$lib/stores/brubeckData";
     import { send } from "$lib/helpers/send";
-import Button from "$lib/components/HTMLElements/Button.svelte";
+    import FeedService from "$lib/services/feeds";
+    import Button from "$lib/components/HTMLElements/Button.svelte";
 
     export let node;
 
@@ -31,16 +32,27 @@ import Button from "$lib/components/HTMLElements/Button.svelte";
         }
     }
 
-    async function sendFund(){
-        await (window as any).ethereum.request({
-            method: "eth_sendTransaction",
-            params: [
-                {
-                    from: $userData.address,
-                    to: node.address,
-                },
-            ],
-        });
+    async function sendFund() {
+        try {
+            await (window as any).ethereum.request({
+                method: "eth_sendTransaction",
+                params: [
+                    {
+                        from: $userData.address,
+                        to: node.address,
+                    },
+                ],
+            });
+
+            FeedService.publish(
+                "transaction",
+                `Transaction | From ${Format.shortenNodeAddress(
+                    $userData.address
+                )} to ${Format.shortenNodeAddress(node.address)} ⚡`
+            );
+        } catch (e) {
+            throw e;
+        }
     }
 
     async function unwatch() {
@@ -145,7 +157,7 @@ import Button from "$lib/components/HTMLElements/Button.svelte";
         <div class="buttonContainer">
             {#if node.address != $userData.address}
                 <button on:click={unwatch}>Remove</button>
-                <Button text="Send" action={sendFund}/>
+                <Button text="Send" action={sendFund} />
             {:else}
                 <div class="owner">Owner</div>
             {/if}

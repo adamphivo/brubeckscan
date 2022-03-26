@@ -8,7 +8,7 @@
                 method: "eth_requestAccounts",
             });
         } catch (e) {
-            console.log(e);
+            throw e;
         }
     }
 </script>

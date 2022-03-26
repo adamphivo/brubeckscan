@@ -11,9 +11,10 @@ export async function bundle() {
         await StateService.setBrubeckHistory();
 
         if (window as any) {
-            if (typeof (window as any).ethereum === "undefined"){
+            if (typeof (window as any).ethereum === "undefined") {
                 return (hasEthereum.set(false));
             }
+            
             hasEthereum.set(true);
 
             if ((window as any).ethereum.selectedAddress) {

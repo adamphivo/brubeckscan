@@ -2,7 +2,7 @@
     import Format from "$lib/helpers/format";
     import Consts from "$lib/consts";
     import Tip from "./_Tip.svelte";
-    import { hasEthereum } from "$lib/stores/userData";
+    import { hasEthereum, userData } from "$lib/stores/userData";
     let copyText = "Copy";
 
     function copyAddressToClipboard() {
@@ -15,12 +15,12 @@
 <footer class="footer">
     <section>
         <div>
-            <p>If you enjoy this app, you can get me a coffee ☕</p>
+            <p>If you find this app useful, you can get me a coffee ☕</p>
         </div>
         <div class="tipInfo">
             ETH : {Format.shortenNodeAddress(Consts.streamr.TIP_JAR_ADDRESS)}
             <button on:click={copyAddressToClipboard}>{copyText}</button>
-            {#if $hasEthereum}
+            {#if $hasEthereum && $userData}
                 <div>
                     <Tip />
                 </div>

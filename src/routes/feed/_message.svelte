@@ -56,4 +56,7 @@
     .user {
         color: rgb(98, 228, 195);
     }
+    .transaction {
+        color: blue;
+    }
 </style>
