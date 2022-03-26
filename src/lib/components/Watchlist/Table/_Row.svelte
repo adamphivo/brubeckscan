@@ -4,6 +4,7 @@
     import { marketPrices } from "$lib/stores/marketPrices";
     import { brubeckData } from "$lib/stores/brubeckData";
     import { send } from "$lib/helpers/send";
+import Button from "$lib/components/HTMLElements/Button.svelte";
 
     export let node;
 
@@ -28,6 +29,18 @@
             isEditing = false;
             node.dataDB.name = data.name;
         }
+    }
+
+    async function sendFund(){
+        await (window as any).ethereum.request({
+            method: "eth_sendTransaction",
+            params: [
+                {
+                    from: $userData.address,
+                    to: node.address,
+                },
+            ],
+        });
     }
 
     async function unwatch() {
@@ -132,6 +145,7 @@
         <div class="buttonContainer">
             {#if node.address != $userData.address}
                 <button on:click={unwatch}>Remove</button>
+                <Button text="Send" action={sendFund}/>
             {:else}
                 <div class="owner">Owner</div>
             {/if}
@@ -167,6 +181,8 @@
     .buttonContainer {
         display: flex;
         justify-content: center;
+        gap: 10px;
+        padding: 20px;
     }
 
     .address {

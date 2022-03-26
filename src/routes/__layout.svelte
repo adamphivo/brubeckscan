@@ -3,6 +3,7 @@
     import { bundle } from "$lib/bundle";
     import Loader from "$lib/components/Loader.svelte";
     import Dock from "$lib/components/Layout/Dock/Dock.svelte";
+    import Footer from "$lib/components/Layout/Footer/Footer.svelte";
     import "../../static/styles/style.scss";
 
     const promise = bundle();
@@ -18,6 +19,7 @@
         <div class="page" in:fade>
             <slot />
         </div>
+        <Footer />
     {/await}
 </main>
 
