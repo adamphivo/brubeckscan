@@ -33,7 +33,6 @@ export async function get() {
         return {
             status: 200,
             body: prices,
-            maxage: 60
         };
     }
 

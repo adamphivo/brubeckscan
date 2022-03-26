@@ -6,7 +6,7 @@
     import { chat } from "$lib/stores/chat";
 
     let input = "";
-    const TITLE = "Feed";
+    const TITLE = "App Feed";
 
     async function publish() {
         const msg = {
@@ -54,10 +54,10 @@
 <div class="modulePool">
     <PageTitle title={TITLE} />
     {#await promise}
-        <div class="module loading">Loading Streamr node</div>
+        <div class="module loading">Loading</div>
     {:then test}
-        <div class="module" id="flow" in:fade>
-            <div class="module feed" id="feed">
+    <div class="module" id="flow">
+        <div class="module feed" id="feed">
                 {#each $chat.messages as message}
                     <div class="{message.type} message" in:fade>
                         <div class="date">
@@ -78,13 +78,11 @@
 <style lang="scss">
     .module {
         width: 100%;
-        height: 600px;
-        padding: 30px;
+        height: 800px;
         gap: 15px;
     }
 
     .feed {
-        // overscroll-behavior-y: contain;
         overflow-y: hidden;
         padding-bottom: 60px;
     }
@@ -93,6 +91,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 26px;
     }
 
     .date {

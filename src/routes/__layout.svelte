@@ -8,6 +8,7 @@
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import Dock from "$lib/components/Layout/Dock/Dock.svelte";
     import "../../static/styles/style.scss";
+    import Footer from "$lib/components/Layout/Footer/Footer.svelte";
 
     async function bundle() {
         if (browser) {
