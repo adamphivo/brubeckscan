@@ -174,9 +174,6 @@
         line-height: 20px;
         font-weight: bold;
         color: whitesmoke;
-        &:hover {
-            cursor: pointer;
-        }
     }
 
     .owner {
