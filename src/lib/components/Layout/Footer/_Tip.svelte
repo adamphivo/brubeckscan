@@ -1,18 +1,26 @@
 <script lang="ts">
     import { userData } from "$lib/stores/userData";
     import Button from "$lib/components/HTMLElements/Button.svelte";
+    import FeedService from "$lib/services/feeds";
 
     async function tip() {
-        await (window as any).ethereum.request({
-            method: "eth_sendTransaction",
-            params: [
-                {
-                    from: $userData.address,
-                    to: "0x2BC4019cbA9d02927c9Be04D5cD5D055FC222581",
-                    value: "0x29a2241af62c0000",
-                },
-            ],
-        });
+        try {
+            await (window as any).ethereum.request({
+                method: "eth_sendTransaction",
+                params: [
+                    {
+                        from: $userData.address,
+                        to: "0x2BC4019cbA9d02927c9Be04D5cD5D055FC222581",
+                        value: "0x29a2241af62c0000",
+                    },
+                ],
+            });
+
+            await FeedService.publish("tip", `${$userData.address} just tipped ! Thank you 🙏`);
+
+        } catch(e){
+            throw e;
+        }
     }
 </script>
 

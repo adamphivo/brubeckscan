@@ -1,6 +1,15 @@
 <script lang="ts">
+    import Format from "$lib/helpers/format";
+    import Consts from "$lib/consts";
     import Tip from "./_Tip.svelte";
     import { hasEthereum } from "$lib/stores/userData";
+    let copyText = "Copy";
+
+    function copyAddressToClipboard() {
+        navigator.clipboard.writeText(Consts.streamr.TIP_JAR_ADDRESS);
+        copyText = "Copied";
+        setTimeout(() => (copyText = "Copy"), 2000);
+    }
 </script>
 
 <footer class="footer">
@@ -8,12 +17,15 @@
         <div>
             <p>If you enjoy this app, you can get me a coffee ☕</p>
         </div>
-        <div>ETH : 0x2BC4019cbA9d02927c9Be04D5cD5D055FC222581</div>
-        {#if $hasEthereum}
-            <div>
-                <Tip />
-            </div>
-        {/if}
+        <div class="tipInfo">
+            ETH : {Format.shortenNodeAddress(Consts.streamr.TIP_JAR_ADDRESS)}
+            <button on:click={copyAddressToClipboard}>{copyText}</button>
+            {#if $hasEthereum}
+                <div>
+                    <Tip />
+                </div>
+            {/if}
+        </div>
     </section>
 </footer>
 
@@ -22,19 +34,24 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        margin-top: 30px;
         font-weight: bold;
         section {
             width: 100%;
             max-width: var(--site-max-width);
-            background-color: black;
+            background-color: rgb(0, 0, 0);
             padding: 20px;
             display: flex;
             gap: 30px;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
+
+            .tipInfo {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
         }
     }
 </style>
