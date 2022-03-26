@@ -27,7 +27,7 @@
         <div class="module">
             <table>
                 <col style="width:20%">
-                <col style="width:30%">
+                <col style="width:20%">
                 <col>
                 <col>
                 <col>

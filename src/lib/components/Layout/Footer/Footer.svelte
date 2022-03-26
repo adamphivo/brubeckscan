@@ -38,8 +38,8 @@
         section {
             width: 100%;
             max-width: var(--site-max-width);
-            background-color: rgb(0, 0, 0);
-            padding: 20px;
+            background-color: rgb(20, 20, 22);
+            padding: 30px;
             display: flex;
             gap: 30px;
             justify-content: space-between;

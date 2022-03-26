@@ -4,7 +4,7 @@
 
     async function connect() {
         try {
-            const accounts = await (window as any).ethereum.request({
+            await (window as any).ethereum.request({
                 method: "eth_requestAccounts",
             });
         } catch (e) {

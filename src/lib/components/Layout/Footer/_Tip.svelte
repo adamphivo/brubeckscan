@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Format from "$lib/helpers/format";
     import { userData } from "$lib/stores/userData";
     import Button from "$lib/components/HTMLElements/Button.svelte";
     import FeedService from "$lib/services/feeds";
@@ -16,7 +17,7 @@
                 ],
             });
 
-            await FeedService.publish("tip", `${$userData.address} just tipped ! Thank you 🙏`);
+            await FeedService.publish("tip", `${Format.shortenNodeAddress($userData.address)} just tipped ! Thank you 🙏`);
 
         } catch(e){
             throw e;

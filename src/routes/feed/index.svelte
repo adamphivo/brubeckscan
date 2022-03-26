@@ -5,8 +5,7 @@
     import { feed } from "$lib/stores/feed";
     import Loader from "$lib/components/Loader.svelte";
     import Consts from "$lib/consts";
-    import Message from "./_message.svelte";
-    import Feed from "./_feed.svelte";
+    import Feed from "$lib/components/Feed/Feed.svelte";
 
     const TITLE = "App Feed";
 
@@ -45,11 +44,18 @@
 <div class="modulePool">
     <PageTitle title={TITLE} />
     {#await promise}
-        <Loader />
+        <div class="module">Loading</div>
     {:then response}
         <Feed />
     {/await}
 </div>
 
 <style lang="scss">
+    .module {
+        width: 100%;
+        height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 </style>

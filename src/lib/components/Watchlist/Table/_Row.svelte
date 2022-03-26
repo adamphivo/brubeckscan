@@ -156,8 +156,13 @@
     <td>
         <div class="buttonContainer">
             {#if node.address != $userData.address}
-                <button on:click={unwatch}>Remove</button>
-                <Button text="Send" action={sendFund} />
+                <div title="Send funds to this address">
+                    <Button text="Send" action={sendFund} />
+                </div>
+                <button
+                    on:click={unwatch}
+                    title="Remove this node from your watchlist">Remove</button
+                >
             {:else}
                 <div class="owner">Owner</div>
             {/if}
