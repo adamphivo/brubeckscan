@@ -17,6 +17,11 @@ export async function get() {
     await FeedService.publish("brubeckStat", `BRUBECK INFO | Latest reward code : ${brubeckStats.lastCode} ✅`);
     await FeedService.publish("brubeckStat", `BRUBECK INFO | Current APY : ${brubeckStats.apy["24h-APY"]} % ✅`);
 
+    // AppUsers
+    const countUsersRequest = await send("GET", "users.json");
+    const countUsers = await countUsersRequest.json();
+    await FeedService.publish("brubeckScanStat", `BRUBECKSCAN STAT | Users : ${countUsers.countUsers} 👥`);
+
     return {
         status: 200,
         body: {}

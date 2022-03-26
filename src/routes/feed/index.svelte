@@ -2,10 +2,11 @@
     import { browser } from "$app/env";
     import streamr from "$lib/clients/streamr";
     import PageTitle from "$lib/components/Layout/PageTitle.svelte";
-    import { chat } from "$lib/stores/chat";
+    import { feed } from "$lib/stores/feed";
     import Loader from "$lib/components/Loader.svelte";
     import Consts from "$lib/consts";
     import Message from "./_message.svelte";
+    import Feed from "./_feed.svelte";
 
     const TITLE = "App Feed";
 
@@ -24,12 +25,14 @@
 
     function onMessage(content, metadata) {
         content.metadata = metadata;
-        $chat.messages = [...$chat.messages, content];
-        scrollFeedToBottom();
+        $feed.messages = [...$feed.messages, content];
+        // Need some time before the feed height is recalculated / Need to update the HTML element first
+        setTimeout(scrollFeedToBottom, 100);
     }
 
     function scrollFeedToBottom() {
         const feed = document.querySelector("#feed");
+        if (!feed) return;
         feed.scrollTo({
             top: feed.scrollHeight,
             behavior: "smooth",
@@ -44,29 +47,9 @@
     {#await promise}
         <Loader />
     {:then response}
-        <section class="module">
-            <div class="module feed" id="feed">
-                {#each $chat.messages as message}
-                    <Message {message} />
-                {/each}
-            </div>
-        </section>
+        <Feed />
     {/await}
 </div>
 
 <style lang="scss">
-    .module {
-        width: 100%;
-        height: 800px;
-        gap: 15px;
-    }
-
-    section.module {
-        padding: 0;
-        background-color: rgb(41, 38, 46);
-    }
-    .feed {
-        overflow-y: hidden;
-        padding-bottom: 60px;
-    }
 </style>

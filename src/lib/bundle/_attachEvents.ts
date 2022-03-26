@@ -17,6 +17,7 @@ async function onDisconnect(error: any) {
 
 async function onAccountsChanged(accounts: any) {
     if (accounts.length > 0) {
+        console.log("Changed account to", accounts[0]);
         await UserService.login(accounts[0]);
     } else {
         StateService.clearAuthSession();

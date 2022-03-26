@@ -26,7 +26,7 @@ export async function get() {
             lastCode: lastRewards.lastRewards.at(-1).code
         };
 
-        appCache.set(Consts.cache.BRUBECK_STATS, data, Consts.cache.GLOBAL_TTL);
+        appCache.set(Consts.cache.BRUBECK_STATS, data, Consts.cache.BRUBECKSTAT_TTL);
 
         return {
             status: 200,

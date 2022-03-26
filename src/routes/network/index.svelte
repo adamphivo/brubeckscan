@@ -1,6 +1,3 @@
-<script lang="ts" context="module">
-</script>
-
 <script lang="ts">
     import Topology from "$lib/components/Brubeck/graphs/_Topology.svelte";
     import MissedClaims from "$lib/components/Brubeck/graphs/_MissedClaims.svelte";

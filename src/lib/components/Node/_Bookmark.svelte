@@ -1,7 +1,6 @@
 <script lang="ts">
     import MdBookmarkBorder from "svelte-icons/md/MdBookmarkBorder.svelte";
     import MdBookmark from "svelte-icons/md/MdBookmark.svelte";
-    import UserService from "$lib/services/user";
     import { userData, watchListData } from "$lib/stores/userData";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import { send } from "$lib/helpers/send";
@@ -35,8 +34,6 @@
         if (action === "unwatch") {
             $watchListData = $watchListData.filter(node => node.address !== $scannedNodeData.address);
         }
-
-        console.log($watchListData);
 
         $userData = user;
     }

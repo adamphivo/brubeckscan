@@ -6,11 +6,13 @@
 </script>
 
 <div class="{message.type} message" in:fade>
-    <div class="date">
-        <p>
-            [{Format.timestamp(message.metadata.messageId.timestamp)}]
-        </p>
-    </div>
+    {#if message.metadata}
+        <div class="date">
+            <p>
+                [{Format.timestamp(message.metadata.messageId.timestamp)}]
+            </p>
+        </div>
+    {/if}
     <div>
         <p>
             {message.content}
@@ -41,6 +43,9 @@
 
     .brubeckStat {
         color: rgb(224, 194, 56);
+    }
+    .brubeckScanStat {
+        color: rgb(116, 116, 202);
     }
     .error {
         color: rgb(182, 65, 65);

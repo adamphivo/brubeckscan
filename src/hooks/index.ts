@@ -18,5 +18,5 @@ export async function handle({ event, resolve }) {
 
 /** @type {import('@sveltejs/kit').HandleError} */
 export async function handleError({ error }) {
-    await FeedService.publish("error", error.message);
+    await FeedService.publish("error", `BRUBECKSCAN INTERNAL ERROR | ${error.message}`);
 }

@@ -5,9 +5,10 @@ import UserService from "$lib/services/user";
 
 export async function login(address: any) {
     const response = await send("PATCH", `users/${address}.json`);
+
     const user = await response.json();
 
-    if(user){
+    if (user) {
         userData.set(user);
         const watchlist = await UserService.getWatchlist(user.nodes);
         if (watchlist) {
@@ -17,5 +18,6 @@ export async function login(address: any) {
             ));
         }
     }
+
     return user;
 }

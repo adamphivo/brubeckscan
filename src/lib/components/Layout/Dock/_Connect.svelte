@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { hasEthereum, userData, watchListData } from "$lib/stores/userData";
-    import UserService from "$lib/services/user";
+    import { hasEthereum } from "$lib/stores/userData";
     import Button from "$lib/components/HTMLElements/Button.svelte";
 
     async function connect() {
@@ -8,20 +7,6 @@
             const accounts = await (window as any).ethereum.request({
                 method: "eth_requestAccounts",
             });
-
-            if (accounts.length > 0) {
-                const user = await UserService.upsert(accounts[0]);
-
-                $userData = user;
-
-                if (user) {
-                    const data = await UserService.getWatchlist(user.nodes);
-
-                    if (data) {
-                        $watchListData = data;
-                    }
-                }
-            }
         } catch (e) {
             console.log(e);
         }

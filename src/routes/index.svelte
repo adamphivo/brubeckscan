@@ -1,12 +1,3 @@
-<script lang="ts" context="module">
-    import StateService from "$lib/services/state";
-
-    export async function load() {
-        await StateService.updateMarketPrices();
-        return {};
-    }
-</script>
-
 <script lang="ts">
     import PageTitle from "$lib/components/Layout/PageTitle.svelte";
     import ApyApr from "$lib/components/Brubeck/ApyApr.svelte";
