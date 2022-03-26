@@ -5,7 +5,7 @@ cron.schedule("*/1 * * * *", async () => {
     const init = {
         method: "GET",
         headers: {
-            internal_token: "poissonrouge"
+            internalToken: "poissonrouge"
         }
     };
 
@@ -18,7 +18,7 @@ cron.schedule("*/30 * * * *", async () => {
     const init = {
         method: "GET",
         headers: {
-            internal_token: "poissonrouge"
+            internalToken: "poissonrouge"
         }
     };
 
