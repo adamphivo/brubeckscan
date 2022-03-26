@@ -1,6 +1,5 @@
 import { appCache } from "$lib/helpers/cache";
 import Consts from "$lib/consts";
-import FeedService from "$lib/services/feeds";
 
 export async function get() {
     const cached = appCache.get(Consts.cache.BRUBECK_STATS);
@@ -28,9 +27,6 @@ export async function get() {
         };
 
         appCache.set(Consts.cache.BRUBECK_STATS, data, Consts.cache.GLOBAL_TTL);
-
-        await FeedService.publish("brubeckStat", `BRUBECK INFO | Latest reward-code : ${data.lastCode}`);
-        await FeedService.publish("brubeckStat", `BRUBECK INFO | 24H-DATA-STAKED : ${data.apy["24h-data-staked"]} DATA$`);
 
         return {
             status: 200,

@@ -1,40 +1,19 @@
 <script lang="ts">
     import { browser } from "$app/env";
-    import { fade } from "svelte/transition";
     import streamr from "$lib/clients/streamr";
     import PageTitle from "$lib/components/Layout/PageTitle.svelte";
     import { chat } from "$lib/stores/chat";
+    import Loader from "$lib/components/Loader.svelte";
+    import Consts from "$lib/consts";
+    import Message from "./_message.svelte";
 
-    let input = "";
     const TITLE = "App Feed";
-
-    async function publish() {
-        const msg = {
-            message: input,
-        };
-
-        await streamr.publish(
-            "0xd9925689cb36bfc3e2f82ddacda21c231e126ee8/brubeckscan/test",
-            msg
-        );
-    }
-
-    async function onMessage(content, metadata) {
-        const feed = document.querySelector("#feed");
-        content.metadata = metadata;
-        $chat.messages = [...$chat.messages, content];
-        console.log($chat.messages);
-        feed.scrollTo({
-            top: feed.scrollHeight,
-            behavior: "smooth",
-        });
-    }
 
     async function bundle() {
         if (browser) {
-            const streams = await streamr.unsubscribe();
+            await streamr.unsubscribe();
             const stream = await streamr.getOrCreateStream({
-                id: "/brubeckscan/test",
+                id: Consts.streamr.FEED_STREAM_ID,
             });
             const subscription = await streamr.subscribe(stream.id, onMessage);
             return subscription;
@@ -43,9 +22,18 @@
         }
     }
 
-    function formatTimestamp(timestamp: any) {
-        const test = new Date(timestamp);
-        return test.toUTCString();
+    function onMessage(content, metadata) {
+        content.metadata = metadata;
+        $chat.messages = [...$chat.messages, content];
+        scrollFeedToBottom();
+    }
+
+    function scrollFeedToBottom() {
+        const feed = document.querySelector("#feed");
+        feed.scrollTo({
+            top: feed.scrollHeight,
+            behavior: "smooth",
+        });
     }
 
     const promise = bundle();
@@ -54,24 +42,15 @@
 <div class="modulePool">
     <PageTitle title={TITLE} />
     {#await promise}
-        <div class="module loading">Loading</div>
-    {:then test}
-    <div class="module" id="flow">
-        <div class="module feed" id="feed">
+        <Loader />
+    {:then response}
+        <section class="module">
+            <div class="module feed" id="feed">
                 {#each $chat.messages as message}
-                    <div class="{message.type} message" in:fade>
-                        <div class="date">
-                            [{formatTimestamp(
-                                message.metadata.messageId.timestamp
-                            )}]
-                        </div>
-                        <div>
-                            {message.content}
-                        </div>
-                    </div>
+                    <Message {message} />
                 {/each}
             </div>
-        </div>
+        </section>
     {/await}
 </div>
 
@@ -82,45 +61,12 @@
         gap: 15px;
     }
 
+    section.module {
+        padding: 0;
+        background-color: rgb(41, 38, 46);
+    }
     .feed {
         overflow-y: hidden;
         padding-bottom: 60px;
-    }
-
-    .loading {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 26px;
-    }
-
-    .date {
-        color: rgb(84, 84, 99);
-    }
-
-    .message {
-        display: flex;
-        gap: 30px;
-        align-items: center;
-        font-weight: bold;
-        font-size: 14px;
-    }
-
-    .userAction {
-        color: rgb(71, 134, 185);
-    }
-
-    .cronRun {
-        color: lightgrey;
-    }
-
-    .brubeckStat {
-        color: rgb(26, 53, 145);
-    }
-    .error {
-        color: rgb(182, 65, 65);
-    }
-    .prices {
-        color: rgb(21, 168, 65);
     }
 </style>

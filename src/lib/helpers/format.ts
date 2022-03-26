@@ -30,4 +30,9 @@ Format.twoDecimals = (value: any) => {
     return Math.round((value + Number.EPSILON) * 100) / 100;
 };
 
+Format.timestamp = (timestamp: any) => {
+    const date = new Date(timestamp);
+    return date.toUTCString();
+};
+
 export default Format;

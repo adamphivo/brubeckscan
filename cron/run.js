@@ -9,12 +9,8 @@ cron.schedule("*/1 * * * *", async () => {
         }
     };
 
-    const URLS = ["http://localhost:3000/api/market/prices.json", "http://localhost:3000/api/brubeck/stats.json", "http://localhost:3000/api/users.json"];
-
-    const promises = URLS.map(url => fetch(url, init));
-
-    const responses = await Promise.all(promises);
-    const data = await Promise.all(responses.map(response => response.json()));
+    const response = await fetch("http://localhost:3000/api/cron/hello.json", init);
+    const data = await response.json();
     console.log(data);
 });
 

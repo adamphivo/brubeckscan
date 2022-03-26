@@ -1,4 +1,5 @@
 import UserDAO from "$lib/dao/user";
+import FeedService from "$lib/services/feeds";
 
 export async function patch({ params, request }) {
     let update = null;
@@ -11,6 +12,8 @@ export async function patch({ params, request }) {
     }
 
     const user = await UserDAO.upsertByAddress(params.address, update);
+
+    await FeedService.publish("user", "User connected 🥳");
 
     return {
         status: 200,

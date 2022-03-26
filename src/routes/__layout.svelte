@@ -1,85 +1,16 @@
 <script lang="ts">
     import { fade } from "svelte/transition";
-    import { goto } from "$app/navigation";
-    import { browser } from "$app/env";
-    import UserService from "$lib/services/user";
-    import StateService from "$lib/services/state";
-    import { hasEthereum, userData, watchListData } from "$lib/stores/userData";
-    import { scannedNodeData } from "$lib/stores/scannedNodeData";
+    import { bundle } from "$lib/bundle";
+    import Loader from "$lib/components/Loader.svelte";
     import Dock from "$lib/components/Layout/Dock/Dock.svelte";
     import "../../static/styles/style.scss";
-    import Footer from "$lib/components/Layout/Footer/Footer.svelte";
-
-    async function bundle() {
-        if (browser) {
-            await StateService.updateMarketPrices();
-            await StateService.updateBrubeckStats();
-            await StateService.setBrubeckHistory();
-
-            if (window as any) {
-                if (typeof (window as any).ethereum === "undefined")
-                    return ($hasEthereum = false);
-                $hasEthereum = true;
-                if ((window as any).ethereum.selectedAddress) {
-                    const user = await UserService.upsert(
-                        (window as any).ethereum.selectedAddress
-                    );
-
-                    $userData = user;
-
-                    if (user) {
-                        const data = await UserService.getWatchlist(user.nodes);
-                        if (data) {
-                            $watchListData = data;
-                            $scannedNodeData = data.find(
-                                (node) => node.address === user.address
-                            );
-                        }
-                    }
-                }
-
-                (window as any).ethereum.on("disconnect", function (error) {
-                    StateService.clearAuthSession();
-                    goto("/");
-                });
-
-                (window as any).ethereum.on(
-                    "accountsChanged",
-                    async function (accounts) {
-                        if (accounts.length > 0) {
-                            const user = await UserService.upsert(accounts[0]);
-                            $userData = user;
-                            if (user) {
-                                const data = await UserService.getWatchlist(
-                                    user.nodes
-                                );
-                                if (data) {
-                                    $watchListData = data;
-                                    $scannedNodeData = data.find(
-                                        (node) => node.address === user.address
-                                    );
-                                }
-                            }
-                        } else {
-                            StateService.clearAuthSession();
-                            goto("/");
-                        }
-                    }
-                );
-            }
-        }
-    }
 
     const promise = bundle();
 </script>
 
 <main>
     {#await promise}
-        <div class="loading">
-            <div class="module">
-                <h2>Loading</h2>
-            </div>
-        </div>
+        <Loader />
     {:then}
         <div in:fade class="sticky">
             <Dock />

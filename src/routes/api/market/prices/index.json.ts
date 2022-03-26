@@ -1,6 +1,5 @@
 import { appCache } from "$lib/helpers/cache";
 import Consts from "$lib/consts";
-import FeedService from "$lib/services/feeds";
 
 export async function get() {
     const cached = appCache.get(Consts.cache.MARKET_PRICES);
@@ -26,9 +25,6 @@ export async function get() {
         });
 
         appCache.set(Consts.cache.MARKET_PRICES, prices, Consts.cache.GLOBAL_TTL);
-
-        await FeedService.publish("prices", `DATAUSDT : ${prices["DATAUSDT"]} USDT`);
-        await FeedService.publish("prices", `BTCUSDT : ${prices["BTCUSDT"]} USDT`);
 
         return {
             status: 200,
