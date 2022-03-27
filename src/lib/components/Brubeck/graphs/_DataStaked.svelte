@@ -48,7 +48,7 @@
 </script>
 
 <div class="module graph">
-    <h3>Total DATA <Data/> Staked</h3>
+    <h3>Total staked DATA <Data/></h3>
     <canvas id={GRAPH_ID} />
 </div>
 

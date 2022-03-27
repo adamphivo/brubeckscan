@@ -39,7 +39,7 @@
             </div>
             <div class="value">
                 <p>
-                    {$scannedNodeData.address}
+                    {Format.shortenNodeAddress($scannedNodeData.address)}
                 </p>
                 <button on:click={copyAddressToClipboard}>{copyText}</button>
             </div>

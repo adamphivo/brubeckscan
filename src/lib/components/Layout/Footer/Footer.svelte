@@ -18,9 +18,10 @@
             <p>If you find this app useful, you can get me a coffee ☕</p>
         </div>
         <div class="tipInfo">
-            ETH : {Format.shortenNodeAddress(Consts.streamr.TIP_JAR_ADDRESS)}
+            <div class="address">ETH : {Format.shortenNodeAddress(Consts.streamr.TIP_JAR_ADDRESS)}</div>
             <button on:click={copyAddressToClipboard}>{copyText}</button>
             {#if $hasEthereum && $userData}
+                <span>or</span>
                 <div>
                     <Tip />
                 </div>
@@ -46,11 +47,18 @@
             align-items: center;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
-
+            @media (max-width: 1400px){
+                flex-direction: column;
+                text-align: center;
+                line-height: 30px;
+            }
             .tipInfo {
                 display: flex;
                 align-items: center;
                 gap: 20px;
+                @media (max-width: 1400px) {
+                    flex-direction: column;
+                }
             }
         }
     }

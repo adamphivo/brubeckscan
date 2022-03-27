@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
     import { get } from "svelte/store";
-    import { userData } from "$lib/stores/userData";
+    import { userData, watchListData } from "$lib/stores/userData";
 
     export async function load({ request, params }) {
         if (!get(userData)) {
@@ -19,14 +19,14 @@
     import PageTitle from "$lib/components/Layout/PageTitle.svelte";
     import Summary from "$lib/components/Watchlist/_Summary.svelte";
 
-    const TITLE = "Watchlist";
+    const TITLE = "Watchlist" + " (" + $watchListData.length + ")";
 </script>
 
 <div class="modulePool">
     <PageTitle title={TITLE} />
+    <Watchlist />
     <Summary />
     <Graph />
-    <Watchlist />
 </div>
 
 <style lang="scss">

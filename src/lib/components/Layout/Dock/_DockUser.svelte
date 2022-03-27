@@ -30,5 +30,8 @@
         padding: 5px;
         font-size: 12px;
         margin-right: 5px;
+        @media (max-width: 500px){
+            display: none;
+        }
     }
 </style>

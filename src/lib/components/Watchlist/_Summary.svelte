@@ -76,9 +76,12 @@
 
 <style lang="scss">
     .module {
-        width: 50%;
+        width: 100%;
         display: flex;
         justify-content: space-evenly;
         gap: 15px;
+        @media (max-width: 1400px){
+            width: 100%;
+        }
     }
 </style>

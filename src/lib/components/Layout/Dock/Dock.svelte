@@ -57,6 +57,10 @@
         justify-content: space-between;
         align-items: center;
         padding: 10px 0px;
+        @media (max-width: 1400px) {
+            max-width: 100%;
+            padding: 20px;
+        }
     }
     .secondRow {
         background-color: var(--color-black-transparent);
@@ -65,6 +69,6 @@
 
     .firstRow {
         background-color: var(--color-black);
-        padding: 20px 0px;
+        // padding: 20px 0px;
     }
 </style>
