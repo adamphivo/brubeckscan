@@ -15,7 +15,7 @@
                         <th><div>Stake</div></th>
                         <th><div>Claim count</div></th>
                         <th><div>Status</div></th>
-                        <th></th>
+                        <th><div>Actions</div></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +34,8 @@
         padding: 0;
         max-width: 100%;
         overflow-x: scroll;
+        overflow-y: scroll;
+        max-height: 700px;
     }
 
     th div {
@@ -45,6 +47,5 @@
 
     table {
         width: 1400px;
-        overflow-x: scroll;
     }
 </style>

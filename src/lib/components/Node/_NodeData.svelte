@@ -44,6 +44,7 @@
                 <button on:click={copyAddressToClipboard}>{copyText}</button>
             </div>
         </div>
+        <div class="separator"></div>
         <div class="data">
             <div class="label">
                 <p>Node Rewards in DATA</p>
@@ -54,6 +55,7 @@
                 <Data />
             </div>
         </div>
+        <div class="separator"></div>
         <div class="data">
             <div class="label">
                 <p>Node Rewards in USDT</p>
@@ -68,6 +70,7 @@
                 <Usdt />
             </div>
         </div>
+        <div class="separator"></div>
         <div class="data">
             <div class="label">
                 <p>Staked DATA</p>
@@ -78,6 +81,7 @@
                 <Data />
             </div>
         </div>
+        <div class="separator"></div>
         <div class="data">
             <div class="label">
                 <p>Staked value in USDT</p>
@@ -92,6 +96,7 @@
                 <Usdt />
             </div>
         </div>
+        <div class="separator"></div>
         <div class="data">
             <div class="label">
                 <p>Claim Count</p>

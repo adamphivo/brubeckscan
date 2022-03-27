@@ -18,6 +18,7 @@
                 <Data />
             </div>
         </div>
+        <div class="separator"></div>
         <div class="data">
             <div class="label">
                 <p>Total accumulated rewards in USDT</p>
@@ -33,6 +34,7 @@
                 <Usdt />
             </div>
         </div>
+        <div class="separator"></div>
         <div class="data">
             <div class="label">
                 <p>Total DATA staked</p>
@@ -43,6 +45,7 @@
                 <Data />
             </div>
         </div>
+        <div class="separator"></div>
         <div class="data">
             <div class="label">
                 <p>Total staked value in USDT</p>
@@ -58,6 +61,7 @@
                 <Usdt />
             </div>
         </div>
+        <div class="separator"></div>
         <div class="data">
             <div class="label">
                 <p>Total accumulated claim count</p>

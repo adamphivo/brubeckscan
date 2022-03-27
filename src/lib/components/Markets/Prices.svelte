@@ -8,14 +8,21 @@
 
 {#if $marketPrices}
     <div class="module">
-        {#each Object.entries($marketPrices) as [symbol, price]}
+        {#each Object.entries($marketPrices) as [symbol, price], index}
+            {#if index === 1}
+                <div class="separator" />
+            {/if}
             <div class="data">
                 {#if symbol === "BTCUSDT"}
-                    <div class="label"><Btc />{symbol.replace('USDT', '')}</div>
-                    <div class="value">{Format.tokenValue(price)} USDT<Usdt /></div>
+                    <div class="label"><Btc />{symbol.replace("USDT", "")}</div>
+                    <div class="value">
+                        {Format.tokenValue(price)} USDT<Usdt />
+                    </div>
                 {/if}
                 {#if symbol === "DATAUSDT"}
-                    <div class="label"><Data />{symbol.replace('USDT', '')}</div>
+                    <div class="label">
+                        <Data />{symbol.replace("USDT", "")}
+                    </div>
                     <div class="value">{price} USDT<Usdt /></div>
                 {/if}
             </div>

@@ -19,6 +19,7 @@
                 <span>%</span>
             </div>
         </div>
+        <div class="separator" />
         <div class="data">
             <div class="label">
                 <p>SPOT APR</p>
@@ -28,6 +29,7 @@
                 <span>%</span>
             </div>
         </div>
+        <div class="separator" />
         <div class="data">
             <div class="label">
                 <p>24H APY</p>
@@ -39,6 +41,7 @@
                 <span>%</span>
             </div>
         </div>
+        <div class="separator" />
         <div class="data">
             <div class="label">
                 <p>SPOT APY</p>
@@ -50,9 +53,10 @@
                 <span>%</span>
             </div>
         </div>
+        <div class="separator" />
         <div class="data">
             <div class="label">
-                <p>24h-data-staked</p>
+                <p>24H DATA STAKED</p>
             </div>
             <div class="value">
                 <p>{Format.tokenValue($brubeckData.apy["24h-data-staked"])}</p>
@@ -60,9 +64,10 @@
                 <Data />
             </div>
         </div>
+        <div class="separator" />
         <div class="data">
             <div class="label">
-                <p>24h-data-staked USDT</p>
+                <p>24H DATA STAKED USDT</p>
             </div>
             <div class="value">
                 {Format.tokenValue(
@@ -72,9 +77,10 @@
                 <Usdt />
             </div>
         </div>
+        <div class="separator" />
         <div class="data">
             <div class="label">
-                <p>spot-data-staked</p>
+                <p>SPOT DATA STAKED</p>
             </div>
             <div class="value">
                 <p>{Format.tokenValue($brubeckData.apy["spot-data-staked"])}</p>
@@ -82,9 +88,10 @@
                 <Data />
             </div>
         </div>
+        <div class="separator" />
         <div class="data">
             <div class="label">
-                <p>spot-data-staked USDT</p>
+                <p>SPOT DATA STAKED USDT</p>
             </div>
             <div class="value">
                 <p>
@@ -104,6 +111,7 @@
     .module {
         width: 100%;
         justify-content: space-between;
+        gap: 15px;
     }
     span {
         color: rgb(59, 212, 59);

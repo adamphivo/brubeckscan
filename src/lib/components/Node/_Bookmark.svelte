@@ -67,7 +67,7 @@
     }
 
     .icon {
-        width: 30px;
+        width: 50px;
         cursor: pointer;
         transition-duration: 0.2s;
     }

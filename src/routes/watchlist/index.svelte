@@ -19,7 +19,7 @@
     import PageTitle from "$lib/components/Layout/PageTitle.svelte";
     import Summary from "$lib/components/Watchlist/_Summary.svelte";
 
-    const TITLE = "Watchlist" + " (" + $watchListData.length + ")";
+    $: TITLE = "Watchlist" + " (" + $watchListData.length + ")";
 </script>
 
 <div class="modulePool">
