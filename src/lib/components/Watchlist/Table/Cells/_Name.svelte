@@ -25,7 +25,7 @@
         <div class="cellContainer">
             <div>
                 {#if !isEditing}
-                    <p>{node.dataDB.name}</p>
+                    <p class="name">{node.dataDB.name}</p>
                 {:else}
                     <input bind:value={nodeName} maxlength="20" />
                 {/if}
@@ -56,5 +56,11 @@
         font-size: 16px;
         padding: 0;
         border: 0;
+        border-radius: 0;
+        border-bottom: 1px solid grey;
+    }
+
+    .name {
+        border-bottom: 1px solid transparent;
     }
 </style>

@@ -12,7 +12,7 @@
             datasets: [
                 {
                     label: "meanPropagationDelay",
-                    backgroundColor: "black",
+                    backgroundColor: "rgb(44, 41, 41)",
                     borderColor: "lightblue",
                     borderWidth: 1,
                     data: $brubeckDataDerived.meanPropagationDelays,

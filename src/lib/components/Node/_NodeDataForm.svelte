@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    import { session } from "$app/stores";
     import Button from "$lib/components/HTMLElements/Button.svelte";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import { userData } from "$lib/stores/userData";
@@ -55,5 +53,6 @@
     .module {
         border: 0;
         width: 100%;
+        padding: 0;
     }
 </style>

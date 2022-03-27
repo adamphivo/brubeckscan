@@ -28,7 +28,7 @@
 <style lang="scss">
     .module {
         width: 100%;
-        height: 600px;
+        height: 100vh;
         gap: 15px;
     }
 

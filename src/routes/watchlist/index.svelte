@@ -19,13 +19,14 @@
     import PageTitle from "$lib/components/Layout/PageTitle.svelte";
     import Summary from "$lib/components/Watchlist/_Summary.svelte";
 
-    $: TITLE = "Watchlist" + " (" + $watchListData.length + ")";
+    $: TITLE = "Watchlist";
+    $: SECONDARY_TITLE = `(${$watchListData.length})`
 </script>
 
 <div class="modulePool">
-    <PageTitle title={TITLE} />
-    <Watchlist />
+    <PageTitle title={TITLE} secondaryTitle={SECONDARY_TITLE}/>
     <Summary />
+    <Watchlist />
     <Graph />
 </div>
 

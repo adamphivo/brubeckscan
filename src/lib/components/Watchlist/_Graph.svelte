@@ -12,7 +12,7 @@
             datasets: [
                 {
                     label: "Total Accumulated Rewards in DATA",
-                    backgroundColor: "black",
+                    backgroundColor: "rgb(44, 41, 41)",
                     borderColor: "lightgreen",
                     borderWidth: 1,
                     data: $userDataSets.rewardsInData,

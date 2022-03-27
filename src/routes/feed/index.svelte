@@ -53,10 +53,20 @@
 <style lang="scss">
     .module {
         width: 100%;
-        height: 600px;
+        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 22px;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(var(--color-black), #9198e500);
+        }
     }
 
     .modulePool {

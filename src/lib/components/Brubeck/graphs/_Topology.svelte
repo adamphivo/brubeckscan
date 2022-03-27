@@ -12,14 +12,14 @@
             datasets: [
                 {
                     label: "topologySize",
-                    backgroundColor: "black",
+                    backgroundColor: "rgb(44, 41, 41)",
                     borderColor: "lightgrey",
                     borderWidth: 1,
                     data: $brubeckDataDerived.topologySizes,
                 },
                 {
                     label: "receivedClaims",
-                    backgroundColor: "black",
+                    backgroundColor: "rgb(44, 41, 41)",
                     borderColor: "lightgreen",
                     borderWidth: 1,
                     data: $brubeckDataDerived.receivedClaims,

@@ -12,7 +12,7 @@
             datasets: [
                 {
                     label: "missedClaims",
-                    backgroundColor: "black",
+                    backgroundColor: "rgb(44, 41, 41)",
                     borderColor: "orange",
                     borderWidth: 1,
                     data: $brubeckDataDerived.missedClaims,
