@@ -1,9 +1,9 @@
 <script lang="ts">
     import { marketPrices } from "$lib/stores/marketPrices";
     import Format from "$lib/helpers/format";
-    import Usdt from "$lib/components/HTMLElements/Logos/_Tether.svelte";
-    import Data from "$lib/components/HTMLElements/Logos/_Data.svelte";
-    import Btc from "$lib/components/HTMLElements/Logos/_Bitcoin.svelte";
+    import Usdt from "$lib/components/Branding/Logos/_Tether.svelte";
+    import Data from "$lib/components/Branding/Logos/_Data.svelte";
+    import Btc from "$lib/components/Branding/Logos/_Bitcoin.svelte";
 </script>
 
 {#if $marketPrices}

@@ -3,7 +3,6 @@
 </script>
 
 <div class="user">
-    <!-- <div class="connected">connected</div> -->
     <a href="/">
         <div
             style:background={$userData.profile.gradient}
@@ -24,15 +23,5 @@
         width: 30px;
         height: 30px;
         border-radius: 50%;
-    }
-    .connected {
-        border: thin solid lightgreen;
-        color: lightgreen;
-        padding: 5px;
-        font-size: 12px;
-        margin-right: 5px;
-        @media (max-width: 500px){
-            display: none;
-        }
     }
 </style>

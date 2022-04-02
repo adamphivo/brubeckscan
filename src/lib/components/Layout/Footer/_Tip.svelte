@@ -1,7 +1,7 @@
 <script lang="ts">
     import Format from "$lib/helpers/format";
     import { userData } from "$lib/stores/userData";
-    import Button from "$lib/components/HTMLElements/Button.svelte";
+    import Button from "$lib/components/Elements/Button.svelte";
     import FeedService from "$lib/services/feeds";
 
     async function tip() {
@@ -12,7 +12,6 @@
                     {
                         from: $userData.address,
                         to: "0x2BC4019cbA9d02927c9Be04D5cD5D055FC222581",
-                        value: "0x29a2241af62c0000",
                     },
                 ],
             });

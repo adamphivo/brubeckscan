@@ -1,13 +1,9 @@
 <script lang="ts">
     import { browser } from "$app/env";
     import streamr from "$lib/clients/streamr";
-    import PageTitle from "$lib/components/Layout/PageTitle.svelte";
     import { feed } from "$lib/stores/feed";
-    import Loader from "$lib/components/Loader.svelte";
     import Consts from "$lib/consts";
     import Feed from "$lib/components/Feed/Feed.svelte";
-
-    const TITLE = "App Feed";
 
     async function bundle() {
         if (browser) {

@@ -11,7 +11,7 @@
     .module {
         width: 100%;
         background-color: rgb(240, 229, 229);
-        padding: 20px 30px;
+        padding: 15px 30px;
         border-radius: 0;
         color: var(--color-black);
         font-size: 28px;

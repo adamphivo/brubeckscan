@@ -3,7 +3,7 @@
     import { userData, watchListData } from "$lib/stores/userData";
     import { send } from "$lib/helpers/send";
     import FeedService from "$lib/services/feeds";
-    import Button from "$lib/components/HTMLElements/Button.svelte";
+    import Button from "$lib/components/Elements/Button.svelte";
 
     export let node;
 
@@ -77,9 +77,5 @@
         color: rgb(67, 233, 205);
         font-weight: bold;
         font-size: 18px;
-    }
-
-    p.warning {
-        color: rgb(226, 162, 88);
     }
 </style>

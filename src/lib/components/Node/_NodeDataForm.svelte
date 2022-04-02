@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Button from "$lib/components/HTMLElements/Button.svelte";
+    import Button from "$lib/components/Elements/Button.svelte";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import { userData } from "$lib/stores/userData";
     import { send } from "$lib/helpers/send";

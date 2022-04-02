@@ -1,6 +1,6 @@
 <script lang="ts">
     import { send } from "$lib/helpers/send";
-    import Button from "$lib/components/HTMLElements/Button.svelte";
+    import Button from "$lib/components/Elements/Button.svelte";
 
     export let node;
 

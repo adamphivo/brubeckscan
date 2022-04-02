@@ -28,13 +28,14 @@
 <style lang="scss">
     .module {
         width: 100%;
-        height: 80vh;
+        flex-grow: 1;
         gap: 15px;
+        background-color: transparent;
+        max-height: 100%;
     }
 
     section.module {
         padding: 0;
-        background-color: rgb(41, 38, 46);
     }
     .feed {
         overflow-y: hidden;

@@ -1,11 +1,11 @@
 <script lang="ts">
     import { fade } from "svelte/transition";
-    import { bundle } from "$lib/bundle";
+    import { bundle } from "$lib/helpers/bundle";
     import Loader from "$lib/components/Loader.svelte";
-    import Dock from "$lib/components/Layout/Dock/Dock.svelte";
+    import Header from "$lib/components/Layout/Header/Header.svelte";
     import Footer from "$lib/components/Layout/Footer/Footer.svelte";
-    import PageTitle from "$lib/components/Layout/PageTitle.svelte";
-    import "../../static/styles/style.scss";
+    import PageTitle from "$lib/components/Layout/PageTitle/PageTitle.svelte";
+    import "$lib/assets/stylesheets/styles/style.scss";
 
     const promise = bundle();
 </script>
@@ -15,7 +15,7 @@
         <Loader />
     {:then}
         <div in:fade class="sticky">
-            <Dock />
+            <Header />
         </div>
         <PageTitle title="BrubeckScan" />
         <div class="page" in:fade>
