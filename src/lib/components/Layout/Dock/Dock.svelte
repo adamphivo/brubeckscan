@@ -10,7 +10,7 @@
     <div class="firstRow row">
         <div class="logo">
             <h1>BrubeckScan</h1>
-            <div class="apy">{$brubeckData.apy["24h-APY"]}% APY</div>
+            <div class="apy">{$brubeckData.apy["24h-APY"]}<span class="text">%</span> APY</div>
         </div>
         <div>
             {#if !$userData}
@@ -29,6 +29,10 @@
     .firstRow {
         display: flex;
         align-items: center;
+    }
+
+    .text {
+        color: var(--color-orange);
     }
     .apy {
         padding: 5px;
@@ -49,6 +53,7 @@
         align-items: center;
         display: flex;
         z-index: 2;
+        max-width: 1300px;
     }
     .row {
         display: flex;
@@ -63,12 +68,17 @@
         }
     }
     .secondRow {
-        background-color: var(--color-black-transparent);
-        height: 70px;
+        background-color: var(--color-black);
+        padding-bottom: 20px;
     }
 
     .firstRow {
         background-color: var(--color-black);
         // padding: 20px 0px;
+    }
+
+    h1 {
+        font-weight: 800;
+        font-size: 20px;
     }
 </style>

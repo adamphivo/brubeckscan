@@ -29,6 +29,8 @@
 
 <style lang="scss">
     button {
+        font-weight: 800;
+        font-size: 14px;
         &.Pending {
             color: orange;
             border-color: orange;

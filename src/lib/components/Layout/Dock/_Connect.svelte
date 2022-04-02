@@ -14,9 +14,17 @@
 </script>
 
 {#if $hasEthereum}
-    <Button action={connect} text="Connect" />
+    <div class="connect">
+        <Button action={connect} text="Connect" />
+    </div>
 {:else}
     <a href="https://metamask.io/download/" target="_blank">
         <button>Get Metamask</button>
     </a>
 {/if}
+
+<style>
+    .connect {
+        padding: 10px;
+    }
+</style>

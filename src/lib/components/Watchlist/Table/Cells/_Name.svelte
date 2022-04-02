@@ -43,9 +43,6 @@
 {/if}
 
 <style lang="scss">
-    td {
-        width: 30%;
-    }
     .cellContainer {
         display: flex;
         justify-content: space-between;

@@ -28,23 +28,13 @@
 <style lang="scss">
     .module {
         width: 100%;
-        height: 100vh;
+        height: 80vh;
         gap: 15px;
     }
 
     section.module {
         padding: 0;
         background-color: rgb(41, 38, 46);
-
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            background: linear-gradient(var(--color-black), #9198e500);
-        }
     }
     .feed {
         overflow-y: hidden;

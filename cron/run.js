@@ -1,11 +1,12 @@
 import cron from "node-cron";
 import fetch from "node-fetch";
+import "dotenv/config";
 
 cron.schedule("*/1 * * * *", async () => {
     const init = {
         method: "GET",
         headers: {
-            internalToken: "poissonrouge"
+            internalToken: process.env.VITE_AUTH_TOKEN
         }
     };
 
@@ -18,7 +19,7 @@ cron.schedule("*/30 * * * *", async () => {
     const init = {
         method: "GET",
         headers: {
-            internalToken: "poissonrouge"
+            internalToken: process.env.VITE_AUTH_TOKEN
         }
     };
 

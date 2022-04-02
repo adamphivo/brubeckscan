@@ -42,7 +42,6 @@
 </script>
 
 <div class="modulePool">
-    <PageTitle title={TITLE} />
     {#await promise}
         <div class="module">Loading</div>
     {:then response}

@@ -6,31 +6,37 @@
     import MdBookmark from "svelte-icons/md/MdBookmark.svelte";
     import MdSearch from "svelte-icons/md/MdSearch.svelte";
     import MdAllInclusive from "svelte-icons/md/MdAllInclusive.svelte";
+    import TiSocialGithub from 'svelte-icons/ti/TiSocialGithub.svelte'
 </script>
 
 <div class="navigationIcons">
-    <a sveltekit:prefetch href="/" title="Home">
+    <a href="/" title="Home">
         <div class="icon" class:active={$page.url.pathname === "/"}>
             <MdHome />
         </div>
     </a>
-    <a sveltekit:prefetch href="/network" title="Network">
+    <a href="/network" title="Network">
         <div class="icon" class:active={$page.url.pathname === "/network"}>
             <MdPoll />
         </div>
     </a>
-    <a sveltekit:prefetch href="/scan" title="Network">
+    <a href="/scan" title="Scan">
         <div class="icon" class:active={$page.url.pathname === "/scan"}>
             <MdSearch />
         </div>
     </a>
-    <a sveltekit:prefetch href="/feed" title="Feed">
+    <a href="/feed" title="Feed">
         <div class="icon" class:active={$page.url.pathname === "/feed"}>
             <MdAllInclusive />
         </div>
     </a>
+    <a href="https://github.com/adamphivo/brubeckscan" target="_blank" title="GitHub">
+        <div class="icon" class:active={$page.url.pathname === ""}>
+            <TiSocialGithub />
+        </div>
+    </a>
     {#if $userData}
-        <a sveltekit:prefetch href="/watchlist" title="Watchlist">
+        <a href="/watchlist" title="Watchlist">
             <div
                 class="icon"
                 class:active={$page.url.pathname === "/watchlist"}
@@ -50,7 +56,6 @@
         padding: 5px;
         &.active {
             color: whitesmoke;
-            border-bottom: thin solid white;
         }
         width: 40px;
         transition-duration: 0.2s;

@@ -3,7 +3,7 @@
 </script>
 
 <div class="user">
-    <div class="connected">connected</div>
+    <!-- <div class="connected">connected</div> -->
     <a href="/">
         <div
             style:background={$userData.profile.gradient}
@@ -18,6 +18,7 @@
         justify-content: center;
         align-items: center;
         gap: 10px;
+        padding: 10px;
     }
     .userGradient {
         width: 30px;

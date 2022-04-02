@@ -16,13 +16,13 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    background-color: rgb(44, 41, 41);
+    background-color: rgba(44, 41, 41, 0.233);
     border-radius: 5px;
     padding: 30px;
     width: max-content;
     transition-duration: 0.3s;
     gap: 30px;
-    // box-shadow: 0 0 10px rgba(41, 39, 39, 0.219);
+    box-shadow: 0 0 10px rgba(20, 20, 20, 0.116);
 }
 
 .modulePool {
@@ -30,7 +30,7 @@
     max-width: var(--site-max-width);
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 50px;
 }
 
 .page {
@@ -39,7 +39,7 @@
     align-items: center;
     flex-grow: 1;
     width: 100%;
-    padding: 30px 0;
+    padding: 50px 0;
     min-height: 90vh;
 }
 
@@ -116,6 +116,6 @@
 .separator {
     width: 100%;
     height: 2px;
-    background-color: rgb(86, 96, 97);
+    background-color: rgba(86, 96, 97, 0.342);
     border-radius: 5px;
 }

@@ -33,9 +33,6 @@
         width: 100%;
         padding: 0;
         max-width: 100%;
-        overflow-x: scroll;
-        overflow-y: scroll;
-        max-height: 700px;
     }
 
     th div {
@@ -43,9 +40,5 @@
         align-items: center;
         justify-content: center;
         padding: 20px;
-    }
-
-    table {
-        width: 1400px;
     }
 </style>
