@@ -30,11 +30,6 @@
             <MdAllInclusive />
         </div>
     </a>
-    <a href="https://github.com/adamphivo/brubeckscan" target="_blank" title="GitHub">
-        <div class="icon" class:active={$page.url.pathname === ""}>
-            <TiSocialGithub />
-        </div>
-    </a>
     {#if $userData}
         <a href="/watchlist" title="Watchlist">
             <div
@@ -45,6 +40,11 @@
             </div>
         </a>
     {/if}
+    <a href="https://github.com/adamphivo/brubeckscan" target="_blank" title="GitHub">
+        <div class="icon" class:active={$page.url.pathname === ""}>
+            <TiSocialGithub />
+        </div>
+    </a>
 </div>
 
 <style lang="scss">

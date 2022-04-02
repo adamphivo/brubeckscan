@@ -34,8 +34,13 @@
                 {#if !isEditing}
                     <button on:click={() => (isEditing = true)}>Edit</button>
                 {:else}
-                <Button text="Save" action={updateNodeName}></Button>
-                <button on:click={() => {isEditing = false;nodeName = node.dataDB.name;}}>Quit</button>
+                    <Button text="Save" action={updateNodeName} />
+                    <button
+                        on:click={() => {
+                            isEditing = false;
+                            nodeName = node.dataDB.name;
+                        }}>Quit</button
+                    >
                 {/if}
             </div>
         </div>
@@ -43,6 +48,9 @@
 {/if}
 
 <style lang="scss">
+    td {
+        width: 300px;
+    }
     .cellContainer {
         display: flex;
         justify-content: space-between;
