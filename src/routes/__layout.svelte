@@ -12,7 +12,9 @@
 
 <main>
     {#await promise}
+    <div class="loadingFullScreen">
         <Loader />
+    </div>
     {:then}
         <div in:fade class="sticky">
             <Header />
@@ -26,14 +28,17 @@
 </main>
 
 <style>
+    :global(*) {
+        font-family: "Space Mono", monospace;
+    }
+    
     main {
         display: flex;
         flex-direction: column;
         align-items: center;
+        min-height: 101vh;
     }
-    :global(*) {
-        font-family: "Space Mono", monospace;
-    }
+    
     .sticky {
         width: 100%;
         max-width: 1300px;

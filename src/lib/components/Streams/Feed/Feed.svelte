@@ -23,14 +23,17 @@
         flex-grow: 1;
         gap: 15px;
         background-color: transparent;
-        height: 700px;
+        height: 500px;
         overflow-y: scroll;
         background-color: rgb(20, 20, 20);
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
     }
 
     section.module {
         padding: 0;
     }
+    
     .feed {
         overflow-y: hidden;
         padding-bottom: 30px;
