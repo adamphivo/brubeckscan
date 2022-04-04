@@ -10,7 +10,7 @@
     <div class="right">
         <div class="pres">
             <div class="text">
-                <p>{Consts.wording.PRES_TEXT}</p>
+                <p>Power the Streamr mainnet</p>
                 <p class="and">&</p>
                 <p class="textToken">keep track of your rewards</p>
             </div>
@@ -51,6 +51,20 @@
         text-align: center;
         line-height: 30px;
         font-size: 26px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    button {
+        font-weight: 600;
+        font-size: 22px;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
     }
 
     .pres {

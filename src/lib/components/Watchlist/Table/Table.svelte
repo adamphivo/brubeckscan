@@ -1,6 +1,7 @@
 <script lang="ts">
     import Row from "$lib/components/Watchlist/Table/Row.svelte";
     import { watchListData } from "$lib/stores/userData";
+    import QuickAddNode from "./_QuickAddNode.svelte";
 </script>
 
 {#if $watchListData}
@@ -25,6 +26,7 @@
                 </tbody>
             </table>
         </div>
+        <QuickAddNode />
     {/if}
 {/if}
 

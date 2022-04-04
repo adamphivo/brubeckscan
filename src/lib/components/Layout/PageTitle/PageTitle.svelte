@@ -1,10 +1,10 @@
 <script lang="ts">
-    export let title;
+    import { page } from "$app/stores";
     export let secondaryTitle = null;
 </script>
 
 <div class="module">
-    <h2>{title} <span>{secondaryTitle ? secondaryTitle : ""}</span></h2>
+    <h2>{$page.routeId || "BrubeckScan"} <span>{secondaryTitle ? secondaryTitle : ""}</span></h2>
 </div>
 
 <style lang="scss">
@@ -17,6 +17,10 @@
         font-size: 28px;
         border-bottom: 2px solid var(--color-orange);
         max-width: 1300px;
+    }
+
+    h2 {
+        text-transform: capitalize;
     }
 
     span {

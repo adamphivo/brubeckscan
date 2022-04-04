@@ -3,7 +3,7 @@
 </script>
 
 <div class="user">
-    <a href="/">
+    <a href="/watchlist">
         <div
             style:background={$userData.profile.gradient}
             class="userGradient"

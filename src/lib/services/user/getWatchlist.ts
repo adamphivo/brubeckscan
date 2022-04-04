@@ -17,5 +17,10 @@ export async function getWatchlist(nodes: any) {
         return item;
     });
 
+    decoratedWatchlist.sort((a: any, b: any) => {
+        const sort = (new Date(a.dataDB.createdAt) as any) - (new Date(b.dataDB.createdAt) as any);
+        return sort;
+    });
+
     return decoratedWatchlist;
 }

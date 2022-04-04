@@ -2,6 +2,7 @@
     import Format from "$lib/helpers/format";
     import Consts from "$lib/consts";
     import Tip from "./_Tip.svelte";
+    import Socials from "./_Socials.svelte";
     import { hasEthereum, userData } from "$lib/stores/userData";
     let copyText = "Copy";
 
@@ -13,12 +14,17 @@
 </script>
 
 <footer class="footer">
+    <Socials />
     <section>
         <div>
             <p>If you find this app useful, you can get me a coffee ☕</p>
         </div>
         <div class="tipInfo">
-            <div class="address">ETH : {Format.shortenNodeAddress(Consts.streamr.TIP_JAR_ADDRESS)}</div>
+            <div class="address">
+                ETH : {Format.shortenNodeAddress(
+                    Consts.streamr.TIP_JAR_ADDRESS
+                )}
+            </div>
             <button on:click={copyAddressToClipboard}>{copyText}</button>
             {#if $hasEthereum && $userData}
                 <span>or</span>
@@ -36,18 +42,20 @@
         display: flex;
         justify-content: center;
         font-weight: bold;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px;
         section {
             width: 100%;
             max-width: var(--site-max-width);
             background-color: rgb(20, 20, 22);
-            padding: 30px;
+            padding: 10px 30px;
             display: flex;
             gap: 30px;
             justify-content: space-between;
             align-items: center;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            @media (max-width: 1400px){
+            font-size: 12px;
+            @media (max-width: 1400px) {
                 flex-direction: column;
                 text-align: center;
                 line-height: 30px;

@@ -14,7 +14,7 @@
     <div class="module selector">
         <div  class="tab {selectedPage === "overview" ? "active" : ""}" on:click={() => (selectedPage = "overview")}>Overview</div>
         <div>/</div>
-        <div class="tab {selectedPage === "watchlist" ? "active" : ""}" on:click={() => (selectedPage = "watchlist")}>Watchlist</div>
+        <div class="tab {selectedPage === "watchlist" ? "active" : ""}" on:click={() => (selectedPage = "watchlist")}>Nodes ({$watchListSummary.count})</div>
     </div>
     {#if selectedPage === "watchlist"}
         <Watchlist />
@@ -46,9 +46,12 @@
     .tab {
         font-size: 22px;
         color: rgb(95, 95, 95);
-        transition-duration: 0.3s;
+        transition-duration: 0.1s;
+        padding-bottom: 20px;
+        border-bottom: 5px solid transparent;
         &.active {
             color: whitesmoke;
+            border-bottom: 5px solid whitesmoke;
         }
         &:hover {
             color: whitesmoke;

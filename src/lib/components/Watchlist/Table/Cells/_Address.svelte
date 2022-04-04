@@ -7,6 +7,7 @@
     let copyText = "Copy";
 
     function copyAddressToClipboard(toCopy: string) {
+        navigator.clipboard.writeText(node.address);
         copyText = "Copied";
         setTimeout(() => (copyText = "Copy"), 2000);
     }
