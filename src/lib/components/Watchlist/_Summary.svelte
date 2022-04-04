@@ -80,7 +80,7 @@
 
 <style lang="scss">
     .module {
-        width: 100%;
+        width: 50%;
         display: flex;
         justify-content: space-evenly;
         gap: 15px;

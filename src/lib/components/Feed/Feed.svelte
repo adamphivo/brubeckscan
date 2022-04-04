@@ -31,7 +31,8 @@
         flex-grow: 1;
         gap: 15px;
         background-color: transparent;
-        max-height: 100%;
+        max-height: 600px;
+        overflow-y: scroll;
     }
 
     section.module {
