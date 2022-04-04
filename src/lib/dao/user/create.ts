@@ -1,5 +1,5 @@
 import prisma from "$lib/clients/prisma";
-import FeedService from "$lib/services/feeds";
+import StreamService from "$lib/services/stream";
 import { generate } from "$lib/helpers/generate";
 
 export async function create(address: any) {
@@ -32,7 +32,7 @@ export async function create(address: any) {
         }
     });
 
-    await FeedService.publish("userCreated", "User created 👋");
+    await StreamService.feedStream.publish("userCreated", "User created 👋");
 
     return user;
 }

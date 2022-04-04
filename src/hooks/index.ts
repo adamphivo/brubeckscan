@@ -1,5 +1,4 @@
 import { Auth } from "$lib/helpers/auth";
-import FeedService from "$lib/services/feeds";
 
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ event, resolve }) {
@@ -14,9 +13,4 @@ export async function handle({ event, resolve }) {
         const response = await resolve(event);
         return response;
     }
-}
-
-/** @type {import('@sveltejs/kit').HandleError} */
-export async function handleError({ error }) {
-    await FeedService.publish("error", `BRUBECKSCAN INTERNAL ERROR | ${error.message}`);
 }

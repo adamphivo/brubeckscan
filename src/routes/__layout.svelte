@@ -1,7 +1,7 @@
 <script lang="ts">
     import { fade } from "svelte/transition";
     import { bundle } from "$lib/helpers/bundle";
-    import Loader from "$lib/components/Loader.svelte";
+    import Loader from "$lib/components/Elements/Loader.svelte";
     import Header from "$lib/components/Layout/Header/Header.svelte";
     import Footer from "$lib/components/Layout/Footer/Footer.svelte";
     import PageTitle from "$lib/components/Layout/PageTitle/PageTitle.svelte";

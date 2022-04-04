@@ -4,6 +4,7 @@ BrubeckScan allow node runners on the Brubeck network to manage their nodes and 
 
 ### TODO
 
+- [X] Refacto Feeds -> Streams
 - [X] Improve Loader
 - [ ] Improve Status in WatchList
 - [ ] Improve node name editing UX

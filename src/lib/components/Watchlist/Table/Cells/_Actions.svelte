@@ -2,8 +2,8 @@
     import Format from "$lib/helpers/format";
     import { userData, watchListData } from "$lib/stores/userData";
     import { send } from "$lib/helpers/send";
-    import FeedService from "$lib/services/feeds";
     import Button from "$lib/components/Elements/Button.svelte";
+    import StreamService from "$lib/services/stream";
 
     export let node;
 
@@ -19,7 +19,7 @@
                 ],
             });
 
-            FeedService.publish(
+            StreamService.feedStream.publish(
                 "transaction",
                 `Transaction | From ${Format.shortenNodeAddress(
                     $userData.address

@@ -1,19 +1,11 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import StreamService from "$lib/services/stream";
+    import { feed } from "$lib/stores/streams/feed"
     import Message from "./_message.svelte";
-    import { feed } from "$lib/stores/feed";
-
-    function scrollFeedToBottom() {
-        const feed = document.querySelector("#feed");
-        if (!feed) return;
-        feed.scrollTo({
-            top: feed.scrollHeight,
-            behavior: "smooth",
-        });
-    }
 
     onMount(async () => {
-        scrollFeedToBottom();
+        StreamService.feedStream.scrollFeedToBottom();
     });
 </script>
 

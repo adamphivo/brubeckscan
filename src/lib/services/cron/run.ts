@@ -1,9 +1,9 @@
 import prisma from "$lib/clients/prisma";
 import { tasks } from "./tasks";
-import FeedService from "../feeds";
+import StreamService from "$lib/services/stream";
 
 export async function run() {
-    await FeedService.publish("cronRun", "CRON Run started 🤖");
+    await StreamService.feedStream.publish("cronRun", "CRON Run started 🤖");
     const start = Date.now();
 
     const results = await Promise.all(tasks.map(task => task()));
@@ -18,7 +18,7 @@ export async function run() {
         }
     });
     
-    await FeedService.publish("cronRun", `CRON Run done in ${runTimeInSeconds} seconds 🔥`);
+    await StreamService.feedStream.publish("cronRun", `CRON Run done in ${runTimeInSeconds} seconds 🔥`);
 
     return {
         finalStatus: "OK",

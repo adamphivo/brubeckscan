@@ -5,8 +5,8 @@
     import MdPoll from "svelte-icons/md/MdPoll.svelte";
     import MdBookmark from "svelte-icons/md/MdBookmark.svelte";
     import MdSearch from "svelte-icons/md/MdSearch.svelte";
-    import MdAllInclusive from "svelte-icons/md/MdAllInclusive.svelte";
     import TiSocialGithub from 'svelte-icons/ti/TiSocialGithub.svelte'
+    import FaBroadcastTower from 'svelte-icons/fa/FaBroadcastTower.svelte'
 </script>
 
 <div class="navigationIcons">
@@ -25,9 +25,9 @@
             <MdSearch />
         </div>
     </a>
-    <a href="/feed" title="Feed">
-        <div class="icon" class:active={$page.url.pathname === "/feed"}>
-            <MdAllInclusive />
+    <a href="/streams" title="Streams">
+        <div class="icon" class:active={$page.url.pathname === "/streams"}>
+            <FaBroadcastTower />
         </div>
     </a>
     {#if $userData}
