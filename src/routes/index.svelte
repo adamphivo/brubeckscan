@@ -11,4 +11,7 @@
 </section>
 
 <style lang="scss">
+    .modulePool {
+        gap: 100px;
+    }
 </style>

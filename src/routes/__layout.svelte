@@ -17,7 +17,7 @@
         <div in:fade class="sticky">
             <Header />
         </div>
-        <PageTitle title="BrubeckScan" />
+        <PageTitle />
         <div class="page" in:fade>
             <slot />
         </div>

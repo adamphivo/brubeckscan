@@ -1,11 +1,23 @@
 <script lang="ts">
+    import { BarLoader } from "svelte-loading-spinners";
 </script>
 
 <div class="loading">
     <div class="module">
-        <h2>Loading</h2>
+        <h1>BrubeckScan</h1>
+        <BarLoader />
     </div>
 </div>
 
 <style lang="scss">
+    .module {
+        font-size: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1 {
+            font-size: 30px;
+            font-weight: 600;
+        }
+    }
 </style>

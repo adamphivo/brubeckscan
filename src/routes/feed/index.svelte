@@ -4,6 +4,7 @@
     import { feed } from "$lib/stores/feed";
     import Consts from "$lib/consts";
     import Feed from "$lib/components/Feed/Feed.svelte";
+    import Loader from "$lib/components/Loader.svelte";
 
     async function bundle() {
         if (browser) {
@@ -39,31 +40,13 @@
 
 <div class="modulePool">
     {#await promise}
-        <div class="module">Loading</div>
+        <Loader/>
     {:then response}
         <Feed />
     {/await}
 </div>
 
 <style lang="scss">
-    .module {
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px;
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            background: linear-gradient(var(--color-black), #9198e500);
-        }
-    }
-
     .modulePool {
         display: flex;
         flex-direction: column;

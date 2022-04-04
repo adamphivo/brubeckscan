@@ -22,6 +22,7 @@
     "prisma": "^3.11.0",
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.6",
+    "svelte-loading-spinners": "^0.1.7",
     "svelte-preprocess": "^4.8.0",
     "ts-node": "^10.7.0",
     "tslib": "^2.3.1",
