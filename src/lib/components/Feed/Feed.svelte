@@ -31,8 +31,9 @@
         flex-grow: 1;
         gap: 15px;
         background-color: transparent;
-        max-height: 600px;
+        height: 700px;
         overflow-y: scroll;
+        background-color: rgb(20, 20, 20);
     }
 
     section.module {
@@ -41,5 +42,7 @@
     .feed {
         overflow-y: hidden;
         padding-bottom: 30px;
+        background-color: rgb(24, 22, 22);
+        border-radius: 0;
     }
 </style>

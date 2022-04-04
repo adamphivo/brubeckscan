@@ -32,7 +32,7 @@ Format.twoDecimals = (value: any) => {
 
 Format.timestamp = (timestamp: any) => {
     const date = new Date(timestamp);
-    return date.toUTCString();
+    return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 };
 
 export default Format;
