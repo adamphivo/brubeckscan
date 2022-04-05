@@ -55,7 +55,8 @@
 
 {#if $brubeckDataDerived}
     <div class="module graph">
-        <h3>Network topology (over the last 100 reward codes)</h3>
+        <h3>Network topology</h3>
+        <h4>Total number of nodes & number of received claims for each reward code</h4>
         <canvas id={GRAPH_ID} />
     </div>
 {/if}

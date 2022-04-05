@@ -5,7 +5,16 @@
 </script>
 
 <section class="modulePool">
+    <div class="module">
+        <p>Each tick of those charts represents one of the last 100 reward codes delivered to the network.</p>
+    </div>
     <Topology />
     <MissedClaims />
     <MeanPropagationDelays />
 </section>
+
+<style lang="scss">
+    .module {
+        width: 100%;
+    }
+</style>

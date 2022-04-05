@@ -48,7 +48,8 @@
 
 {#if $brubeckDataDerived}
     <div class="module graph">
-        <h3>Difference between topology size & received claims (over the last 100 reward codes)</h3>
+        <h3>Missed claims</h3>
+        <h4>Number of nodes that did not successfully claimed the reward code</h4>
         <canvas id={GRAPH_ID} />
     </div>
 {/if}

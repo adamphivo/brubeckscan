@@ -48,7 +48,11 @@
 
 {#if $brubeckDataDerived}
     <div class="module graph">
-        <h3>Mean propagation delays (over the last 100 reward codes)</h3>
+        <h3>Mean propagation delay</h3>
+        <h4>
+            Measure of the time required for a reward code to propagate from one end
+            of the network to the other.
+        </h4>
         <canvas id={GRAPH_ID} />
     </div>
 {/if}

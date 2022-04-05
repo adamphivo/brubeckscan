@@ -16,7 +16,7 @@
         color: var(--color-black);
         font-size: 28px;
         border-bottom: 2px solid var(--color-orange);
-        max-width: 1300px;
+        max-width: var(--site-max-width);
     }
 
     h2 {
