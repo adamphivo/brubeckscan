@@ -1,6 +1,7 @@
 <script lang="ts">
     export let action;
     export let text = "Button";
+    export let size = "16px";
 
     let status = "";
 
@@ -23,7 +24,7 @@
     }
 </script>
 
-<button on:click|preventDefault={wrap} class={status}>
+<button on:click|preventDefault={wrap} class={status} style:font-size={size}>
     <span>{text}</span>
 </button>
 

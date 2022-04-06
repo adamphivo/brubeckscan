@@ -3,9 +3,14 @@
     export let secondaryTitle = null;
 </script>
 
-<div class="module">
-    <h2>{$page.routeId || "BrubeckScan"} <span>{secondaryTitle ? secondaryTitle : ""}</span></h2>
-</div>
+<!-- {#if $page.routeId} -->
+    <div class="module">
+        <h2>
+            {$page.routeId || "BrubeckScan"}
+            <span>{secondaryTitle ? secondaryTitle : ""}</span>
+        </h2>
+    </div>
+<!-- {/if} -->
 
 <style lang="scss">
     .module {
@@ -18,6 +23,7 @@
         border-bottom: 2px solid var(--color-orange);
         max-width: var(--site-max-width);
         padding-bottom: 30px;
+        height: 75px;
     }
 
     h2 {

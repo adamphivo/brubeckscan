@@ -25,11 +25,11 @@
 </script>
 
 <div>
-    <Button text="Tip 🥳" action={tip} />
+    <Button text="Tip 🥳" action={tip} size="12px"/>
 </div>
 
 <style lang="scss">
     div {
-        font-size: 16px;
+        width: max-content;
     }
 </style>

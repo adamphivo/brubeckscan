@@ -30,6 +30,7 @@
     .modulePool {
         width: 100%;
         gap: 0;
+        padding-top: 50px;
     }
 
     .module {

@@ -62,13 +62,10 @@
     }
     
     .socials {
-        padding: 30px;
-        max-width: var(--site-max-width);
         display: flex;
         gap: 30px;
-        background-color: rgb(22, 22, 22);
         .icon {
-            width: 30px;
+            width: 25px;
             height: 30px;
             color: lightgray;
             &:hover {

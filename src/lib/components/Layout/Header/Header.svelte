@@ -62,6 +62,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 10px 0px;
+        height: 75px;
         @media (max-width: 1400px) {
             max-width: 100%;
             padding: 20px;
@@ -69,7 +70,7 @@
     }
     .secondRow {
         background-color: var(--color-black);
-        padding-bottom: 20px;
+        // padding-bottom: 20px;
     }
 
     .firstRow {

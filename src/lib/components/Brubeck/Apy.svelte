@@ -24,7 +24,6 @@
         justify-content: center;
         align-items: center;
         background-color: transparent;
-        width: 100%;
         span {
             color: var(--color-orange);
         }
