@@ -34,7 +34,7 @@
                 flex-direction: column;
                 font-weight: 900;
                 line-height: 32px;
-                gap: 30px;
+                gap: 60px;
                 .and {
                     color: var(--color-orange);
                 }

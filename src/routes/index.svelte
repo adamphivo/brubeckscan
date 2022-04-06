@@ -3,6 +3,7 @@
     import Presentation from "$lib/components/Brubeck/Presentation.svelte";
     import Run from "$lib/components/Brubeck/Run.svelte";
     import Apy from "$lib/components/Brubeck/Apy.svelte";
+    import Showcase from "$lib/components/Home/Showcase.svelte";
 </script>
 
 <section class="modulePool">
@@ -10,6 +11,7 @@
     <Presentation />
     <TotalDataStaked />
     <Apy />
+    <Showcase />
 </section>
 
 <style lang="scss">
