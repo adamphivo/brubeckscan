@@ -28,15 +28,29 @@
             justify-content: space-evenly;
             align-items: center;
             .text {
-                font-size: 30px;
+                font-size: 32px;
                 text-align: center;
                 display: flex;
                 flex-direction: column;
-                font-weight: 900;
+                font-weight: 500;
                 line-height: 32px;
                 gap: 60px;
                 .and {
                     color: var(--color-orange);
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .module {
+            width: 100%;
+            height: 500px;
+            margin-top: 0;
+            .content {
+                padding: 10px;
+                .text {
+                    font-size: 22px;
                 }
             }
         }

@@ -1,13 +1,17 @@
 <script lang="ts">
     import Tip from "./_Tip.svelte";
     import Socials from "./_Socials.svelte";
-    import TiSocialGithub from 'svelte-icons/ti/TiSocialGithub.svelte'
+    import TiSocialGithub from "svelte-icons/ti/TiSocialGithub.svelte";
     import { hasEthereum } from "$lib/stores/userData";
 </script>
 
 <footer class="footer">
     <section>
-        <a href="https://github.com/adamphivo/brubeckscan" target="_blank" title="GitHub">
+        <a
+            href="https://github.com/adamphivo/brubeckscan"
+            target="_blank"
+            title="GitHub"
+        >
             <div class="icon">
                 <TiSocialGithub />
             </div>
@@ -18,6 +22,10 @@
                 <div>
                     <Tip />
                 </div>
+            {:else}
+                <a href="https://metamask.io/download/" target="_blank">
+                    <button>Get MetaMask</button>
+                </a>
             {/if}
         </aside>
     </section>
@@ -31,10 +39,13 @@
         flex-direction: column;
         align-items: center;
         margin-top: 100px;
+        button {
+            width: max-content;
+        }
         section {
             width: 100%;
             max-width: var(--site-max-width);
-            background-color: rgb(0, 0, 0);
+            background-color: rgb(17, 17, 17);
             display: flex;
             justify-content: space-between;
             align-items: center;

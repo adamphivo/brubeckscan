@@ -34,7 +34,7 @@
                 {#if !isEditing}
                     <button on:click={() => (isEditing = true)}>Edit</button>
                 {:else}
-                    <Button text="Save" action={updateNodeName} />
+                    <Button text="Save" action={updateNodeName} size="14px"/>
                     <button
                         on:click={() => {
                             isEditing = false;
@@ -49,7 +49,7 @@
 
 <style lang="scss">
     td {
-        width: 300px;
+        width: 30%;
     }
     .cellContainer {
         display: flex;

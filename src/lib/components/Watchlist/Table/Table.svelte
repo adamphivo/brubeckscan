@@ -39,6 +39,7 @@
         padding: 0;
         max-width: 100%;
         overflow-x: scroll;
+        border-radius: 0;
     }
 
     th div {

@@ -19,7 +19,7 @@
     </div>
 {:else}
     <a href="https://metamask.io/download/" target="_blank">
-        <button>Get Metamask</button>
+        <button>Get MetaMask</button>
     </a>
 {/if}
 

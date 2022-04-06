@@ -12,9 +12,19 @@
 
 <div class="modulePool">
     <div class="module selector">
-        <div  class="tab {selectedPage === "overview" ? "active" : ""}" on:click={() => (selectedPage = "overview")}>Overview</div>
+        <div
+            class="tab {selectedPage === 'overview' ? 'active' : ''}"
+            on:click={() => (selectedPage = "overview")}
+        >
+            Overview
+        </div>
         <div>/</div>
-        <div class="tab {selectedPage === "watchlist" ? "active" : ""}" on:click={() => (selectedPage = "watchlist")}>Nodes ({$watchListSummary.count})</div>
+        <div
+            class="tab {selectedPage === 'watchlist' ? 'active' : ''}"
+            on:click={() => (selectedPage = "watchlist")}
+        >
+            Nodes ({$watchListSummary.count})
+        </div>
     </div>
     {#if selectedPage === "watchlist"}
         <Watchlist />

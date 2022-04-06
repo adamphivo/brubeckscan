@@ -91,4 +91,18 @@
         color: var(--color-orange);
         font-size: 22px;
     }
+
+    @media (max-width: 1200px){
+        .module {
+            width: 100%;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        .subTitle {
+            font-size: 16px;
+        }
+    }
 </style>

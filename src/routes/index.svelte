@@ -7,8 +7,10 @@
 </script>
 
 <section class="modulePool">
-    <Run />
-    <Presentation />
+    <div>
+        <Run />
+        <Presentation />
+    </div>
     <TotalDataStaked />
     <Apy />
     <Showcase />
@@ -17,5 +19,21 @@
 <style lang="scss">
     .modulePool {
         gap: 50px;
+    }
+
+    div {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    @media (max-width: 1200px) {
+        .modulePool {
+            gap: 30px;
+        }
+
+        div {
+            flex-direction: column-reverse;
+        }
     }
 </style>

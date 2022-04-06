@@ -30,11 +30,12 @@
             throw new Error();
         }
     }
+    const placeholder = "Enter a node public ETH key"
 </script>
 
 <div class="module">
     <div class="scanner">
-        <input bind:value={address} placeholder="Node ETH Public Key" />
+        <input bind:value={address} placeholder={placeholder} />
         <Button action={scan} text="Scan" />
     </div>
 </div>
@@ -46,7 +47,7 @@
         gap: 10px;
         input {
             flex-grow: 1;
-            font-size: 16px;
+            font-size: 18px;
         }
     }
 

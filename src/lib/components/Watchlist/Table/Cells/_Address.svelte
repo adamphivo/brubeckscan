@@ -6,7 +6,7 @@
 
     let copyText = "Copy";
 
-    function copyAddressToClipboard(toCopy: string) {
+    function copyAddressToClipboard() {
         navigator.clipboard.writeText(node.address);
         copyText = "Copied";
         setTimeout(() => (copyText = "Copy"), 2000);
@@ -21,7 +21,7 @@
         <div>
             {Format.shortenNodeAddress(node.address)}
         </div>
-        <button on:click={() => copyAddressToClipboard(node.address)}>
+        <button on:click={() => copyAddressToClipboard()}>
             {copyText}
         </button>
     </div>
@@ -35,5 +35,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        font-size: 14px;
+        padding: 0 20px;
     }
 </style>

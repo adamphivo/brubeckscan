@@ -3,21 +3,12 @@
     import { time } from "$lib/helpers/time";
 
     export let node;
-
-    let timeSinceLastClaim;
-
-    // Get the difference since last claim in minutes
-
-    // Format
-    const rtf1 = new Intl.RelativeTimeFormat("en", { style: "narrow" });
-    timeSinceLastClaim = rtf1.format(-1, "minutes");
-    console.log(node);
 </script>
 
 <td>
     <div class="container">
         {#if node?.claimedRewardCodes.length === 0}
-            <p class="ko" title="This node never claimed a reward code">~</p>
+            <p class="ko" title="This node never claimed a reward code">KO</p>
         {:else}
             {#if node?.claimedRewardCodes[0]?.id === $brubeckData?.lastCode}
                 <p class="ok" title="Claimed the latest reward code">OK</p>

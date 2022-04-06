@@ -18,6 +18,7 @@ export async function bundle() {
             hasEthereum.set(true);
 
             if ((window as any).ethereum.selectedAddress) {
+                console.log((window as any).ethereum.selectedAddress);
                 await UserService.login((window as any).ethereum.selectedAddress);
             }
 

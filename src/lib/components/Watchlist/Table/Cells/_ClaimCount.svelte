@@ -1,7 +1,6 @@
 <script lang="ts">
     import Format from "$lib/helpers/format";
     export let node;
-    console.log(node);
 </script>
 
 <td>

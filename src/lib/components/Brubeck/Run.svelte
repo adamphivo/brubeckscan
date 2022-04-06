@@ -4,10 +4,13 @@
 
 <div class="module">
     <img src={nodeLogsImage} alt="test" />
-    <a href="https://streamr.network/docs/streamr-network/installing-broker-node" target="_blank">
-            <button>
-                <span>Run a node</span>
-            </button>
+    <a
+        href="https://streamr.network/docs/streamr-network/installing-broker-node"
+        target="_blank"
+    >
+        <button>
+            <span>Run a node</span>
+        </button>
     </a>
 </div>
 
@@ -26,6 +29,13 @@
 
         a button span {
             font-size: 20px;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .module {
+            width: 100%;
+            margin-top: 0;
         }
     }
 </style>

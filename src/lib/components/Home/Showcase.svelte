@@ -26,19 +26,21 @@
         div {
             width: 100%;
             height: 500px;
-            background-position: top center;
+            background-position: top left;
             background-size: cover;
             position: relative;
             transform: rotateY(20deg) rotateX(20deg);
             border-radius: 5px;
+            margin-top: 50px;
+            margin-bottom: 50px;
             &::after {
                 content: "";
                 position: absolute;
                 top: 0;
                 left: 0;
                 background: linear-gradient(
-                    0deg,
-                    var(--color-black) 10%,
+                    -10deg,
+                    var(--color-black) 20%,
                     rgba(121, 0, 255, 0) 80%
                 );
                 width: 100%;
@@ -56,5 +58,24 @@
                 line-height: 45px;
             }
         }
+    }
+
+    @media (max-width: 1200px) {
+        div {
+            transform: unset;
+            background-size: cover;
+            background-position: center left;
+            height: 250px;
+        }
+        section {
+            width: 100%;
+            display: none;
+            p {
+                span {
+                    font-size: 22px;
+                }
+            }
+        }
+
     }
 </style>
