@@ -31,10 +31,14 @@
 {/if}
 
 <style lang="scss">
+    table {
+        width: 1400px;
+    }
     .module {
         width: 100%;
         padding: 0;
         max-width: 100%;
+        overflow-x: scroll;
     }
 
     th div {

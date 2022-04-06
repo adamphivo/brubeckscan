@@ -1,33 +1,20 @@
 <script lang="ts">
-    import Format from "$lib/helpers/format";
-    import Consts from "$lib/consts";
     import Tip from "./_Tip.svelte";
     import Socials from "./_Socials.svelte";
+    import TiSocialGithub from 'svelte-icons/ti/TiSocialGithub.svelte'
     import { hasEthereum, userData } from "$lib/stores/userData";
-    let copyText = "Copy";
-
-    function copyAddressToClipboard() {
-        navigator.clipboard.writeText(Consts.streamr.TIP_JAR_ADDRESS);
-        copyText = "Copied";
-        setTimeout(() => (copyText = "Copy"), 2000);
-    }
 </script>
 
 <footer class="footer">
     <Socials />
     <section>
-        <div>
-            <p>If you find this app useful, you can get me a coffee ☕</p>
-        </div>
-        <div class="tipInfo">
-            <div class="address">
-                ETH : {Format.shortenNodeAddress(
-                    Consts.streamr.TIP_JAR_ADDRESS
-                )}
+        <a href="https://github.com/adamphivo/brubeckscan" target="_blank" title="GitHub">
+            <div class="icon">
+                <TiSocialGithub />
             </div>
-            <button on:click={copyAddressToClipboard}>{copyText}</button>
-            {#if $hasEthereum && $userData}
-                <span>or</span>
+        </a>
+        <div class="tipInfo">
+            {#if $hasEthereum}
                 <div>
                     <Tip />
                 </div>
@@ -48,8 +35,8 @@
         section {
             width: 100%;
             max-width: var(--site-max-width);
-            background-color: rgb(20, 20, 22);
-            padding: 10px 30px;
+            background-color: rgb(0, 0, 0);
+            padding: 20px 30px;
             display: flex;
             gap: 30px;
             justify-content: space-between;
@@ -68,6 +55,15 @@
                     flex-direction: column;
                 }
             }
+        }
+    }
+    .icon {
+        padding: 5px;
+        width: 40px;
+        transition-duration: 0.2s;
+        color: gray;
+        &:hover {
+            color: white;
         }
     }
 </style>

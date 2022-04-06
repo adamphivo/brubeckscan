@@ -5,7 +5,6 @@
     import MdPoll from "svelte-icons/md/MdPoll.svelte";
     import MdBookmark from "svelte-icons/md/MdBookmark.svelte";
     import MdSearch from "svelte-icons/md/MdSearch.svelte";
-    import TiSocialGithub from 'svelte-icons/ti/TiSocialGithub.svelte'
     import FaBroadcastTower from 'svelte-icons/fa/FaBroadcastTower.svelte'
 </script>
 
@@ -40,11 +39,6 @@
             </div>
         </a>
     {/if}
-    <a href="https://github.com/adamphivo/brubeckscan" target="_blank" title="GitHub">
-        <div class="icon" class:active={$page.url.pathname === ""}>
-            <TiSocialGithub />
-        </div>
-    </a>
 </div>
 
 <style lang="scss">
