@@ -3,14 +3,12 @@
     export let secondaryTitle = null;
 </script>
 
-<!-- {#if $page.routeId} -->
-    <div class="module">
-        <h2>
-            {$page.routeId || "BrubeckScan"}
-            <span>{secondaryTitle ? secondaryTitle : ""}</span>
-        </h2>
-    </div>
-<!-- {/if} -->
+<div class="module">
+    <h2>
+        {$page.routeId || "BrubeckScan"}
+        <span>{secondaryTitle ? secondaryTitle : ""}</span>
+    </h2>
+</div>
 
 <style lang="scss">
     .module {

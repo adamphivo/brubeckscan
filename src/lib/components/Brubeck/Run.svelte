@@ -21,7 +21,7 @@
         align-items: center;
         gap: 100px;
         img {
-            width: 250px;
+            width: 150px;
         }
 
         a button span {
