@@ -2,10 +2,12 @@
     import Row from "$lib/components/Watchlist/Table/Row.svelte";
     import { watchListData } from "$lib/stores/userData";
     import QuickAddNode from "./_QuickAddNode.svelte";
+    import Configuration from "./Configuration.svelte";
 </script>
 
 {#if $watchListData}
     {#if $watchListData.length}
+        <Configuration />
         <div class="module">
             <table>
                 <thead>

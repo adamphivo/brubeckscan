@@ -13,7 +13,7 @@
                 <p>Total accumulated rewards in DATA</p>
             </div>
             <div class="value">
-                <p>{$watchListSummary.totalRewardsInData}</p>
+                <p>{Format.twoDecimals($watchListSummary.totalRewardsInData)}</p>
                 <p>DATA</p>
                 <Data />
             </div>
