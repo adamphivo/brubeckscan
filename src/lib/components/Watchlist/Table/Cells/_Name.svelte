@@ -1,6 +1,9 @@
 <script lang="ts">
     import { send } from "$lib/helpers/send";
     import Button from "$lib/components/Elements/Button.svelte";
+    import MdModeEdit from "svelte-icons/md/MdModeEdit.svelte";
+    import MdSave from "svelte-icons/md/MdSave.svelte";
+    import MdClose from "svelte-icons/md/MdClose.svelte";
 
     export let node;
 
@@ -32,15 +35,29 @@
             </div>
             <div>
                 {#if !isEditing}
-                    <button on:click={() => (isEditing = true)}>Edit</button>
+                    <button on:click={() => (isEditing = true)}>
+                        <div class="iconi">
+                            <MdModeEdit />
+                        </div>
+                    </button>
                 {:else}
-                    <Button text="Save" action={updateNodeName} size="14px"/>
+                    <button
+                        on:click={updateNodeName}
+                    >
+                        <div class="iconi">
+                            <MdSave />
+                        </div>
+                    </button>
                     <button
                         on:click={() => {
                             isEditing = false;
                             nodeName = node.dataDB.name;
-                        }}>Quit</button
+                        }}
                     >
+                        <div class="iconi">
+                            <MdClose />
+                        </div>
+                    </button>
                 {/if}
             </div>
         </div>
@@ -50,6 +67,12 @@
 <style lang="scss">
     td {
         width: 30%;
+    }
+    .iconi {
+        width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .cellContainer {
         display: flex;

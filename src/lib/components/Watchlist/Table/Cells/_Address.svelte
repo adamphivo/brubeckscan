@@ -1,15 +1,16 @@
 <script lang="ts">
     import Format from "$lib/helpers/format";
     import { userData } from "$lib/stores/userData";
+    import MdContentCopy from "svelte-icons/md/MdContentCopy.svelte";
 
     export let node;
 
-    let copyText = "Copy";
+    let copyText = "";
 
     function copyAddressToClipboard() {
         navigator.clipboard.writeText(node.address);
         copyText = "Copied";
-        setTimeout(() => (copyText = "Copy"), 2000);
+        setTimeout(() => (copyText = ""), 2000);
     }
 
     let background =
@@ -21,15 +22,25 @@
         <div>
             {Format.shortenNodeAddress(node.address)}
         </div>
-        <button on:click={() => copyAddressToClipboard()}>
-            {copyText}
-        </button>
+        <div on:click={() => copyAddressToClipboard()}>
+            {#if copyText}
+                {copyText}
+            {:else}
+            <div class="iconi" title="Copy address to clipboard">
+                <MdContentCopy />
+            </div>
+            {/if}
+        </div>
     </div>
 </td>
 
 <style lang="scss">
     td {
         width: 20%;
+    }
+    .iconi {
+        width: 20px;
+        cursor: pointer;
     }
     .container {
         display: flex;

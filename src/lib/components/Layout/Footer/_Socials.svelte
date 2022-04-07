@@ -66,7 +66,6 @@
         gap: 30px;
         .icon {
             width: 25px;
-            height: 30px;
             color: lightgray;
             &:hover {
                 color: var(--color-orange);

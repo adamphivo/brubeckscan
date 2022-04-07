@@ -4,13 +4,17 @@
     import { send } from "$lib/helpers/send";
     import UserService from "$lib/services/user";
     import { validate } from "$lib/helpers/validate";
+    import MdAdd from "svelte-icons/md/MdAdd.svelte";
 
     let address = "";
     let error = "";
 
     async function add() {
         const alreadyRegistered = $watchListData.find((node) => {
-            return node.address === address || node.address === address.toLowerCase();
+            return (
+                node.address === address ||
+                node.address === address.toLowerCase()
+            );
         });
 
         if (alreadyRegistered) {
@@ -49,7 +53,11 @@
         placeholder="Enter a node ETH public address to add it to your watchlist"
         bind:value={address}
     />
-    <Button text="Add" action={add} />
+    <button on:click={add}>
+        <div class="iconi">
+            <MdAdd />
+        </div>
+    </button>
 </div>
 
 <style lang="scss">
@@ -61,6 +69,13 @@
         input {
             flex-grow: 1;
         }
+    }
+
+    .iconi {
+        width: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     span {

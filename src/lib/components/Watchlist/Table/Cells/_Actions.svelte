@@ -4,6 +4,8 @@
     import { send } from "$lib/helpers/send";
     import Button from "$lib/components/Elements/Button.svelte";
     import StreamService from "$lib/services/stream";
+    import MdSend from "svelte-icons/md/MdSend.svelte";
+    import MdRemove from "svelte-icons/md/MdRemove.svelte";
 
     export let node;
 
@@ -53,12 +55,20 @@
     <div class="buttonContainer">
         {#if node.address != $userData.address}
             <div title="Send funds to this address">
-                <Button text="Send" action={sendFund} />
+                <button on:click={sendFund}>
+                    <div class="iconi">
+                        <MdSend />
+                    </div>
+                </button>
             </div>
             <button
                 on:click={unwatch}
-                title="Remove this node from your watchlist">Remove</button
+                title="Remove this node from your watchlist"
             >
+                <div class="iconi">
+                    <MdRemove />
+                </div>
+            </button>
         {:else}
             <div class="owner">Owner</div>
         {/if}
@@ -71,6 +81,14 @@
         justify-content: center;
         gap: 10px;
         padding: 20px;
+    }
+
+    .iconi {
+        width: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .owner {

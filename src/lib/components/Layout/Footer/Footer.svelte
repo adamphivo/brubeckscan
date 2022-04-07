@@ -45,11 +45,11 @@
         section {
             width: 100%;
             max-width: var(--site-max-width);
-            background-color: rgb(17, 17, 17);
+            background-color: transparent;
+            padding: 30px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 30px;
             @media (max-width: 1400px) {
                 flex-direction: column;
                 text-align: center;
