@@ -4,6 +4,7 @@
     import Chart from "chart.js/auto/auto.js";
     import { watchListSummary } from "$lib/stores/userData";
     import { userDataSets } from "$lib/stores/userData";
+    import Format from "$lib/helpers/format";
 
     const GRAPH_ID = "userTotalData";
 
@@ -68,7 +69,7 @@
 {#if $userDataSets}
     <div class="module graph">
         <h3>Total Accumulated Rewards</h3>
-        <h4>{$watchListSummary.totalRewardsInData} <span>DATA</span></h4>
+        <h4>{Format.twoDecimals($watchListSummary.totalRewardsInData)} <span>DATA</span></h4>
         <canvas id={GRAPH_ID} />
     </div>
 {/if}

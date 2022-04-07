@@ -11,7 +11,11 @@
         {#if $selectedCurrency === "data"}
             <p class="dataC">{node.rewardsInData}</p>
         {:else if $selectedCurrency === "usdt"}
-            <p class="usdt">{Format.twoDecimals(node.rewardsInData * $marketPrices.DATAUSDT)}</p>
+            <p class="usdt">
+                {Format.twoDecimals(
+                    node.rewardsInData * $marketPrices.DATAUSDT
+                )}
+            </p>
         {/if}
     </div>
 </td>
@@ -27,7 +31,7 @@
     }
 
     .dataC {
-        color: var(--color-orange);
+        color: rgb(167, 112, 99);
     }
 
     .usdt {

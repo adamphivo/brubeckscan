@@ -36,12 +36,12 @@
 
     .icon {
         padding: 10px;
-        border-bottom: 5px solid transparent;
+        border-bottom: 3px solid transparent;
         &:hover {
             cursor: pointer;
         }
     }
     .active {
-        border-bottom: 5px solid whitesmoke;
+        border-bottom: 3px solid whitesmoke;
     }
 </style>
