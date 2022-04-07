@@ -1,11 +1,15 @@
 <script lang="ts">
     import Format from "$lib/helpers/format";
+    import { page } from "$app/stores";
+    import { onMount } from "svelte";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
     import { marketPrices } from "$lib/stores/marketPrices";
     import { userData } from "$lib/stores/userData";
     import Bookmark from "./_Bookmark.svelte";
     import Usdt from "$lib/components/Branding/Logos/_Tether.svelte";
     import Data from "$lib/components/Branding/Logos/_Data.svelte";
+    import { send } from "$lib/helpers/send";
+    import { validate } from "$lib/helpers/validate";
 
     $: isUserOwner = $userData?.address === $scannedNodeData?.address;
 
@@ -16,6 +20,27 @@
         copyText = "Copied";
         setTimeout(() => (copyText = "Copy"), 2000);
     }
+
+    onMount(async () => {
+        const address = $page.url.searchParams.get('address');
+        if (address) {
+            if (validate.ethAddress(address)) {
+                const response = await send(
+                    "GET",
+                    `brubeck/node/${address.toLowerCase()}.json`
+                );
+                const node = await response.json();
+
+                if (node) {
+                    $scannedNodeData = node;
+                }
+            } else {
+                throw new Error();
+            }
+        } else {
+            throw new Error();
+        }
+    })
 </script>
 
 {#if $scannedNodeData}
