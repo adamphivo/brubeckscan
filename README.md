@@ -1,11 +1,10 @@
 # BrubeckScan
 
-BrubeckScan allow node runners on the Brubeck network to manage their nodes and keep track of their rewards.
+BrubeckScan allow node runners to manage their nodes and keep track of their rewards.
 
-### TODO
+## Stack
 
-- [X] Refacto Feeds -> Streams
-- [X] Improve Loader
-- [ ] Improve Status in WatchList
-- [ ] Improve node name editing UX
-- [ ] Add Currency Selector in WatchList
+- [SvelteKit](https://kit.svelte.dev/)
+- [Prisma](https://www.prisma.io/)
+- [Streamr](https://streamr.network/)
+
