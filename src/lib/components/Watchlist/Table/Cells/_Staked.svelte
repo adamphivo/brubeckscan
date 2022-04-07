@@ -1,6 +1,7 @@
 <script lang="ts">
     import Format from "$lib/helpers/format";
     import { marketPrices } from "$lib/stores/marketPrices";
+    import { selectedCurrency } from "$lib/stores/selectedCurrency";
 
     export let node;
 
@@ -9,12 +10,15 @@
 
 <td>
     <div class:isWarning>
-        <div>
-            {Format.tokenValue(node.dataStaked)}
-        </div>
-        <!-- <div>
-            ({Format.twoDecimals(node.dataStaked * $marketPrices.DATAUSDT)} USDT)
-        </div> -->
+        {#if $selectedCurrency === "data"}
+            <div class="dataC">
+                {Format.tokenValue(node.dataStaked)}
+            </div>
+        {:else if $selectedCurrency === "usdt"}
+            <div class="usdt">
+                {Format.twoDecimals(node.dataStaked * $marketPrices.DATAUSDT)}
+            </div>
+        {/if}
     </div>
 </td>
 
@@ -29,5 +33,13 @@
         &.isWarning {
             color: rgb(199, 199, 67);
         }
+    }
+
+    .dataC {
+        color: var(--color-orange);
+    }
+
+    .usdt {
+        color: rgb(100, 218, 161);
     }
 </style>
