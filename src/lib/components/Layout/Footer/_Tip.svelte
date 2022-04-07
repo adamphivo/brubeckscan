@@ -3,6 +3,7 @@
     import { userData } from "$lib/stores/userData";
     import Button from "$lib/components/Elements/Button.svelte";
     import StreamService from "$lib/services/stream";
+    import Connect from "$lib/components/Layout/Header/_Connect.svelte";
 
     async function tip() {
         try {
@@ -16,16 +17,24 @@
                 ],
             });
 
-            await StreamService.feedStream.publish("tip", `${Format.shortenNodeAddress($userData.address)} just tipped ! Thank you 🙏`);
-
-        } catch(e){
+            await StreamService.feedStream.publish(
+                "tip",
+                `${Format.shortenNodeAddress(
+                    $userData.address
+                )} just tipped ! Thank you 🙏`
+            );
+        } catch (e) {
             throw e;
         }
     }
 </script>
 
 <div>
-    <Button text="Tip 🥳" action={tip} size="12px"/>
+    {#if $userData}
+        <Button text="Tip 🥳" action={tip} size="12px" />
+    {:else}
+        <Connect />
+    {/if}
 </div>
 
 <style lang="scss">
