@@ -10,7 +10,7 @@
 
     async function add() {
         const alreadyRegistered = $watchListData.find((node) => {
-            return node.address === address;
+            return node.address === address || node.address === address.toLowerCase();
         });
 
         if (alreadyRegistered) {
