@@ -31,7 +31,7 @@
     }
 
     .dataC {
-        color: rgb(167, 112, 99);
+        color: var(--color-orange);
     }
 
     .usdt {

@@ -1,22 +1,20 @@
 <script lang="ts">
     import { selectedCurrency } from "$lib/stores/selectedCurrency";
-    import Data from "$lib/components/Branding/Logos/_Data.svelte";
-    import Usdt from "$lib/components/Branding/Logos/_Tether.svelte";
 </script>
 
 <div class="module">
     <div class="buttonContainer">
         <div
             on:click={() => ($selectedCurrency = "data")}
-            class="icon {$selectedCurrency === "data" ? "active" : ""}"
+            class="dataC {$selectedCurrency === 'data' ? 'active' : ''}"
         >
-            <Data />
+            <button>Data</button>
         </div>
         <div
             on:click={() => ($selectedCurrency = "usdt")}
-            class="icon {$selectedCurrency === "usdt" ? "active" : ""}"
+            class="usdt {$selectedCurrency === 'usdt' ? 'active' : ''}"
         >
-            <Usdt />
+            <button>Usdt</button>
         </div>
     </div>
 </div>
@@ -29,19 +27,19 @@
         .buttonContainer {
             display: flex;
             flex-direction: row;
-            align-items: stretch;
             gap: 10px;
         }
     }
 
-    .icon {
-        padding: 10px;
-        border-bottom: 3px solid transparent;
-        &:hover {
-            cursor: pointer;
+    .active.usdt {
+        button {
+            color: rgb(100, 218, 161);
         }
     }
-    .active {
-        border-bottom: 3px solid whitesmoke;
+
+    .active.dataC {
+        button {
+            color: var(--color-orange);
+        }
     }
 </style>

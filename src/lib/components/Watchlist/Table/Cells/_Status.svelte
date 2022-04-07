@@ -13,7 +13,7 @@
             {#if node?.claimedRewardCodes[0]?.id === $brubeckData?.lastCode}
                 <p class="ok" title="Claimed the latest reward code">OK</p>
             {:else}
-                <p class="yellow" title="Did not claim the latest reward code">
+                <p class="yellow" title="Reward code distribution ongoing">
                     ~
                 </p>
             {/if}
