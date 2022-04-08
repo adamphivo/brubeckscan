@@ -1,7 +1,6 @@
 <script lang="ts">
     import { browser } from "$app/env";
-    import streamr from "$lib/clients/streamr";  
-    import Consts from "$lib/consts";
+    import streamr from "$lib/clients/streamr";
     import Streams from "$lib/components/Streams/Streams.svelte";
     import Loader from "$lib/components/Elements/Loader.svelte";
     import StreamService from "$lib/services/stream";
@@ -11,7 +10,7 @@
             await StreamService.unsubscribeAll();
 
             const feedStream = await streamr.getOrCreateStream({
-                id: Consts.streamr.FEED_STREAM_ID,
+                id: import.meta.env.VITE_STREAMR_FEED_STREAMID as string,
             });
 
             const feedSubscription = await streamr.subscribe(feedStream.id, StreamService.feedStream.onMessage);
