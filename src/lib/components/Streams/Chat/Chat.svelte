@@ -14,6 +14,8 @@
             $userData.profile.gradient,
             message.trim()
         );
+
+        message = "";
     }
 </script>
 
@@ -26,7 +28,7 @@
         </form>
     {:else}
         <div class="module connect">
-            <p>Connect to participate </p>
+            <p>Connect to participate</p>
             <Connect />
         </div>
     {/if}
