@@ -2,6 +2,8 @@ import UserService from "$lib/services/user";
 import UserDAO from "$lib/dao/user";
 import WatchlistService from "$lib/services/watchlist";
 import prisma from "$lib/clients/prisma";
+import StreamService from "$lib/services/stream";
+import Format from "$lib/helpers/format";
 
 export async function saveUsersStats() {
     const users = await UserDAO.getAllUsers();
@@ -14,7 +16,7 @@ export async function saveUsersStats() {
         totalClaimCount: 0,
     };
 
-    for (const user of users) {
+    const promises = users.map(async (user) => {
         const watchList = await UserService.getWatchlist(user.nodes);
         const computed = WatchlistService.reduce(watchList);
         const formated = {
@@ -40,11 +42,17 @@ export async function saveUsersStats() {
         appStat.totalDataStaked += computed.totalDataStaked;
         appStat.totalRewardsInData += computed.totalRewardsInData;
         appStat.totalClaimCount += computed.totalClaimCount;
-    }
+    })
+
+    await Promise.all(promises);
 
     const savedAppStat = await prisma.appStat.create({
         data: appStat
     });
+
+    await StreamService.feedStream.publish("brubeckScanStat", `BRUBECKSCAN STAT | All users nodes watched : ${appStat.totalNodesWatched} 🕶`);
+    await StreamService.feedStream.publish("brubeckScanStat", `BRUBECKSCAN STAT | All users data staked : ${Format.tokenValue(appStat.totalDataStaked)} DATA 💪`);
+    await StreamService.feedStream.publish("brubeckScanStat", `BRUBECKSCAN STAT | All users cumulated rewards : ${Format.tokenValue(appStat.totalRewardsInData)} DATA 🥳`);
 
     return savedAppStat;
 }

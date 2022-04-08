@@ -1,5 +1,4 @@
 import streamr from "$lib/clients/streamr";
-import Consts from "$lib/consts";
 import { feed } from "$lib/stores/streams/feed";
 
 const feedStream = () => { };
@@ -11,7 +10,7 @@ feedStream.publish = async (type: string, content: string) => {
     };
 
     await streamr.publish(
-        `0xd9925689cb36bfc3e2f82ddacda21c231e126ee8${Consts.streamr.FEED_STREAM_ID}`,
+        `0xd9925689cb36bfc3e2f82ddacda21c231e126ee8${import.meta.env.VITE_STREAMR_FEED_STREAMID}`,
         msg
     );
 };

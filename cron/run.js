@@ -12,7 +12,18 @@ cron.schedule("*/1 * * * *", async () => {
 
     const response = await fetch("http://localhost:3000/api/cron/hello.json", init);
     const data = await response.json();
-    console.log(data);
+});
+
+cron.schedule("*/1 * * * *", async () => {
+    const init = {
+        method: "GET",
+        headers: {
+            internalToken: process.env.VITE_AUTH_TOKEN
+        }
+    };
+
+    const response = await fetch("http://localhost:3000/api/cron/cleanup.json", init);
+    const data = await response.json();
 });
 
 cron.schedule("*/30 * * * *", async () => {
