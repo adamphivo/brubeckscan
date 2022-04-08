@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { onMount } from "svelte";
+    import { onMount, onDestroy } from "svelte";
     import StreamService from "$lib/services/stream";
-    import { feed } from "$lib/stores/streams/feed"
+    import { feed } from "$lib/stores/streams/feed";
     import Message from "./_message.svelte";
 
     onMount(async () => {
@@ -33,7 +33,7 @@
     section.module {
         padding: 0;
     }
-    
+
     .feed {
         overflow-y: hidden;
         padding-bottom: 30px;

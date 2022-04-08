@@ -1,6 +1,8 @@
 <script lang="ts">
     import StreamService from "$lib/services/stream";
+    import { onDestroy } from "svelte";
     import { userData } from "$lib/stores/userData";
+    import { chatMessages } from "$lib/stores/streams/chat";
     import Messages from "./Messages.svelte";
     import Connect from "$lib/components/Layout/Header/_Connect.svelte";
 
