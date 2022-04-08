@@ -5,6 +5,7 @@
     import Graph from "$lib/components/Watchlist/_Graph.svelte";
     import Watchlist from "$lib/components/Watchlist/Watchlist.svelte";
     import Summary from "$lib/components/Watchlist/_Summary.svelte";
+    import ApyApr from "$lib/components/Brubeck/ApyApr.svelte";
     import { watchListSummary } from "$lib/stores/userData";
     import { watchlistTab } from "$lib/stores/selectedTabs";
 </script>
@@ -32,6 +33,7 @@
     {#if $watchlistTab === "overview"}
         <Graph />
         <Summary />
+        <ApyApr />
     {/if}
 </div>
 

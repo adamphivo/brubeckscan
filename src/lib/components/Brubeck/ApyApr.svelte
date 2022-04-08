@@ -53,57 +53,6 @@
                 <span>%</span>
             </div>
         </div>
-        <div class="separator" />
-        <div class="data">
-            <div class="label">
-                <p>24H DATA STAKED</p>
-            </div>
-            <div class="value">
-                <p>{Format.tokenValue($brubeckData.apy["24h-data-staked"])}</p>
-                <p>DATA</p>
-                <Data />
-            </div>
-        </div>
-        <div class="separator" />
-        <div class="data">
-            <div class="label">
-                <p>24H DATA STAKED USDT</p>
-            </div>
-            <div class="value">
-                {Format.tokenValue(
-                    $brubeckData.apy["24h-data-staked"] * $marketPrices.DATAUSDT
-                )}
-                <p>USDT</p>
-                <Usdt />
-            </div>
-        </div>
-        <div class="separator" />
-        <div class="data">
-            <div class="label">
-                <p>SPOT DATA STAKED</p>
-            </div>
-            <div class="value">
-                <p>{Format.tokenValue($brubeckData.apy["spot-data-staked"])}</p>
-                <p>DATA</p>
-                <Data />
-            </div>
-        </div>
-        <div class="separator" />
-        <div class="data">
-            <div class="label">
-                <p>SPOT DATA STAKED USDT</p>
-            </div>
-            <div class="value">
-                <p>
-                    {Format.tokenValue(
-                        $brubeckData.apy["spot-data-staked"] *
-                            $marketPrices.DATAUSDT
-                    )}
-                </p>
-                <p>USDT</p>
-                <Usdt />
-            </div>
-        </div>
     </div>
 {/if}
 
@@ -112,6 +61,7 @@
         width: 100%;
         justify-content: space-between;
         gap: 15px;
+        margin-top: 50px;
     }
     span {
         color: rgb(59, 212, 59);
