@@ -31,10 +31,6 @@
         align-items: center;
     }
 
-    .announce {
-        font-size: 12px;
-    }
-
     .text {
         color: var(--color-orange);
     }
@@ -48,10 +44,6 @@
         align-items: center;
         justify-content: center;
         gap: 20px;
-
-        a {
-            text-decoration: none;
-        }
     }
     .container {
         position: sticky;
