@@ -11,9 +11,6 @@
         <div class="logo">
             <h1>BrubeckScan</h1>
             <div class="apy">{$brubeckData.apy["24h-APY"]}<span class="text">%</span> APY</div>
-            <a href="/streams">
-                <div class="announce">[v1.0.7] A chatroom is now available for users 🎉</div>
-            </a>
         </div>
         <div>
             {#if !$userData}
@@ -42,7 +39,7 @@
         color: var(--color-orange);
     }
     .apy {
-        padding: 5px;
+        padding: 7px;
         border: 1px solid lightgray;
         font-size: 12px;
     }

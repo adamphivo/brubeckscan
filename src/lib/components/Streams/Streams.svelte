@@ -1,28 +1,27 @@
 <script lang="ts">
     import Feed from "$lib/components/Streams/Feed/Feed.svelte";
     import Chat from "$lib/components/Streams/Chat/Chat.svelte";
-
-    let selected = "feed";
+    import { streamTab } from "$lib/stores/selectedTabs";
 </script>
 
 <section>
     <div class="module selector">
         <div
-            class="tab {selected === 'feed' ? 'active' : ''}"
-            on:click={() => (selected = "feed")}
+            class="tab {$streamTab === 'feed' ? 'active' : ''}"
+            on:click={() => ($streamTab = "feed")}
         >
             Feed
         </div>
         <div
-            class="tab {selected === 'chat' ? 'active' : ''}"
-            on:click={() => (selected = "chat")}
+            class="tab {$streamTab === 'chat' ? 'active' : ''}"
+            on:click={() => ($streamTab = "chat")}
         >
             Chat
         </div>
     </div>
-    {#if selected === "feed"}
+    {#if $streamTab === "feed"}
         <Feed />
-    {:else if selected === "chat"}
+    {:else if $streamTab === "chat"}
         <Chat />
     {/if}
 </section>

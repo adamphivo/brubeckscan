@@ -13,12 +13,12 @@
     <div class="socials">
         <a href="https://github.com/streamr-dev" target="_blank">
             <div class="icon">
-                <FaDiscord />
+                <FaGithubSquare />
             </div>
         </a>
         <a href="https://discord.gg/gZAm8P7hK8" target="_blank">
             <div class="icon">
-                <FaGithubSquare />
+                <FaDiscord />
             </div>
         </a>
         <a href="https://twitter.com/streamr" target="_blank">

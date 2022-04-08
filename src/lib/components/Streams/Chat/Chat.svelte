@@ -1,8 +1,6 @@
 <script lang="ts">
     import StreamService from "$lib/services/stream";
-    import { onDestroy } from "svelte";
     import { userData } from "$lib/stores/userData";
-    import { chatMessages } from "$lib/stores/streams/chat";
     import Messages from "./Messages.svelte";
     import Connect from "$lib/components/Layout/Header/_Connect.svelte";
 
@@ -28,7 +26,7 @@
         </form>
     {:else}
         <div class="module connect">
-            <p>Connect to participate</p>
+            <p>Connect to chat</p>
             <Connect />
         </div>
     {/if}
@@ -58,6 +56,7 @@
         align-items: center;
         gap: 10px;
         background-color: rgb(19, 18, 18);
+        border: 1px solid white;
         padding: 30px;
         p {
             font-weight: 700;
