@@ -18,7 +18,6 @@
         >
             Overview
         </div>
-        <div>/</div>
         <div
             class="tab {$watchlistTab === 'watchlist' ? 'active' : ''}"
             on:click={() => ($watchlistTab = "watchlist")}

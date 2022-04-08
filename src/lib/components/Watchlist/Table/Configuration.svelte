@@ -8,13 +8,13 @@
             on:click={() => ($selectedCurrency = "data")}
             class="dataC {$selectedCurrency === 'data' ? 'active' : ''}"
         >
-            <button>Data</button>
+            <button>DATA</button>
         </div>
         <div
             on:click={() => ($selectedCurrency = "usdt")}
             class="usdt {$selectedCurrency === 'usdt' ? 'active' : ''}"
         >
-            <button>Usdt</button>
+            <button>USDT</button>
         </div>
     </div>
 </div>
