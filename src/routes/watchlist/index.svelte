@@ -6,31 +6,30 @@
     import Watchlist from "$lib/components/Watchlist/Watchlist.svelte";
     import Summary from "$lib/components/Watchlist/_Summary.svelte";
     import { watchListSummary } from "$lib/stores/userData";
-
-    let selectedPage = "overview";
+    import { watchlistTab } from "$lib/stores/selectedTabs";
 </script>
 
 <div class="modulePool">
     <div class="module selector">
         <div
-            class="tab {selectedPage === 'overview' ? 'active' : ''}"
-            on:click={() => (selectedPage = "overview")}
+            class="tab {$watchlistTab === 'overview' ? 'active' : ''}"
+            on:click={() => ($watchlistTab = "overview")}
         >
             Overview
         </div>
         <div>/</div>
         <div
-            class="tab {selectedPage === 'watchlist' ? 'active' : ''}"
-            on:click={() => (selectedPage = "watchlist")}
+            class="tab {$watchlistTab === 'watchlist' ? 'active' : ''}"
+            on:click={() => ($watchlistTab = "watchlist")}
         >
             Nodes ({$watchListSummary.count})
         </div>
     </div>
-    {#if selectedPage === "watchlist"}
+    {#if $watchlistTab === "watchlist"}
         <Watchlist />
     {/if}
 
-    {#if selectedPage === "overview"}
+    {#if $watchlistTab === "overview"}
         <Graph />
         <Summary />
     {/if}
@@ -40,7 +39,6 @@
     .modulePool {
         width: 100%;
         gap: 0;
-        padding-top: 50px;
     }
 
     .module {
