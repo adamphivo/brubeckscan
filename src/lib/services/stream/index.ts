@@ -1,5 +1,6 @@
 import streamr from "$lib/clients/streamr";
 import { feedStream } from "./feed";
+import { chatStream } from "./chat";
 
 const StreamService = () => {};
 
@@ -8,5 +9,6 @@ StreamService.unsubscribeAll = async () => {
 };
 
 StreamService.feedStream = feedStream;
+StreamService.chatStream = chatStream;
 
 export default StreamService;
