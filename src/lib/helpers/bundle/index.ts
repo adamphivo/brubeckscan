@@ -8,7 +8,7 @@ import { attachEvents } from "./_attachEvents";
 export async function bundle() {
     if (browser) {
         await Promise.all([
-            StateService.updateBrubeckStats(), 
+            StateService.updateMarketPrices(), 
             StateService.updateBrubeckStats(),
             StateService.setBrubeckHistory(),
             StreamService.bundle()
