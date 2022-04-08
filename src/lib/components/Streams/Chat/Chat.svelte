@@ -26,7 +26,7 @@
         </form>
     {:else}
         <div class="module connect">
-            <p>Connect to chat</p>
+            <p>Start using the chat</p>
             <Connect />
         </div>
     {/if}

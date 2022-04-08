@@ -38,7 +38,7 @@
                 throw new Error();
             }
         } else {
-            throw new Error();
+            return {};
         }
     })
 </script>

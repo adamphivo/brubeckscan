@@ -84,9 +84,7 @@
         display: flex;
         justify-content: space-evenly;
         gap: 15px;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border-top-right-radius: 0;
+        border-radius: 0;
         @media (max-width: 1400px){
             width: 100%;
         }

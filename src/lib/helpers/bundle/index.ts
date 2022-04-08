@@ -4,18 +4,15 @@ import StateService from "$lib/services/state";
 import StreamService from "$lib/services/stream";
 import { hasEthereum } from "$lib/stores/userData";
 import { attachEvents } from "./_attachEvents";
-import { loadingStatus } from "$lib/stores/loadingStatus";
 
 export async function bundle() {
     if (browser) {
-        loadingStatus.set('Fetching market prices')
-        await StateService.updateMarketPrices();
-        loadingStatus.set('Fetching BrubeckStats')
-        await StateService.updateBrubeckStats();
-        loadingStatus.set('Gathering data history')
-        await StateService.setBrubeckHistory();
-        loadingStatus.set('Getting streams')
-        await StreamService.bundle();
+        await Promise.all([
+            StateService.updateBrubeckStats(), 
+            StateService.updateBrubeckStats(),
+            StateService.setBrubeckHistory(),
+            StreamService.bundle()
+        ]);
 
         if (window as any) {
             if (typeof (window as any).ethereum === "undefined") {

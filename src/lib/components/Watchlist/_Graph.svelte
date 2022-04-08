@@ -77,9 +77,7 @@
 <style lang="scss">
     .module {
         flex-grow: 1;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+        border-radius: 0;
     }
 
     h4 {

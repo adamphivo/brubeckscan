@@ -61,7 +61,7 @@
         width: 100%;
         justify-content: space-between;
         gap: 15px;
-        margin-top: 50px;
+        border-radius: 0%;
     }
     span {
         color: rgb(59, 212, 59);

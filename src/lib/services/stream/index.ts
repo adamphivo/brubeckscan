@@ -1,7 +1,6 @@
 import streamr from "$lib/clients/streamr";
 import { feedStream } from "./feed";
 import { chatStream } from "./chat";
-import { STREAMR_STORAGE_NODE_GERMANY } from "streamr-client";
 
 const StreamService = () => { };
 
@@ -12,25 +11,21 @@ StreamService.unsubscribeAll = async () => {
 StreamService.bundle = async () => {
     await StreamService.unsubscribeAll();
 
-    const feedStream = await streamr.getOrCreateStream({
+    const getFeed = await streamr.getOrCreateStream({
         id: import.meta.env.VITE_STREAMR_FEED_STREAMID as string,
     });
 
-    const chatStream = await streamr.getOrCreateStream({
+    const getChat = await streamr.getOrCreateStream({
         id: import.meta.env.VITE_STREAMR_CHAT_STREAMID as string,
     });
 
-    const chatStorage = await chatStream.getStorageNodes();
-
-    if (chatStorage.length === 0) {
-        await chatStream.addToStorageNode(STREAMR_STORAGE_NODE_GERMANY);
-    }
+    const [ feedStream, chatStream ] = await Promise.all([getFeed, getChat]);
 
     const sub1  = streamr.subscribe(
         {
             id: chatStream.id,
             resend: {
-                last: 100,
+                last: 50,
             },
         },
         StreamService.chatStream.onMessage
