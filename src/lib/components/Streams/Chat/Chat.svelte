@@ -1,0 +1,63 @@
+<script lang="ts">
+    import StreamService from "$lib/services/stream";
+    import { userData } from "$lib/stores/userData";
+    import Messages from "./Messages.svelte";
+    import Connect from "$lib/components/Layout/Header/_Connect.svelte";
+
+    let message = "";
+
+    async function submit() {
+        await StreamService.chatStream.publish(
+            $userData.address,
+            $userData.profile.gradient,
+            message.trim()
+        );
+    }
+</script>
+
+<section class="module">
+    <Messages />
+    {#if $userData}
+        <form on:submit|preventDefault={submit}>
+            <input type="text" bind:value={message} required />
+            <button type="submit" value="Submit">Send</button>
+        </form>
+    {:else}
+        <div class="module connect">
+            <p>Connect to participate </p>
+            <Connect />
+        </div>
+    {/if}
+</section>
+
+<style lang="scss">
+    .module {
+        width: 100%;
+        border-radius: 0;
+        padding: 0;
+        gap: 0;
+    }
+
+    form {
+        display: flex;
+        width: 100%;
+        padding: 30px;
+        gap: 10px;
+        input {
+            flex-grow: 1;
+        }
+    }
+
+    .connect {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        background-color: rgb(19, 18, 18);
+        padding: 30px;
+        p {
+            font-weight: 700;
+            font-size: 20px;
+        }
+    }
+</style>

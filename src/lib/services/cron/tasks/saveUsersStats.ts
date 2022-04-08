@@ -5,6 +5,19 @@ import prisma from "$lib/clients/prisma";
 import StreamService from "$lib/services/stream";
 import Format from "$lib/helpers/format";
 
+function chunk(items, size) {
+    const chunks = []
+    items = [].concat(...items)
+
+    while (items.length) {
+        chunks.push(
+            items.splice(0, size)
+        )
+    }
+
+    return chunks
+}
+
 export async function saveUsersStats() {
     const users = await UserDAO.getAllUsers();
 
@@ -44,7 +57,11 @@ export async function saveUsersStats() {
         appStat.totalClaimCount += computed.totalClaimCount;
     })
 
-    await Promise.all(promises);
+    const chunks = chunk(promises, 50);
+
+    for (const chunk of chunks) {
+        await Promise.all(chunk);
+    }
 
     const savedAppStat = await prisma.appStat.create({
         data: appStat
