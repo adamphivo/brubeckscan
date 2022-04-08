@@ -10,7 +10,7 @@
     <div class="module">
         <div class="data">
             <div class="label">
-                <p>Total accumulated rewards in DATA</p>
+                <p>Accumulated rewards in DATA</p>
             </div>
             <div class="value">
                 <p>{Format.twoDecimals($watchListSummary.totalRewardsInData)}</p>
@@ -21,7 +21,7 @@
         <div class="separator"></div>
         <div class="data">
             <div class="label">
-                <p>Total accumulated rewards in USDT</p>
+                <p>Accumulated rewards in USDT</p>
             </div>
             <div class="value">
                 <p>
@@ -37,7 +37,7 @@
         <div class="separator"></div>
         <div class="data">
             <div class="label">
-                <p>Total DATA staked</p>
+                <p>DATA staked</p>
             </div>
             <div class="value">
                 <p>{Format.tokenValue($watchListSummary.totalDataStaked)}</p>
@@ -48,7 +48,7 @@
         <div class="separator"></div>
         <div class="data">
             <div class="label">
-                <p>Total staked value in USDT</p>
+                <p>Stake value in USDT</p>
             </div>
             <div class="value">
                 <p>
@@ -64,7 +64,7 @@
         <div class="separator"></div>
         <div class="data">
             <div class="label">
-                <p>Total accumulated claim count</p>
+                <p>Accumulated claim count</p>
             </div>
             <div class="value">
                 <p>

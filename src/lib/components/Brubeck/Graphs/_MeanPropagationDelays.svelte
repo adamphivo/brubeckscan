@@ -51,7 +51,7 @@
         <h3>Mean propagation delay</h3>
         <h4>
             Measure of the time required for a reward code to propagate from one end
-            of the network to the other.
+            of the network to the other
         </h4>
         <canvas id={GRAPH_ID} />
     </div>

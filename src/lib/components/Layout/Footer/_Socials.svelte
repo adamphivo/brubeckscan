@@ -66,9 +66,9 @@
         gap: 30px;
         .icon {
             width: 25px;
-            color: lightgray;
+            color: rgb(91, 87, 87);
             &:hover {
-                color: var(--color-orange);
+                color: whitesmoke;
                 transition-duration: 0.3s;
             }
         }

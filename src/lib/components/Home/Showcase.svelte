@@ -6,7 +6,7 @@
 <section>
     <p>
         <span>Try out</span>
-        <span>the</span>
+        <span>new</span>
         <span>monitoring tools</span>
     </p>
     <span>

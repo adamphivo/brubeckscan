@@ -19,22 +19,21 @@
         gap: 0;
         background-position: center;
         background-color: transparent;
-        height: calc(100vh - 325px);
-        margin-top: 50px;
+        height: calc(100vh - 275px);
         .content {
             flex-grow: 1;
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
             align-items: center;
+            max-width: 500px;
             .text {
                 font-size: 32px;
                 text-align: center;
                 display: flex;
                 flex-direction: column;
-                font-weight: 500;
-                line-height: 32px;
-                gap: 60px;
+                line-height: 52px;
+                gap: 30px;
                 .and {
                     color: var(--color-orange);
                 }

@@ -18,7 +18,7 @@
                     borderColor: "#F65F0A",
                     borderWidth: 1,
                     data: $userDataSets.rewardsInData,
-                    pointRadius: 0,
+                    pointRadius: 1,
                     fill: true,
                 },
             ],

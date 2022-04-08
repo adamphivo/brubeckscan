@@ -18,7 +18,7 @@
         width: 100%;
     }
     p {
-        font-size: 18px;
-        font-weight: 700;
+        font-size: 16px;
+        font-weight: 500;
     }
 </style>
