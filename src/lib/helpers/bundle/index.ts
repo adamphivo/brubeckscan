@@ -14,7 +14,7 @@ export async function bundle() {
         await StateService.updateBrubeckStats();
         loadingStatus.set('Gathering data history')
         await StateService.setBrubeckHistory();
-        loadingStatus.set('Setting Streamr client up')
+        loadingStatus.set('Getting streams')
         await StreamService.bundle();
 
         if (window as any) {
