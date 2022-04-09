@@ -4,19 +4,7 @@ import WatchlistService from "$lib/services/watchlist";
 import prisma from "$lib/clients/prisma";
 import StreamService from "$lib/services/stream";
 import Format from "$lib/helpers/format";
-
-function chunk(items, size) {
-    const chunks = []
-    items = [].concat(...items)
-
-    while (items.length) {
-        chunks.push(
-            items.splice(0, size)
-        )
-    }
-
-    return chunks
-}
+import { chunk } from "$lib/helpers/chunk";
 
 export async function saveUsersStats() {
     const users = await UserDAO.getAllUsers();
@@ -34,9 +22,9 @@ export async function saveUsersStats() {
         const computed = WatchlistService.reduce(watchList);
         const formated = {
             totalNodes: computed.count,
-            totalDataStaked: computed.totalDataStaked,
-            totalRewardsInData: computed.totalRewardsInData,
-            totalClaimCount: computed.totalClaimCount
+            totalDataStaked: Math.round(computed.totalDataStaked),
+            totalRewardsInData: Math.round(computed.totalRewardsInData),
+            totalClaimCount: Math.round(computed.totalClaimCount)
         };
 
         await prisma.user.update({
@@ -57,7 +45,7 @@ export async function saveUsersStats() {
         appStat.totalClaimCount += computed.totalClaimCount;
     })
 
-    const chunks = chunk(promises, 50);
+    const chunks = chunk(promises, 20);
 
     for (const chunk of chunks) {
         await Promise.all(chunk);
