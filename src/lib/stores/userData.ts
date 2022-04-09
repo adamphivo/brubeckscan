@@ -29,7 +29,8 @@ export const userDataSets = derived(userData, (userData) => {
 
     if (userData.watchlistStats) {
         for (const stat of userData.watchlistStats) {
-            labels.push(stat.createdAt);
+            const date = new Date(stat.createdAt);
+            labels.push(`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`);
             rewardsInData.push(stat.totalRewardsInData);
         }
     }

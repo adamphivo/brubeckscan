@@ -5,7 +5,6 @@ export const brubeckData = writable({
     apy: {},
     lastCode: ""
 });
-
 export const brubeckDataHistory = writable(null as any);
 
 export const brubeckDataHistorySets = derived(brubeckDataHistory, (brubeckDataHistory) => {
@@ -14,7 +13,8 @@ export const brubeckDataHistorySets = derived(brubeckDataHistory, (brubeckDataHi
     let totalDataStaked = [];
 
     for (const stat of brubeckDataHistory) {
-        labels.push(stat.createdAt);
+        const date = new Date(stat.createdAt);
+        labels.push(`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`);
         totalDataStaked.push(stat.dailyDataStaked);
         apys.push(stat.dailyAPY);
     }

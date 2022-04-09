@@ -18,7 +18,7 @@
                     borderWidth: 1,
                     fill: true,
                     data: $brubeckDataHistorySets.totalDataStaked,
-                    pointRadius: 0
+                    pointRadius: 1
                 },
             ],
         };
@@ -67,7 +67,10 @@
 
 <div class="module graph">
     <h3>TVL<span class="subTitle">( Total Value Locked )</span></h3>
-    <h4 class="tvl">{Format.tokenValue($brubeckData.apy['24h-data-staked'] * $marketPrices.DATAUSDT)} USDT</h4>
+    <h4 class="tvl">
+            <span class="DATA">{Format.tokenValue($brubeckData.apy['24h-data-staked'])} DATA</span>
+            ( <span class="USDT">{Format.tokenValue($brubeckData.apy['24h-data-staked'] * $marketPrices.DATAUSDT)} USDT</span> )
+    </h4>
     <canvas id={GRAPH_ID} />
 </div>
 
@@ -83,12 +86,20 @@
         font-size: 24px;
     }
 
+    .DATA {
+        color: var(--color-orange);
+    }
+
+    .USDT {
+        color: rgb(100, 218, 161);
+    }
+
     .subTitle {
         color: rgb(145, 138, 138);
+        font-size: 16px;
     }
 
     .tvl {
-        color: var(--color-orange);
         font-size: 22px;
     }
 
