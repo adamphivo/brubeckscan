@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Row from "$lib/components/Watchlist/Table/Row.svelte";
+    import Row from "$lib/components/Watchlist/List/Table/Row.svelte";
     import { watchListData } from "$lib/stores/userData";
     import QuickAddNode from "./_QuickAddNode.svelte";
     import Configuration from "./Configuration.svelte";

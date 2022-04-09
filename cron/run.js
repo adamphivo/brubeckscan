@@ -10,8 +10,7 @@ cron.schedule("*/1 * * * *", async () => {
         }
     };
 
-    const response = await fetch("http://localhost:3000/api/cron/hello.json", init);
-    const data = await response.json();
+    await fetch("http://localhost:3000/api/cron/hello.json", init);
 });
 
 cron.schedule("*/1 * * * *", async () => {
@@ -22,8 +21,7 @@ cron.schedule("*/1 * * * *", async () => {
         }
     };
 
-    const response = await fetch("http://localhost:3000/api/cron/cleanup.json", init);
-    const data = await response.json();
+    await fetch("http://localhost:3000/api/cron/cleanup.json", init);
 });
 
 cron.schedule("*/30 * * * *", async () => {
@@ -34,7 +32,5 @@ cron.schedule("*/30 * * * *", async () => {
         }
     };
 
-    const response = await fetch("http://localhost:3000/api/cron/run.json", init);
-    const data = await response.json();
-    console.log(data);
+    await fetch("http://localhost:3000/api/cron/run.json", init);
 });
