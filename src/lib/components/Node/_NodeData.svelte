@@ -98,6 +98,28 @@
         <div class="separator"></div>
         <div class="data">
             <div class="label">
+                <p>Received DATA</p>
+            </div>
+            <div class="value">
+                <p>{Format.tokenValue($scannedNodeData.dataSent)}</p>
+                <p>DATA</p>
+                <Data />
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="data">
+            <div class="label">
+                <p>DATA to be received</p>
+            </div>
+            <div class="value">
+                <p>{Format.tokenValue($scannedNodeData.rewardsInData - $scannedNodeData.dataSent)}</p>
+                <p>DATA</p>
+                <Data />
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="data">
+            <div class="label">
                 <p>Staked DATA</p>
             </div>
             <div class="value">

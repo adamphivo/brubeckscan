@@ -14,10 +14,12 @@
                     <tr>
                         <th><div>ETH address</div></th>
                         <th><div>Node Name</div></th>
-                        <th><div>Rewards</div></th>
-                        <th><div>Stake</div></th>
-                        <th><div>Claim count</div></th>
                         <th><div>Status</div></th>
+                        <th><div>Total rewards</div></th>
+                        <th><div>Already received</div></th>
+                        <th><div>To be received</div></th>
+                        <th><div>Staked</div></th>
+                        <th><div>Claim count</div></th>
                         <th><div>Actions</div></th>
                     </tr>
                 </thead>
@@ -34,7 +36,7 @@
 
 <style lang="scss">
     table {
-        width: 1400px;
+        width: 1600px;
     }
     .module {
         width: 100%;

@@ -11,6 +11,7 @@ export async function getWatchlist(nodes: any) {
         responses.map((response) => response.json())
     );
 
+    // Aggregate external data to internal db data about nodes
     const decoratedWatchlist = data.map(item => {
         const dataDB = nodes.find((node) => node.address === item.address);
         item.dataDB = dataDB;
