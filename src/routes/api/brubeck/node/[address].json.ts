@@ -2,6 +2,7 @@ import { appCache } from "$lib/helpers/cache";
 import Consts from "$lib/consts";
 import { formatNodeData } from "./_formatNodeData";
 import { requestDataStaked } from "./_getDataStaked";
+import { getDataSent } from "./_getDataSent";
 
 export async function get({ params }) {
     try {
@@ -20,6 +21,7 @@ export async function get({ params }) {
             });
 
             requests.push(requestDataStaked(params.address));
+            requests.push(getDataSent(params.address));
 
             const responses = await Promise.all(requests);
 

@@ -36,7 +36,7 @@
 
 <style lang="scss">
     td {
-        width: 20%;
+        width: 300px;
     }
     .iconi {
         width: 20px;

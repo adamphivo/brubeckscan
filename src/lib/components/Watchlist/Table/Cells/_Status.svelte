@@ -34,6 +34,7 @@
         align-items: center;
         height: 100%;
         position: relative;
+        width: 150px;
     }
 
     p {
