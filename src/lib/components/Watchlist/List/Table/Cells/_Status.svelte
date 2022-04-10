@@ -3,8 +3,11 @@
   import { brubeckData } from "$lib/stores/brubeckData";
   export let node;
   const now = new Date();
-  const latestClaim = new Date(node?.claimedRewardCodes[0]?.claimTime);
-  const distance = formatDistance(latestClaim, now, { addSuffix: true });
+  let distance: string;
+  if (node?.claimedRewardCodes[0]) {
+    const latestClaim = new Date(node?.claimedRewardCodes[0]?.claimTime);
+    distance = formatDistance(latestClaim, now, { addSuffix: true });
+  }
   const hasClaimedTheLatestKnownCode = node?.claimedRewardCodes.find(
     (code) => code.id === $brubeckData.lastCode
   );
@@ -18,7 +21,9 @@
       {#if hasClaimedTheLatestKnownCode}
         <p class="ok" title="This node claimed the latest reward code">OK</p>
       {:else}
-        <p class="ko" title="This node did not claimed the latest reward code">KO</p>
+        <p class="ko" title="This node did not claimed the latest reward code">
+          KO
+        </p>
       {/if}
       <p title="Last reward code claimed">{distance}</p>
     {/if}
