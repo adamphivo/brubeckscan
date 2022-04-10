@@ -1,5 +1,5 @@
 import { derived, writable } from "svelte/store";
-import { reduce } from "$lib/services/watchlist/reduce";
+import { getTotals } from "$lib/services/watchlist/getTotals";
 
 export const hasEthereum = writable(false as any);
 
@@ -13,7 +13,7 @@ export const watchListSummary = derived(watchListData, (watchListData) => {
 
     if (watchListData.length === 0) return null;
 
-    const computed = reduce(watchListData);
+    const computed = getTotals(watchListData);
 
     return computed;
 });

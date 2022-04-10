@@ -1,4 +1,4 @@
-export function reduce(watchlist: any) {
+export function getTotals(watchlist: any) {
     let totalDataStaked = 0;
     let totalRewardsInData = 0;
     let totalClaimCount = 0;
@@ -6,9 +6,9 @@ export function reduce(watchlist: any) {
 
     watchlist.forEach((node) => {
         totalDataStaked += parseInt(node.dataStaked);
-        totalRewardsInData += node.rewardsInData;
-        totalClaimCount += node.claimCount;
-        totalDataSent += node.dataSent;
+        totalRewardsInData += +node.rewardsInData || 0;
+        totalClaimCount += +node.claimCount || 0;
+        totalDataSent += +node.dataSent || 0;
     });
 
     return {
