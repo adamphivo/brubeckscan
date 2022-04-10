@@ -32,6 +32,7 @@ model CronRun {
   createdAt        DateTime @default(now())
   runTimeInSeconds Float
   finalStatus      Int
+  errorMessage     String?
 }
 
 model AppStat {
