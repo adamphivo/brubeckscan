@@ -6,8 +6,6 @@
     import { marketPrices } from "$lib/stores/marketPrices";
     import { userData } from "$lib/stores/userData";
     import Bookmark from "./_Bookmark.svelte";
-    import Usdt from "$lib/components/Branding/Logos/_Tether.svelte";
-    import Data from "$lib/components/Branding/Logos/_Data.svelte";
     import { send } from "$lib/helpers/send";
     import { validate } from "$lib/helpers/validate";
 
@@ -77,7 +75,6 @@
             <div class="value">
                 <p>{Format.tokenValue($scannedNodeData.rewardsInData)}</p>
                 <p>DATA</p>
-                <Data />
             </div>
         </div>
         <div class="separator"></div>
@@ -92,7 +89,6 @@
                     )}
                 </p>
                 <p>USDT</p>
-                <Usdt />
             </div>
         </div>
         <div class="separator"></div>
@@ -103,7 +99,6 @@
             <div class="value">
                 <p>{Format.tokenValue($scannedNodeData.dataSent)}</p>
                 <p>DATA</p>
-                <Data />
             </div>
         </div>
         <div class="separator"></div>
@@ -114,7 +109,6 @@
             <div class="value">
                 <p>{Format.tokenValue($scannedNodeData.rewardsInData - $scannedNodeData.dataSent)}</p>
                 <p>DATA</p>
-                <Data />
             </div>
         </div>
         <div class="separator"></div>
@@ -125,7 +119,6 @@
             <div class="value">
                 <p>{Format.tokenValue($scannedNodeData.dataStaked)}</p>
                 <p>DATA</p>
-                <Data />
             </div>
         </div>
         <div class="separator"></div>
@@ -140,7 +133,6 @@
                     )}
                 </p>
                 <p>USDT</p>
-                <Usdt />
             </div>
         </div>
         <div class="separator"></div>

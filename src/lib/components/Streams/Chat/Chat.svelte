@@ -18,15 +18,16 @@
 </script>
 
 <section class="module">
-    <Messages />
     {#if $userData}
+    <div class="messages {$userData ? "" : "blurred"}">
+        <Messages />
+    </div>
         <form on:submit|preventDefault={submit}>
             <input type="text" bind:value={message} required />
             <button type="submit" value="Submit">Send</button>
         </form>
     {:else}
         <div class="module connect">
-            <p>Start using the chat</p>
             <Connect />
         </div>
     {/if}
@@ -54,13 +55,23 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 10px;
+        gap: 30px;
         background-color: rgb(19, 18, 18);
         border: 1px solid white;
         padding: 30px;
-        p {
-            font-weight: 700;
-            font-size: 20px;
-        }
+    }
+
+    .messages {
+        position: relative;
+    }
+
+    .blurred::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(26, 25, 25);
     }
 </style>

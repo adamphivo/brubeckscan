@@ -1,9 +1,5 @@
 <script lang="ts">
     import { brubeckData } from "$lib/stores/brubeckData";
-    import { marketPrices } from "$lib/stores/marketPrices";
-    import Usdt from "$lib/components/Branding/Logos/_Tether.svelte";
-    import Data from "$lib/components/Branding/Logos/_Data.svelte";
-    import Format from "$lib/helpers/format";
 </script>
 
 {#if $brubeckData.apy}

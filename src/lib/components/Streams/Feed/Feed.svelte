@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount, onDestroy } from "svelte";
+    import { onMount } from "svelte";
     import StreamService from "$lib/services/stream";
     import { feed } from "$lib/stores/streams/feed";
     import Message from "./_message.svelte";

@@ -3,13 +3,14 @@
     import StreamService from "$lib/services/stream";
     import { chatMessages } from "$lib/stores/streams/chat";
     import Message from "./_message.svelte";
+    import { userData } from "$lib/stores/userData";
 
     onMount( async () => {
         await StreamService.chatStream.scrollToBottom();
     })
 </script>
 
-<section class="module" id="chat">
+<section id="chat" class="module">
     {#if $chatMessages.length > 0}
         {#each $chatMessages as message}
             <div>
@@ -21,6 +22,7 @@
 
 <style lang="scss">
     .module {
+        position: relative;
         width: 100%;
         padding: 0;
         border-radius: 0;
