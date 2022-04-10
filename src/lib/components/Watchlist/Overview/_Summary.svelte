@@ -94,7 +94,7 @@
     <div class="separator" />
     <div class="data">
       <div class="label">
-        <p>Accumulated claim count</p>
+        <p>Claim count</p>
       </div>
       <div class="value">
         <p>
