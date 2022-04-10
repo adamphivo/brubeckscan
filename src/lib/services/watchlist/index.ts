@@ -1,7 +1,7 @@
-import { reduce } from "./reduce";
+import { getTotals } from "./getTotals";
 
-const WatchlistService = () => { };
+const WatchlistService = () => {};
 
-WatchlistService.reduce = reduce;
+WatchlistService.getTotals = getTotals;
 
 export default WatchlistService;

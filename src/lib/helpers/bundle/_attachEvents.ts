@@ -10,14 +10,12 @@ export async function attachEvents() {
 }
 
 async function onDisconnect(error: any) {
-    console.log('disconnect');
     StateService.clearAuthSession();
     console.log(error);
     goto("/");
 }
 
 async function onAccountsChanged(accounts: any) {
-    console.log('account changed');
     if (accounts.length > 0) {
         await UserService.login(accounts[0]);
     } else {
