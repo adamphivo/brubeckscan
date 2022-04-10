@@ -10,6 +10,8 @@
   import { validate } from "$lib/helpers/validate";
   import { selectedScanCurrency } from "$lib/stores/selectedCurrency";
   import CurrencySelector from "./_CurrencySelector.svelte";
+  import { formatDistance } from "date-fns";
+  import { brubeckData } from "$lib/stores/brubeckData";
 
   $: isUserOwner = $userData?.address === $scannedNodeData?.address;
 
@@ -20,6 +22,13 @@
     copyText = "Copied";
     setTimeout(() => (copyText = "Copy"), 2000);
   }
+
+  const now = new Date();
+  $: latestClaim = new Date($scannedNodeData.claimedRewardCodes[0]?.claimTime);
+  $: distance = formatDistance(latestClaim, now, { addSuffix: true });
+  $: hasClaimedTheLatestKnownCode = $scannedNodeData.claimedRewardCodes.find(
+    (code) => code.id === $brubeckData.lastCode
+  );
 
   onMount(async () => {
     const address = $page.url.searchParams.get("address");
@@ -59,15 +68,15 @@
     {/if}
     <div />
     <div class="data">
-        <div class="label">
-            <p>Node ETH Public Address</p>
-        </div>
-        <div class="value">
-            <p>
-                {Format.shortenNodeAddress($scannedNodeData.address)}
-            </p>
-            <button on:click={copyAddressToClipboard}>{copyText}</button>
-        </div>
+      <div class="label">
+        <p>Node ETH Public Address</p>
+      </div>
+      <div class="value">
+        <p>
+          {Format.shortenNodeAddress($scannedNodeData.address)}
+        </p>
+        <button on:click={copyAddressToClipboard}>{copyText}</button>
+      </div>
     </div>
     <div class="separator" />
     <CurrencySelector />
@@ -137,16 +146,14 @@
         {#if $selectedScanCurrency === "data"}
           <p>
             {Format.twoDecimals(
-              $scannedNodeData.rewardsInData -
-                $scannedNodeData.dataSent
+              $scannedNodeData.rewardsInData - $scannedNodeData.dataSent
             )}
           </p>
           <p class="currency {$selectedScanCurrency}">DATA</p>
         {:else}
           <p>
             {Format.twoDecimals(
-              ($scannedNodeData.rewardsInData -
-                $scannedNodeData.dataSent) *
+              ($scannedNodeData.rewardsInData - $scannedNodeData.dataSent) *
                 $marketPrices["DATAUSDT"]
             )}
           </p>
@@ -166,6 +173,31 @@
             ? "s"
             : ""}
         </p>
+      </div>
+    </div>
+    <div class="separator" />
+    <div class="data">
+      <div class="label"><p>Status / Latest claim</p></div> 
+      <div class="value">
+        <div class="container">
+          {#if $scannedNodeData.claimedRewardCodes.length === 0}
+            <p class="ko" title="This node never claimed a reward code">KO</p>
+          {:else}
+            {#if hasClaimedTheLatestKnownCode}
+              <p class="ok" title="This node claimed the latest reward code">
+                OK
+              </p>
+            {:else}
+              <p
+                class="ko"
+                title="This node did not claimed the latest reward code"
+              >
+                KO
+              </p>
+            {/if}
+            <p title="Last reward code claimed">{distance}</p>
+          {/if}
+        </div>
       </div>
     </div>
   </div>
@@ -197,5 +229,22 @@
 
   .currency.usdt {
     color: rgb(100, 218, 161);
+  }
+
+  .value {
+    display: flex;
+    align-items: center;
+  }
+
+  .container {
+    display: flex;
+    gap: 32px;
+  }
+
+  .ok {
+    color: lightgreen;
+  }
+  .ko {
+    color: rgb(226, 88, 88);
   }
 </style>
