@@ -5,21 +5,29 @@ export async function getWatchlist(nodes: any) {
     if (!nodes || nodes.length === 0) throw new Error("Empty watchlist");
 
     const requests = nodes.map((node) => {
-      return send("GET", `brubeck/node/${node.address}.json`);
+      if(node.address){
+        return send("GET", `brubeck/node/${node.address}.json`);
+      }
     });
 
     const responses = await Promise.all(requests);
 
     const data = await Promise.all(
-      responses.map((response) => response.json())
+      responses.map((response) => {
+        if(response.ok){
+          return response.json();
+        }
+      })
     );
 
     // Aggregate external data to internal db data about nodes
     const decoratedWatchlist = data.map((item) => {
       const dataDB = nodes.find(
-        (node) => node.address.toLowerCase() === item.address.toLowerCase()
+        (node) => node.address.toLowerCase() === item?.address.toLowerCase()
       );
-      item.dataDB = dataDB;
+      if(item){
+        item.dataDB = dataDB;
+      }
       return item;
     });
 

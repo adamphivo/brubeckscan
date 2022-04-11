@@ -15,10 +15,10 @@ export function getTotals(watchlist: any) {
   }
 
   watchlist.forEach((node) => {
-    totalDataStaked += parseInt(node.dataStaked);
-    totalRewardsInData += +node.rewardsInData || 0;
-    totalClaimCount += +node.claimCount || 0;
-    totalDataSent += +node.dataSent || 0;
+    totalDataStaked += parseInt(node?.dataStaked);
+    totalRewardsInData += +node?.rewardsInData || 0;
+    totalClaimCount += +node?.claimCount || 0;
+    totalDataSent += +node?.dataSent || 0;
   });
 
   return {
