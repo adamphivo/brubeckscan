@@ -16,6 +16,6 @@ module.exports = {
     "rules": {
         "semi": ["error", "always"],
         "quotes": ["error", "double"],
-        "max-lines": ["error", { "max": 50, "skipComments": true }]
+        "max-lines": ["error", { "max": 100, "skipComments": true }]
     }
 }
