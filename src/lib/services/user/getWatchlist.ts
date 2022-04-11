@@ -2,6 +2,8 @@ import { send } from "$lib/helpers/send";
 
 export async function getWatchlist(nodes: any) {
   try {
+    if (!nodes || nodes.length === 0) throw new Error("Empty watchlist");
+
     const requests = nodes.map((node) => {
       return send("GET", `brubeck/node/${node.address}.json`);
     });
@@ -14,20 +16,25 @@ export async function getWatchlist(nodes: any) {
 
     // Aggregate external data to internal db data about nodes
     const decoratedWatchlist = data.map((item) => {
-      const dataDB = nodes.find((node) => node.address === item.address);
+      const dataDB = nodes.find(
+        (node) => node.address.toLowerCase() === item.address.toLowerCase()
+      );
       item.dataDB = dataDB;
       return item;
     });
 
-    decoratedWatchlist.sort((a: any, b: any) => {
-      const sort =
-        (new Date(a.dataDB.createdAt) as any) -
-        (new Date(b.dataDB.createdAt) as any);
-      return sort;
-    });
+    if (decoratedWatchlist.length > 1) {
+      decoratedWatchlist.sort((a: any, b: any) => {
+        const sort =
+          (new Date(a.dataDB.createdAt) as any) -
+          (new Date(b.dataDB.createdAt) as any);
+        return sort;
+      });
+    }
 
     return decoratedWatchlist;
   } catch (e) {
-    return e;
+    console.log(e);
+    return null;
   }
 }
