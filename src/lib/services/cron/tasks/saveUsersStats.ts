@@ -34,7 +34,7 @@ export async function saveUsersStats() {
     return updatedUser;
   });
 
-  const chunks = chunk(promises, 32);
+  const chunks = chunk(promises, 20);
 
   for (const chunk of chunks) {
     const results = await Promise.allSettled(chunk);
