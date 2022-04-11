@@ -23,12 +23,19 @@
     setTimeout(() => (copyText = "Copy"), 2000);
   }
 
+  let latestClaim;
+  let distance;
+  let hasClaimedTheLatestKnownCode;
+
   const now = new Date();
-  $: latestClaim = new Date($scannedNodeData.claimedRewardCodes[0]?.claimTime);
-  $: distance = formatDistance(latestClaim, now, { addSuffix: true });
-  $: hasClaimedTheLatestKnownCode = $scannedNodeData.claimedRewardCodes.find(
-    (code) => code.id === $brubeckData.lastCode
-  );
+  
+  if($scannedNodeData){
+    latestClaim = new Date($scannedNodeData?.claimedRewardCodes[0]?.claimTime);
+    distance = formatDistance(latestClaim, now, { addSuffix: true });
+    hasClaimedTheLatestKnownCode = $scannedNodeData?.claimedRewardCodes.find(
+      (code) => code.id === $brubeckData.lastCode
+    );
+  }
 
   onMount(async () => {
     const address = $page.url.searchParams.get("address");
