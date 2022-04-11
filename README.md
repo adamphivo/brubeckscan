@@ -1,8 +1,10 @@
 # BrubeckScan
 
-BrubeckScan allow node runners to manage their nodes and keep track of their rewards.
+## Description
 
-## Stack
+BrubeckScan is a dApp used by node runners of the Streamr mainnet to check nodes statuses and earnings.
+
+## External ressources
 
 - [SvelteKit](https://kit.svelte.dev/)
 - [Prisma](https://www.prisma.io/)
