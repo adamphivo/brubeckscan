@@ -3,14 +3,13 @@
   import { selectedCurrency } from "$lib/stores/selectedCurrency";
   import { marketPrices } from "$lib/stores/marketPrices";
   import Format from "$lib/helpers/format";
-  console.log($watchListSummary);
 </script>
 
 <tr>
   <th>
     <div>Totals</div>
   </th>
-  <td>/</td>
+  <td>{$watchListSummary.count} node{$watchListSummary.count > 1 ? "s" : ""}</td>
   <td>/</td>
   <td>
     <div class={$selectedCurrency}>
@@ -61,7 +60,7 @@
   <td>
     <div class={$selectedCurrency}>
       {#if $selectedCurrency === "data"}
-        <p>{Format.twoDecimals($watchListSummary.totalDataStaked)}</p>
+        <p>{Format.tokenValue($watchListSummary.totalDataStaked)}</p>
       {:else}
         <p>
           {Format.tokenValue(
@@ -83,14 +82,14 @@
   th,
   td {
     text-align: center;
-    padding: 20px;
+    height: 50px;
   }
 
   td div, th div {
     display: flex;
-    gap: 10px;
     align-items: center;
     justify-content: center;
+    height: 100%;
   }
 
   .data {
