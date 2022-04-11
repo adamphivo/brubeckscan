@@ -30,5 +30,6 @@
         overflow-y: scroll;
         height: 500px;
         gap: 20px;
+        background-color: rgb(13, 11, 11);
     }
 </style>

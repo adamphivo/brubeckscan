@@ -26,6 +26,7 @@
     border-radius: 0;
     padding: 0;
     gap: 0;
+    background-color: transparent;
   }
 
   .connect {

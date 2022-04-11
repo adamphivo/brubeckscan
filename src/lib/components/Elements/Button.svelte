@@ -43,8 +43,8 @@
     align-items: center;
     justify-content: center;
     &.Pending {
-      color: orange;
-      border-color: orange;
+      color: rgb(234, 179, 76);
+      border-color: rgb(234, 179, 76);
       user-select: none;
       cursor: wait;
       &:hover {
@@ -56,15 +56,15 @@
         display: flex;
     };
     &.Done {
-      color: green;
-      border-color: green;
+      color: rgb(62, 202, 62);
+      border-color: rgb(62, 202, 62);
       &:hover {
         background-color: transparent;
       }
     }
     &.Error {
-      color: red;
-      border-color: red;
+      color: rgb(135, 14, 14);
+      border-color: rgb(135, 14, 14);
       &:hover {
         background-color: transparent;
       }

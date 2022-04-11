@@ -19,7 +19,7 @@
 </script>
 
 <div>
-  <input bind:value={message} required />
+  <input bind:value={message} required placeholder="Say something ..."/>
   <Button action={send} icon={MdSend} size="32px" />
 </div>
 
@@ -28,14 +28,15 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+    background-color: transparent;
     input {
-      color: whitesmoke;
+      color: rgb(88, 245, 200);
       outline: none;
       padding: 30px;
       background-color: rgb(25, 23, 22);
       border: 0;
       border-radius: 0;
-      background-color: rgb(131, 124, 124);
+      background-color: rgb(48, 44, 44);
     }
   }
 </style>
