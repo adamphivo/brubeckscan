@@ -1,35 +1,49 @@
 <script lang="ts">
-    import Format from "$lib/helpers/format";
-    import { fade } from "svelte/transition";
-    export let message;
+  import Format from "$lib/helpers/format";
+  import { userData } from "$lib/stores/userData";
+  import { fade } from "svelte/transition";
+  export let message;
+
+  console.log(message);
 </script>
 
-<div class="messageContainer" in:fade>
-    <div class="date">[{Format.timestamp(message.metadata.messageId.timestamp)}]</div>
-    <span style:background-image={message.userGradient} />
-    <p>:</p>
-    <p class="message">{message.message}</p>
+<div
+  class="messageContainer"
+  in:fade
+  title={Format.timestamp(message.metadata.messageId.timestamp)}
+>
+  <span style:background-image={message.userGradient} />
+  <p class="message {message.userAddress === $userData.address ? "own" : ""}">
+    {message.message}
+  </p>
 </div>
 
 <style lang="scss">
-    .messageContainer {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: bold;
-        font-size: 14px;
-        span {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-        }
-
-        p {
-            max-width: 500px;
-        }
-        .date {
-            color: rgb(84, 84, 99);
-        }
+  .messageContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 20px 20px;
+    transition-duration: 0.3s;
+    &:hover {
+      background-color: rgb(30, 29, 27);
     }
+    border-radius: 20px;
+    span {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+
+    p {
+      max-width: 500px;
+      line-height: 22px;
+      &.own {
+          color: rgb(67, 233, 205);
+      }
+    }
+  }
 </style>

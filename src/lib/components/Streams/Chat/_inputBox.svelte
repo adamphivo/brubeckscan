@@ -27,11 +27,15 @@
   div {
     display: flex;
     flex-direction: column;
+    gap: 30px;
     input {
       color: whitesmoke;
       outline: none;
       padding: 30px;
       background-color: rgb(25, 23, 22);
+      border: 0;
+      border-radius: 0;
+      background-color: rgb(131, 124, 124);
     }
   }
 </style>

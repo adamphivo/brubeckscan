@@ -1,21 +1,8 @@
 <script lang="ts">
-  import StreamService from "$lib/services/stream";
   import { userData } from "$lib/stores/userData";
   import Messages from "./Messages.svelte";
   import InputBox from "./_inputBox.svelte";
   import Connect from "$lib/components/Layout/Header/_Connect.svelte";
-
-  let message = "";
-
-  async function submit() {
-    await StreamService.chatStream.publish(
-      $userData.address,
-      $userData.profile.gradient,
-      message.trim()
-    );
-
-    message = "";
-  }
 </script>
 
 <section class="module">
