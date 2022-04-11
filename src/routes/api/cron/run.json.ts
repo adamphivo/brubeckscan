@@ -2,13 +2,13 @@ import CronService from "$lib/services/cron";
 
 export async function get() {
     try {
-        const run = await CronService.run();
+        CronService.run();
 
         return {
             status: 200,
             body: {
                 data: {
-                    cronRun: run
+                    message: "Cron run started :)"
                 }
             }
         };
