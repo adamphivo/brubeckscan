@@ -27,10 +27,10 @@ export async function saveUsersStats() {
     const totals = WatchlistService.getTotals(watchList);
     const updatedUser = await UserDAO.saveWatchListStats(user, totals);
     appStat.totalUsers += 1;
-    appStat.totalNodesWatched += +totals.count;
-    appStat.totalDataStaked += +totals.totalDataStaked;
-    appStat.totalRewardsInData += +totals.totalRewardsInData;
-    appStat.totalClaimCount += +totals.totalClaimCount;
+    appStat.totalNodesWatched += +totals.count || 0;
+    appStat.totalDataStaked += +totals.totalDataStaked || 0;
+    appStat.totalRewardsInData += +totals.totalRewardsInData || 0;
+    appStat.totalClaimCount += +totals.totalClaimCount || 0;
     return updatedUser;
   });
 
