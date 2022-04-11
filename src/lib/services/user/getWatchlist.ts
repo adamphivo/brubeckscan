@@ -1,4 +1,5 @@
 import { send } from "$lib/helpers/send";
+import { chunk } from "$lib/helpers/chunk";
 
 export async function getWatchlist(nodes: any) {
   try {
@@ -10,15 +11,24 @@ export async function getWatchlist(nodes: any) {
       }
     });
 
-    const responses = await Promise.all(requests);
+    const chunks = chunk(requests, 3);
 
-    const data = await Promise.all(
-      responses.map((response) => {
-        if(response.ok){
-          return response.json();
-        }
-      })
-    );
+    let data = [];
+
+    for(const chunk of chunks){
+      const responses = await Promise.all(chunk);
+  
+      const infos = await Promise.all(
+        responses.map((response) => {
+          if(response.ok){
+            return response.json();
+          }
+        })
+      );
+
+      data = [...data, ...infos];
+    }
+
 
     // Aggregate external data to internal db data about nodes
     const decoratedWatchlist = data.map((item) => {
