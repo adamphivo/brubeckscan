@@ -1,6 +1,6 @@
 <script lang="ts">
     import Format from "$lib/helpers/format";
-    import { selectedCurrency } from "$lib/stores/selectedCurrency";
+    import { selectedNodesCurrency } from "$lib/stores/selectedCurrency";
     import { marketPrices } from "$lib/stores/marketPrices";
 
     export let node;
@@ -8,9 +8,9 @@
 
 <td>
     <div>
-        {#if $selectedCurrency === "data"}
+        {#if $selectedNodesCurrency === "data"}
             <p class="dataC">{node.rewardsInData}</p>
-        {:else if $selectedCurrency === "usdt"}
+        {:else if $selectedNodesCurrency === "usdt"}
             <p class="usdt">
                 {Format.twoDecimals(
                     node.rewardsInData * $marketPrices.DATAUSDT

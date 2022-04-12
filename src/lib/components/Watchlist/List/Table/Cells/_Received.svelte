@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { selectedCurrency } from "$lib/stores/selectedCurrency";
+  import { selectedNodesCurrency } from "$lib/stores/selectedCurrency";
   import { marketPrices } from "$lib/stores/marketPrices";
   import Format from "$lib/helpers/format";
   export let node;
 </script>
 
 <td>
-  {#if $selectedCurrency === "data"}
+  {#if $selectedNodesCurrency === "data"}
     <div class="dataC">
         {Format.twoDecimals(node.dataSent)}
     </div>

@@ -10,7 +10,7 @@ export async function login(address: any) {
 
     if (user) {
         userData.set(user);
-        const watchlist = await UserService.getWatchlist(user.nodes);
+        const watchlist = await UserService.processNodes(user.nodes);
         if (watchlist) {
             watchListData.set(watchlist);
             scannedNodeData.set(watchlist.find(

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { streamTabs } from "$lib/stores/selectedTabs";
+  import { streamTabs } from "$lib/stores/tabs";
 </script>
 
 <section>

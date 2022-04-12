@@ -1,18 +1,15 @@
 <script lang="ts">
-  import { watchlistTabs } from "$lib/stores/selectedTabs";
+  import { watchlistTabs } from "$lib/stores/tabs";
   import { userData, watchListData } from "$lib/stores/userData";
-  import { send } from "$lib/helpers/send";
   import UserService from "$lib/services/user";
   import Button from "$lib/components/Elements/Button.svelte";
-  import MdRefresh from 'svelte-icons/md/MdRefresh.svelte'
+  import MdRefresh from "svelte-icons/md/MdRefresh.svelte";
 
-  async function refreshWatchList(){
-    const response = await send("PATCH", `users/${$userData.address}.json`);
-        const user = await response.json();
-        const watchlist = await UserService.getWatchlist(user.nodes);
-        if (watchlist) {
-          $watchListData = watchlist;
-        }
+  async function refreshWatchList() {
+    const watchlist = await UserService.processNodes($userData.nodes);
+    if (watchlist) {
+      $watchListData = watchlist;
+    }
   }
 </script>
 
@@ -31,7 +28,7 @@
       {/each}
     </div>
     <div class="refresherOrb">
-      <Button action={refreshWatchList} icon={MdRefresh} size="22px"/>
+      <Button action={refreshWatchList} icon={MdRefresh} size="22px" />
     </div>
   </div>
   <svelte:component this={$watchlistTabs.selected} />
@@ -51,10 +48,9 @@
   }
 
   .tabs {
-      display: flex;
-      gap: 50px;
-      align-items: center;
-
+    display: flex;
+    gap: 50px;
+    align-items: center;
   }
 
   .refresherOrb {

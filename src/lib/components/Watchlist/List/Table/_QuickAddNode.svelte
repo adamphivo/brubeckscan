@@ -11,7 +11,7 @@
 
   async function add() {
     const alreadyRegistered = $watchListData.find((node) => {
-      return node.address === address || node.address === address.toLowerCase();
+      return node.address === address || node.address === address.toLowerCase().trim();
     });
 
     if (alreadyRegistered) {
@@ -22,7 +22,7 @@
     if (validate.ethAddress(address)) {
       const data = {
         userAddress: $userData.address,
-        nodeAddress: address.toLowerCase(),
+        nodeAddress: address.toLowerCase().trim(),
         action: "watch",
       };
 
@@ -30,7 +30,7 @@
 
       const user = await response.json();
 
-      $watchListData = await UserService.getWatchlist(user.nodes);
+      $watchListData = await UserService.processNodes(user.nodes);
 
       error = "";
     } else {

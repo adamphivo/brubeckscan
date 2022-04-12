@@ -1,26 +1,24 @@
 import { send } from "$lib/helpers/send";
 import { chunk } from "$lib/helpers/chunk";
 
-export async function getWatchlist(nodes: any) {
+export async function processNodes(nodes: any) {
   try {
-    if (!nodes || nodes.length === 0) throw new Error("Empty watchlist");
-
     const requests = nodes.map((node) => {
-      if(node.address){
+      if (node.address) {
         return send("GET", `nodes/${node.address}.json`);
       }
     });
 
-    const chunks = chunk(requests, 3);
+    const chunks = chunk(requests, 5);
 
     let data = [];
 
-    for(const chunk of chunks){
+    for (const chunk of chunks) {
       const responses = await Promise.all(chunk);
-  
+
       const infos = await Promise.all(
         responses.map((response) => {
-          if(response.ok){
+          if (response.ok) {
             return response.json();
           }
         })
@@ -29,13 +27,11 @@ export async function getWatchlist(nodes: any) {
       data = [...data, ...infos];
     }
 
-
-    // Aggregate external data to internal db data about nodes
     const decoratedWatchlist = data.map((item) => {
       const dataDB = nodes.find(
         (node) => node.address.toLowerCase() === item?.address.toLowerCase()
       );
-      if(item){
+      if (item) {
         item.dataDB = dataDB;
       }
       return item;

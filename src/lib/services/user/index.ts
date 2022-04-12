@@ -1,11 +1,11 @@
-import { upsert } from "./upsert";
-import { getWatchlist } from "./getWatchlist";
 import { login } from "./login";
+import { upsert } from "./upsert";
+import { processNodes } from "./processNodes";
 
 const UserService = () => {};
 
-UserService.upsert = upsert;
-UserService.getWatchlist = getWatchlist;
 UserService.login = login;
+UserService.upsert = upsert;
+UserService.processNodes = processNodes;
 
 export default UserService;

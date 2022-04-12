@@ -1,18 +1,18 @@
 <script lang="ts">
-    import { selectedCurrency } from "$lib/stores/selectedCurrency";
+    import { selectedNodesCurrency } from "$lib/stores/selectedCurrency";
 </script>
 
 <div class="module">
     <div class="buttonContainer">
         <div
-            on:click={() => ($selectedCurrency = "data")}
-            class="dataC {$selectedCurrency === 'data' ? 'active' : ''}"
+            on:click={() => ($selectedNodesCurrency = "data")}
+            class="dataC {$selectedNodesCurrency === 'data' ? 'active' : ''}"
         >
             <button>DATA</button>
         </div>
         <div
-            on:click={() => ($selectedCurrency = "usdt")}
-            class="usdt {$selectedCurrency === 'usdt' ? 'active' : ''}"
+            on:click={() => ($selectedNodesCurrency = "usdt")}
+            class="usdt {$selectedNodesCurrency === 'usdt' ? 'active' : ''}"
         >
             <button>USDT</button>
         </div>

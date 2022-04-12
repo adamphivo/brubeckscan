@@ -1,6 +1,6 @@
 <script lang="ts">
   import { watchListSummary } from "$lib/stores/userData";
-  import { selectedCurrency } from "$lib/stores/selectedCurrency";
+  import { selectedNodesCurrency } from "$lib/stores/selectedCurrency";
   import { marketPrices } from "$lib/stores/marketPrices";
   import Format from "$lib/helpers/format";
 </script>
@@ -12,8 +12,8 @@
   <td>{$watchListSummary.count} node{$watchListSummary.count > 1 ? "s" : ""}</td>
   <td>/</td>
   <td>
-    <div class={$selectedCurrency}>
-      {#if $selectedCurrency === "data"}
+    <div class={$selectedNodesCurrency}>
+      {#if $selectedNodesCurrency === "data"}
         <p>{Format.twoDecimals($watchListSummary.totalRewardsInData)}</p>
       {:else}
         <p>
@@ -25,8 +25,8 @@
     </div>
   </td>
   <td>
-    <div class={$selectedCurrency}>
-      {#if $selectedCurrency === "data"}
+    <div class={$selectedNodesCurrency}>
+      {#if $selectedNodesCurrency === "data"}
         <p>{Format.twoDecimals($watchListSummary.totalDataSent)}</p>
       {:else}
         <p>
@@ -38,8 +38,8 @@
     </div>
   </td>
   <td>
-    <div class={$selectedCurrency}>
-      {#if $selectedCurrency === "data"}
+    <div class={$selectedNodesCurrency}>
+      {#if $selectedNodesCurrency === "data"}
         <p>
           {Format.twoDecimals(
             $watchListSummary.totalRewardsInData -
@@ -58,8 +58,8 @@
     </div>
   </td>
   <td>
-    <div class={$selectedCurrency}>
-      {#if $selectedCurrency === "data"}
+    <div class={$selectedNodesCurrency}>
+      {#if $selectedNodesCurrency === "data"}
         <p>{Format.tokenValue($watchListSummary.totalDataStaked)}</p>
       {:else}
         <p>
