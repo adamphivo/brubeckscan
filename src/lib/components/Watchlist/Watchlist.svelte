@@ -5,8 +5,10 @@
   import UserService from "$lib/services/user";
   import Button from "$lib/components/Elements/Button.svelte";
   import MdRefresh from "svelte-icons/md/MdRefresh.svelte";
+  import { isSyncing } from "$lib/stores/isSyncing";
 
   async function refreshNodesStats() {
+    if ($isSyncing) return;
     const watchlist = await UserService.processNodes($userData.nodes);
     if (watchlist) {
       $nodesData = watchlist;
@@ -72,7 +74,8 @@
     transition-duration: 0.1s;
     padding: 20px;
     transition-duration: 0.3s;
-    &.active, &:hover {
+    &.active,
+    &:hover {
       background-color: rgb(31, 29, 29);
       border-radius: 20px;
       color: whitesmoke;
