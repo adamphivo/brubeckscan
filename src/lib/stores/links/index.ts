@@ -27,9 +27,9 @@ const pages = [
     title: "Streams",
   },
   {
-    url: "/watchlist",
+    url: "/profile",
     icon: MdBookmark,
-    title: "Watchlist",
+    title: "Profile",
   },
 ];
 

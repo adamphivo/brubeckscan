@@ -1,8 +1,8 @@
 <script lang="ts">
+    import Run from "$lib/components/Home/Run.svelte";
+    import Presentation from "$lib/components/Home/Presentation.svelte";
     import TotalDataStaked from "$lib/components/Brubeck/Graphs/_DataStaked.svelte";
-    import Presentation from "$lib/components/Brubeck/Presentation.svelte";
-    import Run from "$lib/components/Brubeck/Run.svelte";
-    import Apy from "$lib/components/Brubeck/Apy.svelte";
+    import Apy from "$lib/components/Home/Apy.svelte";
     import Showcase from "$lib/components/Home/Showcase.svelte";
 </script>
 

@@ -25,6 +25,7 @@
         border-radius: 0;
         padding: 0;
         background-color: transparent;
+        margin-bottom: 30px;;
         .buttonContainer {
             display: flex;
             flex-direction: row;

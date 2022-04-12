@@ -14,11 +14,6 @@ export async function getOrCreate(address: any) {
                     createdAt: "asc"
                 }
             },
-            watchlistStats: {
-                orderBy: {
-                    createdAt: "asc"
-                }
-            }
         }
     });
 

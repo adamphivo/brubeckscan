@@ -115,6 +115,7 @@
     justify-content: space-evenly;
     gap: 15px;
     border-radius: 0;
+    padding-top: 0;
     @media (max-width: 1400px) {
       width: 100%;
     }

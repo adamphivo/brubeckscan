@@ -54,7 +54,7 @@
 
 <style lang="scss">
     .module {
-        width: 100%;
+        flex-grow: 1;
         justify-content: space-between;
         gap: 15px;
         border-radius: 0%;

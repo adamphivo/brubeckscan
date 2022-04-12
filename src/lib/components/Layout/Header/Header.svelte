@@ -69,14 +69,10 @@
         }
     }
     .secondRow {
-        background-color: var(--color-black);
-        // padding-bottom: 20px;
-    }
+        background-color: var(--color-black);    }
 
     .firstRow {
-        background-color: var(--color-black);
-        // padding: 20px 0px;
-    }
+        background-color: var(--color-black);    }
 
     h1 {
         font-weight: 800;
