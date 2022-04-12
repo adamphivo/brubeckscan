@@ -18,9 +18,7 @@
     </div>
   {:then}
     <ProgressiveUpdate />
-    <div in:fade class="sticky">
-      <Header />
-    </div>
+    <Header />
     <PageTitle />
     <div class="page" in:fade>
       <slot />
@@ -29,7 +27,7 @@
   {/await}
 </main>
 
-<style>
+<style lang="scss">
   :global(*) {
     font-family: "Space Mono", monospace;
   }
@@ -39,10 +37,5 @@
     flex-direction: column;
     align-items: center;
     min-height: 101vh;
-  }
-
-  .sticky {
-    width: 100%;
-    max-width: 1300px;
   }
 </style>

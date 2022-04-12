@@ -46,27 +46,27 @@
 
 <div class="bookmark">
   {#if userHasNode}
-    <div
+    <button
       class="icon {isOwner ? 'noDelete' : ''}"
       title="Unwatch"
       on:click|preventDefault={() => update("unwatch")}
     >
       <MdBookmark />
-    </div>
+    </button>
   {:else}
-    <div
+    <button
       class="icon"
       title="Watch"
       on:click|preventDefault={() => update("watch")}
     >
       <MdBookmarkBorder />
-    </div>
+  </button>
   {/if}
   <!-- button -->
   <a href={psLink} target="_blank">
-    <div class="iconi" title="Search this address on PolygonScan">
+    <button class="icon" title="Search this address on PolygonScan">
       <FaSearchPlus />
-    </div>
+    </button>
   </a>
 </div>
 
@@ -76,16 +76,13 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    gap: 10px;
   }
 
   .icon {
-    width: 35px;
+    width: 40px;
     cursor: pointer;
     transition-duration: 0.2s;
-  }
-
-  .icon:hover {
-    transform: scale(1.1);
   }
 
   .icon.noDelete {
@@ -93,10 +90,5 @@
       cursor: not-allowed;
       transform: unset;
     }
-  }
-  .iconi {
-    width: 25px;
-    cursor: pointer;
-    margin-left: 10px;
   }
 </style>

@@ -19,20 +19,28 @@ main {
 }
 
 button {
-    border: thin solid gray;
-    padding: 4px 10px;
-    border-radius: 5px;
+    border: 0;
+    padding: 10px 10px;
+    border-radius: 15px;
     transition-duration: 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     &:hover {
         cursor: pointer;
     }
 }
 
+a {
+    text-decoration: none;
+}
+
 table {
     border-collapse: collapse;
     thead tr {
-        background-color: whitesmoke;
-        color: var(--color-black);
+        background-color: rgb(98, 98, 98);
+        color: var(--color-white);
     }
     tbody {
         tr {

@@ -9,6 +9,7 @@
 {#if $nodesDataTotals}
   <div class="module">
     <CurrencySelector />
+    <h3>Totals</h3>
     <div class="data">
       <div class="label">
         <p>Staked</p>
@@ -110,7 +111,7 @@
 
 <style lang="scss">
   .module {
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     gap: 15px;
@@ -127,5 +128,10 @@
 
   .currency.usdt {
     color: rgb(100, 218, 161);
+  }
+
+  h3 {
+    font-size: 22px;
+    margin-bottom: 30px;
   }
 </style>

@@ -55,5 +55,6 @@
         border: 0;
         width: 100%;
         padding: 0;
+        background-color: transparent;
     }
 </style>

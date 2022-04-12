@@ -6,14 +6,7 @@
 </script>
 
 <div class="{message.type} message" in:fade>
-    {#if message.metadata}
-        <div class="date">
-            <p>
-                [{Format.timestamp(message.metadata.messageId.timestamp)}]
-            </p>
-        </div>
-    {/if}
-    <div>
+    <div title="{Format.timestamp(message.metadata.messageId.timestamp)}">
         <p>
             {message.content}
         </p>
@@ -31,6 +24,9 @@
         align-items: center;
         font-weight: bold;
         font-size: 14px;
+        padding: 20px;
+        border-radius: 20px;
+        background-color: rgb(37, 36, 36);
     }
 
     .userAction {

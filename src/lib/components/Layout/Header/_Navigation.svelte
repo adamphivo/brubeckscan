@@ -1,33 +1,53 @@
 <script lang="ts">
   import { page } from "$app/stores";
   import { links } from "$lib/stores/links";
-  import { userData } from "$lib/stores/user"
+  import { userData } from "$lib/stores/user";
+  import ProfileIcon from "$lib/components/User/ProfileIcon.svelte";
 </script>
 
-<div class="navigationIcons">
+<nav class="navigationIcons">
   {#each $links as link}
-    <a href={link.url} title={link.title} class="{link.url === "/watchlist" && !$userData ? "hidden" : ""}">
+    <a
+      href={link.url}
+      title={link.title}
+      class="{link.url === '/watchlist' && !$userData ? 'hidden' : ''} {$page
+        .url.pathname === link.url
+        ? 'active'
+        : ''}"
+    >
       <div class="icon" class:active={$page.url.pathname === link.url}>
         <svelte:component this={link.icon} />
       </div>
     </a>
   {/each}
-</div>
+  {#if $userData}
+    <ProfileIcon />
+  {/if}
+</nav>
 
 <style lang="scss">
-  .navigationIcons {
+  nav {
     display: flex;
-    gap: 20px;
-  }
-  .icon {
-    &.active {
-      color: whitesmoke;
+    align-items: center;
+    gap: 10px;
+    a {
+      transition-duration: 0.3s;
+      padding: 10px;
+      &:hover, &.active {
+        color: white;
+        border-radius: 20px;
+        background-color: rgb(40, 38, 38);
+      }
     }
-    width: 30px;
+  }
+
+  .icon {
     transition-duration: 0.2s;
+    width: 30px;
     color: gray;
+    &.active,
     &:hover {
-      color: white;
+      color: whitesmoke;
     }
   }
 

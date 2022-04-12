@@ -1,9 +1,8 @@
 import { writable } from "svelte/store";
 import MdHome from "svelte-icons/md/MdHome.svelte";
 import MdPoll from "svelte-icons/md/MdPoll.svelte";
-import MdBookmark from "svelte-icons/md/MdBookmark.svelte";
 import MdSearch from "svelte-icons/md/MdSearch.svelte";
-import FaBroadcastTower from "svelte-icons/fa/FaBroadcastTower.svelte";
+import MdLeakAdd from "svelte-icons/md/MdLeakAdd.svelte";
 
 const pages = [
   {
@@ -23,13 +22,8 @@ const pages = [
   },
   {
     url: "/streams",
-    icon: FaBroadcastTower,
+    icon: MdLeakAdd,
     title: "Streams",
-  },
-  {
-    url: "/profile",
-    icon: MdBookmark,
-    title: "Profile",
   },
 ];
 

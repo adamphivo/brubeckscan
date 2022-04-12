@@ -4,6 +4,7 @@
 
 {#if $brubeckData.apy}
     <div class="module">
+        <h3>Network APY/APR</h3>
         <div class="data">
             <div class="label">
                 <p>24H APR</p>
@@ -61,5 +62,9 @@
     }
     span {
         color: rgb(59, 212, 59);
+    }
+    h3 {
+        font-size: 22px;
+        margin-bottom: 30px;
     }
 </style>

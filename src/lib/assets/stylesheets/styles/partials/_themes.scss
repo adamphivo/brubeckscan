@@ -6,12 +6,11 @@
     }
 
     button {
-        color: var(--color-white);
-        background-color: var(--color-black);
+        color: rgb(101, 101, 101);
+        background-color: rgb(35, 32, 32);
         &:hover {
-            color: var(--color-black);
-            background-color: var(--color-white);
-            border-color: lightgray;
+            color: var(--color-white);
+            background-color: rgb(32, 31, 31);
         }
     }
 }
@@ -27,8 +26,7 @@
         background-color: var(--color-black);
         &:hover {
             color: var(--color-black);
-            background-color: var(--color-white);
-            border-color: lightgray;
+            background-color: rgb(32, 31, 31);
         }
     }
 }

@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { isSyncing } from "$lib/stores/isSyncing";
+
   export let action;
   export let text = "";
   export let size = "16px";
@@ -9,6 +11,7 @@
   async function wrap() {
     if (!status) {
       status = "Pending";
+      $isSyncing = true;
       try {
         await action();
         status = "Done";
@@ -17,6 +20,7 @@
       } finally {
         setTimeout(() => {
           status = "";
+          $isSyncing = false;
         }, 1000);
       }
     } else {
@@ -28,10 +32,12 @@
 <button on:click|preventDefault={wrap} class={status} style:font-size={size}>
   {#if icon}
     <div class="icon" style:width={size}>
-        <svelte:component this={icon} />
+      <svelte:component this={icon} />
     </div>
   {/if}
-  <span>{text}</span>
+  {#if text}
+    <span>{text}</span>
+  {/if}
 </button>
 
 <style lang="scss">
@@ -42,10 +48,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 20px;
     &.Pending {
       color: rgb(234, 179, 76);
       border-color: rgb(234, 179, 76);
       user-select: none;
+      background-color: transparent;
       cursor: wait;
       &:hover {
         background-color: transparent;
@@ -53,11 +61,15 @@
       }
     }
     .icon {
-        display: flex;
-    };
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     &.Done {
       color: rgb(62, 202, 62);
       border-color: rgb(62, 202, 62);
+      background-color: transparent;
+      cursor: not-allowed;
       &:hover {
         background-color: transparent;
       }
@@ -65,6 +77,8 @@
     &.Error {
       color: rgb(135, 14, 14);
       border-color: rgb(135, 14, 14);
+      background-color: transparent;
+      cursor: not-allowed;
       &:hover {
         background-color: transparent;
       }

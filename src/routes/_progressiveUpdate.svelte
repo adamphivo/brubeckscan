@@ -1,12 +1,14 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import UserService from "$lib/services/user";
   import StateService from "$lib/services/state";
   import { userData } from "$lib/stores/user";
   import { nodesData } from "$lib/stores/nodes";
-  import UserService from "$lib/services/user";
+  import { isSyncing } from "$lib/stores/isSyncing";
 
   onMount(() => {
     async function fetchData() {
+      isSyncing.set(true);
       await StateService.updateBrubeckStats();
       await StateService.updateMarketPrices();
       if ($userData) {
@@ -15,9 +17,10 @@
           nodesData.set(watchlist);
         }
       }
+      isSyncing.set(false);
     }
 
-    const interval = setInterval(fetchData, 60 * 1000);
+    const interval = setInterval(fetchData, 10 * 1000);
 
     fetchData();
 

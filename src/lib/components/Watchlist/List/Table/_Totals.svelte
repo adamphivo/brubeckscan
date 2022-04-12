@@ -79,6 +79,9 @@
 </tr>
 
 <style lang="scss">
+  tr {
+    background-color: rgb(36, 36, 36);
+  }
   th,
   td {
     text-align: center;

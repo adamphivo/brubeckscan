@@ -23,15 +23,13 @@
             <th><div>Claim count</div></th>
             <th><div>Actions</div></th>
           </tr>
+          <Totals />
         </thead>
         <tbody>
           {#each $nodesData as node}
             <Row {node} />
           {/each}
         </tbody>
-        <tfoot>
-          <Totals />
-        </tfoot>
       </table>
     </div>
     <QuickAddNode />
@@ -55,10 +53,5 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-  }
-
-  tfoot {
-      background-color: rgb(0, 0, 0);
-      border-top: 5px solid white;
   }
 </style>

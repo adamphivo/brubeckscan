@@ -25,30 +25,35 @@
     <div>
       {Format.shortenNodeAddress(node.address)}
     </div>
-    <div on:click={() => copyAddressToClipboard()}>
-      {#if copyText}
-        {copyText}
-      {:else}
-        <div class="iconi" title="Copy address to clipboard">
-          <MdContentCopy />
-        </div>
-      {/if}
+    <div class="buttonContainer">
+      <button on:click={() => copyAddressToClipboard()}>
+        {#if copyText}
+          {copyText}
+        {:else}
+          <div class="iconi" title="Copy address to clipboard">
+            <MdContentCopy />
+          </div>
+        {/if}
+      </button>
+      <a href={psLink} target="_blank">
+        <button>
+          <div class="iconi" title="Search this address on PolygonScan">
+            <FaSearchPlus />
+          </div>
+        </button>
+      </a>
     </div>
-    <a href={psLink} target="_blank">
-      <div class="iconi" title="Search this address on PolygonScan">
-        <FaSearchPlus />
-      </div>
-    </a>
   </div>
 </td>
 
 <style lang="scss">
   td {
-    width: 300px;
+    width: 350px;
   }
   .iconi {
     width: 20px;
     cursor: pointer;
+    display: flex;
   }
   .container {
     display: flex;
@@ -56,5 +61,16 @@
     justify-content: space-between;
     font-size: 14px;
     padding: 0 20px;
+  }
+  .buttonContainer {
+    display: flex;
+    gap: 10px;
+  }
+
+  button {
+    background-color: transparent;
+    &:hover {
+      background-color: rgb(28, 27, 27);
+    }
   }
 </style>

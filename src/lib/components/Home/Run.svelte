@@ -9,12 +9,16 @@
         target="_blank"
     >
         <button>
-            <span>Run a node</span>
+            <span>🤖 Run a node</span>
         </button>
     </a>
 </div>
 
 <style lang="scss">
+    button {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
     .module {
         margin-top: 50px;
         flex-grow: 1;

@@ -29,7 +29,7 @@
       {/each}
     </div>
     <div class="refresherOrb">
-      <Button action={refreshNodesStats} icon={MdRefresh} size="22px" />
+      <Button action={refreshNodesStats} icon={MdRefresh} size="26px" />
     </div>
   </div>
   <svelte:component this={$watchlistTabs.selected} />
@@ -50,7 +50,7 @@
 
   .tabs {
     display: flex;
-    gap: 50px;
+    gap: 20px;
     align-items: center;
   }
 
@@ -61,17 +61,21 @@
   .selector {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    display: flex;
+    align-items: center;
   }
 
   .tab {
-    font-size: 22px;
+    font-size: 16px;
+    font-weight: bold;
     color: rgb(95, 95, 95);
     transition-duration: 0.1s;
-    padding-bottom: 20px;
-    border-bottom: 5px solid transparent;
-    &.active {
+    padding: 20px;
+    transition-duration: 0.3s;
+    &.active, &:hover {
+      background-color: rgb(31, 29, 29);
+      border-radius: 20px;
       color: whitesmoke;
-      border-bottom: 5px solid whitesmoke;
     }
     &:hover {
       color: whitesmoke;

@@ -25,15 +25,17 @@
     width: 100%;
   }
   .tab {
-    width: max-content;
-    font-size: 22px;
+    font-size: 16px;
+    font-weight: bold;
     color: rgb(95, 95, 95);
     transition-duration: 0.1s;
-    padding-bottom: 20px;
-    border-bottom: 5px solid transparent;
-    &.active {
+    padding: 20px;
+    transition-duration: 0.3s;
+    &.active,
+    &:hover {
+      background-color: rgb(31, 29, 29);
+      border-radius: 20px;
       color: whitesmoke;
-      border-bottom: 5px solid whitesmoke;
     }
     &:hover {
       color: whitesmoke;
