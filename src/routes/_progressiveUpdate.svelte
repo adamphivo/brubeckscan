@@ -8,8 +8,8 @@
   import { isSyncing } from "$lib/stores/isSyncing";
 
   function getRandom() {
-    const randomY = Math.floor(Math.random() * 100) + 1 + "%";
-    const randomX = Math.floor(Math.random() * 100) + 1 + "%";
+    const randomY = Math.floor(Math.random() * 100) + "%";
+    const randomX = Math.floor(Math.random() * 100) + "%";
     return { randomX, randomY };
   }
 
@@ -25,7 +25,7 @@
           userGradient: $userData.profile.gradient,
           userAddress: $userData.address,
           posX: coordinates.randomX,
-          posY: coordinates.randomY
+          posY: coordinates.randomY,
         });
         await UserService.login($userData.address);
       }
