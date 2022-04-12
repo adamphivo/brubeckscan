@@ -23,7 +23,7 @@
         flex-grow: 1;
         gap: 15px;
         background-color: transparent;
-        height: 500px;
+        height: 700px;
         overflow-y: scroll;
         background-color: rgb(20, 20, 20);
         border-top-left-radius: 0;

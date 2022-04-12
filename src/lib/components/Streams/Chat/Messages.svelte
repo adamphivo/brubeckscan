@@ -27,7 +27,7 @@
         border-radius: 0;
         padding: 30px;
         overflow-y: scroll;
-        height: 500px;
+        height: 700px;
         gap: 20px;
         background-color: rgb(28, 25, 25);
     }
