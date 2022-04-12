@@ -9,7 +9,7 @@
         target="_blank"
     >
         <button>
-            <span>🤖 Run a node</span>
+            <span>Run a node ⚡</span>
         </button>
     </a>
 </div>
