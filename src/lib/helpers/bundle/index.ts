@@ -2,7 +2,7 @@ import { browser } from "$app/env";
 import UserService from "$lib/services/user";
 import StateService from "$lib/services/state";
 import StreamService from "$lib/services/stream";
-import { hasEthereum } from "$lib/stores/userData";
+import { hasEthereum } from "$lib/stores/user";
 import { attachEvents } from "./_attachEvents";
 
 export async function bundle() {

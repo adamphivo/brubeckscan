@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { userData } from "$lib/stores/userData";
+  import { userData } from "$lib/stores/user";
   import Messages from "./Messages.svelte";
   import InputBox from "./_inputBox.svelte";
   import Connect from "$lib/components/Layout/Header/_Connect.svelte";

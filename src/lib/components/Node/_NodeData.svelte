@@ -4,7 +4,7 @@
   import { onMount } from "svelte";
   import { scannedNodeData } from "$lib/stores/scannedNodeData";
   import { marketPrices } from "$lib/stores/marketPrices";
-  import { userData } from "$lib/stores/userData";
+  import { userData } from "$lib/stores/user";
   import Bookmark from "./_Bookmark.svelte";
   import { send } from "$lib/helpers/send";
   import { validate } from "$lib/helpers/validate";

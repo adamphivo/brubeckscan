@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { hasEthereum } from "$lib/stores/userData";
+    import { hasEthereum } from "$lib/stores/user";
     import Button from "$lib/components/Elements/Button.svelte";
 
     async function connect() {

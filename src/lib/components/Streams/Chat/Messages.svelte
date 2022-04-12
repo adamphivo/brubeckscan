@@ -3,7 +3,6 @@
     import StreamService from "$lib/services/stream";
     import { chatMessages } from "$lib/stores/streams/chat";
     import Message from "./_message.svelte";
-    import { userData } from "$lib/stores/userData";
 
     onMount( async () => {
         await StreamService.chatStream.scrollToBottom();

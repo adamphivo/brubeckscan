@@ -1,12 +1,12 @@
 <script lang="ts">
   import Format from "$lib/helpers/format";
   import { marketPrices } from "$lib/stores/marketPrices";
-  import { watchListSummary } from "$lib/stores/userData";
+  import { nodesDataTotals } from "$lib/stores/nodes";
   import { selectedOverviewCurrency } from "$lib/stores/selectedCurrency";
   import CurrencySelector from "./_CurrencySelector.svelte";
 </script>
 
-{#if $watchListSummary}
+{#if $nodesDataTotals}
   <div class="module">
     <CurrencySelector />
     <div class="data">
@@ -15,12 +15,12 @@
       </div>
       <div class="value">
         {#if $selectedOverviewCurrency === "data"}
-          <p>{Format.tokenValue($watchListSummary.totalDataStaked)}</p>
+          <p>{Format.tokenValue($nodesDataTotals.totalDataStaked)}</p>
           <p class="currency {$selectedOverviewCurrency}">DATA</p>
         {:else}
           <p>
             {Format.tokenValue(
-              $watchListSummary.totalDataStaked * $marketPrices.DATAUSDT
+              $nodesDataTotals.totalDataStaked * $marketPrices.DATAUSDT
             )}
           </p>
           <p class="currency {$selectedOverviewCurrency}">USDT</p>
@@ -34,12 +34,12 @@
       </div>
       <div class="value {$selectedOverviewCurrency}">
         {#if $selectedOverviewCurrency === "data"}
-          <p>{Format.twoDecimals($watchListSummary.totalRewardsInData)}</p>
+          <p>{Format.twoDecimals($nodesDataTotals.totalRewardsInData)}</p>
           <p class="currency {$selectedOverviewCurrency}">DATA</p>
         {:else}
           <p>
             {Format.tokenValue(
-              $watchListSummary.totalRewardsInData * $marketPrices.DATAUSDT
+              $nodesDataTotals.totalRewardsInData * $marketPrices.DATAUSDT
             )}
           </p>
           <p class="currency {$selectedOverviewCurrency}">USDT</p>
@@ -53,12 +53,12 @@
       </div>
       <div class="value {$selectedOverviewCurrency}">
         {#if $selectedOverviewCurrency === "data"}
-          <p>{Format.twoDecimals($watchListSummary.totalDataSent)}</p>
+          <p>{Format.twoDecimals($nodesDataTotals.totalDataSent)}</p>
           <p class="currency {$selectedOverviewCurrency}">DATA</p>
         {:else}
           <p>
             {Format.twoDecimals(
-              $watchListSummary.totalDataSent * $marketPrices["DATAUSDT"]
+              $nodesDataTotals.totalDataSent * $marketPrices["DATAUSDT"]
             )}
           </p>
           <p class="currency {$selectedOverviewCurrency}">USDT</p>
@@ -74,16 +74,16 @@
         {#if $selectedOverviewCurrency === "data"}
           <p>
             {Format.twoDecimals(
-              $watchListSummary.totalRewardsInData -
-                $watchListSummary.totalDataSent
+              $nodesDataTotals.totalRewardsInData -
+                $nodesDataTotals.totalDataSent
             )}
           </p>
           <p class="currency {$selectedOverviewCurrency}">DATA</p>
         {:else}
           <p>
             {Format.twoDecimals(
-              ($watchListSummary.totalRewardsInData -
-                $watchListSummary.totalDataSent) *
+              ($nodesDataTotals.totalRewardsInData -
+                $nodesDataTotals.totalDataSent) *
                 $marketPrices["DATAUSDT"]
             )}
           </p>
@@ -98,7 +98,7 @@
       </div>
       <div class="value">
         <p>
-          {$watchListSummary.totalClaimCount} reward code{$watchListSummary.totalClaimCount >
+          {$nodesDataTotals.totalClaimCount} reward code{$nodesDataTotals.totalClaimCount >
           1
             ? "s"
             : ""}

@@ -1,7 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import StateService from "$lib/services/state";
-  import { userData, watchListData } from "$lib/stores/userData";
+  import { userData } from "$lib/stores/user";
+  import { nodesData } from "$lib/stores/nodes";
   import UserService from "$lib/services/user";
 
   onMount(() => {
@@ -11,7 +12,7 @@
       if ($userData) {
         const watchlist = await UserService.processNodes($userData.nodes);
         if (watchlist) {
-          watchListData.set(watchlist);
+          nodesData.set(watchlist);
         }
       }
     }

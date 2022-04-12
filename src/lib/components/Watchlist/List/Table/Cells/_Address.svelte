@@ -1,6 +1,6 @@
 <script lang="ts">
   import Format from "$lib/helpers/format";
-  import { userData } from "$lib/stores/userData";
+  import { userData } from "$lib/stores/user";
   import MdContentCopy from "svelte-icons/md/MdContentCopy.svelte";
   import FaSearchPlus from "svelte-icons/fa/FaSearchPlus.svelte";
 

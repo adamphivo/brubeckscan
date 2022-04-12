@@ -1,16 +1,17 @@
 <script lang="ts">
-  import Button from "$lib/components/Elements/Button.svelte";
-  import { userData, watchListData } from "$lib/stores/userData";
-  import { send } from "$lib/helpers/send";
-  import UserService from "$lib/services/user";
-  import { validate } from "$lib/helpers/validate";
   import MdAdd from "svelte-icons/md/MdAdd.svelte";
+  import Button from "$lib/components/Elements/Button.svelte";
+  import UserService from "$lib/services/user";
+  import { userData } from "$lib/stores/user";
+  import { nodesData } from "$lib/stores/nodes";
+  import { send } from "$lib/helpers/send";
+  import { validate } from "$lib/helpers/validate";
 
   let address = "";
   let error = "";
 
   async function add() {
-    const alreadyRegistered = $watchListData.find((node) => {
+    const alreadyRegistered = $nodesData.find((node) => {
       return node.address === address || node.address === address.toLowerCase().trim();
     });
 
@@ -30,7 +31,7 @@
 
       const user = await response.json();
 
-      $watchListData = await UserService.processNodes(user.nodes);
+      $nodesData = await UserService.processNodes(user.nodes);
 
       error = "";
     } else {

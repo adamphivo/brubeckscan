@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
   import { get } from "svelte/store";
-  import { userData } from "$lib/stores/userData";
+  import { userData } from "$lib/stores/user";
   export async function load() {
     if(get(userData)){
       return {}

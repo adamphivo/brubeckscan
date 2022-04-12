@@ -1,10 +1,11 @@
 <script lang="ts">
   import MdBookmarkBorder from "svelte-icons/md/MdBookmarkBorder.svelte";
   import MdBookmark from "svelte-icons/md/MdBookmark.svelte";
-  import { userData, watchListData } from "$lib/stores/userData";
+  import FaSearchPlus from "svelte-icons/fa/FaSearchPlus.svelte";
+  import { userData } from "$lib/stores/user";
+  import { nodesData } from "$lib/stores/nodes";
   import { scannedNodeData } from "$lib/stores/scannedNodeData";
   import { send } from "$lib/helpers/send";
-  import FaSearchPlus from "svelte-icons/fa/FaSearchPlus.svelte";
 
   $: userHasNode = $userData.nodes.find((node) => {
     return node.address == $scannedNodeData.address;
@@ -30,11 +31,11 @@
         (node) => node.address === $scannedNodeData.address
       );
       $scannedNodeData.dataDB = dataDB;
-      $watchListData.push($scannedNodeData);
+      $nodesData.push($scannedNodeData);
     }
 
     if (action === "unwatch") {
-      $watchListData = $watchListData.filter(
+      $nodesData = $nodesData.filter(
         (node) => node.address !== $scannedNodeData.address
       );
     }

@@ -2,7 +2,7 @@
     import Tip from "./_Tip.svelte";
     import Socials from "./_Socials.svelte";
     import TiSocialGithub from "svelte-icons/ti/TiSocialGithub.svelte";
-    import { hasEthereum } from "$lib/stores/userData";
+    import { hasEthereum } from "$lib/stores/user";
 </script>
 
 <footer class="footer">

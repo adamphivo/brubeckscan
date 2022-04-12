@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { watchListSummary } from "$lib/stores/userData";
+  import { nodesDataTotals } from "$lib/stores/nodes";
   import { selectedNodesCurrency } from "$lib/stores/selectedCurrency";
   import { marketPrices } from "$lib/stores/marketPrices";
   import Format from "$lib/helpers/format";
@@ -9,16 +9,16 @@
   <th>
     <div>Totals</div>
   </th>
-  <td>{$watchListSummary.count} node{$watchListSummary.count > 1 ? "s" : ""}</td>
+  <td>{$nodesDataTotals.count} node{$nodesDataTotals.count > 1 ? "s" : ""}</td>
   <td>/</td>
   <td>
     <div class={$selectedNodesCurrency}>
       {#if $selectedNodesCurrency === "data"}
-        <p>{Format.twoDecimals($watchListSummary.totalRewardsInData)}</p>
+        <p>{Format.twoDecimals($nodesDataTotals.totalRewardsInData)}</p>
       {:else}
         <p>
           {Format.tokenValue(
-            $watchListSummary.totalRewardsInData * $marketPrices.DATAUSDT
+            $nodesDataTotals.totalRewardsInData * $marketPrices.DATAUSDT
           )}
         </p>
       {/if}
@@ -27,11 +27,11 @@
   <td>
     <div class={$selectedNodesCurrency}>
       {#if $selectedNodesCurrency === "data"}
-        <p>{Format.twoDecimals($watchListSummary.totalDataSent)}</p>
+        <p>{Format.twoDecimals($nodesDataTotals.totalDataSent)}</p>
       {:else}
         <p>
           {Format.tokenValue(
-            $watchListSummary.totalDataSent * $marketPrices.DATAUSDT
+            $nodesDataTotals.totalDataSent * $marketPrices.DATAUSDT
           )}
         </p>
       {/if}
@@ -42,15 +42,15 @@
       {#if $selectedNodesCurrency === "data"}
         <p>
           {Format.twoDecimals(
-            $watchListSummary.totalRewardsInData -
-              $watchListSummary.totalDataSent
+            $nodesDataTotals.totalRewardsInData -
+              $nodesDataTotals.totalDataSent
           )}
         </p>
       {:else}
         <p>
           {Format.tokenValue(
-            ($watchListSummary.totalRewardsInData -
-              $watchListSummary.totalDataSent) *
+            ($nodesDataTotals.totalRewardsInData -
+              $nodesDataTotals.totalDataSent) *
               $marketPrices.DATAUSDT
           )}
         </p>
@@ -60,11 +60,11 @@
   <td>
     <div class={$selectedNodesCurrency}>
       {#if $selectedNodesCurrency === "data"}
-        <p>{Format.tokenValue($watchListSummary.totalDataStaked)}</p>
+        <p>{Format.tokenValue($nodesDataTotals.totalDataStaked)}</p>
       {:else}
         <p>
           {Format.tokenValue(
-            $watchListSummary.totalDataStaked * $marketPrices.DATAUSDT
+            $nodesDataTotals.totalDataStaked * $marketPrices.DATAUSDT
           )}
         </p>
       {/if}
@@ -72,7 +72,7 @@
   </td>
   <td>
     <div>
-      {$watchListSummary.totalClaimCount}
+      {$nodesDataTotals.totalClaimCount}
     </div>
   </td>
   <td />

@@ -1,6 +1,7 @@
 <script lang="ts">
   import Format from "$lib/helpers/format";
-  import { userData, watchListData } from "$lib/stores/userData";
+  import { userData } from "$lib/stores/user";
+  import { nodesData } from "$lib/stores/nodes";
   import { send } from "$lib/helpers/send";
   import Button from "$lib/components/Elements/Button.svelte";
   import StreamService from "$lib/services/stream";
@@ -42,7 +43,7 @@
     const user = await response.json();
 
     if (user) {
-      $watchListData = $watchListData.filter((element) => {
+      $nodesData = $nodesData.filter((element) => {
         return element.address !== node.address;
       });
     }
@@ -68,14 +69,6 @@
     justify-content: center;
     gap: 10px;
     padding: 20px;
-  }
-
-  .iconi {
-    width: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 
   .owner {

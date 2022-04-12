@@ -1,10 +1,9 @@
 <script lang="ts">
-  import Format from "$lib/helpers/format";
-  import { userData } from "$lib/stores/userData";
   import { fade } from "svelte/transition";
-  export let message;
+  import { userData } from "$lib/stores/user";
+  import Format from "$lib/helpers/format";
 
-  console.log(message);
+  export let message;
 </script>
 
 <div

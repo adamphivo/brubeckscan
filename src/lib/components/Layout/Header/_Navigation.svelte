@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from "$app/stores";
   import { links } from "$lib/stores/links";
-  import { userData } from "$lib/stores/userData"
+  import { userData } from "$lib/stores/user"
 </script>
 
 <div class="navigationIcons">

@@ -1,7 +1,7 @@
 <script lang="ts">
     import Button from "$lib/components/Elements/Button.svelte";
     import { scannedNodeData } from "$lib/stores/scannedNodeData";
-    import { userData } from "$lib/stores/userData";
+    import { userData } from "$lib/stores/user";
     import { send } from "$lib/helpers/send";
     import { validate } from "$lib/helpers/validate";
 

@@ -1,14 +1,15 @@
 <script lang="ts">
   import { watchlistTabs } from "$lib/stores/tabs";
-  import { userData, watchListData } from "$lib/stores/userData";
+  import { userData } from "$lib/stores/user";
+  import { nodesData } from "$lib/stores/nodes";
   import UserService from "$lib/services/user";
   import Button from "$lib/components/Elements/Button.svelte";
   import MdRefresh from "svelte-icons/md/MdRefresh.svelte";
 
-  async function refreshWatchList() {
+  async function refreshNodesStats() {
     const watchlist = await UserService.processNodes($userData.nodes);
     if (watchlist) {
-      $watchListData = watchlist;
+      $nodesData = watchlist;
     }
   }
 </script>
@@ -28,7 +29,7 @@
       {/each}
     </div>
     <div class="refresherOrb">
-      <Button action={refreshWatchList} icon={MdRefresh} size="22px" />
+      <Button action={refreshNodesStats} icon={MdRefresh} size="22px" />
     </div>
   </div>
   <svelte:component this={$watchlistTabs.selected} />

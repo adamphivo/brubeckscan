@@ -1,13 +1,13 @@
 <script lang="ts">
   import Row from "$lib/components/Watchlist/List/Table/Row.svelte";
-  import { watchListData } from "$lib/stores/userData";
+  import { nodesData } from "$lib/stores/nodes";
   import QuickAddNode from "./_QuickAddNode.svelte";
   import Configuration from "./Configuration.svelte";
   import Totals from "./_Totals.svelte";
 </script>
 
-{#if $watchListData}
-  {#if $watchListData.length}
+{#if $nodesData}
+  {#if $nodesData.length}
     <Configuration />
     <div class="module">
       <table>
@@ -25,7 +25,7 @@
           </tr>
         </thead>
         <tbody>
-          {#each $watchListData as node}
+          {#each $nodesData as node}
             <Row {node} />
           {/each}
         </tbody>

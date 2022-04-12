@@ -2,7 +2,7 @@
     import Navigation from "./_Navigation.svelte";
     import Connect from "./_Connect.svelte";
     import DockUser from "./_DockUser.svelte";
-    import { userData } from "$lib/stores/userData";
+    import { userData } from "$lib/stores/user";
     import { brubeckData } from "$lib/stores/brubeckData";
 </script>
 

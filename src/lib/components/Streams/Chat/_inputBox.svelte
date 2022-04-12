@@ -1,6 +1,6 @@
 <script lang="ts">
   import StreamService from "$lib/services/stream";
-  import { userData } from "$lib/stores/userData";
+  import { userData } from "$lib/stores/user";
   import Button from "$lib/components/Elements/Button.svelte";
   import MdSend from "svelte-icons/md/MdSend.svelte";
 
