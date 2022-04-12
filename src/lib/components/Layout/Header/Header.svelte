@@ -6,8 +6,8 @@
     import { brubeckData } from "$lib/stores/brubeckData";
 </script>
 
-<div class="container">
-    <div class="firstRow row">
+<header class="container">
+    <div class="row">
         <div class="logo">
             <h1>BrubeckScan</h1>
             <div class="apy">{$brubeckData.apy["24h-APY"]}<span class="text">%</span> APY</div>
@@ -20,17 +20,15 @@
             {/if}
         </div>
     </div>
-    <div class="secondRow row">
+    <div class="row">
         <Navigation />
     </div>
-</div>
+</header>
 
 <style lang="scss">
-    .firstRow {
-        display: flex;
-        align-items: center;
+    header {
+        background-color: var(--color-black);
     }
-
     .text {
         color: var(--color-orange);
     }
@@ -68,11 +66,6 @@
             padding: 20px;
         }
     }
-    .secondRow {
-        background-color: var(--color-black);    }
-
-    .firstRow {
-        background-color: var(--color-black);    }
 
     h1 {
         font-weight: 800;

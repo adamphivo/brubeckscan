@@ -7,7 +7,7 @@ export async function getWatchlist(nodes: any) {
 
     const requests = nodes.map((node) => {
       if(node.address){
-        return send("GET", `brubeck/node/${node.address}.json`);
+        return send("GET", `nodes/${node.address}.json`);
       }
     });
 

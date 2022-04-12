@@ -1,5 +1,5 @@
-import { appCache } from "$lib/helpers/cache";
 import Consts from "$lib/consts";
+import { appCache } from "$lib/helpers/cache";
 
 export async function get() {
     const cached = appCache.get(Consts.cache.MARKET_PRICES);

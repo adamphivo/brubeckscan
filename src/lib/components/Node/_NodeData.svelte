@@ -43,7 +43,7 @@
       if (validate.ethAddress(address)) {
         const response = await send(
           "GET",
-          `brubeck/node/${address.toLowerCase()}.json`
+          `nodes/${address.toLowerCase()}.json`
         );
         const node = await response.json();
 

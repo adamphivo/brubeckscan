@@ -12,7 +12,7 @@ export async function get() {
     await StreamService.feedStream.publish("prices", `BTCUSDT : ${prices["BTCUSDT"]} USDT 📈`);
 
     // BrubeckStats
-    const brubeckRequest = await send("GET", "brubeck/stats.json");
+    const brubeckRequest = await send("GET", "brubeckStats.json");
     const brubeckStats = await brubeckRequest.json();
     await StreamService.feedStream.publish("brubeckStat", `BRUBECK INFO | Latest reward code : ${brubeckStats.lastCode} ✅`);
     await StreamService.feedStream.publish("brubeckStat", `BRUBECK INFO | Current APY : ${brubeckStats.apy["24h-APY"]} % ✅`);
