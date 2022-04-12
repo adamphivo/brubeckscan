@@ -1,5 +1,4 @@
 import streamr from "$lib/clients/streamr";
-import { map } from "$lib/stores/streams/map";
 
 const mapStream = () => {};
 
@@ -14,7 +13,23 @@ mapStream.publish = async (message: object) => {
 
 mapStream.onMessage = async (content: any, metadata: any) => {
   content.metadata = metadata;
-  map.update((previous) => [...previous.filter(item => item.userAddress !== content.userAddress), content]);
+  const point = document.getElementById(content.userAddress);
+  if (point) {
+    point.style.top = content.posY;
+    point.style.left = content.posX;
+  } else {
+    const map = document.getElementById("map");
+    if (map) {
+      const point = document.createElement("div");
+      point.classList.add("point");
+      point.style.top = content.posY;
+      point.style.left = content.posX;
+      point.style.background = content.userGradient;
+      point.id = content.userAddress;
+      point.title = content.userAddress;
+      map.append(point);
+    }
+  }
 };
 
 export { mapStream };
