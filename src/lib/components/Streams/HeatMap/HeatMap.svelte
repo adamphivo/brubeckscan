@@ -21,6 +21,6 @@
     width: 100%;
     position: relative;
     background-color: transparent;
-    height: 500px;
+    height: 700px;
   }
 </style>
