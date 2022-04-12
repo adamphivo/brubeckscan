@@ -1,4 +1,6 @@
+import { get } from "svelte/store";
 import streamr from "$lib/clients/streamr";
+import { userData } from "$lib/stores/user";
 
 const mapStream = () => {};
 
@@ -21,6 +23,10 @@ mapStream.onMessage = async (content: any, metadata: any) => {
     const map = document.getElementById("map");
     if (map) {
       const point = document.createElement("div");
+      const user = get(userData);
+      if (user && user.address === content.userAddress) {
+        point.classList.add("owner");
+      }
       point.classList.add("point");
       point.style.top = content.posY;
       point.style.left = content.posX;

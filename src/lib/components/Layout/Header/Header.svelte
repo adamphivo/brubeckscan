@@ -35,7 +35,7 @@
     z-index: 2;
     top: 0;
     width: 100%;
-    background-color: var(--color-black);
+    background-color: var(--color-black-transparent);
     max-width: var(--site-max-width);
   }
   .percent {
@@ -63,7 +63,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0px;
-    height: 75px;
+    // height: 75px;
     @media (max-width: 1400px) {
       max-width: 100%;
       padding: 20px;
