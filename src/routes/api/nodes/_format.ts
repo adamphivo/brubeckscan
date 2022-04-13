@@ -20,7 +20,6 @@ type Payout = {
 }
 
 export function format(data: any, address: string): Node {
-  console.log(data[2]?.data.erc20Transfers);
   const dataSent: number = data[2]?.data?.erc20Transfers.reduce(
     (previous, current) => {
       return previous + +current.value;

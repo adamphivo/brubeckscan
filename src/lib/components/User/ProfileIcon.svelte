@@ -1,7 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
   import { userData } from "$lib/stores/user";
-  console.log($page.url.pathname);
 </script>
 
 <a href="/profile">

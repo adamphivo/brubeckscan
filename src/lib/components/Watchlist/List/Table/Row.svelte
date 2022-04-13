@@ -11,8 +11,6 @@
   import Payouts from "./Cells/_Payouts.svelte";
 
   export let node;
-
-  console.log(node);
 </script>
 
 <tr>
