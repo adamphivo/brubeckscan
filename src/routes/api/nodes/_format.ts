@@ -6,6 +6,7 @@ type Node = {
   claimedRewardCodes: RewardCode[];
   dataStaked: any;
   dataSent: number;
+  payouts: Payout[];
 };
 
 type RewardCode = {
@@ -13,7 +14,13 @@ type RewardCode = {
   claimTime: string;
 };
 
+type Payout = {
+  value: string;
+  timestamp: string;
+}
+
 export function format(data: any, address: string): Node {
+  console.log(data[2]?.data.erc20Transfers);
   const dataSent: number = data[2]?.data?.erc20Transfers.reduce(
     (previous, current) => {
       return previous + +current.value;
@@ -31,6 +38,7 @@ export function format(data: any, address: string): Node {
       .reverse(),
     dataStaked: +data[3]?.data?.erc20Balances[0]?.value || 0,
     dataSent: +dataSent || 0,
+    payouts: data[2]?.data?.erc20Transfers
   };
 
   return node;
