@@ -145,3 +145,11 @@
 .point.owner {
     box-shadow: 0 0 20px rgb(109, 106, 106);
 }
+
+.point.anonymous {
+    box-shadow: unset;
+    width: 5px !important;
+    height: 5px !important;
+    padding: 0;
+    background: rgb(48, 44, 44) !important;
+}
