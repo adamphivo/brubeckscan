@@ -4,12 +4,21 @@
   import QuickAddNode from "./_QuickAddNode.svelte";
   import Configuration from "./Configuration.svelte";
   import Totals from "./_Totals.svelte";
+
+  function handleWheel(event){
+    const table = document.querySelector('#table');
+    if(event.deltaY > 0) {
+      table.scrollLeft += 200;
+    } else {
+      table.scrollLeft -= 200;
+    }
+  }
 </script>
 
 {#if $nodesData}
   {#if $nodesData.length}
     <Configuration />
-    <div class="module">
+    <div class="module" on:wheel|preventDefault={handleWheel} id="table">
       <table>
         <thead>
           <tr>
@@ -47,6 +56,7 @@
     max-width: 100%;
     overflow-x: scroll;
     border-radius: 0;
+    scroll-behavior: smooth;
   }
 
   th div {

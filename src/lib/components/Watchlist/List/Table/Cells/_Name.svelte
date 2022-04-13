@@ -11,6 +11,7 @@
   let nodeName = node.dataDB.name;
 
   async function updateNodeName() {
+    if (!nodeName) throw new Error("Empty input");
     const response = await send("PATCH", "users/nodes.json", {
       nodeId: node.dataDB.id,
       newName: nodeName.trim(),
@@ -64,8 +65,8 @@
   }
 
   .actionContainer {
-      display: flex;
-      gap: 10px;
+    display: flex;
+    gap: 10px;
   }
   .iconi {
     width: 20px;
