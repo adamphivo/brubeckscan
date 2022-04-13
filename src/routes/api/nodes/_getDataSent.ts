@@ -13,7 +13,7 @@ export async function getDataSent(address: string) {
         DNT: "1",
         Origin: "file://",
       },
-      body: `{"query":"{\\n  erc20Transfers(where: {from: \\"${streamrAddress}\\", to:\\"${address}\\"}) {\\n    value \\n  }\\n}"}`,
+      body: `{"query":"{\\n  erc20Transfers(where: {from: \\"${streamrAddress}\\", to:\\"${address}\\", timestamp_gt: 1640995200 }) {\\n    value \\n timestamp \\n  }\\n}"}`,
     }
   );
 }

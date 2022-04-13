@@ -4,11 +4,11 @@
   console.log($page.url.pathname);
 </script>
 
-<aside class={$page.url.pathname === "/profile" ? "active" : ""}>
-  <a href="/profile">
+<a href="/profile">
+  <aside class={$page.url.pathname === "/profile" ? "active" : ""}>
     <div style:background={$userData.profile.gradient} />
-  </a>
-</aside>
+  </aside>
+</a>
 
 <style lang="scss">
   aside {

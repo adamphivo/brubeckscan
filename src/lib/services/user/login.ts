@@ -4,7 +4,7 @@ import { nodesData } from "$lib/stores/nodes";
 import { scannedNodeData } from "$lib/stores/scannedNodeData";
 import UserService from "$lib/services/user";
 
-export async function login(address: any) {
+export async function login(address: any, triggerScannedNodeUpdate: boolean = true) {
     const response = await send("PATCH", `users/${address}.json`);
 
     const user = await response.json();
@@ -14,9 +14,11 @@ export async function login(address: any) {
         const nodes = await UserService.processNodes(user.nodes);
         if (nodes) {
            nodesData.set(nodes);
-            scannedNodeData.set(nodes.find(
-                (node) => node.address === user.address
-            ));
+           if(triggerScannedNodeUpdate){
+               scannedNodeData.set(nodes.find(
+                   (node) => node.address === user.address
+               ));
+           }
         }
     }
 

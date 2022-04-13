@@ -42,8 +42,7 @@
       {#if $selectedNodesCurrency === "data"}
         <p>
           {Format.twoDecimals(
-            $nodesDataTotals.totalRewardsInData -
-              $nodesDataTotals.totalDataSent
+            $nodesDataTotals.totalRewardsInData - $nodesDataTotals.totalDataSent
           )}
         </p>
       {:else}
@@ -76,6 +75,7 @@
     </div>
   </td>
   <td />
+  <td />
 </tr>
 
 <style lang="scss">
@@ -88,7 +88,8 @@
     height: 50px;
   }
 
-  td div, th div {
+  td div,
+  th div {
     display: flex;
     align-items: center;
     justify-content: center;

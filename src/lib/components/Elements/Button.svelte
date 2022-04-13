@@ -5,8 +5,11 @@
   export let text = "";
   export let size = "16px";
   export let icon = null;
+  export let isAsync = true;
 
   let status = "";
+
+
 
   async function wrap() {
     if (!status) {
@@ -29,7 +32,7 @@
   }
 </script>
 
-<button on:click|preventDefault={wrap} class={status} style:font-size={size}>
+<button on:click|preventDefault={isAsync ? wrap : action} class={status} style:font-size={size}>
   {#if icon}
     <div class="icon" style:width={size}>
       <svelte:component this={icon} />

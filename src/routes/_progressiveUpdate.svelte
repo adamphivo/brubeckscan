@@ -27,7 +27,7 @@
           posX: coordinates.randomX,
           posY: coordinates.randomY,
         });
-        await UserService.login($userData.address);
+        await UserService.login($userData.address, false);
       }
       isSyncing.set(false);
     }
