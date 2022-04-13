@@ -21,6 +21,7 @@
             <th><div>To be received</div></th>
             <th><div>Staked</div></th>
             <th><div>Claim count</div></th>
+            <th><div>Payouts</div></th>
             <th><div>Actions</div></th>
           </tr>
           <Totals />
@@ -38,7 +39,7 @@
 
 <style lang="scss">
   table {
-    width: 1600px;
+    width: 1700px;
   }
   .module {
     width: 100%;

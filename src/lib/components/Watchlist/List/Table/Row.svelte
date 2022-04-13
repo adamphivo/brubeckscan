@@ -8,8 +8,11 @@
   import Actions from "./Cells/_Actions.svelte";
   import Received from "./Cells/_Received.svelte";
   import ToBeReceived from "./Cells/_ToBeReceived.svelte";
+  import Payouts from "./Cells/_Payouts.svelte";
 
   export let node;
+
+  console.log(node);
 </script>
 
 <tr>
@@ -21,6 +24,7 @@
   <ToBeReceived {node} />
   <Staked {node} />
   <ClaimCount {node} />
+  <Payouts {node} />
   <Actions {node} />
 </tr>
 

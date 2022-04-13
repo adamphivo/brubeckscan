@@ -21,7 +21,7 @@
       <Syncer />
     </div>
   </div>
-  <div class="row">
+  <div class="row second">
     <Navigation />
   </div>
 </header>
@@ -45,6 +45,9 @@
     display: flex;
     flex-direction: row-reverse;
     gap: 20px;
+  }
+  .second {
+    margin-bottom: 10px;
   }
   .apy {
     padding: 7px;
