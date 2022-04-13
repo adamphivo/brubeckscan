@@ -1,36 +1,46 @@
 import streamr from "$lib/clients/streamr";
 import { feed } from "$lib/stores/streams/feed";
 
-const feedStream = () => { };
+const feedStream = () => {};
 
 feedStream.publish = async (type: string, content: string) => {
-    const msg = {
-        type,
-        content
-    };
+  const msg = {
+    type,
+    content,
+  };
 
-    await streamr.publish(
-        `0xd9925689cb36bfc3e2f82ddacda21c231e126ee8${import.meta.env.VITE_STREAMR_FEED_STREAMID}`,
-        msg
-    );
+  await streamr.publish(
+    `0xd9925689cb36bfc3e2f82ddacda21c231e126ee8${
+      import.meta.env.VITE_STREAMR_FEED_STREAMID
+    }`,
+    msg
+  );
 };
 
 feedStream.onMessage = async (content: any, metadata: any) => {
-    // We attach the message metadata to the content object as well
-    content.metadata = metadata;
-    feed.update(previous => {
-        return { messages: [...previous.messages, content] };
-    });
-    setTimeout(feedStream.scrollFeedToBottom, 100);
+  // We attach the message metadata to the content object as well
+  content.metadata = metadata;
+  feed.update((previous) => {
+    if (previous.messages.length >= 100) {
+      previous.messages.shift();
+      previous.messages.push(content);
+      return {
+        messages: previous.messages,
+      };
+    } else {
+      return { messages: [...previous.messages, content] };
+    }
+  });
+  setTimeout(feedStream.scrollFeedToBottom, 100);
 };
 
 feedStream.scrollFeedToBottom = () => {
-    const feed = document.querySelector("#feed");
-    if (!feed) return;
-    feed.scrollTo({
-        top: feed.scrollHeight,
-        behavior: "smooth",
-    });
+  const feed = document.querySelector("#feed");
+  if (!feed) return;
+  feed.scrollTo({
+    top: feed.scrollHeight,
+    behavior: "smooth",
+  });
 };
 
 export { feedStream };
