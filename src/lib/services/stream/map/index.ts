@@ -28,6 +28,9 @@ mapStream.onMessage = async (content: any, metadata: any) => {
         point.classList.add("owner");
       }
       point.classList.add("point");
+      if (content.userGradient === "lightgrey") {
+        point.classList.add("anonymous");
+      }
       point.style.top = content.posY;
       point.style.left = content.posX;
       point.style.background = content.userGradient;
