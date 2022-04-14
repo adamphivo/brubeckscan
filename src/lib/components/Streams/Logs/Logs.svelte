@@ -17,20 +17,22 @@
 
 <section class="module" id="logs">
   {#each $logs as log}
-    <div>
-      <span>{Format.timestamp(log.metadata.messageId.timestamp)}</span>
-      <span class={log.method}>{log.method}</span>
-      {#if log.routeId.startsWith("api")}
-        <span>INTERNAL</span>
-        <span>{log.routeId.replace("api/", "")}</span>
-      {:else}
-        <span>{log.routeId}</span>
-      {/if}
-      {#if log.error}
-        <span class="error">🐛</span>
-        <span>{log.error.message}</span>
-      {/if}
-    </div>
+    {#if log.routeId && log.method }
+      <div>
+        <span>{Format.timestamp(log.metadata.messageId.timestamp)}</span>
+        <span class={log.method}>{log.method}</span>
+        {#if log?.routeId.startsWith("api")}
+          <span>INTERNAL</span>
+          <span>{log.routeId.replace("api/", "")}</span>
+        {:else}
+          <span>{log.routeId}</span>
+        {/if}
+        {#if log.error}
+          <span class="error">🐛</span>
+          <span>{log.error.message}</span>
+        {/if}
+      </div>
+    {/if}
   {/each}
 </section>
 
