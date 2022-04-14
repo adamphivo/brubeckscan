@@ -6,7 +6,9 @@
   let distance: string;
   if (node?.claimedRewardCodes[0]) {
     const latestClaim = new Date(node?.claimedRewardCodes[0]?.claimTime);
-    distance = formatDistance(latestClaim, now, { addSuffix: true });
+    if (latestClaim) {
+      distance = formatDistance(latestClaim, now, { addSuffix: true });
+    }
   }
   const hasClaimedTheLatestKnownCode = node?.claimedRewardCodes.find(
     (code) => code.id === $brubeckData.lastCode

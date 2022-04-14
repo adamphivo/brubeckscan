@@ -24,8 +24,7 @@
         align-items: center;
         font-weight: bold;
         font-size: 14px;
-        padding: 20px;
-        border-radius: 20px;
+        padding: 15px;
         background-color: rgb(37, 36, 36);
     }
 

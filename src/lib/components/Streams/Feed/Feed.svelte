@@ -3,6 +3,7 @@
   import StreamService from "$lib/services/stream";
   import { feed } from "$lib/stores/streams/feed";
   import Message from "./_message.svelte";
+  import Id from "../_id.svelte";
 
   onMount(async () => {
     await StreamService.feedStream.getAndSubscribe();
@@ -10,7 +11,7 @@
   });
 
   onDestroy(async () => {
-    await StreamService.feedStream.unsubscribe();
+    // await StreamService.feedStream.unsubscribe();
   });
 </script>
 
@@ -22,11 +23,13 @@
   </div>
 </section>
 
+<Id stream={StreamService.feedStream} />
+
 <style lang="scss">
   .module {
     width: 100%;
     flex-grow: 1;
-    gap: 15px;
+    gap: 10px;
     background-color: transparent;
     height: 700px;
     overflow-y: scroll;

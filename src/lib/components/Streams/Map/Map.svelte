@@ -1,6 +1,7 @@
 <script lang="ts">
   import StreamService from "$lib/services/stream";
   import { onMount, onDestroy } from "svelte";
+  import Id from "../_id.svelte";
 
   onMount(async () => {
     await StreamService.mapStream.getAndSubscribe();
@@ -14,6 +15,8 @@
 <section class="module">
   <div class="map" id="map" />
 </section>
+
+<Id stream={StreamService.mapStream} />
 
 <style lang="scss">
   .module {

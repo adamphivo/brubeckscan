@@ -28,10 +28,11 @@
   let hasClaimedTheLatestKnownCode;
 
   const now = new Date();
-  
-  if($scannedNodeData){
+
+  if ($scannedNodeData) {
     latestClaim = new Date($scannedNodeData?.claimedRewardCodes[0]?.claimTime);
-    distance = formatDistance(latestClaim, now, { addSuffix: true });
+    if (latestClaim)
+      distance = formatDistance(latestClaim, now, { addSuffix: true });
     hasClaimedTheLatestKnownCode = $scannedNodeData?.claimedRewardCodes.find(
       (code) => code.id === $brubeckData.lastCode
     );
@@ -184,7 +185,7 @@
     </div>
     <div class="separator" />
     <div class="data">
-      <div class="label"><p>Status / Latest claim</p></div> 
+      <div class="label"><p>Status / Latest claim</p></div>
       <div class="value">
         <div class="container">
           {#if $scannedNodeData.claimedRewardCodes.length === 0}

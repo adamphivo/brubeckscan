@@ -12,7 +12,7 @@ export const streamTabs = writable({
     { name: "Feed", component: Feed },
     { name: "Chat", component: Chat },
     { name: "Map", component: Map },
-    { name: "Logs", component: Logs}
+    { name: "Logs", component: Logs },
   ],
 });
 

@@ -5,14 +5,14 @@
   import Messages from "./Messages.svelte";
   import InputBox from "./_inputBox.svelte";
   import Connect from "$lib/components/Layout/Header/_Connect.svelte";
+  import Id from "../_id.svelte";
 
   onMount(async () => {
     await StreamService.chatStream.getAndSubscribe();
     StreamService.chatStream.scrollToBottom();
   });
 
-  onDestroy(async () => {
-  });
+  onDestroy(async () => {});
 </script>
 
 <section class="module">
@@ -29,6 +29,8 @@
     </div>
   {/if}
 </section>
+
+<Id stream={StreamService.chatStream} />
 
 <style lang="scss">
   .module {

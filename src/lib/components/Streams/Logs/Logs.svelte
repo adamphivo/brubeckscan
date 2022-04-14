@@ -3,6 +3,7 @@
   import StreamService from "$lib/services/stream";
   import Format from "$lib/helpers/format";
   import { logs } from "$lib/stores/streams/logs";
+  import Id from "../_id.svelte";
 
   onMount(async () => {
     await StreamService.logsStream.getAndSubscribe();
@@ -35,6 +36,8 @@
     {/if}
   {/each}
 </section>
+
+<Id stream={StreamService.logsStream} />
 
 <style lang="scss">
   .module {

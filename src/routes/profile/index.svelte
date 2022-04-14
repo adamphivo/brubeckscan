@@ -1,25 +1,20 @@
-<script lang="ts" context="module">
-  import { get } from "svelte/store";
-  import { userData } from "$lib/stores/user";
-  export async function load() {
-    if(get(userData)){
-      return {}
-    } else {
-      return {
-        status: 302,
-        redirect: "/"
-      };
-    }
-  }
-</script>
-
 <script lang="ts">
+  import { onMount } from "svelte";
+  import { userData } from "$lib/stores/user";
   import Watchlist from "$lib/components/Watchlist/Watchlist.svelte";
+  import { goto } from "$app/navigation";
+  onMount(async () => {
+    if (!$userData) {
+      goto("/");
+    }
+  });
 </script>
 
-<div class="modulePool">
-  <Watchlist />
-</div>
+{#if $userData}
+  <div class="modulePool">
+    <Watchlist />
+  </div>
+{/if}
 
 <style lang="scss">
   .modulePool {

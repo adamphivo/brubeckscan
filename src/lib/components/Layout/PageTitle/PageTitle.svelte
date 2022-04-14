@@ -22,6 +22,7 @@
         max-width: var(--site-max-width);
         padding-bottom: 30px;
         height: 75px;
+        user-select: none;
     }
 
     h2 {

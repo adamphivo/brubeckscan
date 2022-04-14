@@ -5,7 +5,21 @@ const STREAM_ID = import.meta.env.VITE_STREAMR_LOGS_STREAMID as string;
 
 const logsStream = () => {};
 
+logsStream.getDescription = () => {
+  return "A live logger of the app : show requests & errors";
+};
+
+logsStream.getId = () => {
+  return STREAM_ID;
+};
+
 logsStream.getAndSubscribe = async () => {
+  // Guard against double subs
+  const subscriptions = await streamr.getSubscriptions();
+  const alreadySub = subscriptions.find((sub) => {
+    return sub.streamPartId.includes(STREAM_ID);
+  });
+  if (alreadySub) return;
   const stream = await streamr.getOrCreateStream({
     id: STREAM_ID,
   });
