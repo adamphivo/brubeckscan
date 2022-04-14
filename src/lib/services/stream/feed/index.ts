@@ -1,7 +1,21 @@
 import streamr from "$lib/clients/streamr";
 import { feed } from "$lib/stores/streams/feed";
 
+const STREAM_ID = import.meta.env.VITE_STREAMR_FEED_STREAMID as string;
+
 const feedStream = () => {};
+
+feedStream.getAndSubscribe = async () => {
+  const stream = await streamr.getOrCreateStream({
+    id: STREAM_ID,
+  });
+
+  return await streamr.subscribe(stream.id, feedStream.onMessage);
+};
+
+feedStream.unsubscribe = async () => {
+  return await streamr.unsubscribe(STREAM_ID);
+};
 
 feedStream.publish = async (type: string, content: string) => {
   const msg = {
@@ -10,9 +24,7 @@ feedStream.publish = async (type: string, content: string) => {
   };
 
   await streamr.publish(
-    `0xd9925689cb36bfc3e2f82ddacda21c231e126ee8${
-      import.meta.env.VITE_STREAMR_FEED_STREAMID
-    }`,
+    `0xd9925689cb36bfc3e2f82ddacda21c231e126ee8${STREAM_ID}`,
     msg
   );
 };

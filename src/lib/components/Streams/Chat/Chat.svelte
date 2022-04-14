@@ -1,13 +1,23 @@
 <script lang="ts">
+  import { onMount, onDestroy } from "svelte";
+  import StreamService from "$lib/services/stream";
   import { userData } from "$lib/stores/user";
   import Messages from "./Messages.svelte";
   import InputBox from "./_inputBox.svelte";
   import Connect from "$lib/components/Layout/Header/_Connect.svelte";
+
+  onMount(async () => {
+    await StreamService.chatStream.getAndSubscribe();
+    StreamService.chatStream.scrollToBottom();
+  });
+
+  onDestroy(async () => {
+  });
 </script>
 
 <section class="module">
   {#if $userData}
-    <div class="messages {$userData ? '' : 'blurred'}">
+    <div class="messages">
       <Messages />
     </div>
     <div>
@@ -41,15 +51,5 @@
 
   .messages {
     position: relative;
-  }
-
-  .blurred::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(26, 25, 25);
   }
 </style>

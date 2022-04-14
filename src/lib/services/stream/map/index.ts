@@ -2,19 +2,32 @@ import { get } from "svelte/store";
 import streamr from "$lib/clients/streamr";
 import { userData } from "$lib/stores/user";
 
+const STREAM_ID = import.meta.env.VITE_STREAMR_MAP_STREAMID as string;
+
 const mapStream = () => {};
+
+mapStream.getAndSubscribe = async () => {
+  const stream = await streamr.getOrCreateStream({
+    id: STREAM_ID,
+  });
+
+  return await streamr.subscribe(stream.id, mapStream.onMessage);
+};
+
+mapStream.unsubscribe = async () => {
+  return await streamr.unsubscribe(STREAM_ID);
+};
 
 mapStream.publish = async (message: object) => {
   await streamr.publish(
-    `0xd9925689cb36bfc3e2f82ddacda21c231e126ee8${
-      import.meta.env.VITE_STREAMR_MAP_STREAMID
-    }`,
+    `0xd9925689cb36bfc3e2f82ddacda21c231e126ee8${STREAM_ID}`,
     message
   );
 };
 
 mapStream.onMessage = async (content: any, metadata: any) => {
   content.metadata = metadata;
+  if (!content.userAddress) return;
   const point = document.getElementById(content.userAddress);
   if (point) {
     point.style.top = content.posY;

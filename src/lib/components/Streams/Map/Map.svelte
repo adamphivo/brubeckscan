@@ -1,5 +1,14 @@
 <script lang="ts">
-  import Point from "./_Point.svelte";
+  import StreamService from "$lib/services/stream";
+  import { onMount, onDestroy } from "svelte";
+
+  onMount(async () => {
+    await StreamService.mapStream.getAndSubscribe();
+  });
+
+  onDestroy(async () => {
+    await StreamService.mapStream.unsubscribe();
+  });
 </script>
 
 <section class="module">
