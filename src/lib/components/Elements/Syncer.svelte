@@ -6,7 +6,7 @@
 
 {#if $isSyncing}
   <div transition:fade>
-    <BarLoader color="#F65F0A" />
+    <BarLoader color="#F65F0A"/>
   </div>
 {/if}
 

@@ -28,9 +28,6 @@
 {/if}
 
 <style>
-  .connect {
-    padding: 10px;
-  }
   p {
     display: inline;
   }

@@ -12,7 +12,7 @@ mapStream.getId = () => {
 };
 
 mapStream.getDescription = () => {
-  return "Each block represents an instance of the app. Everytime it is synced with the network, it moves to another random location.";
+  return "Each block represents an instance of the app : everytime the client syncs with the network, its block moves to another random location";
 };
 
 mapStream.getAndSubscribe = async () => {

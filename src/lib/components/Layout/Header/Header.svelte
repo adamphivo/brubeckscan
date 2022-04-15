@@ -1,80 +1,41 @@
 <script lang="ts">
   import Navigation from "./_Navigation.svelte";
-  import Connect from "./_Connect.svelte";
+  import Connect from "$lib/components/Auth/Connect.svelte";
   import Syncer from "$lib/components/Elements/Syncer.svelte";
   import { userData } from "$lib/stores/user";
-  import { brubeckData } from "$lib/stores/brubeckData";
 </script>
 
 <header>
-  <div class="row">
-    <div class="logo">
-      <h1>BrubeckScan</h1>
-      <div class="apy">
-        {$brubeckData.apy["24h-APY"]}<span class="percent">%</span> APY
-      </div>
+    <div>
+      <Navigation />
     </div>
-    <div class="right">
+    <div>
+      <Syncer />
       {#if !$userData}
         <Connect />
       {/if}
-      <Syncer />
     </div>
-  </div>
-  <div class="row second">
-    <Navigation />
-  </div>
 </header>
 
 <style lang="scss">
   header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     position: sticky;
     z-index: 2;
     top: 0;
+    max-width: var(--site-max-width);
     width: 100%;
     background-color: var(--color-black-transparent);
-    max-width: var(--site-max-width);
-  }
-  .percent {
-    color: var(--color-orange);
-  }
-  .right {
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 20px;
-  }
-  .second {
-    margin-bottom: 10px;
-  }
-  .apy {
-    padding: 7px;
-    border: 1px solid lightgray;
-    font-size: 12px;
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-  }
-  .row {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0px;
-    // height: 75px;
-    @media (max-width: 1400px) {
-      max-width: 100%;
-      padding: 20px;
+    padding: 20px 0;
+    min-height: 92px;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
     }
-  }
-
-  h1 {
-    font-weight: 800;
-    font-size: 20px;
   }
 </style>

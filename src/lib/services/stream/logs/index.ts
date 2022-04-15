@@ -6,7 +6,7 @@ const STREAM_ID = import.meta.env.VITE_STREAMR_LOGS_STREAMID as string;
 const logsStream = () => {};
 
 logsStream.getDescription = () => {
-  return "A live logger of the app : show requests & errors";
+  return "Internal & external requests received by BrubeckScan";
 };
 
 logsStream.getId = () => {

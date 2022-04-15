@@ -4,6 +4,8 @@
     import { userData } from "$lib/stores/user";
     import { send } from "$lib/helpers/send";
     import { validate } from "$lib/helpers/validate";
+    import MdSearch from 'svelte-icons/md/MdSearch.svelte';
+    import MdYoutubeSearchedFor from 'svelte-icons/md/MdYoutubeSearchedFor.svelte';
 
     let address = "";
 
@@ -36,7 +38,7 @@
 <div class="module">
     <div class="scanner">
         <input bind:value={address} placeholder={placeholder} />
-        <Button action={scan} text="Scan" />
+        <Button action={scan} icon={MdSearch} size="26px"/>
     </div>
 </div>
 

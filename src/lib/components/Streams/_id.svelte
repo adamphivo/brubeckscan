@@ -4,7 +4,7 @@
 
 <section class="module">
   <div class="streamId">
-    <p>Stream ID :</p>
+    <p>Stream ID# :</p>
     <p>{stream.getId()}</p>
   </div>
   <div class="learn">
@@ -27,6 +27,7 @@
     align-items: center;
     font-weight: bold;
     flex-wrap: wrap;
+    gap: 10px;
   }
   .streamId {
     display: flex;
