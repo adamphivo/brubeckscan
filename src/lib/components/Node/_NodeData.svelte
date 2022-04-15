@@ -30,12 +30,17 @@
   const now = new Date();
 
   if ($scannedNodeData) {
-    latestClaim = new Date($scannedNodeData?.claimedRewardCodes[0]?.claimTime);
-    if (latestClaim)
-      distance = formatDistance(latestClaim, now, { addSuffix: true });
-    hasClaimedTheLatestKnownCode = $scannedNodeData?.claimedRewardCodes.find(
-      (code) => code.id === $brubeckData.lastCode
-    );
+    if ($scannedNodeData.claimedRewardCodes.length !== 0) {
+      latestClaim = new Date(
+        $scannedNodeData?.claimedRewardCodes[0]?.claimTime
+      );
+      if (latestClaim) {
+        distance = formatDistance(latestClaim, now, { addSuffix: true });
+      }
+      hasClaimedTheLatestKnownCode = $scannedNodeData?.claimedRewardCodes.find(
+        (code) => code.id === $brubeckData.lastCode
+      );
+    }
   }
 
   onMount(async () => {
