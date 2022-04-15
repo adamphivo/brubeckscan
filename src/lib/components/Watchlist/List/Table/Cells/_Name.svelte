@@ -31,7 +31,7 @@
         {#if !isEditing}
           <p class="name">{node.dataDB.name}</p>
         {:else}
-          <input bind:value={nodeName} maxlength="20" />
+          <input class="name" bind:value={nodeName} maxlength="20" />
         {/if}
       </div>
       <div class="actionContainer">
@@ -42,7 +42,7 @@
             </div>
           </button>
         {:else}
-          <Button icon={MdSave} size="22px" action={updateNodeName} />
+          <Button icon={MdSave} size="24px" action={updateNodeName} />
           <button
             on:click={() => {
               isEditing = false;
@@ -69,7 +69,7 @@
     gap: 10px;
   }
   .iconi {
-    width: 20px;
+    width: 22px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,10 +85,15 @@
     padding: 0;
     border: 0;
     border-radius: 0;
-    border-bottom: 1px solid grey;
+  }
+
+  input.name {
+    background-color: rgb(12, 11, 11);
   }
 
   .name {
-    border-bottom: 1px solid transparent;
+    padding: 0;
+    line-height: 24px;
+    padding: 10px 10px;
   }
 </style>

@@ -33,6 +33,6 @@
     width: 100%;
     position: relative;
     background-color: transparent;
-    height: 600px;
+    height: 700px;
   }
 </style>
