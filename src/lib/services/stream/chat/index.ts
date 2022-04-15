@@ -6,7 +6,7 @@ const STREAM_ID = import.meta.env.VITE_STREAMR_CHAT_STREAMID as string;
 const chatStream = () => {};
 
 chatStream.getDescription = () => {
-  return "Messages are stored using a storage node for persistence";
+  return "Messages are stored using a storage node";
 };
 
 chatStream.getId = () => {

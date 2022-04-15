@@ -5,7 +5,7 @@
   import ProfileIcon from "$lib/components/User/ProfileIcon.svelte";
 </script>
 
-<nav class="navigationIcons">
+<nav>
   {#each $links as link}
     <a
       href={link.url}
@@ -37,18 +37,17 @@
         color: white;
         border-radius: 20px;
         background-color: rgb(40, 38, 38);
+        .icon {
+          color: whitesmoke;
+        }
       }
     }
   }
 
   .icon {
-    transition-duration: 0.2s;
+    transition-duration: 0.3s;
     width: 30px;
     color: gray;
-    &.active,
-    &:hover {
-      color: whitesmoke;
-    }
   }
 
   .hidden {

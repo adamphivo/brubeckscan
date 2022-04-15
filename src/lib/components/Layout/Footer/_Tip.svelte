@@ -3,7 +3,7 @@
   import { userData } from "$lib/stores/user";
   import Button from "$lib/components/Elements/Button.svelte";
   import StreamService from "$lib/services/stream";
-  import Connect from "$lib/components/Layout/Header/_Connect.svelte";
+  import Connect from "$lib/components/Auth/Connect.svelte";
 
   async function tip() {
     try {

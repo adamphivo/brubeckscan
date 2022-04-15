@@ -18,7 +18,7 @@
           borderWidth: 1,
           fill: true,
           data: $brubeckDataHistorySets.totalDataStaked,
-          pointRadius: 1,
+          pointRadius: 0.5,
         },
       ],
     };
@@ -44,9 +44,11 @@
           y: {
             ticks: {
               display: false,
+              drawBorder: false
             },
             grid: {
               display: false,
+              drawBorder: false
             },
           },
         },
@@ -73,10 +75,10 @@
         $brubeckData.apy["24h-data-staked"] * $marketPrices.DATAUSDT
       )} USDT</span
     >
-    (
+    <span>/</span>
     <span class="DATA"
       >{Format.tokenValue($brubeckData.apy["24h-data-staked"])} DATA</span
-    > )
+    >
   </h4>
   <canvas id={GRAPH_ID} />
 </div>

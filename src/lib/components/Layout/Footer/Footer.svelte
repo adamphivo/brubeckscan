@@ -3,7 +3,7 @@
   import Socials from "./_Socials.svelte";
   import TiSocialGithub from "svelte-icons/ti/TiSocialGithub.svelte";
   import { hasEthereum } from "$lib/stores/user";
-  import Connect from "$lib/components/Layout/Header/_Connect.svelte";
+  import Connect from "$lib/components/Auth/Connect.svelte";
 </script>
 
 <footer class="footer">

@@ -6,7 +6,7 @@ const STREAM_ID = import.meta.env.VITE_STREAMR_FEED_STREAMID as string;
 const feedStream = () => {};
 
 feedStream.getDescription = () => {
-  return "Gives information about the network & app every minute";
+  return "Gather userful data about the app";
 };
 
 feedStream.getId = () => {
