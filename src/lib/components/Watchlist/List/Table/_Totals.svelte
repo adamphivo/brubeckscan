@@ -15,10 +15,17 @@
     <div class={$selectedNodesCurrency}>
       {#if $selectedNodesCurrency === "data"}
         <p>{Format.twoDecimals($nodesDataTotals.totalRewardsInData)}</p>
-      {:else}
+      {:else if $selectedNodesCurrency === "usdt"}
         <p>
           {Format.tokenValue(
             $nodesDataTotals.totalRewardsInData * $marketPrices.DATAUSDT
+          )}
+        </p>
+      {:else if $selectedNodesCurrency === "eur"}
+        <p>
+          {Format.tokenValue(
+            ($nodesDataTotals.totalRewardsInData * $marketPrices.DATAUSDT) /
+              $marketPrices.EURUSDT
           )}
         </p>
       {/if}
@@ -28,10 +35,17 @@
     <div class={$selectedNodesCurrency}>
       {#if $selectedNodesCurrency === "data"}
         <p>{Format.twoDecimals($nodesDataTotals.totalDataSent)}</p>
-      {:else}
+      {:else if $selectedNodesCurrency === "usdt"}
         <p>
           {Format.tokenValue(
             $nodesDataTotals.totalDataSent * $marketPrices.DATAUSDT
+          )}
+        </p>
+      {:else if $selectedNodesCurrency === "eur"}
+        <p>
+          {Format.tokenValue(
+            ($nodesDataTotals.totalDataSent * $marketPrices.DATAUSDT) /
+              $marketPrices.EURUSDT
           )}
         </p>
       {/if}
@@ -45,12 +59,21 @@
             $nodesDataTotals.totalRewardsInData - $nodesDataTotals.totalDataSent
           )}
         </p>
-      {:else}
+      {:else if $selectedNodesCurrency === "usdt"}
         <p>
           {Format.tokenValue(
             ($nodesDataTotals.totalRewardsInData -
               $nodesDataTotals.totalDataSent) *
               $marketPrices.DATAUSDT
+          )}
+        </p>
+      {:else if $selectedNodesCurrency === "eur"}
+        <p>
+          {Format.tokenValue(
+            (($nodesDataTotals.totalRewardsInData -
+              $nodesDataTotals.totalDataSent) *
+              $marketPrices.DATAUSDT) /
+              $marketPrices.EURUSDT
           )}
         </p>
       {/if}
@@ -60,10 +83,17 @@
     <div class={$selectedNodesCurrency}>
       {#if $selectedNodesCurrency === "data"}
         <p>{Format.tokenValue($nodesDataTotals.totalDataStaked)}</p>
-      {:else}
+      {:else if $selectedNodesCurrency === "usdt"}
         <p>
           {Format.tokenValue(
             $nodesDataTotals.totalDataStaked * $marketPrices.DATAUSDT
+          )}
+        </p>
+      {:else if $selectedNodesCurrency === "eur"}
+        <p>
+          {Format.tokenValue(
+            ($nodesDataTotals.totalDataStaked * $marketPrices.DATAUSDT) /
+              $marketPrices.EURUSDT
           )}
         </p>
       {/if}
@@ -101,6 +131,10 @@
   }
 
   .usdt {
-    color: rgb(100, 218, 161);
+    color: var(--color-usdt);
+  }
+
+  .eur {
+    color: var(--color-eur);
   }
 </style>

@@ -8,7 +8,9 @@
 
 {#if $nodesDataTotals}
   <div class="module">
-    <CurrencySelector store={selectedOverviewCurrency} />
+    <div class="selector">
+      <CurrencySelector store={selectedOverviewCurrency} />
+    </div>
     <h3>Totals</h3>
     <div class="data">
       <div class="label">
@@ -153,6 +155,10 @@
     @media (max-width: 1400px) {
       width: 100%;
     }
+  }
+
+  .selector {
+    padding: 30px 0;
   }
 
   .currency.data {
