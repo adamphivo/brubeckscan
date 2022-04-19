@@ -3,12 +3,12 @@
   import { marketPrices } from "$lib/stores/marketPrices";
   import { nodesDataTotals } from "$lib/stores/nodes";
   import { selectedOverviewCurrency } from "$lib/stores/selectedCurrency";
-  import CurrencySelector from "./_CurrencySelector.svelte";
+  import CurrencySelector from "$lib/components/Markets/CurrencySelector.svelte";
 </script>
 
 {#if $nodesDataTotals}
   <div class="module">
-    <CurrencySelector />
+    <CurrencySelector store={selectedOverviewCurrency} />
     <h3>Totals</h3>
     <div class="data">
       <div class="label">
@@ -18,13 +18,21 @@
         {#if $selectedOverviewCurrency === "data"}
           <p>{Format.tokenValue($nodesDataTotals.totalDataStaked)}</p>
           <p class="currency {$selectedOverviewCurrency}">DATA</p>
-        {:else}
+        {:else if $selectedOverviewCurrency === "usdt"}
           <p>
             {Format.tokenValue(
               $nodesDataTotals.totalDataStaked * $marketPrices.DATAUSDT
             )}
           </p>
           <p class="currency {$selectedOverviewCurrency}">USDT</p>
+        {:else if $selectedOverviewCurrency === "eur"}
+          <p>
+            {Format.tokenValue(
+              ($nodesDataTotals.totalDataStaked * $marketPrices.DATAUSDT) /
+                $marketPrices.EURUSDT
+            )}
+          </p>
+          <p class="currency {$selectedOverviewCurrency}">EUR</p>
         {/if}
       </div>
     </div>
@@ -37,13 +45,21 @@
         {#if $selectedOverviewCurrency === "data"}
           <p>{Format.twoDecimals($nodesDataTotals.totalRewardsInData)}</p>
           <p class="currency {$selectedOverviewCurrency}">DATA</p>
-        {:else}
+        {:else if $selectedOverviewCurrency === "usdt"}
           <p>
             {Format.tokenValue(
               $nodesDataTotals.totalRewardsInData * $marketPrices.DATAUSDT
             )}
           </p>
           <p class="currency {$selectedOverviewCurrency}">USDT</p>
+        {:else if $selectedOverviewCurrency === "eur"}
+          <p>
+            {Format.tokenValue(
+              ($nodesDataTotals.totalRewardsInData * $marketPrices.DATAUSDT) /
+                $marketPrices.EURUSDT
+            )}
+          </p>
+          <p class="currency {$selectedOverviewCurrency}">EUR</p>
         {/if}
       </div>
     </div>
@@ -56,13 +72,21 @@
         {#if $selectedOverviewCurrency === "data"}
           <p>{Format.twoDecimals($nodesDataTotals.totalDataSent)}</p>
           <p class="currency {$selectedOverviewCurrency}">DATA</p>
-        {:else}
+        {:else if $selectedOverviewCurrency === "usdt"}
           <p>
             {Format.twoDecimals(
-              $nodesDataTotals.totalDataSent * $marketPrices["DATAUSDT"]
+              $nodesDataTotals.totalDataSent * $marketPrices.DATAUSDT
             )}
           </p>
           <p class="currency {$selectedOverviewCurrency}">USDT</p>
+        {:else if $selectedOverviewCurrency === "eur"}
+          <p>
+            {Format.twoDecimals(
+              ($nodesDataTotals.totalDataSent * $marketPrices.DATAUSDT) /
+                $marketPrices.EURUSDT
+            )}
+          </p>
+          <p class="currency {$selectedOverviewCurrency}">EUR</p>
         {/if}
       </div>
     </div>
@@ -80,15 +104,24 @@
             )}
           </p>
           <p class="currency {$selectedOverviewCurrency}">DATA</p>
-        {:else}
+        {:else if $selectedOverviewCurrency === "usdt"}
           <p>
             {Format.twoDecimals(
               ($nodesDataTotals.totalRewardsInData -
                 $nodesDataTotals.totalDataSent) *
-                $marketPrices["DATAUSDT"]
+                $marketPrices.DATAUSDT
             )}
           </p>
           <p class="currency {$selectedOverviewCurrency}">USDT</p>
+        {:else if $selectedOverviewCurrency === "eur"}
+          <p>
+            {Format.twoDecimals(
+              ($nodesDataTotals.totalRewardsInData -
+                $nodesDataTotals.totalDataSent) *
+                $marketPrices.DATAUSDT / $marketPrices.EURUSDT
+            )}
+          </p>
+          <p class="currency {$selectedOverviewCurrency}">EUR</p>
         {/if}
       </div>
     </div>
@@ -127,7 +160,11 @@
   }
 
   .currency.usdt {
-    color: rgb(100, 218, 161);
+    color: var(--color-usdt);
+  }
+
+  .currency.eur {
+    color: var(--color-eur);
   }
 
   h3 {

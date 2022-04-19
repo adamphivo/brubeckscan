@@ -24,6 +24,8 @@ export async function get() {
             prices[price.symbol] = price.price;
         });
 
+        console.log(prices);
+
         appCache.set(Consts.cache.MARKET_PRICES, prices, Consts.cache.PRICES_TTL);
 
         return {

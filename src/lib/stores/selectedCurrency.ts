@@ -1,5 +1,5 @@
-import { writable } from "svelte/store";
+import { writable, type Writable } from "svelte/store";
 
-export const selectedNodesCurrency = writable("data");
-export const selectedOverviewCurrency = writable("data");
-export const selectedScanCurrency = writable("data");
+export const selectedNodesCurrency: Writable<string> = writable("data");
+export const selectedOverviewCurrency: Writable<string> = writable("data");
+export const selectedScanCurrency: Writable<string> = writable("data");
