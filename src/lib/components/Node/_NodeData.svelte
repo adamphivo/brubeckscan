@@ -9,9 +9,9 @@
   import { send } from "$lib/helpers/send";
   import { validate } from "$lib/helpers/validate";
   import { selectedScanCurrency } from "$lib/stores/selectedCurrency";
-  import CurrencySelector from "./_CurrencySelector.svelte";
   import { formatDistance } from "date-fns";
   import { brubeckData } from "$lib/stores/brubeckData";
+  import CurrencySelector from "$lib/components/Markets/CurrencySelector.svelte";
 
   $: isUserOwner = $userData?.address === $scannedNodeData?.address;
 
@@ -92,7 +92,9 @@
       </div>
     </div>
     <div class="separator" />
-    <CurrencySelector />
+    <div class="selector">
+      <CurrencySelector store={selectedScanCurrency} />
+    </div>
     <div class="separator" />
     <div class="data">
       <div class="label">
@@ -102,13 +104,21 @@
         {#if $selectedScanCurrency === "data"}
           <p>{Format.tokenValue($scannedNodeData.dataStaked)}</p>
           <p class="currency {$selectedScanCurrency}">DATA</p>
-        {:else}
+        {:else if $selectedScanCurrency === "usdt"}
           <p>
             {Format.tokenValue(
               $scannedNodeData.dataStaked * $marketPrices.DATAUSDT
             )}
           </p>
           <p class="currency {$selectedScanCurrency}">USDT</p>
+        {:else if $selectedScanCurrency === "eur"}
+          <p>
+            {Format.tokenValue(
+              ($scannedNodeData.dataStaked * $marketPrices.DATAUSDT) /
+                $marketPrices.EURUSDT
+            )}
+          </p>
+          <p class="currency {$selectedScanCurrency}">EUR</p>
         {/if}
       </div>
     </div>
@@ -121,13 +131,21 @@
         {#if $selectedScanCurrency === "data"}
           <p>{Format.twoDecimals($scannedNodeData.rewardsInData)}</p>
           <p class="currency {$selectedScanCurrency}">DATA</p>
-        {:else}
+        {:else if $selectedScanCurrency === "usdt"}
           <p>
             {Format.tokenValue(
               $scannedNodeData.rewardsInData * $marketPrices.DATAUSDT
             )}
           </p>
           <p class="currency {$selectedScanCurrency}">USDT</p>
+        {:else if $selectedScanCurrency === "eur"}
+          <p>
+            {Format.tokenValue(
+              ($scannedNodeData.rewardsInData * $marketPrices.DATAUSDT) /
+                $marketPrices.EURUSDT
+            )}
+          </p>
+          <p class="currency {$selectedScanCurrency}">EUR</p>
         {/if}
       </div>
     </div>
@@ -140,13 +158,21 @@
         {#if $selectedScanCurrency === "data"}
           <p>{Format.twoDecimals($scannedNodeData.dataSent)}</p>
           <p class="currency {$selectedScanCurrency}">DATA</p>
-        {:else}
+        {:else if $selectedScanCurrency === "usdt"}
           <p>
             {Format.twoDecimals(
               $scannedNodeData.dataSent * $marketPrices["DATAUSDT"]
             )}
           </p>
           <p class="currency {$selectedScanCurrency}">USDT</p>
+        {:else if $selectedScanCurrency === "eur"}
+          <p>
+            {Format.twoDecimals(
+              ($scannedNodeData.dataSent * $marketPrices["DATAUSDT"]) /
+                $marketPrices.EURUSDT
+            )}
+          </p>
+          <p class="currency {$selectedScanCurrency}">EUR</p>
         {/if}
       </div>
     </div>
@@ -163,7 +189,7 @@
             )}
           </p>
           <p class="currency {$selectedScanCurrency}">DATA</p>
-        {:else}
+        {:else if $selectedScanCurrency === "usdt"}
           <p>
             {Format.twoDecimals(
               ($scannedNodeData.rewardsInData - $scannedNodeData.dataSent) *
@@ -171,6 +197,14 @@
             )}
           </p>
           <p class="currency {$selectedScanCurrency}">USDT</p>
+        {:else if $selectedScanCurrency === "eur"}
+          <p>
+            {Format.twoDecimals(
+              ($scannedNodeData.rewardsInData - $scannedNodeData.dataSent) *
+                $marketPrices["DATAUSDT"] / $marketPrices.EURUSDT
+            )}
+          </p>
+          <p class="currency {$selectedScanCurrency}">EUR</p>
         {/if}
       </div>
     </div>
@@ -244,6 +278,10 @@
     color: rgb(100, 218, 161);
   }
 
+  .currency.eur {
+    color: rgb(85, 81, 217);
+  }
+
   .value {
     display: flex;
     align-items: center;
@@ -259,5 +297,10 @@
   }
   .ko {
     color: rgb(226, 88, 88);
+  }
+
+  .selector {
+    display: flex;
+    justify-content: flex-end;
   }
 </style>

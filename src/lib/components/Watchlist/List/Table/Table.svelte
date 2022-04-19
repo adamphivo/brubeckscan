@@ -2,14 +2,17 @@
   import Row from "$lib/components/Watchlist/List/Table/Row.svelte";
   import { nodesData } from "$lib/stores/nodes";
   import QuickAddNode from "./_QuickAddNode.svelte";
-  import Configuration from "./Configuration.svelte";
   import Totals from "./_Totals.svelte";
+  import CurrencySelector from "$lib/components/Markets/CurrencySelector.svelte";
+  import { selectedNodesCurrency as store } from "$lib/stores/selectedCurrency";
 </script>
 
 {#if $nodesData}
   {#if $nodesData.length}
-    <Configuration />
     <div class="module">
+      <CurrencySelector {store} />
+    </div>
+    <div class="table">
       <table>
         <thead>
           <tr>
@@ -41,13 +44,18 @@
   table {
     width: 1700px;
   }
-  .module {
+  .table {
     width: 100%;
     padding: 0;
     max-width: 100%;
     overflow-x: scroll;
     border-radius: 0;
     scroll-behavior: smooth;
+  }
+
+  .module {
+    width: 100%;
+    border-radius: 0;
   }
 
   th div {

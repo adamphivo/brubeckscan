@@ -1,1 +1,1 @@
-export const pairs = ["BTCUSDT", "DATAUSDT"];
+export const pairs = ["BTCUSDT", "DATAUSDT", "EURUSDT"];
