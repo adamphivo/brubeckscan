@@ -23,6 +23,7 @@
                 const node = await response.json();
 
                 if (node) {
+                    console.log(node);
                     $scannedNodeData = node;
                 }
             } else {

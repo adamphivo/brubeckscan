@@ -23,25 +23,13 @@
     setTimeout(() => (copyText = "Copy"), 2000);
   }
 
-  let latestClaim;
-  let distance;
-  let hasClaimedTheLatestKnownCode;
-
   const now = new Date();
 
-  if ($scannedNodeData) {
-    if ($scannedNodeData.claimedRewardCodes.length !== 0) {
-      latestClaim = new Date(
-        $scannedNodeData?.claimedRewardCodes[0]?.claimTime
-      );
-      if (latestClaim) {
-        distance = formatDistance(latestClaim, now, { addSuffix: true });
-      }
-      hasClaimedTheLatestKnownCode = $scannedNodeData?.claimedRewardCodes.find(
-        (code) => code.id === $brubeckData.lastCode
-      );
-    }
-  }
+  $: latestClaim = new Date($scannedNodeData?.claimedRewardCodes[0]?.claimTime || null);
+  $: hasClaimedTheLatestKnownCode = $scannedNodeData?.claimedRewardCodes.find(
+    (code) => code.id === $brubeckData.lastCode
+  );
+  $: distance = formatDistance(latestClaim, now, { addSuffix: true });
 
   onMount(async () => {
     const address = $page.url.searchParams.get("address");
@@ -200,8 +188,9 @@
         {:else if $selectedScanCurrency === "eur"}
           <p>
             {Format.twoDecimals(
-              ($scannedNodeData.rewardsInData - $scannedNodeData.dataSent) *
-                $marketPrices["DATAUSDT"] / $marketPrices.EURUSDT
+              (($scannedNodeData.rewardsInData - $scannedNodeData.dataSent) *
+                $marketPrices["DATAUSDT"]) /
+                $marketPrices.EURUSDT
             )}
           </p>
           <p class="currency {$selectedScanCurrency}">EUR</p>
@@ -242,6 +231,7 @@
                 KO
               </p>
             {/if}
+            <p>/</p>
             <p title="Last reward code claimed">{distance}</p>
           {/if}
         </div>
